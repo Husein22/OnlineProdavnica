@@ -1,6 +1,6 @@
 #include "Artikal.h"
 #include <iostream>
-int Artikal:: stanje_kase=10000;
+float Artikal:: stanje_kase=10000;
 Artikal::Artikal()
 {
 }
@@ -33,7 +33,7 @@ void Artikal::setGodinaProizvodnje()
     do {
         std::cout << "Unesite godinu proizvodnje: ";
         std::cin >> this->godina_proiz;
-    } while (this->godina_proiz > 1|| this->godina_proiz<2022) ;
+    } while (this->godina_proiz < 1|| this->godina_proiz>2022) ;
     std::cin.ignore();
 }
 
@@ -42,7 +42,7 @@ void Artikal::setCijena()
     do {
         std::cout << "Unesite cijenu: ";
         std::cin >> this->cijena;
-    } while (this->cijena > 1);
+    } while (this->cijena < 1);
     Artikal::stanje_kase -= this->cijena;
     std::cin.ignore();
 }
