@@ -71,3 +71,19 @@ float Artikal::getCijena()
 {
     return this->cijena;
 }
+
+std::istream& operator>>(std::istream& stream, Artikal& a)
+{
+
+
+
+    return stream;
+}
+
+std::ostream& operator<<(std::ostream& stream, Artikal& a)
+{
+
+
+
+    return stream;
+}
