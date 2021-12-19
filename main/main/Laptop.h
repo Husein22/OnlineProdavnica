@@ -10,6 +10,9 @@ private:
 	OperativniSistem opSis;
 	int memorija, hard_drive;
 public:
+	/*std::string cpu, gpu;
+	OperativniSistem opSis;
+	int memorija, hard_drive;*/
 	Laptop();
 	Laptop(std::string a, std::string b, std::string c, int d, int e);
 	//Laptop(const Laptop* p);
@@ -26,6 +29,7 @@ public:
 	int getHardDrive();
 	friend std::istream& operator>>(std::istream& stream, Laptop& a);
 	friend std::ostream& operator<<(std::ostream& stream, Laptop& a);
+	friend void operator!(Laptop& a);
 
 
 	~Laptop() = default;
