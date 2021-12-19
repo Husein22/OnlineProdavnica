@@ -9,13 +9,12 @@ protected:
 	int kolicina,godina_proiz;
 	float cijena;
 public:
-	static int stanje_kase;
+	static float stanje_kase;
 	Artikal();
 	Artikal(std::string a, std::string b, int c, int d, float e);
 	//Artikal(const Artikal& p);
 	void setProizvodjac();
 	void setModel();
-	void setKolicina();
 	void setKolicina();
 	void setGodinaProizvodnje();
 	void setCijena();
