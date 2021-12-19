@@ -2,6 +2,7 @@
 #include<iostream>
 #include<fstream>
 #include<iomanip>
+#include <vector>
 Laptop::Laptop()
 {
 }
@@ -143,11 +144,27 @@ std::istream& operator>>(std::istream& stream, Laptop& a)
 
 std::ostream& operator<<(std::ostream& stream, Laptop& a)
 {
-   
-    stream<< std::left << std::setw(15) << a.getProizvodjac() << std::left << std::setw(10) << a.getModel() << std::left << std::setw(10) << a.getKolicina()<< 
+
+
+    std::string temp;
+    std::ifstream ispis("Laptop.txt");
+    while (ispis.eof()) {
+        ispis >> temp;
+        stream << temp;
+
+    }
+    ispis.close();
+
+
+    /*stream<< std::left << std::setw(15) << a.getProizvodjac() << std::left << std::setw(10) << a.getModel() << std::left << std::setw(10) << a.getKolicina()<< 
         std::left << std::setw(20) << a.getGodinaProizvodnje() << std::left << std::setw(15) << a.getCijena()<< std::left << std::setw(10) << a.getCPU()
       << std::left << std::setw(10) << a.getGPU()<<
-        std::left << std::setw(22) << a.getOpsSisString()<< std::left << std::setw(10) << a.getMemorija()<< std::left << std::setw(10) << a.getHardDrive()<< "\n";
+        std::left << std::setw(22) << a.getOpsSisString()<< std::left << std::setw(10) << a.getMemorija()<< std::left << std::setw(10) << a.getHardDrive()<< "\n";*/
 
     return stream;
+}
+
+void operator!(Laptop&a)
+{
+   
 }
