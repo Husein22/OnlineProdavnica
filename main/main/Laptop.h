@@ -27,6 +27,9 @@ public:
 	std::string getOpsSisString();
 	int getMemorija();
 	int getHardDrive();
+	void pretragaPoProiz(std::string n);
+	void pretragaPoModelu(std::string n);
+	void sortiranjePoRamu();
 	friend std::istream& operator>>(std::istream& stream, Laptop& a);
 	friend std::ostream& operator<<(std::ostream& stream, Laptop& a);
 	friend void operator!(Laptop& a);
