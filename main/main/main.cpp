@@ -33,16 +33,12 @@ void smjestizaIspis(string n) {
 		cout << i;
 		cout << endl;
 	}
-	
-
-
-
 }
 void unosLaptopa() {
 	std::shared_ptr<Laptop>temp = std::make_shared<Laptop>();
 	cin >> *temp;
-	laptopi.push_back(*temp);
-	cout << "Uspjesno smjesten laptop u vektor\n";
+	//laptopi.push_back(*temp);
+	cout << "Uspjesno smjesten laptop u datoteku\n";
 }
 void ispisLaptopa() {
 	cout<< "-----------------------------------------------------------------------------------------------------------------------------\n";
@@ -52,12 +48,28 @@ void ispisLaptopa() {
 		"RAM(GB): " << std::left << std::setw(10) << "HDD||SDD: \n";
 	cout << "------------------------------------------------------------------------------------------------------------------------------\n";
 	smjestizaIspis("Laptop");
-	for (auto& i : laptopi) {
+	/*for (auto& i : laptopi) {
 		cout << i;
-	}
+	}*/
+}
+void pretragaPoProizz() {
+	std::shared_ptr<Laptop>temp = std::make_shared<Laptop>();
+	std::unique_ptr<string>l = std::make_unique<string>();
+	std::cout << "Unesite proizvodjaca za pretragu: ";
+	getline(cin, *l);
+	temp->pretragaPoProiz(*l);
+}
+void pretragaPoModeluu() {
+	std::shared_ptr<Laptop>temp = std::make_shared<Laptop>();
+	std::unique_ptr<string>l = std::make_unique<string>();
+	std::cout << "Unesite proizvodjaca za pretragu: ";
+	getline(cin, *l);
+	temp->pretragaPoModelu(*l);
 }
 int main()
 {
+	pretragaPoModeluu();
+	pretragaPoProizz();
 	unosLaptopa();
 	ispisLaptopa();
 }
