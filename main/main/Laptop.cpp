@@ -1,6 +1,7 @@
 #include "Laptop.h"
 #include<iostream>
 #include<fstream>
+#include<string>
 #include<iomanip>
 #include <vector>
 Laptop::Laptop()
@@ -90,6 +91,103 @@ int Laptop::getHardDrive()
 {
     return this->hard_drive;
 }
+
+void Laptop::pretragaPoProiz(std::string n)
+{
+    std::ifstream unos("Laptop.txt");
+    std::string temp;
+    int p = 0;
+    if (unos.is_open()) {
+        while (!unos.eof()) {
+            unos >> temp;
+            if (temp == n) {
+                std::cout << "Uspjesno pronadjen artikal\n";
+                std::cout << "-----------------------------------------------------------------------------------------------------------------------------\n";
+                std::cout << std::left << std::setw(15) << "Proizvodjac:" << std::left << std::setw(10) << "Model: " << std::left << std::setw(10) << "Kolièina:" <<
+                    std::left << std::setw(20) << "Godina proizvodnje: " << std::left << std::setw(15) << "Cijena(KM) :" << std::left << std::setw(10)
+                    << std::left << std::setw(10) << "CPU" << std::left << std::setw(10) << "GPU" << std::left << std::setw(22) << "Operativni Sistem" << std::left << std::setw(10) <<
+                    "RAM(GB): " << std::left << std::setw(10) << "HDD||SDD: \n";
+                std::cout << "------------------------------------------------------------------------------------------------------------------------------\n";
+               std:: cout << n;
+                getline(unos, temp);
+                std::cout << temp;
+                p++;
+            }
+            getline(unos, temp);
+        }
+        if (p == 0) {
+            std::cout << "Nazalost nemamo niti jedan artikal tog proizvodjaca u prodaji\n";
+        }
+
+        unos.close();
+    }
+    else {
+        std::cout << "Neuspjesno otvaranje datoteke\n";
+    }
+}
+
+void Laptop::pretragaPoModelu(std::string n)
+{
+    std::ifstream unos("Laptop.txt");
+    std::string temp;
+    std::string z;
+    int p = 0;
+    if (unos.is_open()) {
+        while (!unos.eof()) {
+            unos >> temp;
+            unos >> z;
+            if (z == n) {
+                std::cout << "Uspjesno pronadjen artikal\n";
+                std::cout << "-----------------------------------------------------------------------------------------------------------------------------\n";
+                std::cout << std::left << std::setw(15) << "Proizvodjac:" << std::left << std::setw(10) << "Model: " << std::left << std::setw(10) << "Kolièina:" <<
+                    std::left << std::setw(20) << "Godina proizvodnje: " << std::left << std::setw(15) << "Cijena(KM) :" << std::left << std::setw(10)
+                    << std::left << std::setw(10) << "CPU" << std::left << std::setw(10) << "GPU" << std::left << std::setw(22) << "Operativni Sistem" << std::left << std::setw(10) <<
+                    "RAM(GB): " << std::left << std::setw(10) << "HDD||SDD: \n";
+                std::cout << "------------------------------------------------------------------------------------------------------------------------------\n";
+                std::cout << std::left << std::setw(15) << temp;
+                std::cout << std::left  << z;
+                getline(unos, temp);
+                std::cout << temp;
+                p++;
+            }
+            getline(unos, temp);
+        }
+        if (p == 0) {
+            std::cout << "Nazalost nemamo taj model artikala u prodaji\n";
+        }
+
+        unos.close();
+    }
+    else {
+        std::cout << "Neuspjesno otvaranje datoteke\n";
+    }
+}
+
+void Laptop::sortiranjePoRamu()
+{
+    std::ifstream unos("Laptop.txt");
+    std::string temp;
+    int a, b, c;
+    int p = 0;
+    if (unos.is_open()) {
+        while (!unos.eof()) {
+            getline(unos, temp);
+            a = temp[122] - '0';
+            b = temp[123] - '0';
+            
+        }
+        if (p == 0) {
+            std::cout << "Nazalost nemamo taj model artikala u prodaji\n";
+        }
+
+        unos.close();
+    }
+    else {
+        std::cout << "Neuspjesno otvaranje datoteke\n";
+    }
+
+}
+
 
 std::istream& operator>>(std::istream& stream, Laptop& a)
 {
