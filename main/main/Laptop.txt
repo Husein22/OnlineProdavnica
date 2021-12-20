@@ -6,3 +6,5 @@ Ramo           RAMIC     2         2000                201            cpu       
 trece          trecic    20        388                 888            cpu       gou       Linux                 8         3         
 cetvrti        cet       9         299                 666            xo        ss        Linux                 9         3         
 peti           petak     5         400                 999            cpu       gpu       Windows               9         20        
+sesti          sestic    2         2000                20             cpi       gpu       Windows               9         9         
+sedmi          sedmic    99        88                  400            cpu       gpu       Windows               6         5         
