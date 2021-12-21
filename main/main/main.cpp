@@ -23,9 +23,51 @@ struct kupacP {
 };
 void login(string& admin, string& password);
 void kupacLogin(string& user, string& password);
+
+
 void kupacMenu() {
+	/*int z=0,iz=0;
+	cout << "1-Sortirano\n2-Ispis svih laptopa u prodavnici\n3-Pretraga latopa po proizvodjacu i modelu\n";
+	do {
+		cout << "Unesite izbor; ";
+		cin >> z;
+	} while (z < 0 || z>3);
+	cin.ignore();
+	switch (z) {
+	case 1:
+		cout << "1-Sortirano po godini proizvodnje\n2-Sortirano po ramu\n3-Sortirano po sekundarnoj memoriji\n";
+		do {
+			cout << "Unesite izbor; ";
+			cin >> iz;
+		} while (iz < 0 || iz>3);
+		switch (iz)
+		{
+		case 1:
+			sortiranjeLaptopa("godine");
+			break;
+		case 2:
+			sortiranjeLaptopa("ram");
+			break;
+		case 3:
+			sortiranjeLaptopa("hdd");
+			break;
+
+		default:
+			break;
+		}
+		break;
+		case 2:
+			ispisLaptopa();
+			break;
+		default:
+			break;
+	}*/
+
+
 
 }
+
+
 
 void adminMenu() {
 
@@ -196,10 +238,6 @@ void osnova() {
 	cout << "------------------------------------------------------------------------------------------------------------------------------\n";
 }
 
-void ispisLaptopa() {
-	osnova();
-	smjestizaIspis("Laptop");
-}
 
 void pretragaPoProizziMod() {
 	std::shared_ptr<Laptop>temp = std::make_shared<Laptop>();
@@ -241,6 +279,17 @@ void sortiranjePoSekundarnoj(){
 			unos.close();
 		}}
 
+
+void stanjeK() {
+	std::shared_ptr<Laptop>laptop = std::make_shared<Laptop>();
+	cout << "Stanje kase za laptope:\n\t Trenutno stanje : " << !(*laptop)<<"\n";
+}
+
+
+void ispisLaptopa() {
+	osnova();
+	smjestizaIspis("Laptop");
+}
 void sortiranjeLaptopa(std::string rec) {
 	std::ifstream unos("Laptop.txt");
 	std::vector<std::string>nizl;
@@ -250,7 +299,7 @@ void sortiranjeLaptopa(std::string rec) {
 	int pom;
 	std::string po;
 	std::vector<int>ram;
-	int a, b, c,d, x, p = 0;
+	int a, b, c, d, x, p = 0;
 	if (unos.fail())std::cout << "Nemoguce otvaranje datoeke\n";
 	else {
 		getline(unos, temp);getline(unos, temp);getline(unos, temp);
@@ -270,7 +319,7 @@ void sortiranjeLaptopa(std::string rec) {
 				if (a > -1 && b > -1 && c > -1) x = a * 100 + b * 10 + c + 1;
 				else if (a > -1 && b > -1 && c < -1) x = a * 10 + b;
 				else if (a > -1 && b < -1 && c < -1) x = a;
-				cout <<x<<" ";
+				cout << x << " ";
 				ram.push_back(x);
 			}
 			if (rec == "godine") {
@@ -278,34 +327,20 @@ void sortiranjeLaptopa(std::string rec) {
 				b = temp[36] - '0';
 				c = temp[37] - '0';
 				d = temp[38] - '0';
-				//sortiranje iz datoteke jer ROM moze imati 1,2,3 ili 4 cifre
 				if (a > -1 && b > -1 && c > -1 && d > -1) x = a * 1000 + b * 100 + c * 10 + d;
 				else if (a > -1 && b > -1 && c > -1 && d < -1) x = a * 100 + b * 10 + c;
 				else if (a > -1 && b > -1 && c < -1 && d < -1) x = a * 10 + b;
 				else if (a > -1 && b < -1 && c < -1 && d < -1) x = a;
 				cout << x << " ";
 				godine.push_back(x);
-			}
-
-
-
-
-
-		}
-
-
-
-
-
+			}}
 		if (rec == "hdd") {
 			for (int i = 0;i < hdd.size();i++) {
 				for (int j = i;j < hdd.size();j++) {
 					if (hdd[j] > hdd[i]) {
 						std::swap(hdd[j], hdd[i]);
 						std::swap(nizl[j], nizl[i]);
-					}
-				}
-			}
+					}}}
 			osnova();
 			for (int i = 0;i < hdd.size();i++)std::cout << nizl[i] << "\n";
 		}
@@ -315,14 +350,10 @@ void sortiranjeLaptopa(std::string rec) {
 					if (ram[j] > ram[i]) {
 						std::swap(ram[j], ram[i]);
 						std::swap(nizl[j], nizl[i]);
-					}
-				}
-			}
+					}}}
 			osnova();
 			for (int i = 0;i < ram.size();i++)std::cout << nizl[i] << "\n";
-		}
-
-		if (rec == "godine") {
+		}if (rec == "godine") {
 			for (int i = 0;i < godine.size();i++) {
 				for (int j = i;j < godine.size();j++) {
 					if (godine[j] > godine[i]) {
@@ -334,28 +365,22 @@ void sortiranjeLaptopa(std::string rec) {
 			osnova();
 			for (int i = 0;i < godine.size();i++)std::cout << nizl[i] << "\n";
 		}
-
 		unos.close();
 	}
 }
 
 
-void stanjeK() {
-	std::shared_ptr<Laptop>laptop = std::make_shared<Laptop>();
-	cout << "Stanje kase za laptope:\n\t Trenutno stanje : " << !(*laptop)<<"\n";
-}
 
 
 int main()
 {
-	//stanjeK();
+	//stanjeK();-admin
 	int izbor=0,z=0,a=0;
 	string user, password;
-	//ispisLaptopa();
-	//sortiranjeLaptopa("godine");
-	//unosLaptopa();
-	//pretragaPoProizziMod();
-	//unosLaptopa();
+	//ispisLaptopa();-admin,-korisnik
+	//sortiranjeLaptopa("ram");-korisnik
+	//unosLaptopa();-admin
+	//pretragaPoProizziMod();-korinsik,-admin
 	
 	do {
 		cout << "\n\n" << setw(81) << "****************************************" << endl;
@@ -382,12 +407,12 @@ int main()
 		system("cls");
 		switch (izbor) {
 		case 1: {
-			do {
-				cout << "\n\n" << setw(81) <<right<< "Unesite sifru za ulazak u admin menu : \n";
-				cin >> z;
-				a++;
-				if (a == 3) cout << "[GRESKA]Zbog nesigurnosti vseg identiteta,izbaceni ste sa naseg sajta :) \n";return 0;
-			} while (z != 123);
+			//do {
+				//cout << "\n\n" << setw(81) <<right<< "Unesite sifru za ulazak u admin menu : \n";
+				//cin >> z;
+				//a++;
+				//if (a == 3) cout << "[GRESKA]Zbog nesigurnosti vseg identiteta,izbaceni ste sa naseg sajta :) \n";return 0;
+			//} while (z != 123);
 			cout << "\n" << setw(60) << "Username: ";
 			cin >> user;
 			cout << "\n" << setw(57) << "Sifra: ";
