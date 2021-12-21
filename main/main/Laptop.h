@@ -1,7 +1,7 @@
 #pragma once
 #include"Artikal.h"
 #include<iostream>
-enum OperativniSistem  { Windows=0 ,Linux };
+enum OperativniSistem  { Windows=0 ,Linux, Unix, Mac_OS, AmigaOS, GNOME};
 class Laptop:
 	public Artikal
 {
@@ -11,9 +11,7 @@ private:
 	std::string OperativniSistemNiz;
 	int memorija, hard_drive;
 public:
-	/*std::string cpu, gpu;
-	OperativniSistem opSis;
-	int memorija, hard_drive;*/
+	static float stanje_kase;
 	Laptop();
 	Laptop(std::string a, std::string b, std::string c, int d, int e);
 	//Laptop(const Laptop* p);
@@ -30,9 +28,10 @@ public:
 	int getHardDrive();
 	void pretragaPoProizImodelu(std::string a,std::string b);
 	void sortiranjePoSekundarnoj();
+	friend float operator!(Laptop&a);
 	friend std::istream& operator>>(std::istream& stream, Laptop& a);
 	friend std::ostream& operator<<(std::ostream& stream, Laptop& a);
-	friend void operator!(Laptop& a);
+	
 
 
 	~Laptop() = default;
