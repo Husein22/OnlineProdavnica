@@ -6,7 +6,7 @@
 #include <vector>
 #include <sstream>
 #include <algorithm>
-float Laptop::stanje_kase = 0;
+float Laptop::stanje_kase = 1000000;
 Laptop::Laptop()
 {
 }
@@ -168,7 +168,7 @@ void Laptop::sortiranjePoSekundarnoj()
             if (unos.eof())break;
             nizl.push_back(temp);
             a = temp[122] - '0';
-            b = temp[123] - '0';
+            b = temp[123] - '0'; 
             c = temp[124] - '0';
             if (a > -1 && b > -1 && c > -1) x = a * 100 + b * 10 + c + 1;
             else if (a > -1 && b > -1 && c < -1) x = a * 10 + b ;
