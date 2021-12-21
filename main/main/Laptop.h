@@ -8,6 +8,7 @@ class Laptop:
 private:
 	std::string cpu, gpu;
 	OperativniSistem opSis;
+	std::string OperativniSistemNiz;
 	int memorija, hard_drive;
 public:
 	/*std::string cpu, gpu;
@@ -27,9 +28,8 @@ public:
 	std::string getOpsSisString();
 	int getMemorija();
 	int getHardDrive();
-	void pretragaPoProiz(std::string n);
-	void pretragaPoModelu(std::string n);
-	void sortiranjePoRamu();
+	void pretragaPoProizImodelu(std::string a,std::string b);
+	void sortiranjePoSekundarnoj();
 	friend std::istream& operator>>(std::istream& stream, Laptop& a);
 	friend std::ostream& operator<<(std::ostream& stream, Laptop& a);
 	friend void operator!(Laptop& a);
