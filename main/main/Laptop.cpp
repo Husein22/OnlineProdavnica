@@ -6,6 +6,7 @@
 #include <vector>
 #include <sstream>
 #include <algorithm>
+float Laptop::stanje_kase = 0;
 Laptop::Laptop()
 {
 }
@@ -29,14 +30,14 @@ void Laptop::setGPU()
 void Laptop::setOpSis()
 {
     int z = 0;
-    std::cout << "Unesite operativni sistem(0-Windows,Linux-1)\n";
+    std::cout << "Unesite operativni sistem(0-Windows,Linux-1,Unix-2, Mac_OS-3, AmigaOS-4, GNOME-5)\n";
     do {
         std::cout << "Unesite izbor: ";
         std::cin >> z;
-        if (z > 2 || z < 0) {
+        if (z > 5 || z < 0) {
             std::cout << "[GRESKA]Pogresan izbor\n";
         }
-    } while (z < 0 || z > 2);
+    } while (z < 0 || z > 5);
     this->opSis = static_cast<OperativniSistem>(z);
 }
 
@@ -78,6 +79,18 @@ std::string Laptop::getOpsSisString()
         break;
     case 1:
         return "Linux";
+        break;
+    case 2:
+        return "Unix";
+        break;
+    case 3:
+        return "Mac_OS";
+        break;
+    case 4:
+        return "AmigaOS";
+        break;
+    case 5:
+        return " GNOME";
         break;
     default:
         break;
@@ -191,6 +204,8 @@ void Laptop::sortiranjePoSekundarnoj()
 }
 
 
+
+
 std::istream& operator>>(std::istream& stream, Laptop& a)
 {
     std::ifstream some("Laptop.txt");
@@ -271,7 +286,43 @@ std::ostream& operator<<(std::ostream& stream, Laptop& a)
     return stream;
 }
 
-void operator!(Laptop&a)
+float operator!(Laptop& a)
 {
-   
+    std::string temp;
+    int  b, c, d, e, f,g,h,i=0,p,j;
+    std::ifstream unos("Laptop.txt");
+    if (unos.fail()) {
+        std::cout << "Neuspjesno otvaranje datoteke\n";
+    }
+    else {
+        std::vector<int>cijena;std::vector<int>kolicina;
+        std::vector<std::string>lap;
+        getline(unos, temp);
+        getline(unos, temp);
+        getline(unos, temp);
+        while (true) {
+            getline(unos, temp);
+            if (unos.eof())break;
+            //lap.push_back(temp);
+            b = temp[25] - '0';
+            c = temp[26] - '0';
+            d = temp[27] - '0';
+            if (b > -1 && c > -1 && d > -1) e = b * 100 + c * 10 + d;
+            else if (b > -1 && c > -1 && d < -1) e = b * 10 + c;
+            else if (b > -1 && c < -1 && d < -1) e = b;
+            f = temp[55] - '0';
+            g = temp[56] - '0';
+            h = temp[57] - '0';
+            j = temp[58] - '0';
+            if (f > -1 && g > -1 && h > -1 && j > -1) i = f * 1000 + g * 100 + h * 10 +j;
+            if (f > -1 && g > -1 && h > -1 && j<-1) i = f * 100 + g * 10 + h;
+            else if (f > -1 && g > -1 && h < -1&& j < -1) i = f * 10 + g;
+            else if (f > -1 && g < -1 && h < -1&& j < -1) i = f;
+            p = i * e;
+            Laptop::stanje_kase -= p;
+
+        }
+        unos.close();
+    }
+    return Laptop::stanje_kase;
 }
