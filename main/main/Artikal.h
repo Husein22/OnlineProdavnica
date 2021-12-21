@@ -9,7 +9,7 @@ protected:
 	int kolicina,godina_proiz;
 	float cijena;
 public:
-	static float stanje_kase;
+	//static float stanje_kase;
 	Artikal();
 	Artikal(std::string a, std::string b, int c, int d, float e);
 	//Artikal(const Artikal& p);
