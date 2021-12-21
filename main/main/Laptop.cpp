@@ -4,6 +4,8 @@
 #include<string>
 #include<iomanip>
 #include <vector>
+#include <sstream>
+#include <algorithm>
 Laptop::Laptop()
 {
 }
@@ -91,63 +93,32 @@ int Laptop::getHardDrive()
 {
     return this->hard_drive;
 }
-
-void Laptop::pretragaPoProiz(std::string n)
-{
-    std::ifstream unos("Laptop.txt");
-    std::string temp;
-    int p = 0;
-    if (unos.is_open()) {
-        while (!unos.eof()) {
-            unos >> temp;
-            if (temp == n) {
-                std::cout << "Uspjesno pronadjen artikal\n";
-                std::cout << "-----------------------------------------------------------------------------------------------------------------------------\n";
-                std::cout << std::left << std::setw(15) << "Proizvodjac:" << std::left << std::setw(10) << "Model: " << std::left << std::setw(10) << "Kolièina:" <<
-                    std::left << std::setw(20) << "Godina proizvodnje: " << std::left << std::setw(15) << "Cijena(KM) :" << std::left << std::setw(10)
-                    << std::left << std::setw(10) << "CPU" << std::left << std::setw(10) << "GPU" << std::left << std::setw(22) << "Operativni Sistem" << std::left << std::setw(10) <<
-                    "RAM(GB): " << std::left << std::setw(10) << "HDD||SDD: \n";
-                std::cout << "------------------------------------------------------------------------------------------------------------------------------\n";
-               std:: cout << n;
-                getline(unos, temp);
-                std::cout << temp;
-                p++;
-            }
-            getline(unos, temp);
-        }
-        if (p == 0) {
-            std::cout << "Nazalost nemamo niti jedan artikal tog proizvodjaca u prodaji\n";
-        }
-
-        unos.close();
-    }
-    else {
-        std::cout << "Neuspjesno otvaranje datoteke\n";
-    }
-}
-
-void Laptop::pretragaPoModelu(std::string n)
-{
-    std::ifstream unos("Laptop.txt");
+void Laptop::pretragaPoProizImodelu(std::string a,std::string b)
+{   
     std::string temp;
     std::string z;
-    int p = 0;
+    int p = 0,o=0;
+    std::ifstream unos("Laptop.txt");
     if (unos.is_open()) {
         while (!unos.eof()) {
             unos >> temp;
             unos >> z;
-            if (z == n) {
-                std::cout << "Uspjesno pronadjen artikal\n";
-                std::cout << "-----------------------------------------------------------------------------------------------------------------------------\n";
-                std::cout << std::left << std::setw(15) << "Proizvodjac:" << std::left << std::setw(10) << "Model: " << std::left << std::setw(10) << "Kolièina:" <<
-                    std::left << std::setw(20) << "Godina proizvodnje: " << std::left << std::setw(15) << "Cijena(KM) :" << std::left << std::setw(10)
-                    << std::left << std::setw(10) << "CPU" << std::left << std::setw(10) << "GPU" << std::left << std::setw(22) << "Operativni Sistem" << std::left << std::setw(10) <<
-                    "RAM(GB): " << std::left << std::setw(10) << "HDD||SDD: \n";
-                std::cout << "------------------------------------------------------------------------------------------------------------------------------\n";
+            if (temp == a && z == b) {
+                if (o == 0)
+                {
+                    std::cout << "Uspjesno pronadjen artikal\n";
+                    std::cout << "-----------------------------------------------------------------------------------------------------------------------------\n";
+                    std::cout << std::left << std::setw(15) << "Proizvodjac:" << std::left << std::setw(10) << "Model: " << std::left << std::setw(10) << "Kolièina:" <<
+                        std::left << std::setw(20) << "Godina proizvodnje: " << std::left << std::setw(15) << "Cijena(KM) :" << std::left << std::setw(10)
+                        << std::left << std::setw(10) << "CPU" << std::left << std::setw(10) << "GPU" << std::left << std::setw(22) << "Operativni Sistem" << std::left << std::setw(10) <<
+                        "RAM(GB): " << std::left << std::setw(10) << "HDD||SDD: \n";
+                    std::cout << "------------------------------------------------------------------------------------------------------------------------------\n";
+                    o++;
+                }
                 std::cout << std::left << std::setw(15) << temp;
                 std::cout << std::left  << z;
                 getline(unos, temp);
-                std::cout << temp;
+                std::cout << temp<<std::endl;
                 p++;
             }
             getline(unos, temp);
@@ -163,28 +134,59 @@ void Laptop::pretragaPoModelu(std::string n)
     }
 }
 
-void Laptop::sortiranjePoRamu()
+void Laptop::sortiranjePoSekundarnoj()
 {
+    
     std::ifstream unos("Laptop.txt");
+    std::vector<std::string>nizl;
+    std::vector<int>hdd;
     std::string temp;
-    int a, b, c;
+    int a, b, c,x;
     int p = 0;
-    if (unos.is_open()) {
-        while (!unos.eof()) {
-            getline(unos, temp);
-            a = temp[122] - '0';
-            b = temp[123] - '0';
-            
-        }
-        if (p == 0) {
-            std::cout << "Nazalost nemamo taj model artikala u prodaji\n";
-        }
-
-        unos.close();
+    if (unos.fail()) {
+        std::cout << "Nemoguce otvaranje datoeke\n";
     }
     else {
-        std::cout << "Neuspjesno otvaranje datoteke\n";
+        getline(unos, temp);
+        getline(unos, temp);
+        getline(unos, temp);
+        while (true) {
+            getline(unos, temp);
+            if (unos.eof())break;
+            nizl.push_back(temp);
+            a = temp[122] - '0';
+            b = temp[123] - '0';
+            c = temp[124] - '0';
+            if (a > -1 && b > -1 && c > -1) x = a * 100 + b * 10 + c + 1;
+            else if (a > -1 && b > -1 && c < -1) x = a * 10 + b ;
+            else if (a > -1 && b < -1 && c < -1) x = a;
+            std::cout << x<<" ";
+            hdd.push_back(x);
+        }
+        std::cout << "\n";
+        int pom;
+        std::string po;
+        for (int i = 0;i < hdd.size();i++) {
+            std::cout << nizl[i] << "\n";
+        }
+        for (int i = 0;i < hdd.size();i++) {
+            for (int j = i ;j < hdd.size();j++) {
+                if (hdd[j] > hdd[i]) {
+                    pom = hdd[i];
+                    hdd[i] = hdd[j];
+                    hdd[j] = pom;
+                    po = nizl[i];
+                    nizl[i] = nizl[j];
+                    nizl[j] = pom;
+                }
+            }
+        }
+        for (int i = 0;i < hdd.size();i++) {
+            std::cout << nizl[i]<<"\n";
+        }
+        unos.close();
     }
+    
 
 }
 
@@ -194,6 +196,7 @@ std::istream& operator>>(std::istream& stream, Laptop& a)
     std::ifstream some("Laptop.txt");
     std::string temp;
     some >> temp;
+    int ID = -3;
     if (some.eof()) {
         some.close();
         std::ofstream upi("Laptop.txt");
@@ -206,7 +209,13 @@ std::istream& operator>>(std::istream& stream, Laptop& a)
         upi.close();
     }
     else some.close();
-
+    std::ifstream unosID("Laptop.txt");
+    std::string mobi;
+    do {
+        getline(unosID, mobi);           //ovim omogucujemo da se ID uvijek povecava za 1 prilikom unosenja novog mobitela
+        ID++;
+    } while (!unosID.eof());
+    unosID.close();
     std::ofstream upis("Laptop.txt", std::ios::app);
     if (upis.is_open()) {
         
