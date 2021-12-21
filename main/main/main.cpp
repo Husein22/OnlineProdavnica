@@ -23,7 +23,13 @@ struct kupacP {
 };
 void login(string& admin, string& password);
 void kupacLogin(string& user, string& password);
+void kupacMenu() {
 
+}
+
+void adminMenu() {
+
+}
 string unosPassworda(string password, int ch = 0) {
 	password.clear();
 	while (ch = _getch()) {
@@ -96,7 +102,7 @@ void login(string& admin, string& password) {
 		if (admin == vektor[i].adminUser && password == vektor[i].adminPass) {
 			cout << "\n\n" << setw(75) << "Uspjesno logirani na admin acc." << endl;
 			valid = true;
-			//adminMenu();
+			adminMenu();
 			break;
 			Sleep(2000);
 		}
@@ -137,7 +143,7 @@ void kupacLogin(string& user, string& password) {
 	for (int i = 0; i < vektor.size(); i++) {
 		if (user == vektor[i].kupacUser && password == vektor[i].kupacPass) {
 			cout << "\n\n" << setw(75) << "Uspjesno logirani na kupac acc." << endl;
-			//kupacMenu();
+			kupacMenu();
 			valid = true;break;}
 		else if (user == "Guest" && password == "guest") {
 			cout << "\n\n" << setw(78) << "Uspjesno logirani na guest acc." << endl;
@@ -146,6 +152,7 @@ void kupacLogin(string& user, string& password) {
 		cout << "\n\n" << setw(78) << "Username ili password nisu validni." << endl;
 		system("pause");Sleep(2000);system("CLS");
 	}}
+
 
 
 
@@ -234,17 +241,126 @@ void sortiranjePoSekundarnoj(){
 			unos.close();
 		}}
 
+void sortiranjeLaptopa(std::string rec) {
+	std::ifstream unos("Laptop.txt");
+	std::vector<std::string>nizl;
+	std::vector<int>hdd;
+	std::vector<int>godine;
+	std::string temp;
+	int pom;
+	std::string po;
+	std::vector<int>ram;
+	int a, b, c,d, x, p = 0;
+	if (unos.fail())std::cout << "Nemoguce otvaranje datoeke\n";
+	else {
+		getline(unos, temp);getline(unos, temp);getline(unos, temp);
+		while (true) {
+			getline(unos, temp);
+			if (unos.eof())break;
+			nizl.push_back(temp);
+			if (rec == "hdd") {
+				a = temp[122] - '0';b = temp[123] - '0';c = temp[124] - '0';
+				if (a > -1 && b > -1 && c > -1) x = a * 100 + b * 10 + c + 1;
+				else if (a > -1 && b > -1 && c < -1) x = a * 10 + b;
+				else if (a > -1 && b < -1 && c < -1) x = a;
+				hdd.push_back(x);
+			}
+			if (rec == "ram") {
+				a = temp[112] - '0';b = temp[113] - '0';c = temp[114] - '0';
+				if (a > -1 && b > -1 && c > -1) x = a * 100 + b * 10 + c + 1;
+				else if (a > -1 && b > -1 && c < -1) x = a * 10 + b;
+				else if (a > -1 && b < -1 && c < -1) x = a;
+				cout <<x<<" ";
+				ram.push_back(x);
+			}
+			if (rec == "godine") {
+				a = temp[35] - '0';
+				b = temp[36] - '0';
+				c = temp[37] - '0';
+				d = temp[38] - '0';
+				//sortiranje iz datoteke jer ROM moze imati 1,2,3 ili 4 cifre
+				if (a > -1 && b > -1 && c > -1 && d > -1) x = a * 1000 + b * 100 + c * 10 + d;
+				else if (a > -1 && b > -1 && c > -1 && d < -1) x = a * 100 + b * 10 + c;
+				else if (a > -1 && b > -1 && c < -1 && d < -1) x = a * 10 + b;
+				else if (a > -1 && b < -1 && c < -1 && d < -1) x = a;
+				cout << x << " ";
+				godine.push_back(x);
+			}
+
+
+
+
+
+		}
+
+
+
+
+
+		if (rec == "hdd") {
+			for (int i = 0;i < hdd.size();i++) {
+				for (int j = i;j < hdd.size();j++) {
+					if (hdd[j] > hdd[i]) {
+						std::swap(hdd[j], hdd[i]);
+						std::swap(nizl[j], nizl[i]);
+					}
+				}
+			}
+			osnova();
+			for (int i = 0;i < hdd.size();i++)std::cout << nizl[i] << "\n";
+		}
+		if (rec == "ram") {
+			for (int i = 0;i < ram.size();i++) {
+				for (int j = i;j < ram.size();j++) {
+					if (ram[j] > ram[i]) {
+						std::swap(ram[j], ram[i]);
+						std::swap(nizl[j], nizl[i]);
+					}
+				}
+			}
+			osnova();
+			for (int i = 0;i < ram.size();i++)std::cout << nizl[i] << "\n";
+		}
+
+		if (rec == "godine") {
+			for (int i = 0;i < godine.size();i++) {
+				for (int j = i;j < godine.size();j++) {
+					if (godine[j] > godine[i]) {
+						std::swap(godine[j], godine[i]);
+						std::swap(nizl[j], nizl[i]);
+					}
+				}
+			}
+			osnova();
+			for (int i = 0;i < godine.size();i++)std::cout << nizl[i] << "\n";
+		}
+
+		unos.close();
+	}
+}
+
+
+void stanjeK() {
+	std::shared_ptr<Laptop>laptop = std::make_shared<Laptop>();
+	cout << "Stanje kase za laptope:\n\t Trenutno stanje : " << !(*laptop)<<"\n";
+}
+
+
 int main()
 {
-
-	int izbor;
+	//stanjeK();
+	int izbor=0,z=0,a=0;
 	string user, password;
-
+	//ispisLaptopa();
+	//sortiranjeLaptopa("godine");
+	//unosLaptopa();
+	//pretragaPoProizziMod();
+	//unosLaptopa();
+	
 	do {
 		cout << "\n\n" << setw(81) << "****************************************" << endl;
 		cout << setw(77) << " * >>>> PRIJAVA NA IT SHOP <<<< *" << endl;
 		cout << setw(81) << "****************************************" << endl;
-
 		cin.clear();
 		cout << "\n" << setw(79) << "Odaberite neku od ponudjenih opcija :";
 		cout << "\n" << setw(63) << "1. Admin login: ";
@@ -252,7 +368,6 @@ int main()
 		cout << "\n" << setw(75) << "3. Promjeni velicinu fonta: ";
 		cout << "\n" << setw(65) << "4. Promjena teme: ";
 		cout << "\n" << setw(57) << "0. Kraj: \n";
-
 		do {
 			error = 0;
 			cout << "\n" << setw(69) << "Upisite svoj odabir : ";
@@ -265,12 +380,13 @@ int main()
 			}
 		} while (error == 1);
 		system("cls");
-		int z = 0;
 		switch (izbor) {
 		case 1: {
 			do {
-				cout << "Unesite sifru za ulazak u admin menu\n";
+				cout << "\n\n" << setw(81) <<right<< "Unesite sifru za ulazak u admin menu : \n";
 				cin >> z;
+				a++;
+				if (a == 3) cout << "[GRESKA]Zbog nesigurnosti vseg identiteta,izbaceni ste sa naseg sajta :) \n";return 0;
 			} while (z != 123);
 			cout << "\n" << setw(60) << "Username: ";
 			cin >> user;
@@ -284,7 +400,6 @@ int main()
 			cout << "\n" << setw(62) << "1. Kupac login ";
 			cout << "\n" << setw(70) << "2. Kupac registracija: ";
 			cout << "\n" << setw(70) << "0. Vrati se glavnu menu";
-
 			do {
 				error = 0;
 				cout << "\n" << setw(68) << "Upisi svoj izbor: ";
@@ -334,9 +449,5 @@ int main()
 		}
 
 	} while (izbor != 0);
-	sortiranjePoSekundarnoj();
-	unosLaptopa();
-	pretragaPoProizziMod();
-	unosLaptopa();
-	ispisLaptopa();
+	
 }
