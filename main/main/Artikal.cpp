@@ -1,6 +1,6 @@
 #include "Artikal.h"
 #include <iostream>
-float Artikal:: stanje_kase=10000;
+//float Artikal:: stanje_kase=10000;
 Artikal::Artikal()
 {
 }
@@ -43,7 +43,7 @@ void Artikal::setCijena()
         std::cout << "Unesite cijenu: ";
         std::cin >> this->cijena;
     } while (this->cijena < 1);
-    Artikal::stanje_kase -= this->cijena;
+   // Artikal::stanje_kase -= this->cijena;
     std::cin.ignore();
 }
 
