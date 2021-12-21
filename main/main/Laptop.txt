@@ -8,3 +8,4 @@ cetvrti        cet       9         299                 666            xo        
 peti           petak     5         400                 999            cpu       gpu       Windows               9         20        
 sesti          sestic    2         2000                20             cpi       gpu       Windows               9         9         
 sedmi          sedmic    99        88                  400            cpu       gpu       Windows               6         5         
+osmi           osmic     100       403                 1000           cpu       gpu       Unix                  9         30        
