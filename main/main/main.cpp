@@ -23,23 +23,11 @@ struct kupacP {
 };
 void login(string& admin, string& password);
 void kupacLogin(string& user, string& password);
-void kupacOpcije() {
-	system("pause");
-	system("cls");
-	cout << "\n\n" << setw(81) << "*****************************************" << endl;
-	cout << setw(77) << "* >>>>  DOBRO DOSLI NA KUPAC MENU  <<<< *" << endl;
-	cout << setw(81) << "*****************************************" << endl;
-	cin.clear();
-	cout << "\n" << setw(79) << "Odaberite neku od ponudjenih opcija :";
-	cout << "\n" << setw(70) << "1. Prikazi sve proizvode: ";
-	cout << "\n" << setw(66) << "2. Potrazi po proizvodjacu i modelu: ";
-	cout << "\n" << setw(63) << "3. Kupi proizvod: ";
-	cout << "\n" << setw(75) << "0. Vrati se na glavni menu:\n";
-}
+
 
 void kupacMenu() {
-	//kupacOpcije();
 	/*int z=0,iz=0;
+	cout << "1-Sortirano\n2-Ispis svih laptopa u prodavnici\n3-Pretraga latopa po proizvodjacu i modelu\n";
 	do {
 		cout << "Unesite izbor; ";
 		cin >> z;
@@ -47,28 +35,28 @@ void kupacMenu() {
 	cin.ignore();
 	switch (z) {
 	case 1:
-		cout << "1-Prikaz po godini proizvodnje\n2-Prikaz po ramu\n3-Prikaz po sekundarnoj memoriji\n";
+		cout << "1-Sortirano po godini proizvodnje\n2-Sortirano po ramu\n3-Sortirano po sekundarnoj memoriji\n";
 		do {
 			cout << "Unesite izbor; ";
 			cin >> iz;
 		} while (iz < 0 || iz>3);
 		switch (iz)
 		{
-			case 1:
-				sortiranjeLaptopa("godine");
-				break;
-			case 2:
-				sortiranjeLaptopa("ram");
-				break;
-			case 3:
-				sortiranjeLaptopa("hdd");
-				break;
-
-			default:
-				break;
-			}
+		case 1:
+			sortiranjeLaptopa("godine");
 			break;
-	case 2:
+		case 2:
+			sortiranjeLaptopa("ram");
+			break;
+		case 3:
+			sortiranjeLaptopa("hdd");
+			break;
+
+		default:
+			break;
+		}
+		break;
+		case 2:
 			ispisLaptopa();
 			break;
 		default:
@@ -79,20 +67,7 @@ void kupacMenu() {
 
 }
 
-void adminOpcije() {
-	system("pause");
-	system("cls");
-	cout << "\n\n" << setw(81) << "*****************************************" << endl;
-	cout << setw(77) << "* >>>>  DOBRO DOSLI NA ADMIN MENU  <<<< *" << endl;
-	cout << setw(81) << "*****************************************" << endl;
-	cin.clear();
-	cout << "\n" << setw(79) << "Odaberite neku od ponudjenih opcija :";
-	cout << "\n\n" << setw(69) << "1. Dodaj novi proizvod ";
-	cout << "\n" << setw(70) << "2. Prikazi sve proizvode: ";
-	cout << "\n" << setw(66) << "3. Potrazi proizvode po proizvodjacu i modelu: ";
-	cout << "\n" << setw(66) << "4. Stanje kase: ";
-	cout << "\n" << setw(75) << "0. Vrati se na glavni menu:\n";
-}
+
 
 void adminMenu() {
 
@@ -368,6 +343,7 @@ void sortiranjeLaptopa(std::string rec) {
 					}}}
 			osnova();
 			for (int i = 0;i < hdd.size();i++)std::cout << nizl[i] << "\n";
+			cout << "è";
 		}
 		if (rec == "ram") {
 			for (int i = 0;i < ram.size();i++) {
@@ -399,7 +375,7 @@ void sortiranjeLaptopa(std::string rec) {
 
 int main()
 {
-	//stanjeK(); -admin
+	//stanjeK();-admin
 	int izbor=0,z=0,a=0;
 	string user, password;
 	//ispisLaptopa();-admin,-korisnik
