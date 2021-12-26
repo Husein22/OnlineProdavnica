@@ -11,4 +11,3 @@ public:
 	void login(string& admin, string& password);
 	~Admin() = default;
 };
-
