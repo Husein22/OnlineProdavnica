@@ -10,6 +10,7 @@
 
 
 #include "Laptop.h"
+#include "Admin.h"
 
 using namespace std;
 vector<Laptop>laptopi;
@@ -408,17 +409,30 @@ int main()
 		system("cls");
 		switch (izbor) {
 		case 1: {
-			//do {
-				//cout << "\n\n" << setw(81) <<right<< "Unesite sifru za ulazak u admin menu : \n";
-				//cin >> z;
-				//a++;
-				//if (a == 3) cout << "[GRESKA]Zbog nesigurnosti vseg identiteta,izbaceni ste sa naseg sajta :) \n";return 0;
-			//} while (z != 123);
+			do {
+				cout << "\n\n" << setw(81) <<right<< "Unesite sifru za ulazak u admin menu : \n";
+				cin >> z;
+				a++;
+				if (a == 3 && z!=123) {
+					cout << "[GRESKA]Zbog nesigurnosti vseg identiteta,izbaceni ste sa naseg sajta :) \n";
+					return 0;
+					break;
+				}
+			} while (z != 123);
+			cin.ignore();
+			a = 0;
+			string user, password;
+			std::shared_ptr<Admin>temp = std::make_shared<Admin>();
 			cout << "\n" << setw(60) << "Username: ";
+		    getline(cin, user);
+			cout << "\n" << setw(57) << "Sifra: ";
+			password = temp->unosPassworda(password, 0);
+			temp->login(user, password);
+			/*cout << "\n" << setw(60) << "Username: ";
 			cin >> user;
 			cout << "\n" << setw(57) << "Sifra: ";
 			password = unosPassworda(password);
-			login(user, password);
+			login(user, password);*/
 		} break;
 		case 2: {
 			int n;
