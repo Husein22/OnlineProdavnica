@@ -49,14 +49,13 @@ string Admin::unosPassworda(string password, int ch) {
 	password.erase(password.length() - 1);
 	return password;
 }
-void Admin::login(string& admin, string& password) {
+bool Admin::login(string& admin, string& password) {
 
 	bool valid = false;
 	string uname;
 	string pword;
 	Admin temp;
 	vector <Admin> vektor;
-	try {
 		ifstream adminFile("admin.txt");
 		if (adminFile.is_open()) {
 
@@ -74,25 +73,18 @@ void Admin::login(string& admin, string& password) {
 		adminFile.close();
 		for (int i = 0; i < vektor.size(); i++) {
 			if (admin == vektor[i].username && password == vektor[i].pass) {
-				cout << "\n\n" << setw(75) << "Uspjesno logirani na admin acc." << endl;
+				return true;
+				//cout << "\n\n" << setw(75) << "Uspjesno logirani na admin acc." << endl;
 				valid = true;
+
 				//adminMenu();
-				break;
-				Sleep(2000);
+				//break;
+				//Sleep(2000);
 			}
 		}
 		if (valid == false) {
-			throw "Username ili password nisu validni.";
-			system("pause");
-			Sleep(2000);
-			system("CLS");
+			return false;
+
 		}
 	}
-	catch(const char*a) {
-		cout << "\n\n" << setw(75) <<a << endl;
-		system("pause");
-		Sleep(2000);
-		system("CLS");
-	}
 
-}
