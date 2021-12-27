@@ -6,7 +6,7 @@
 #include <vector>
 #include <sstream>
 #include <algorithm>
-float Laptop::stanje_kase = 1000000;
+float Laptop::stanje_kase = 0;
 Laptop::Laptop()
 {
 }
@@ -90,7 +90,7 @@ std::string Laptop::getOpsSisString()
         return "AmigaOS";
         break;
     case 5:
-        return " GNOME";
+        return "GNOME";
         break;
     default:
         break;
@@ -108,33 +108,35 @@ int Laptop::getHardDrive()
 }
 void Laptop::pretragaPoProizImodeluLap(std::string a,std::string b)
 {   
-    std::string temp;
-    std::string z;
-    int p = 0,o=0;
+    std::string temp,z,pom;
+    int p = 0,o=0,l=-1;
     std::ifstream unos("Laptop.txt");
     if (unos.is_open()) {
         while (!unos.eof()) {
             unos >> temp;
             unos >> z;
+            getline(unos, pom);
+            l++;
             if (temp == a && z == b) {
                 if (o == 0)
                 {
                     std::cout << "Uspjesno pronadjen artikal\n";
-                    std::cout << "-----------------------------------------------------------------------------------------------------------------------------\n";
-                    std::cout << std::left << std::setw(15) << "Proizvodjac:" << std::left << std::setw(10) << "Model: " << std::left << std::setw(10) << "Kolièina:" <<
-                        std::left << std::setw(20) << "Godina proizvodnje: " << std::left << std::setw(15) << "Cijena(KM) :" << std::left << std::setw(10)
-                        << std::left << std::setw(10) << "CPU" << std::left << std::setw(10) << "GPU" << std::left << std::setw(22) << "Operativni Sistem" << std::left << std::setw(10) <<
-                        "RAM(GB): " << std::left << std::setw(10) << "HDD||SDD: \n";
-                    std::cout << "------------------------------------------------------------------------------------------------------------------------------\n";
+                    std::cout << "------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------\n";
+                    std::cout << std::left << std::setw(3) << "ID" <<std::left << std::setw(15) << "Proizvodjac " << std::left << std::setw(26) << "Model " << std::left << std::setw(10) << "Kolièina" <<
+                        std::left << std::setw(20) << "Godina proizvodnje " << std::left << std::setw(15) << "Cijena(KM) " << std::left << std::setw(10)
+                        << std::left << std::setw(26) << "CPU" << std::left << std::setw(32) << "GPU" << std::left << std::setw(22) << "Operativni Sistem" << std::left << std::setw(12) <<
+                        "RAM(GB) " << std::left << std::setw(10) << "HDD||SDD \n";
+                    std::cout << "-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------\n";
                     o++;
                 }
+                std::cout << std::left << std::setw(3) << l;
                 std::cout << std::left << std::setw(15) << temp;
                 std::cout << std::left  << z;
-                getline(unos, temp);
-                std::cout << temp<<std::endl;
+               // getline(unos, temp);
+                std::cout << pom<<std::endl;
                 p++;
             }
-            getline(unos, temp);
+           // getline(unos, temp);
         }
         if (p == 0) {
             std::cout << "Nazalost nemamo taj model artikala u prodaji\n";
@@ -145,6 +147,48 @@ void Laptop::pretragaPoProizImodeluLap(std::string a,std::string b)
     else {
         std::cout << "Neuspjesno otvaranje datoteke\n";
     }
+}
+
+void Laptop::pretragaPoProiz(std::string a)
+{
+    std::string temp, pom;
+    int p = 0, o = 0, l = -3;
+    std::ifstream unos("Laptop.txt");
+    if (unos.is_open()) {
+        while (!unos.eof()) {
+            unos >> temp;
+            getline(unos, pom);
+            l++;
+            if (temp == a ) {
+                if (o == 0)
+                {
+                    std::cout << "Uspjesno pronadjen artikal\n";
+                    std::cout << "------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------\n";
+                    std::cout << std::left << std::setw(3) << "ID" << std::left << std::setw(15) << "Proizvodjac " << std::left << std::setw(26) << "Model " << std::left << std::setw(10) << "Kolièina" <<
+                        std::left << std::setw(20) << "Godina proizvodnje " << std::left << std::setw(15) << "Cijena(KM) " << std::left << std::setw(10)
+                        << std::left << std::setw(26) << "CPU" << std::left << std::setw(32) << "GPU" << std::left << std::setw(22) << "Operativni Sistem" << std::left << std::setw(12) <<
+                        "RAM(GB) " << std::left << std::setw(10) << "HDD||SDD \n";
+                    std::cout << "-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------\n";
+                    o++;
+                }
+                std::cout << std::left << std::setw(3) << l;
+                std::cout << std::left  << temp;
+                // getline(unos, temp);
+                std::cout << pom << std::endl;
+                p++;
+            }
+            // getline(unos, temp);
+        }
+        if (p == 0) {
+            std::cout << "Nazalost nemamo taj model artikala u prodaji\n";
+        }
+
+        unos.close();
+    }
+    else {
+        std::cout << "Neuspjesno otvaranje datoteke\n";
+    }
+
 }
 
 void Laptop::sortiranjePoSekundarnoj()
@@ -216,9 +260,9 @@ std::istream& operator>>(std::istream& stream, Laptop& a)
         some.close();
         std::ofstream upi("Laptop.txt");
         upi << "-----------------------------------------------------------------------------------------------------------------------------\n";
-        upi << std::left << std::setw(15) << "Proizvodjac:" << std::left << std::setw(10) << "Model: " << std::left << std::setw(10) << "Kolièina:" <<
+        upi << std::left << std::setw(15) << "Proizvodjac:" << std::left << std::setw(26) << "Model: " << std::left << std::setw(10) << "Kolièina:" <<
             std::left << std::setw(20) << "Godina proizvodnje: " << std::left << std::setw(15) << "Cijena(KM) :" << std::left << std::setw(10)
-            << std::left << std::setw(10) << "CPU" << std::left << std::setw(10) << "GPU" << std::left << std::setw(22) << "Operativni Sistem" << std::left << std::setw(10) <<
+            << std::left << std::setw(26) << "CPU" << std::left << std::setw(32) << "GPU" << std::left << std::setw(22) << "Operativni Sistem" << std::left << std::setw(12) <<
             "RAM(GB): " << std::left << std::setw(10) << "HDD||SDD: \n";
         upi << "------------------------------------------------------------------------------------------------------------------------------\n";
         upi.close();
@@ -237,7 +281,7 @@ std::istream& operator>>(std::istream& stream, Laptop& a)
             a.setProizvodjac();
             upis << std::left << std::setw(15) << a.getProizvodjac();
             a.setModel();
-            upis << std::left << std::setw(10) << a.getModel();
+            upis << std::left << std::setw(26) << a.getModel();
             a.setKolicina();
             upis << std::left << std::setw(10) << a.getKolicina();
             a.setGodinaProizvodnje();
@@ -245,16 +289,16 @@ std::istream& operator>>(std::istream& stream, Laptop& a)
             a.setCijena();
             upis << std::left << std::setw(15) << a.getCijena();
             a.setCPU();
-            upis << std::left << std::setw(10) << a.getCPU();
+            upis << std::left << std::setw(26) << a.getCPU();
             a.setGPU();
-            upis << std::left << std::setw(10) << a.getGPU();
+            upis << std::left << std::setw(32) << a.getGPU();
             a.setOpSis();
             upis << std::left << std::setw(22) << a.getOpsSisString();
             a.setMemorija();
-            upis << std::left << std::setw(10) << a.getMemorija();
+            upis << std::left << std::setw(12) << a.getMemorija();
             a.setHardDrivee();
             upis << std::left << std::setw(10) << a.getHardDrive();
-            upis << "\n";
+            upis << std::endl;
             std::cout << "[CESTITAMO]Uspjesno smjestene informacije u datoteku\n";
         }
     else {
@@ -276,13 +320,6 @@ std::ostream& operator<<(std::ostream& stream, Laptop& a)
 
     }
     ispis.close();
-
-
-    /*stream<< std::left << std::setw(15) << a.getProizvodjac() << std::left << std::setw(10) << a.getModel() << std::left << std::setw(10) << a.getKolicina()<< 
-        std::left << std::setw(20) << a.getGodinaProizvodnje() << std::left << std::setw(15) << a.getCijena()<< std::left << std::setw(10) << a.getCPU()
-      << std::left << std::setw(10) << a.getGPU()<<
-        std::left << std::setw(22) << a.getOpsSisString()<< std::left << std::setw(10) << a.getMemorija()<< std::left << std::setw(10) << a.getHardDrive()<< "\n";*/
-
     return stream;
 }
 
@@ -304,21 +341,22 @@ float operator!(Laptop& a)
             getline(unos, temp);
             if (unos.eof())break;
             //lap.push_back(temp);
-            b = temp[25] - '0';
-            c = temp[26] - '0';
-            d = temp[27] - '0';
+            b = temp[41] - '0';
+            c = temp[42] - '0';
+            d = temp[43] - '0';
             if (b > -1 && c > -1 && d > -1) e = b * 100 + c * 10 + d;
             else if (b > -1 && c > -1 && d < -1) e = b * 10 + c;
             else if (b > -1 && c < -1 && d < -1) e = b;
-            f = temp[55] - '0';
-            g = temp[56] - '0';
-            h = temp[57] - '0';
-            j = temp[58] - '0';
+            f = temp[71] - '0';
+            g = temp[72] - '0';
+            h = temp[73] - '0';
+            j = temp[74] - '0';
             if (f > -1 && g > -1 && h > -1 && j > -1) i = f * 1000 + g * 100 + h * 10 +j;
             if (f > -1 && g > -1 && h > -1 && j<-1) i = f * 100 + g * 10 + h;
             else if (f > -1 && g > -1 && h < -1&& j < -1) i = f * 10 + g;
             else if (f > -1 && g < -1 && h < -1&& j < -1) i = f;
             p = i * e;
+            std::cout << p << "\n";
             Laptop::stanje_kase -= p;
 
         }
