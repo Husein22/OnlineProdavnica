@@ -463,6 +463,7 @@ void kupacMenu() {
 
 				switch (odabirP) {
 				case 1: {
+					pretragaPoProizziMod("Laptop");
 					//pretragaLaptopa();
 					break;
 				}
@@ -544,7 +545,7 @@ void osnova() {
 }
 
 
-void pretragaPoProizziMod() {
+void pretragaPoProizziMod(std::string rec) {
 	std::shared_ptr<Laptop>temp = std::make_shared<Laptop>();
 	std::unique_ptr<string>p = std::make_unique<string>();
 	std::unique_ptr<string>l = std::make_unique<string>();
@@ -552,7 +553,7 @@ void pretragaPoProizziMod() {
 	getline(cin, *l);
 	std::cout << "Unesite model za pretragu: ";
 	getline(cin, *p);
-	temp->pretragaPoProizImodelu(*l, *p);
+	if(rec=="Laptop")temp->pretragaPoProizImodeluLap(*l, *p);
 }
 
 
@@ -771,7 +772,7 @@ int main()
 				string kupac, password;
 				std::shared_ptr<Kupac>temp = std::make_shared<Kupac>();
 				cout << "Molim vas unesite kupac username: ";
-				cin >> kupac;
+				getline(cin,kupac);
 				cout << "Sifra: ";
 				password = temp->unosPassworda(password, 0);
 				if (temp->login(kupac, password) == true) {
