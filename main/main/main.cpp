@@ -29,7 +29,16 @@ void pretragaPoProizziMod(string r) {
 	if (r == "Laptop") { temp->pretragaPoProizImodeluLap(*l, *p); }
 }
 
-
+void pretragaPoProiz(string r) {
+	std::shared_ptr<Laptop>temp = std::make_shared<Laptop>();
+	std::unique_ptr<string>p = std::make_unique<string>();
+	std::unique_ptr<string>l = std::make_unique<string>();
+	std::cout << "Unesite proizvodjaca za pretragu: ";
+	getline(cin, *l);
+	if (r == "Laptop") { 
+		temp->pretragaPoProiz(*l);
+	}
+}
 
 
 string unosPassworda(string password, int ch = 0) {
@@ -546,12 +555,12 @@ void unosLaptopa() {
 	cout << "Uspjesno smjesten laptop u datoteku\n";
 }
 void osnova() {
-	cout << "-----------------------------------------------------------------------------------------------------------------------------\n";
-	cout << std::left << std::setw(15) << "Proizvodjac " << std::left << std::setw(10) << "Model " << std::left << std::setw(10) << "Kolièina" <<
+	cout << "------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------\n";
+	cout << std::left << std::setw(15) << "Proizvodjac " << std::left << std::setw(26) << "Model " << std::left << std::setw(10) << "Kolièina" <<
 		std::left << std::setw(20) << "Godina proizvodnje " << std::left << std::setw(15) << "Cijena(KM) " << std::left << std::setw(10)
-		<< std::left << std::setw(10) << "CPU" << std::left << std::setw(10) << "GPU" << std::left << std::setw(22) << "Operativni Sistem" << std::left << std::setw(10) <<
+		<< std::left << std::setw(26) << "CPU" << std::left << std::setw(32) << "GPU" << std::left << std::setw(22) << "Operativni Sistem" << std::left << std::setw(12) <<
 		"RAM(GB) " << std::left << std::setw(10) << "HDD||SDD \n";
-	cout << "------------------------------------------------------------------------------------------------------------------------------\n";
+	cout << "-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------\n";
 }
 
 //
@@ -611,45 +620,60 @@ void sortiranjeLaptopa(std::string rec) {
 	std::vector<std::string>nizl;
 	std::vector<int>hdd;
 	std::vector<int>godine;
-	std::string temp;
-	int pom;
-	std::string po;
+	std::vector<int>cijena;
 	std::vector<int>ram;
-	int a, b, c, d, x, p = 0;
+	std::string temp;
+	std::string po;
+	int a=0, b=0, c=0, d=0, x=0, p = 0;
 	if (unos.fail())std::cout << "Nemoguce otvaranje datoeke\n";
 	else {
-		getline(unos, temp);getline(unos, temp);getline(unos, temp);
+		getline(unos, temp);
+		getline(unos, temp);
+		getline(unos, temp);
 		while (true) {
 			getline(unos, temp);
 			if (unos.eof())break;
 			nizl.push_back(temp);
 			if (rec == "hdd") {
-				a = temp[122] - '0';b = temp[123] - '0';c = temp[124] - '0';
+				a = temp[178] - '0';b = temp[179] - '0';c = temp[180] - '0';
 				if (a > -1 && b > -1 && c > -1) x = a * 100 + b * 10 + c + 1;
 				else if (a > -1 && b > -1 && c < -1) x = a * 10 + b;
 				else if (a > -1 && b < -1 && c < -1) x = a;
 				hdd.push_back(x);
 			}
 			if (rec == "ram") {
-				a = temp[112] - '0';b = temp[113] - '0';c = temp[114] - '0';
+				a = temp[166] - '0';
+				b = temp[167] - '0';
+				c = temp[168] - '0';
 				if (a > -1 && b > -1 && c > -1) x = a * 100 + b * 10 + c + 1;
 				else if (a > -1 && b > -1 && c < -1) x = a * 10 + b;
 				else if (a > -1 && b < -1 && c < -1) x = a;
-				cout << x << " ";
+				cout << a << " " << b << " " << c << " "  << x << "\n ";
 				ram.push_back(x);
 			}
 			if (rec == "godine") {
-				a = temp[35] - '0';
-				b = temp[36] - '0';
-				c = temp[37] - '0';
-				d = temp[38] - '0';
+				a = temp[51] - '0';
+				b = temp[52] - '0';
+				c = temp[53] - '0';
+				d = temp[54] - '0';
 				if (a > -1 && b > -1 && c > -1 && d > -1) x = a * 1000 + b * 100 + c * 10 + d;
 				else if (a > -1 && b > -1 && c > -1 && d < -1) x = a * 100 + b * 10 + c;
 				else if (a > -1 && b > -1 && c < -1 && d < -1) x = a * 10 + b;
 				else if (a > -1 && b < -1 && c < -1 && d < -1) x = a;
-				cout << x << " ";
 				godine.push_back(x);
-			}}
+			}
+			if (rec == "cijena") {
+				a = temp[71] - '0';
+				b = temp[72] - '0';
+				c = temp[73] - '0';
+				d = temp[74] - '0';
+				if (a > -1 && b > -1 && c > -1 && d > -1) x = a * 1000 + b * 100 + c * 10 + d;
+				else if (a > -1 && b > -1 && c > -1 && d < -1) x = a * 100 + b * 10 + c;
+				else if (a > -1 && b > -1 && c < -1 && d < -1) x = a * 10 + b;
+				else if (a > -1 && b < -1 && c < -1 && d < -1) x = a;
+				cijena.push_back(x);
+			}
+		}
 		if (rec == "hdd") {
 			for (int i = 0;i < hdd.size();i++) {
 				for (int j = i;j < hdd.size();j++) {
@@ -675,12 +699,20 @@ void sortiranjeLaptopa(std::string rec) {
 					if (godine[j] > godine[i]) {
 						std::swap(godine[j], godine[i]);
 						std::swap(nizl[j], nizl[i]);
-					}
-				}
-			}
+					}}}
 			osnova();
 			for (int i = 0;i < godine.size();i++)std::cout << nizl[i] << "\n";
 		}
+			if (rec == "cijena") {
+				for (int i = 0;i < cijena.size();i++) {
+					for (int j = i;j < cijena.size();j++) {
+						if (cijena[j] > cijena[i]) {
+							std::swap(cijena[j], cijena[i]);
+							std::swap(nizl[j], nizl[i]);
+						}}}
+				osnova();
+				for (int i = 0;i < cijena.size();i++)std::cout << nizl[i] << "\n";
+			}
 		unos.close();
 	}
 }
@@ -690,13 +722,19 @@ void sortiranjeLaptopa(std::string rec) {
 
 int main()
 {
-	//stanjeK();-admin
-	int izbor=0,z=0,a=0;
+	stanjeK();
+	int izbor=0,z=0,a=0,i=0;
 	string user, password;
-	//ispisLaptopa();-admin,-korisnik
-	//sortiranjeLaptopa("ram");-korisnik
-	//unosLaptopa();-admin
-	//pretragaPoProizziMod();-korinsik,-admin
+	//sortiranjeLaptopa("cijena");
+	//pretragaPoProiz("Laptop");
+	ispisLaptopa();
+    sortiranjeLaptopa("ram");
+	sortiranjeLaptopa("hdd");
+	sortiranjeLaptopa("godine");
+		//unosLaptopa();
+	
+	//ispisLaptopa();
+	pretragaPoProizziMod("Laptop");
 	
 	do {
 		cout << "\n\n" << setw(81) << "****************************************" << endl;
