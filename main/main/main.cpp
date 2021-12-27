@@ -11,68 +11,18 @@
 
 #include "Laptop.h"
 #include "Admin.h"
+#include "Kupac.h"
 
 using namespace std;
 vector<Laptop>laptopi;
-
 int error;
-struct adminP {
-	string adminUser;string adminPass;
-};
-struct kupacP {
-	string kupacUser;string kupacPass;
-};
-void login(string& admin, string& password);
-void kupacLogin(string& user, string& password);
-
-
-void kupacMenu() {
-	/*int z=0,iz=0;
-	cout << "1-Sortirano\n2-Ispis svih laptopa u prodavnici\n3-Pretraga latopa po proizvodjacu i modelu\n";
-	do {
-		cout << "Unesite izbor; ";
-		cin >> z;
-	} while (z < 0 || z>3);
-	cin.ignore();
-	switch (z) {
-	case 1:
-		cout << "1-Sortirano po godini proizvodnje\n2-Sortirano po ramu\n3-Sortirano po sekundarnoj memoriji\n";
-		do {
-			cout << "Unesite izbor; ";
-			cin >> iz;
-		} while (iz < 0 || iz>3);
-		switch (iz)
-		{
-		case 1:
-			sortiranjeLaptopa("godine");
-			break;
-		case 2:
-			sortiranjeLaptopa("ram");
-			break;
-		case 3:
-			sortiranjeLaptopa("hdd");
-			break;
-
-		default:
-			break;
-		}
-		break;
-		case 2:
-			ispisLaptopa();
-			break;
-		default:
-			break;
-	}*/
 
 
 
-}
 
 
 
-void adminMenu() {
 
-}
 string unosPassworda(string password, int ch = 0) {
 	password.clear();
 	while (ch = _getch()) {
@@ -126,77 +76,431 @@ void tema() {
 	system("cls");
 	return;
 }
+//
+//void login(string& admin, string& password) {
+//	bool valid = false;adminP temp;
+//	vector <adminP> vektor;
+//	ifstream adminFile("admin.txt");
+//	if (adminFile.is_open()) {
+//
+//		while (adminFile >> temp.adminUser) {
+//			adminFile >> temp.adminPass;
+//			vektor.push_back(temp);
+//			if (vektor.size() >= 200)
+//				break;
+//		}
+//	}
+	//adminFile.close();
+//	for (int i = 0; i < vektor.size(); i++) {
+//		if (admin == vektor[i].adminUser && password == vektor[i].adminPass) {
+//			cout << "\n\n" << setw(75) << "Uspjesno logirani na admin acc." << endl;
+//			valid = true;
+//			adminMenu();
+//			break;
+//			Sleep(2000);
+//		}
+//	}
+//	if (!valid) {
+//		cout << "\n\n" << setw(75) << "Username ili password nisu validni." << endl;
+//		system("pause");
+//		Sleep(2000);
+//		system("CLS");
+//	}
+//
+//}
+//void dodajProfil() {
+//
+//	ofstream file;
+//	file.open("kupac.txt", std::ios_base::app);
+//	if (!file) {
+//		cout << "\n" << setw(80) << "Nije moguce otvoriti datoteku!";
+//		return;}
+//	kupacP k;
+//	cout << "\n" << setw(63) << "Username: ";cin >> k.kupacUser;
+//	cout << "\n" << setw(63) << "Password: ";cin >> k.kupacPass;
+//	file << " " << k.kupacUser << " ";
+//	file << k.kupacPass << endl;
+//	file.close();Sleep(1000);system("CLS");
+//}
+//void kupacLogin(string& user, string& password) {
+//	bool valid = false;kupacP temp;
+//	vector <kupacP> vektor;
+//	ifstream kupacFile("kupac.txt");
+//	if (kupacFile.is_open()) {
+//		while (kupacFile >> temp.kupacUser) {
+//			kupacFile >> temp.kupacPass;
+//			vektor.push_back(temp);
+//			if (vektor.size() >= 200)
+//				break;}}
+//	kupacFile.close();
+//	for (int i = 0; i < vektor.size(); i++) {
+//		if (user == vektor[i].kupacUser && password == vektor[i].kupacPass) {
+//			cout << "\n\n" << setw(75) << "Uspjesno logirani na kupac acc." << endl;
+//			kupacMenu();
+//			valid = true;break;}
+//		else if (user == "Guest" && password == "guest") {
+//			cout << "\n\n" << setw(78) << "Uspjesno logirani na guest acc." << endl;
+//			valid = true;break;}}
+//	if (!valid) {
+//		cout << "\n\n" << setw(78) << "Username ili password nisu validni." << endl;
+//		system("pause");Sleep(2000);system("CLS");
+//	}}
 
-void login(string& admin, string& password) {
-	bool valid = false;adminP temp;
-	vector <adminP> vektor;
-	ifstream adminFile("admin.txt");
-	if (adminFile.is_open()) {
 
-		while (adminFile >> temp.adminUser) {
-			adminFile >> temp.adminPass;
-			vektor.push_back(temp);
-			if (vektor.size() >= 200)
-				break;
-		}
-	}
-	adminFile.close();
-	for (int i = 0; i < vektor.size(); i++) {
-		if (admin == vektor[i].adminUser && password == vektor[i].adminPass) {
-			cout << "\n\n" << setw(75) << "Uspjesno logirani na admin acc." << endl;
-			valid = true;
-			adminMenu();
+void pretragaOpcije() {
+	system("pause");
+	system("cls");
+	cout << "\n\n" << setw(81) << "*****************************************" << endl;
+	cout << setw(81) << "*     >>>>  PRETRAZI   PROIZVOD  <<<<     *" << endl;
+	cout << setw(81) << "*****************************************" << endl;
+	cin.clear();
+	cout << "\n" << setw(79) << "Odaberite neku od ponudjenih opcija :";
+	cout << "\n\n" << setw(73) << "1. Pretraga laptopa: ";
+	cout << "\n" << setw(74) << "2. Pretraga mobitela: ";
+	cout << "\n" << setw(81) << "3. Pretraga racunara: ";
+	cout << "\n" << setw(83) << "0. Vrati se nazad\n";
+}
+void brisiOpcije() {
+	system("pause");
+	system("cls");
+	cout << "\n\n" << setw(86) << "**********************************************" << endl;
+	cout << setw(86) << "*     >>>>    IZBRISI    PROIZVOD    <<<<      *" << endl;
+	cout << setw(86) << "**********************************************" << endl;
+	cin.clear();
+	cout << "\n" << setw(79) << "Odaberite neku od ponudjenih opcija :";
+	cout << "\n\n" << setw(79) << "1. Brisanje laptopa: ";
+	cout << "\n" << setw(80) << "2. Brisanje racunara: ";
+	cout << "\n" << setw(80) << "2. Brisanje mobitela: ";
+	cout << "\n" << setw(78) << "0. Vrati se na menu:\n";
+}
+void ispisOpcije() {
+	system("pause");
+	system("cls");
+	cout << "\n\n" << setw(81) << "*****************************************" << endl;
+	cout << setw(81) << "*     >>>>  ISPIS   PROIZVODA  <<<<     *" << endl;
+	cout << setw(81) << "*****************************************" << endl;
+	cin.clear();
+	cout << "\n" << setw(79) << "Odaberite neku od ponudjenih opcija :";
+	cout << "\n\n" << setw(73) << "1. Ispis svih proizvoda: ";
+	cout << "\n" << setw(74) << "2. Ispis mobitela: ";
+	cout << "\n" << setw(81) << "3. Ispis racunara: ";
+	cout << "\n" << setw(81) << "3. Ispis laptopa: ";
+	cout << "\n" << setw(83) << "0. Vrati se nazad\n";
+}
+void updateOpcije() {
+	system("pause");
+	system("cls");
+	cout << "\n\n" << setw(86) << "************************************************" << endl;
+	cout << setw(86) << "*      >>>>   AZURIRAJ PROIZVODE    <<<<      *" << endl;
+	cout << setw(86) << "************************************************" << endl;
+	cin.clear();
+	cout << "\n" << setw(79) << "Odaberite neku od ponudjenih opcija :";
+	cout << "\n\n" << setw(80) << "1. Azuriraj laptope : ";
+	cout << "\n" << setw(80) << "2. Azuriraj mobitele: ";
+	cout << "\n" << setw(80) << "3. Azuriraj racunare: ";
+	cout << "\n" << setw(76) << "0. Vrati se na administratorski menu:\n";
+}
+void adminOpcije() {
+	system("pause");
+	system("cls");
+	cout << "\n\n" << setw(81) << "*****************************************" << endl;
+	cout << setw(81) << "* >>>>  DOBRO DOSLI NA ADMIN MENU  <<<< *" << endl;
+	cout << setw(81) << "*****************************************" << endl;
+	cin.clear();
+	cout << "\n" << setw(79) << "Odaberite neku od ponudjenih opcija :";
+	cout << "\n\n" << setw(69) << "1. Ispis odredjene vrste proizvoda: (onda da bira koji ce proizvod, te nakon odabira iste ispisati) ";
+	cout << "\n" << setw(70) << "2. Prikazi sve proizvode: ";
+	cout << "\n" << setw(66) << "3. Potrazi proizvod: ";
+	cout << "\n" << setw(66) << "4. Izbrisi proizvod: ";
+	cout << "\n" << setw(67) << "5. (U slucaju nabavke)Azuriraj broj proizvoda: ";
+	cout << "\n" << setw(75) << "0. Vrati se na glavni menu:\n";
+}
+void adminMenu() {
+	int odabir, odabirI, odabirA, odabirB, odabirP;
+	do {
+		adminOpcije();
+		do {
+			error = 0;
+			cout << "\n" << setw(69) << "Upisi svoj izbor: ";
+			cin >> odabir;
+			if (odabir < 0 || odabir>8) {
+				cout << setw(65) << "Unesite validan unos: " << endl;
+				error = 1;
+				cin.clear();
+				cin.ignore();
+			}
+		} while (error == 1);
+
+		switch (odabir) {
+		case 1: {odabir == 1; break;}
+		case 2: //ispisProizvoda(); 
 			break;
-			Sleep(2000);
+		case 3: odabir = 3; break;
+		case 4: odabir = 4; break;
+		case 0: {
+			system("CLS");
+		} break;
+		default: cout << setw(62) << "[GRESKA] -> Unos nije validan!" << endl;
 		}
-	}
-	if (!valid) {
-		cout << "\n\n" << setw(75) << "Username ili password nisu validni." << endl;
-		system("pause");
-		Sleep(2000);
-		system("CLS");
-	}
+		if (odabir == 1) {
+			do {
+				ispisOpcije();
+				do {
+					error = 0;
+					cout << "\n" << setw(70) << "Unesite svoj izbor: ";
+					cin >> odabirI;
+					if (odabirI < 0 || odabirI>3) {
+						cout << "Molimo za validan unos: ";
+						error = 1;
+						cin.clear();
+						cin.ignore();
+					}
+				} while (error == 1);
+
+				switch (odabirI) {
+				case 1: //ispislaptopa(); 
+					break;
+				case 2: //ispismobitela(); 
+					break;
+				case 3: //ispisracunara(); 
+					break;
+				case 0: {
+					system("pause");
+				}
+				default: cout << "[GRESKA] -> Unos nije validan!" << endl;
+				}
+			} while (odabirI != 0);
+		}
+		if (odabir == 2) {
+			do {
+				pretragaOpcije();
+				do {
+					error = 0;
+					cout << "\n" << setw(70) << "Unesite svoj izbor: ";
+					cin >> odabirP;
+					if (odabirP < 0 || odabirP>3) {
+						cout << setw(65) << "Molimo za validan unos: ";
+						error = 1;
+						cin.clear();
+						cin.ignore();
+					}
+				} while (error == 1);
+
+				switch (odabirP) {
+				case 1: {
+					//pretragaLaptopa();
+					break;
+				}
+				case 2: {
+					//pretragaMobitela();
+					break;
+				}
+				case 3: {
+					//pretragaRacunara();
+					break;
+				}
+				case 0: {
+					system("pause");
+				} break;
+				default: cout << setw(62) << "[GRESKA] -> Unos nije validan!" << endl;
+				}
+			} while (odabirP != 0);
+		}
+		if (odabir == 4) {
+			do {
+				brisiOpcije();
+				do {
+					error = 0;
+					cout << "\n" << setw(70) << "Unesite svoj izbor: ";
+					cin >> odabirB;
+					if (odabirB < 0 || odabirB>3) {
+						cout << setw(62) << "Molimo za validan unos: ";
+						error = 1;
+						cin.clear();
+						cin.ignore();
+					}
+				} while (error == 1);
+
+				switch (odabirB) {
+				case 1: {//ispislaptopa();
+					//brisanjeOdredjenogLaptopa(); ----------------> dodati fju u laptop <--------------------
+				}break;
+				case 2: {//ispislaptopa();
+					//brisanjeOdredjenogLaptopa(); ----------------> dodati fju u racunar <-------------------- 
+				}break;
+				case 3: {//ispislaptopa();
+					//brisanjeOdredjenogLaptopa(); ----------------> dodati fju u mobitel <-------------------- 
+				}break;
+				case 0: {
+					system("pause");
+				} break;
+				default: cout << "[GRESKA] -> Unos nije validan!" << endl;
+				}
+			} while (odabirB != 0);
+		}
+		if (odabir == 5) {
+			do {
+				updateOpcije();
+				do {
+					error = 0;
+					cout << "\n" << setw(70) << "Unesite svoj izbor: ";
+					cin >> odabirA;
+					if (odabirA < 0 || odabirA>2) {
+						cout << setw(62) << "Molimo za validan unos: ";
+						error = 1;
+						cin.clear();
+						cin.ignore();
+					}
+				} while (error == 1);
+
+				switch (odabirA) {
+				case 1: {//ispislaptopa();
+					//azuriranjeOdredjenogLaptopa(); ----------------> dodati fju u laptop, kao operator da se poveca broj <--------------------; 
+				}
+					  break;
+				case 2: {//ispisMobitela();
+					//azuriranjeOdredjenogMobitela(); ----------------> dodati fju u mobitel, kao operator da se poveca broj <--------------------; 
+				}
+					  break;
+				case 3: {//ispisRacunara();
+				//azuriranjeOdredjenogRacunara(); ----------------> dodati fju u mobitel, kao operator da se poveca broj <--------------------; 
+				}
+					  break;
+				case 0: {
+					system("pause");
+
+				} break;
+				default: cout << setw(62) << "[GRESKA] -> Unos nije validan!" << endl;
+				}
+			} while (odabirA != 0);
+		}
+
+	} while (odabir != 0);
+}
+void kupacOpcije() {
+	system("pause");
+	system("cls");
+	cout << "\n\n" << setw(81) << "*****************************************" << endl;
+	cout << setw(81) << "* >>>>  DOBRO DOSLI NA KUPAC MENU  <<<< *" << endl;
+	cout << setw(81) << "*****************************************" << endl;
+	cin.clear();
+	cout << "\n" << setw(79) << "Odaberite neku od ponudjenih opcija :";
+	cout << "\n" << setw(70) << "1. Prikazi sve proizvode : "; //ponuditi posebno ako zeli svaku vrstu proizvoda slicno kao kod admina
+	cout << "\n" << setw(66) << "2. Potrazi proizvod: ";
+	cout << "\n" << setw(63) << "3. Kupi knjigu: ";
+	cout << "\n" << setw(75) << "0. Vrati se na glavni menu:\n";
+}
+void kupacMenu() {
+	int odabir, odabirI, odabirP;
+	do {
+		kupacOpcije();
+		do {
+			error = 0;
+			cout << "\n" << setw(69) << "Upisi svoj izbor: ";
+			cin >> odabir;
+			if (odabir < 0 || odabir>3) {
+				cout << setw(65) << "Unesite validan unos: " << endl;
+				error = 1;
+				cin.clear();
+				cin.ignore();
+			}
+		} while (error == 1);
+
+		switch (odabir) {
+		case 1: {
+			odabir = 1;
+		}break;
+		case 2: odabir = 2; break;
+		case 3: odabir = 3; break;
+		case 0: {
+			system("CLS");
+		} break;
+		default: cout << setw(62) << "[GRESKA] -> Unos nije validan!" << endl;
+		}
+		if (odabir == 1) {
+			do {
+				ispisOpcije();
+				do {
+					error = 0;
+					cout << "\n" << setw(70) << "Unesite svoj izbor: ";
+					cin >> odabirI;
+					if (odabirI < 0 || odabirI>3) {
+						cout << "Molimo za validan unos: ";
+						error = 1;
+						cin.clear();
+						cin.ignore();
+					}
+				} while (error == 1);
+
+				switch (odabirI) {
+				case 1: //ispislaptopa(); 
+					break;
+				case 2: //ispismobitela(); 
+					break;
+				case 3: //ispisracunara(); 
+					break;
+				case 0: {
+					system("pause");
+				}
+				default: cout << "[GRESKA] -> Unos nije validan!" << endl;
+				}
+			} while (odabirI != 0);
+		}
+		if (odabir == 2) {
+			do {
+				pretragaOpcije();
+				do {
+					error = 0;
+					cout << "\n" << setw(70) << "Unesite svoj izbor: ";
+					cin >> odabirP;
+					if (odabirP < 0 || odabirP>3) {
+						cout << setw(65) << "Molimo za validan unos: ";
+						error = 1;
+						cin.clear();
+						cin.ignore();
+					}
+				} while (error == 1);
+
+				switch (odabirP) {
+				case 1: {
+					//pretragaLaptopa();
+					break;
+				}
+				case 2: {
+					//pretragaMobitela();
+					break;
+				}
+				case 3: {
+					//pretragaRacunara();
+					break;
+				}
+				case 0: {
+					system("pause");
+				} break;
+				default: cout << setw(62) << "[GRESKA] -> Unos nije validan!" << endl;
+				}
+			} while (odabirP != 0);
+		}
+		if (odabir == 3) {
+			int x;
+			do {
+				cout << setw(83) << "Da li zelite kupiti knjigu (0 -ne, 1 - da)?  ";
+				cin >> x;
+				if (x == 0) break;
+				else if (x == 1) break;//fkupiProizvod();  / break stavljen samo da ne izbacuje gresku
+									/*------------> Razmisliti na koji nacin ovo realizovati <------------------------
+
+									Mogucnosti/prijedlozi:
+									1. Omoguciti odabir proizvoda, kucanjem svih informacija o njemu, te kreiranjem
+									operatora -- samo smanjiti broj proizvoda i reci da je proizvod uspjesno kupljen.
+									2. Ako budemo imali vremena napraviti sistem sa "placanjem preko kartice".
+
+									*/
+			} while (x < 0 || x>1);
+		}
+	} while (odabir != 0);
 
 }
-void dodajProfil() {
-
-	ofstream file;
-	file.open("kupac.txt", std::ios_base::app);
-	if (!file) {
-		cout << "\n" << setw(80) << "Nije moguce otvoriti datoteku!";
-		return;}
-	kupacP k;
-	cout << "\n" << setw(63) << "Username: ";cin >> k.kupacUser;
-	cout << "\n" << setw(63) << "Password: ";cin >> k.kupacPass;
-	file << " " << k.kupacUser << " ";
-	file << k.kupacPass << endl;
-	file.close();Sleep(1000);system("CLS");
-}
-void kupacLogin(string& user, string& password) {
-	bool valid = false;kupacP temp;
-	vector <kupacP> vektor;
-	ifstream kupacFile("kupac.txt");
-	if (kupacFile.is_open()) {
-		while (kupacFile >> temp.kupacUser) {
-			kupacFile >> temp.kupacPass;
-			vektor.push_back(temp);
-			if (vektor.size() >= 200)
-				break;}}
-	kupacFile.close();
-	for (int i = 0; i < vektor.size(); i++) {
-		if (user == vektor[i].kupacUser && password == vektor[i].kupacPass) {
-			cout << "\n\n" << setw(75) << "Uspjesno logirani na kupac acc." << endl;
-			kupacMenu();
-			valid = true;break;}
-		else if (user == "Guest" && password == "guest") {
-			cout << "\n\n" << setw(78) << "Uspjesno logirani na guest acc." << endl;
-			valid = true;break;}}
-	if (!valid) {
-		cout << "\n\n" << setw(78) << "Username ili password nisu validni." << endl;
-		system("pause");Sleep(2000);system("CLS");
-	}}
-
-
 
 
 void smjestizaIspis(string n) {
@@ -427,7 +731,17 @@ int main()
 		    getline(cin, user);
 			cout << "\n" << setw(57) << "Sifra: ";
 			password = temp->unosPassworda(password, 0);
-			temp->login(user, password);
+			if (temp->login(user, password)==true) {
+				cout << "\n\n" << setw(75) << "Uspjesno logirani na admin acc." << endl;
+				adminMenu();
+			}
+			if (temp->login(user, password) == false) {
+				cout<< "\nUsername ili password nisu validni.";
+				system("pause");
+				Sleep(2000);
+				system("CLS");
+			}
+
 			/*cout << "\n" << setw(60) << "Username: ";
 			cin >> user;
 			cout << "\n" << setw(57) << "Sifra: ";
@@ -454,15 +768,26 @@ int main()
 
 			switch (n) {
 			case 1: {
-				cout << "\n" << setw(75) << "Molim vas unesite kupac username: ";
-				cin >> user;
-				cout << "\n" << setw(62) << "Sifra: ";
-				password = unosPassworda(password);
-				kupacLogin(user, password);
-				break;
+				string kupac, password;
+				std::shared_ptr<Kupac>temp = std::make_shared<Kupac>();
+				cout << "Molim vas unesite kupac username: ";
+				cin >> kupac;
+				cout << "Sifra: ";
+				password = temp->unosPassworda(password, 0);
+				if (temp->login(kupac, password) == true) {
+					cout << "\n\n" << setw(75) << "Uspjesno logirani na kupac acc." << endl;
+					kupacMenu();
+				}
+				if (temp->login(kupac, password) == false) {
+					cout << "\n\n" << setw(78) << "Username ili password nisu validni." << endl;
+					system("pause");
+					Sleep(2000);
+					system("CLS");
+				}
 			}
 			case 2: {
-				dodajProfil();
+				std::shared_ptr<Kupac>k = std::make_shared<Kupac>();
+				k->dodajProfil();
 			}break;
 			case 0: {
 				system("CLS");
