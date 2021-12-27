@@ -8,6 +8,6 @@ private:
 public:
 	Admin();
 	string unosPassworda(string password, int ch);
-	void login(string& admin, string& password);
+	bool login(string& admin, string& password);
 	~Admin() = default;
 };
