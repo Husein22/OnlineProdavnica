@@ -26,7 +26,7 @@ public:
 	std::string getOpsSisString();
 	int getMemorija();
 	int getHardDrive();
-	void pretragaPoProizImodelu(std::string a,std::string b);
+	void pretragaPoProizImodeluLap(std::string a,std::string b);
 	void sortiranjePoSekundarnoj();
 	friend float operator!(Laptop&a);
 	friend std::istream& operator>>(std::istream& stream, Laptop& a);
