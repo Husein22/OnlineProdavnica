@@ -106,7 +106,7 @@ int Laptop::getHardDrive()
 {
     return this->hard_drive;
 }
-void Laptop::pretragaPoProizImodelu(std::string a,std::string b)
+void Laptop::pretragaPoProizImodeluLap(std::string a,std::string b)
 {   
     std::string temp;
     std::string z;
