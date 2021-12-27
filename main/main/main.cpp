@@ -556,34 +556,34 @@ void pretragaPoProizziMod(std::string rec) {
 	if(rec=="Laptop")temp->pretragaPoProizImodeluLap(*l, *p);
 }
 
-
-void sortiranjePoSekundarnoj(){
-		std::ifstream unos("Laptop.txt");
-		std::vector<std::string>nizl;std::vector<int>hdd;std::string temp;int pom;std::string po;
-		int a, b, c, x, p = 0;
-		if (unos.fail())std::cout << "Nemoguce otvaranje datoeke\n";
-		else {
-			getline(unos, temp);getline(unos, temp);getline(unos, temp);
-			while (true) {
-				getline(unos, temp);
-				if (unos.eof())break;
-				nizl.push_back(temp);
-				a = temp[122] - '0';b = temp[123] - '0';c = temp[124] - '0';
-				if (a > -1 && b > -1 && c > -1) x = a * 100 + b * 10 + c + 1;
-				else if (a > -1 && b > -1 && c < -1) x = a * 10 + b;
-				else if (a > -1 && b < -1 && c < -1) x = a;
-				hdd.push_back(x);
-			}
-			for (int i = 0;i < hdd.size();i++) {
-				for (int j = i;j < hdd.size();j++) {
-					if (hdd[j] > hdd[i]) {
-						std::swap(hdd[j], hdd[i]);
-						std::swap(nizl[j], nizl[i]);
-					}}}
-			osnova();
-			for (int i = 0;i < hdd.size();i++)std::cout << nizl[i] << "\n";
-			unos.close();
-		}}
+//
+//void sortiranjePoSekundarnoj(){
+//		std::ifstream unos("Laptop.txt");
+//		std::vector<std::string>nizl;std::vector<int>hdd;std::string temp;int pom;std::string po;
+//		int a, b, c, x, p = 0;
+//		if (unos.fail())std::cout << "Nemoguce otvaranje datoeke\n";
+//		else {
+//			getline(unos, temp);getline(unos, temp);getline(unos, temp);
+//			while (true) {
+//				getline(unos, temp);
+//				if (unos.eof())break;
+//				nizl.push_back(temp);
+//				a = temp[122] - '0';b = temp[123] - '0';c = temp[124] - '0';
+//				if (a > -1 && b > -1 && c > -1) x = a * 100 + b * 10 + c + 1;
+//				else if (a > -1 && b > -1 && c < -1) x = a * 10 + b;
+//				else if (a > -1 && b < -1 && c < -1) x = a;
+//				hdd.push_back(x);
+//			}
+//			for (int i = 0;i < hdd.size();i++) {
+//				for (int j = i;j < hdd.size();j++) {
+//					if (hdd[j] > hdd[i]) {
+//						std::swap(hdd[j], hdd[i]);
+//						std::swap(nizl[j], nizl[i]);
+//					}}}
+//			osnova();
+//			for (int i = 0;i < hdd.size();i++)std::cout << nizl[i] << "\n";
+//			unos.close();
+//		}}
 
 
 void stanjeK() {
@@ -649,7 +649,6 @@ void sortiranjeLaptopa(std::string rec) {
 					}}}
 			osnova();
 			for (int i = 0;i < hdd.size();i++)std::cout << nizl[i] << "\n";
-			cout << "è";
 		}
 		if (rec == "ram") {
 			for (int i = 0;i < ram.size();i++) {
