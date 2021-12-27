@@ -18,7 +18,16 @@ vector<Laptop>laptopi;
 int error;
 
 
-
+void pretragaPoProizziMod(string r) {
+	std::shared_ptr<Laptop>temp = std::make_shared<Laptop>();
+	std::unique_ptr<string>p = std::make_unique<string>();
+	std::unique_ptr<string>l = std::make_unique<string>();
+	std::cout << "Unesite proizvodjaca za pretragu: ";
+	getline(cin, *l);
+	std::cout << "Unesite model za pretragu: ";
+	getline(cin, *p);
+	if (r == "Laptop") { temp->pretragaPoProizImodeluLap(*l, *p); }
+}
 
 
 
@@ -230,7 +239,7 @@ void adminMenu() {
 				cin.ignore();
 			}
 		} while (error == 1);
-
+		cin.ignore();
 		switch (odabir) {
 		case 1: {odabir == 1; break;}
 		case 2: //ispisProizvoda(); 
@@ -256,7 +265,7 @@ void adminMenu() {
 						cin.ignore();
 					}
 				} while (error == 1);
-
+				cin.ignore();
 				switch (odabirI) {
 				case 1: //ispislaptopa(); 
 					break;
@@ -285,9 +294,10 @@ void adminMenu() {
 						cin.ignore();
 					}
 				} while (error == 1);
-
+				cin.ignore();
 				switch (odabirP) {
 				case 1: {
+					pretragaPoProizziMod("Laptop");
 					//pretragaLaptopa();
 					break;
 				}
@@ -544,17 +554,17 @@ void osnova() {
 	cout << "------------------------------------------------------------------------------------------------------------------------------\n";
 }
 
-
-void pretragaPoProizziMod(std::string rec) {
-	std::shared_ptr<Laptop>temp = std::make_shared<Laptop>();
-	std::unique_ptr<string>p = std::make_unique<string>();
-	std::unique_ptr<string>l = std::make_unique<string>();
-	std::cout << "Unesite proizvodjaca za pretragu: ";
-	getline(cin, *l);
-	std::cout << "Unesite model za pretragu: ";
-	getline(cin, *p);
-	if(rec=="Laptop")temp->pretragaPoProizImodeluLap(*l, *p);
-}
+//
+//void pretragaPoProizziMod(string r) {
+//	std::shared_ptr<Laptop>temp = std::make_shared<Laptop>();
+//	std::unique_ptr<string>p = std::make_unique<string>();
+//	std::unique_ptr<string>l = std::make_unique<string>();
+//	std::cout << "Unesite proizvodjaca za pretragu: ";
+//	getline(cin, *l);
+//	std::cout << "Unesite model za pretragu: ";
+//	getline(cin, *p);
+//	if (r == "Laptop") { temp->pretragaPoProizImodeluLap(*l, *p); }
+//}
 
 //
 //void sortiranjePoSekundarnoj(){
