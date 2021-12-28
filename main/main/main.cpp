@@ -8,7 +8,6 @@
 #include <conio.h>
 #include <windows.h>
 
-
 #include "Laptop.h"
 #include "Admin.h"
 #include "Kupac.h"
@@ -795,7 +794,7 @@ int main()
 	//stanjeK();
 	int izbor=0,z=0,a=0,i=0;
 	string user, password;
-	std::shared_ptr<Laptop>Lap = std::make_shared<Laptop>();
+	Laptop Lap ;
 	//sortiranjeLaptopa("cijena");
 	//pretragaPoProiz("Laptop");
 	//ispisLaptopa();
@@ -806,7 +805,7 @@ int main()
 	////ispisLaptopa();
 	//pretragaPoProizziMod("Laptop");
 	cout << "pocetak;";
-	Lap->prodajaLaptopa();
+	Lap.prodajaLaptopa();
 	cout << "Kraj";
 
 	do {
