@@ -29,6 +29,7 @@ public:
 	void pretragaPoProizImodeluLap(std::string a,std::string b);
 	void pretragaPoProiz(std::string a);
 	void sortiranjePoSekundarnoj();
+	void prodajaLaptopa();
 	friend float operator!(Laptop&a);
 	friend std::istream& operator>>(std::istream& stream, Laptop& a);
 	friend std::ostream& operator<<(std::ostream& stream, Laptop& a);
