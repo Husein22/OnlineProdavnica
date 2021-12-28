@@ -1,5 +1,6 @@
 #pragma once
 #include"Artikal.h"
+#include <windows.h>
 #include<iostream>
 enum OperativniSistem  { Windows=0 ,Linux, Unix, Mac_OS, AmigaOS, GNOME};
 class Laptop:
