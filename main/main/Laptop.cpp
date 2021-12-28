@@ -7,7 +7,7 @@
 #include <sstream>
 #include <algorithm>
 #include "Kupac.h"
-#include <synchapi.h>
+#include <windows.h>
 float Laptop::stanje_kase = 0;
 Laptop::Laptop()
 {
@@ -446,21 +446,17 @@ void Laptop::prodajaLaptopa()
     Laptop temp ;
     int p=0, ID = 0,kol=0;
     std::ifstream pro("Laptop.txt");
-    try {
         if (pro.is_open()) {
-            while (true) {
+            while (!pro.eof()) {
                 getline(pro, pom);
                 p++;
             }
             pro.close();
         }
         else {
-            throw "Nazalost,neuspjesno otvaranje datotetke Laptop.txt";
+            std::cout<< "Nazalost,neuspjesno otvaranje datotetke Laptop.txt";
         }
-    }
-    catch (const char* a) {
-       std:: cout << a << " \n";
-    }
+    
 
 
 
@@ -472,10 +468,10 @@ void Laptop::prodajaLaptopa()
     if (some.eof()) {
         some.close();
         std::ofstream upi("Narudzbe.txt");
-        upi << "-----------------------------------------------------------------------------------------------------------------------------\n";
-        upi << std::left << std::setw(15) << "Ime:" << std::left << std::setw(15) << "Prezime: " << std::left << std::setw(15) << "Ziro racun" << std::left << std::setw(10) << "ID laptopa:" <<
+        upi << "--------------------------------------------------------------------------------------------------------------\n";
+        upi << std::left << std::setw(15) << "Ime" << std::left << std::setw(15) << "Prezime " << std::left << std::setw(15) << "Ziro racun" << std::left << std::setw(15) << "ID laptopa" <<
             std::left << std::setw(10) << "Kolicina: " << std::endl;
-        upi << "------------------------------------------------------------------------------------------------------------------------------\n";
+        upi << "---------------------------------------------------------------------------------------------------------------\n";
         upi.close();
     }
     else some.close();
@@ -498,7 +494,7 @@ void Laptop::prodajaLaptopa()
         naruci << std::left << std::setw(15) << kupci->getPrezime();
         kupci->setKartica();
         naruci << std::left << std::setw(15) << kupci->getKartica();
-        naruci << std::left << std::setw(10) << ID;
+        naruci << std::left << std::setw(15) << ID;
         naruci << std::left << std::setw(10) <<kol;
 
         naruci << std::endl;
