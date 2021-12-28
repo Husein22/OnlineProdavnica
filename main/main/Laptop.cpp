@@ -6,6 +6,8 @@
 #include <vector>
 #include <sstream>
 #include <algorithm>
+#include "Kupac.h"
+#include <synchapi.h>
 float Laptop::stanje_kase = 0;
 Laptop::Laptop()
 {
@@ -245,6 +247,267 @@ void Laptop::sortiranjePoSekundarnoj()
     }
     
 
+}
+
+
+///*-------------------POTVRDI PRODAJU ARTIKLA (funkciju koju ima samo admin)---------------------*/
+//void Laptop::prodajaLaptopa() {
+//    //brisanje narudzbe iz datoteke narudzbe.txt
+//    std::cin.ignore();
+//    std::string line, name;
+//    std::string tem;
+//    std::unique_ptr<Kupac>kupci = std::make_unique<Kupac>();
+//         //  kupci->setIme();
+//     //naruci << std::left << std::setw(15) << kupci->getIme()
+//    do {
+//        kupci->setIme();
+//        //cout << "Unesite ime i prezime osobe koja je narucila mobitel: ";
+//       //getline(cin, name);
+//    } while (kupci->getIme().length() < 1);    //ne moze se unijet prazan string
+//   std:: ifstream narudzbe("narudzbe.txt", std::ios::in);
+//    std::ofstream ispiss("tempp.txt");
+//    while (getline(narudzbe, line))
+//    {
+//        if (line.substr(0, name.size()) != name) { //sve dok je razlicito od imena i prezimena koje smo unijeli
+//            ispiss << line << std::endl;                //ispisuje liniju u datoteku 
+//        }
+//        else if (line.substr(0, name.size()) == name) { //ako se poklopi ime i prezime sa necim u datoteci
+//            getline(narudzbe, tem);                     //preskace sljedecu liniju (ispod svake narudzbe u datoteci imaju linije zbog izgleda, ali je i njih potrebno izbrisati zajedno sa narudzbom)
+//        }
+//    }
+//    narudzbe.close();
+//    ispiss.close();
+//    remove("narudzbe.txt");                 //brise narudzbe.txt
+//    rename("tempp.txt", "narudzbe.txt");  //mijenja naziv temp.txt u skladiste.txt
+//    std::string tenp;
+//    std::ifstream unos("skladiste.txt");
+//    int br1 = 0;
+//    if (unos.is_open()) {
+//        while (!unos.eof()) {
+//            getline(unos, tenp);
+//            br1++;
+//        }
+//        unos.close();
+//    }
+//
+//    //smanjivanje kolièine za 1 iz datoteke skladiste.txt
+//    unos.open("Laptop.txt", std::ios::in);
+//    std::ofstream ispis("temp.txt");
+//    std::string temp;
+//    int ID;
+//    do {
+//        std::cout << "\nUnesite ID mobitela: ";
+//        std::cin >> ID;
+//    } while (ID<0 || ID>br1 - 4); //ne moze se unositi ID veci od onih u datoteci
+//    int broj;
+//    if (unos.fail()) std::cout << "Nemoguce otvoriti datoteku!" << std::endl;
+//    else {
+//        getline(unos, temp);
+//        ispis << temp << std::endl;
+//        getline(unos, temp);
+//        ispis << temp << std::endl;
+//        getline(unos, temp);
+//        ispis << temp << std::endl;
+//        while (true) {
+//            unos >> broj;
+//            if (unos.eof()) break;
+//            if (broj == ID) {
+//                ispis << std::left << std::setw(6) << broj;
+//                unos >> temp;
+//                ispis << std::setw(14) << temp;
+//                unos >> temp;
+//                ispis << std::setw(10) << temp;
+//                unos >> temp;
+//                ispis << std::setw(21) << temp;
+//                unos >> temp;
+//                ispis << std::setw(10) << temp;
+//                unos >> temp;
+//                ispis << std::setw(10) << temp;
+//                unos >> broj;
+//                ispis << std::setw(12) << broj - 1; // smanjujemo kolicinu iz datoteke za 1
+//                unos >> temp;
+//                ispis << std::setw(13) << temp << std::endl;
+//            }
+//            else {
+//                ispis << broj;
+//                getline(unos, temp);
+//                ispis << temp << std::endl;
+//            }
+//        }
+//    }
+//    unos.close();
+//    ispis.close();
+//    remove("Laptop.txt");                     //brise skladiste.txt
+//    rename("temp.txt", "Laptop.txt");        //mijenja naziv temp.txt u skladiste.txt
+//    system("cls");
+//    std::cout <<"-------------------------------------------------------\n";
+//    std::cout << "\n\t\t\t\t  Loading...\n" << std::endl;
+//    std::cout << "-------------------------------------------------------\n";
+//    Sleep(2000);//ubaceno da bi se program malo zaustavio (loading) prije nego sto se ispise sljedeca poruka
+//    system("cls");
+//    std::cout << "-------------------------------------------------------\n";
+//    std::cout << "\t      _____________________________________________________" << std::endl;
+//    std::cout << "\t      |                                                   |" << std::endl;
+//    std::cout << "\t      |            Artikal je uspjeno prodan!             |" << std::endl;
+//    std::cout << "\t      | Brza posta je obavijestena za preuzimanje paketa. |" << std::endl;
+//    std::cout << "\t      |___________________________________________________|\n" << std::endl;
+//    std::cout << "-------------------------------------------------------\n";
+//    system("PAUSE");
+//    std::cin.ignore();
+//    system("cls");
+//   // provjeriNarudzbe();
+//}
+///*-------------------FUNKCIJA KOJU IZBACUJE KAD KUPAC ODABERE OPCIJU -Kupi artikal- ---------------------*/
+////void KupiArtikal() {
+////    string tenp;
+////    ifstream unos("skladiste.txt");
+////    int br1 = 0;
+////    if (unos.is_open()) {
+////        while (!unos.eof()) {
+////            getline(unos, tenp);
+////            br1++;
+////        }
+////        unos.close();
+////    }
+////    int izbor;
+////    ofstream narudzba("narudzbe.txt", ios::app); //smjesta u posebnu datoteku narudzbe.txt koja je dostupna adminu
+////    narudzba << "--------------------------------------------------------\n";
+////    cout << crt;
+////    do {
+////        cout << "Unesite vase ime i prezime: ";
+////        cin.ignore();
+////        getline(cin, kupac.imePrezime);
+////        narudzba << kupac.imePrezime << " ";
+////    } while (kupac.imePrezime.length() < 1);
+////    cout << crt;
+////    do {
+////        cout << "Unesite vasu adresu (npr. Zelenih-beretki-22-Sarajevo): ";
+////        getline(cin, kupac.adresa);
+////        narudzba << kupac.adresa << " ";
+////    } while (kupac.adresa.length() < 1);
+////    cout << crt;
+////    do {
+////        cout << "Unesite broj telefona: ";
+////        getline(cin, kupac.brTel);
+////        narudzba << kupac.brTel << " ";
+////    } while (kupac.brTel.length() < 1);
+////    cout << crt;
+////    do {
+////        cout << "Unesite ID mobitela koji zelite kupiti: ";
+////        cin >> id;
+////    } while (id<0 || id>br1 - 4);
+////    narudzba << id << " ";
+////    cout << crt;
+////    cout << "Odaberite brzu postu: " << endl;
+////    cout << crt;
+////    cout << "\t\t";for (int i = 1;i <= 53;i++) { cout << "_"; };cout << endl;
+////    cout << "\t\t|                                                   |" << endl;
+////    cout << "\t\t| 1-EuroExpress (10 KM - isporuka u toku 24h)       |" << endl;
+////    cout << "\t\t| 2-BH PostExpress (8 KM - isporuka u toku 24h-48h) |" << endl;
+////    cout << "\t\t| 3-A2B Express (12 KM - isporuka u toku 24h)       |" << endl;
+////    cout << "\t\t| 4-X Express (13 KM - isporuka u toku 24h)         |" << endl;
+////    cout << "\t\t|___________________________________________________|\n" << endl;
+////    cout << crt;
+////    do {
+////        cout << "\t\tIzbor: ";
+////        cin >> izbor;
+////    } while (izbor < 1 || izbor>4);
+////    narudzba << vratiPostu(izbor);
+////    narudzba << "\n--------------------------------------------------------";
+////    narudzba.close();
+////    system("cls");
+////    cout << crt2;
+////    cout << "\n\t\t\t\t  Loading...\n" << endl;
+////    cout << crt2;
+////    Sleep(2000);//ubaceno da bi se program malo zaustavio (loading) prije nego sto se ispise sljedeca poruka
+////    system("cls");
+////    cout << crt2;
+////    cout << "\t\t  ";for (int i = 1;i <= 45;i++) { cout << "_"; };cout << endl;
+////    cout << "\t\t  |                                           |" << endl;
+////    cout << "\t\t  | Cestitamo, uspjesno ste narucili mobitel. |" << endl;
+////    cout << "\t\t  | Paket ocekujte u roku od 48 sati.         |" << endl;
+////    cout << "\t\t  | Vas MOBI-Shop, uvijek tu za vas!          |" << endl;
+////    cout << "\t\t  |___________________________________________|\n" << endl;
+////    cout << crt2;
+////    system("PAUSE");
+////    cin.ignore();
+////    korisnickiMenu("korisnik");
+////}
+////
+
+
+
+
+
+void Laptop::prodajaLaptopa()
+{
+    
+    std::string pom;
+    Laptop temp ;
+    int p=0, ID = 0,kol=0;
+    std::ifstream pro("Laptop.txt");
+    try {
+        if (pro.is_open()) {
+            while (true) {
+                getline(pro, pom);
+                p++;
+            }
+            pro.close();
+        }
+        else {
+            throw "Nazalost,neuspjesno otvaranje datotetke Laptop.txt";
+        }
+    }
+    catch (const char* a) {
+       std:: cout << a << " \n";
+    }
+
+
+
+
+
+    std::ifstream some("Narudzbe.txt");
+    std::string te;
+    some >> te;
+    if (some.eof()) {
+        some.close();
+        std::ofstream upi("Narudzbe.txt");
+        upi << "-----------------------------------------------------------------------------------------------------------------------------\n";
+        upi << std::left << std::setw(15) << "Ime:" << std::left << std::setw(15) << "Prezime: " << std::left << std::setw(15) << "Ziro racun" << std::left << std::setw(10) << "ID laptopa:" <<
+            std::left << std::setw(10) << "Kolicina: " << std::endl;
+        upi << "------------------------------------------------------------------------------------------------------------------------------\n";
+        upi.close();
+    }
+    else some.close();
+
+
+
+   std:: ofstream naruci("Narudzbe.txt", std::ios::app);
+    if (naruci.is_open()) {
+        do {
+            std::cout << "Unesite ID laptopa koji zelite kupiti: ";
+            std::cin >> ID;
+        } while (ID > p || ID <= 0);
+            std::cout << "Unesite kolicinu laptopa koji zelite kupiti: ";
+            std::cin >> kol;
+        std::cin.ignore();
+        std::unique_ptr<Kupac>kupci = std::make_unique<Kupac>();
+        kupci->setIme();
+        naruci << std::left << std::setw(15) << kupci->getIme();
+        kupci->setPrezime();
+        naruci << std::left << std::setw(15) << kupci->getPrezime();
+        kupci->setKartica();
+        naruci << std::left << std::setw(15) << kupci->getKartica();
+        naruci << std::left << std::setw(10) << ID;
+        naruci << std::left << std::setw(10) <<kol;
+
+        naruci << std::endl;
+
+        naruci.close();
+    }
+    else {
+        std::cout << "Neuspjesno otvaranje datoteke\n";
+    }
 }
 
 
