@@ -396,6 +396,7 @@ void adminMenu() {
 
 	} while (odabir != 0);
 }
+
 void kupacOpcije() {
 	system("pause");
 	system("cls");
@@ -409,6 +410,7 @@ void kupacOpcije() {
 	cout << "\n" << setw(63) << "3. Kupi knjigu: ";
 	cout << "\n" << setw(75) << "0. Vrati se na glavni menu:\n";
 }
+
 void kupacMenu() {
 	int odabir, odabirI, odabirP;
 	do {
@@ -522,6 +524,72 @@ void kupacMenu() {
 
 }
 
+//void prodajaLaptopa() {
+//	ifstream pro("Laptop.txt");
+//	string pom;
+//	shared_ptr<Laptop>temp = make_shared<Laptop>();
+//	vector<Laptop>Laptopi;
+//	int p = -3,ID=0;
+//	try {
+//		if (pro.is_open()) {
+//			while (true) {
+//				getline(pro, pom);
+//				p++;
+//				pro >> temp->getProizvodjac();
+//
+//			}
+//			pro.close();
+//		}
+//		else {
+//			throw "Nazalost,neuspjesno otvaranje datotetke Laptop.txt";
+//		}
+//	}catch (const char* a) {
+//		cout << a << " \n";
+//	}
+//
+//	std::ifstream some("Narudzbe.txt");
+//	std::string te;
+//	some >> te;
+//	if (some.eof()) {
+//		some.close();
+//		std::ofstream upi("Narudzbe.txt");
+//		upi << "-----------------------------------------------------------------------------------------------------------------------------\n";
+//		upi << std::left << std::setw(15) << "Ime:" << std::left << std::setw(15) << "Prezime: " << std::left << std::setw(15)<<"Ziro racun" << std::left << std::setw(10)<<  "ID laptopa:" <<
+//			std::left << std::setw(10) << "Kolicina: " << endl;
+//		upi << "------------------------------------------------------------------------------------------------------------------------------\n";
+//		upi.close();
+//	}
+//	else some.close();
+//
+//
+//
+//	ofstream naruci("Narudzbe.txt",ios::app);
+//	if (naruci.is_open()) {
+//		do {
+//			cout << "Unesite ID laptopa koji zelite kupiti: ";
+//			cin >> ID;
+//		} while (ID > p || ID <= 0);
+//		cin.ignore();
+//		unique_ptr<Kupac>kupci = make_unique<Kupac>();
+//		kupci->setIme();
+//		naruci << std::left << std::setw(15) << kupci->getIme();
+//		kupci->setPrezime();
+//		naruci << std::left << std::setw(15) << kupci->getPrezime();
+//		kupci->setKartica();
+//		naruci << std::left << std::setw(15) << kupci->getKartica();
+//		naruci << std::left << std::setw(10) << ID;
+//
+//
+//		naruci << endl;
+//
+//		naruci.close();
+//	}
+//	else {
+//		cout << "Neuspjesno otvaranje datoteke\n";
+//	}
+//
+//}
+
 
 void smjestizaIspis(string n) {
 	string temp;
@@ -548,12 +616,14 @@ void smjestizaIspis(string n) {
 	}
 }
 
+
 void unosLaptopa() {
 	std::shared_ptr<Laptop>temp = std::make_shared<Laptop>();
 	cin >> *temp;
 	//laptopi.push_back(*temp);
 	cout << "Uspjesno smjesten laptop u datoteku\n";
 }
+
 void osnova() {
 	cout << "------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------\n";
 	cout << std::left << std::setw(15) << "Proizvodjac " << std::left << std::setw(26) << "Model " << std::left << std::setw(10) << "Kolièina" <<
@@ -722,20 +792,23 @@ void sortiranjeLaptopa(std::string rec) {
 
 int main()
 {
-	stanjeK();
+	//stanjeK();
 	int izbor=0,z=0,a=0,i=0;
 	string user, password;
+	std::shared_ptr<Laptop>Lap = std::make_shared<Laptop>();
 	//sortiranjeLaptopa("cijena");
 	//pretragaPoProiz("Laptop");
-	ispisLaptopa();
-    sortiranjeLaptopa("ram");
-	sortiranjeLaptopa("hdd");
-	sortiranjeLaptopa("godine");
-		//unosLaptopa();
-	
 	//ispisLaptopa();
-	pretragaPoProizziMod("Laptop");
-	
+ //   sortiranjeLaptopa("ram");
+	//sortiranjeLaptopa("hdd");
+	//sortiranjeLaptopa("godine");
+	//	//unosLaptopa();
+	////ispisLaptopa();
+	//pretragaPoProizziMod("Laptop");
+	cout << "pocetak;";
+	Lap->prodajaLaptopa();
+	cout << "Kraj";
+
 	do {
 		cout << "\n\n" << setw(81) << "****************************************" << endl;
 		cout << setw(77) << " * >>>> PRIJAVA NA IT SHOP <<<< *" << endl;
@@ -817,16 +890,16 @@ int main()
 			switch (n) {
 			case 1: {
 				string kupac, password;
-				std::shared_ptr<Kupac>temp = std::make_shared<Kupac>();
+				std::shared_ptr<Kupac>tempp = std::make_shared<Kupac>();
 				cout << "Molim vas unesite kupac username: ";
 				getline(cin,kupac);
 				cout << "Sifra: ";
-				password = temp->unosPassworda(password, 0);
-				if (temp->login(kupac, password) == true) {
+				password = tempp->unosPassworda(password, 0);
+				if (tempp->login(kupac, password) == true) {
 					cout << "\n\n" << setw(75) << "Uspjesno logirani na kupac acc." << endl;
 					kupacMenu();
 				}
-				if (temp->login(kupac, password) == false) {
+				if (tempp->login(kupac, password) == false) {
 					cout << "\n\n" << setw(78) << "Username ili password nisu validni." << endl;
 					system("pause");
 					Sleep(2000);
