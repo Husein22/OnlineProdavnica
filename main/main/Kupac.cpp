@@ -10,6 +10,60 @@ using namespace std;
 Kupac::Kupac()
 {
 }
+Kupac::Kupac(std::string a, std::string b, std::string c, std::string d, std::string e):username(a),pass(b),ime(c),prezime(d),kartica(e)
+{
+}
+void Kupac::setusername()
+{
+	std::cout << "Unesite username: ";
+	getline(cin, this->username);
+}
+void Kupac::setPass()
+{
+	std::cout << "Unesite pasword: ";
+	getline(cin, this->pass);
+}
+void Kupac::setIme()
+{
+	std::cout << "Unesite ime: ";
+	getline(cin, this->ime);
+}
+void Kupac::setPrezime()
+{
+	std::cout << "Unesite prezime: ";
+	getline(cin, this->prezime);
+}
+void Kupac::setKartica()
+{
+	std::cout << "Unesite broj ziro racuna: ";
+	getline(cin, this->kartica);
+}
+std::string Kupac::getUsername()
+{
+	return this->username;
+}
+std::string Kupac::getPass()
+{
+	return this->pass;
+}
+std::string Kupac::getIme()
+{
+	return this->ime;
+}
+std::string Kupac::getPrezime()
+{
+	return this->prezime;
+}
+std::string Kupac::getKartica()
+{
+	return this->kartica;
+}
+
+
+
+
+
+
 std::string Kupac::unosPassworda(std::string password, int ch)
 {
 	password.clear();
@@ -78,3 +132,15 @@ void Kupac::dodajProfil() {
 	file.close(); Sleep(1000); system("CLS");
 }
 
+std::istream& operator>>(std::istream& stream, Kupac& a)
+{
+	a.setIme();
+	a.setPrezime();
+	a.setKartica();
+	return stream;
+}
+
+std::ostream& operator<<(std::ostream& stream, Kupac& a)
+{
+	return stream;
+}
