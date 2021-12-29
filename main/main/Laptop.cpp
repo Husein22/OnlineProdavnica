@@ -13,9 +13,13 @@ Laptop::Laptop()
 {
 }
 
-Laptop::Laptop(std::string a, std::string b, std::string c, int d, int e)
+Laptop::Laptop(std::string a, std::string b, int c, int d, float e, std::string f, std::string g, int op, int i, int j):
+    Artikal(a,b,c,d,e),cpu(f),gpu(g),memorija(i),hard_drive(j)
 {
+    this->opSis = static_cast<OperativniSistem>(op);
 }
+
+
 
 void Laptop::setCPU()
 {
