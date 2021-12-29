@@ -804,10 +804,10 @@ int main()
 	//	//unosLaptopa();
 	////ispisLaptopa();
 	//pretragaPoProizziMod("Laptop");
-	cout << "pocetak;";
-	Lap.prodajaLaptopa();
-	cout << "Kraj";
-
+	//cout << "pocetak;";
+//	Lap.prodajaLaptopa();
+	//cout << "Kraj";
+//
 	do {
 		cout << "\n\n" << setw(81) << "****************************************" << endl;
 		cout << setw(77) << " * >>>> PRIJAVA NA IT SHOP <<<< *" << endl;
