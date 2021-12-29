@@ -25,6 +25,6 @@ public:
 	float getCijena();
 	friend std::istream& operator>>(std::istream& stream, Artikal& a);
 	friend std::ostream& operator<<(std::ostream& stream, Artikal& a);
-	~Artikal() = default;
+	virtual ~Artikal() = default;
 };
 
