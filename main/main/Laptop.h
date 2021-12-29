@@ -14,7 +14,7 @@ private:
 public:
 	static float stanje_kase;
 	Laptop();
-	Laptop(std::string a, std::string b, std::string c, int d, int e);
+	Laptop( std::string a, std::string b, int c, int d, float e,std::string f, std::string g, int op, int i, int j);
 	//Laptop(const Laptop* p);
 	void setCPU();
 	void setGPU();
@@ -37,7 +37,7 @@ public:
 	
 
 
-	~Laptop() = default;
+	virtual ~Laptop() = default;
 
 };
 
