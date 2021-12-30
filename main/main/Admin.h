@@ -7,7 +7,12 @@ private:
 	string username, pass;
 public:
 	Admin();
-	string unosPassworda(string password, int ch);
+	void setUsername();
+	void setPass();
+	std::string getUsername();
+	std::string getPass();
+	std::string unosPassworda(string password, int ch);
 	bool login(string& admin, string& password);
+	void citanjeAdmina();
 	~Admin() = default;
 };
