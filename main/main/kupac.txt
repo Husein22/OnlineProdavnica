@@ -8,3 +8,5 @@ kupac2 kupac2 kupac3 kupac3
  oo 30
  ii 40
  ii 40
+ ii 40
+ ii 40
