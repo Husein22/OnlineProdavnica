@@ -13,10 +13,36 @@ Admin::Admin()
 
 }
 
-/*void Admin::setUsername()
+void Admin::setUsername()
 {
 	cout << "Unesi username: ";
 	cin >> this->username;
+}
+
+void Admin::citanjeAdmina()
+{
+	std::string b, c;
+	std::ifstream citanje("Admin.txt");
+	std::cout << " ________________________________________\n ";
+	try {
+		if (citanje.is_open()) {
+			while (!citanje.eof())
+			{
+				citanje >> b;
+				citanje >> c;
+				std::cout <<"|\t"<<std::left<<std::setw(30)<< b << "\t|\n ";
+			}
+			std::cout << "|______________________________________|\n";
+			citanje.close();
+		}
+		else {
+			throw "Nazalost neuspjesno otvaranje datoteke Admin.txt\n";
+		}
+
+	}
+	catch(const char*a){
+		cout << a;
+	}
 }
 
 void Admin::setPass()
@@ -33,7 +59,7 @@ string Admin::getUsername()
 string Admin::getPass()
 {
 	return this->pass;
-} */
+} 
 string Admin::unosPassworda(string password, int ch) {
 
 	password.clear();
