@@ -16,6 +16,7 @@ public:
 	Laptop();
 	Laptop( std::string a, std::string b, int c, int d, float e,std::string f, std::string g, int op, int i, int j);
 	//Laptop(const Laptop* p);
+	void PosjedujemArtikal();
 	void setCPU();
 	void setGPU();
 	void setOpSis();
