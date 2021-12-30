@@ -786,7 +786,21 @@ void sortiranjeLaptopa(std::string rec) {
 	}
 }
 
+void info(){
+	cout << "DOBRO DOSLI\n\n\n";
+	std::unique_ptr<Admin>c = std::make_unique<Admin>();
+	
+	cout<<" Nas IT shop posjeduje : \n";
+	Artikal* i1 = new Laptop();
+	Artikal* posjedujem[1]{ i1 };
+	for (int i = 0;i < 1;i++) {
+		posjedujem[i]->PosjedujemArtikal();
+	}
+	cout << "\n\t\tAdmin team\n";
+	c->citanjeAdmina();
+	cout << "\nUgodnu kupovinu i ostatak dana Vam zeli admin tim OO shopa (:\n";
 
+}
 
 
 int main()
@@ -795,6 +809,7 @@ int main()
 	int izbor=0,z=0,a=0,i=0;
 	string user, password;
 	Laptop Lap ;
+	info();
 	//sortiranjeLaptopa("cijena");
 	//pretragaPoProiz("Laptop");
 	//ispisLaptopa();
@@ -885,7 +900,7 @@ int main()
 					cin.ignore();
 				}
 			} while (error == 1);
-
+			cin.ignore();
 			switch (n) {
 			case 1: {
 				string kupac, password;
