@@ -13,6 +13,7 @@ public:
 	Artikal();
 	Artikal(std::string a, std::string b, int c, int d, float e);
 	//Artikal(const Artikal& p);
+	virtual void PosjedujemArtikal() = 0;
 	void setProizvodjac();
 	void setModel();
 	void setKolicina();
