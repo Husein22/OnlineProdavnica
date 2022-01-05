@@ -1,5 +1,4 @@
 #pragma once
-//Proizvodjac:  Model:    Godina proizvodnje : RAM(GB) : ROM(GB) : Kolièina : Cijena(KM) :
 #include <istream>
 #include <string>
 class Artikal
