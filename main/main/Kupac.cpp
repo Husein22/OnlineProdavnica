@@ -117,20 +117,33 @@ bool Kupac::login(std::string& kupac, std::string& password)
 		
 	}
 }
-void Kupac::dodajProfil() {
+bool Kupac::dodajProfil() {
 	ofstream file;
 	file.open("kupac.txt", std::ios_base::app);
 	if (!file) {
 		cout << "\n" << setw(80) << "Nije moguce otvoriti datoteku!";
-		return;
 	}
 	Kupac k;
 	cout << "\n" << setw(63) << "Username: "; cin >> k.username;
 	cout << "\n" << setw(63) << "Password: "; cin >> k.pass;
+	std::ifstream citaj("kupac.txt");
+	std::string a, b;
+	if (citaj.is_open()) {
+		while(!citaj.eof()) {
+			citaj >> a;
+			citaj >> b;
+			if (a == k.username) {
+				return false;
+			}
+		}
+		citaj.close();
+	}
 	file << " " << k.username << " ";
 	file << k.pass << endl;
 	file.close(); Sleep(1000); system("CLS");
+	return true;
 }
+
 
 std::istream& operator>>(std::istream& stream, Kupac& a)
 {
