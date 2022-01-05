@@ -684,107 +684,107 @@ void ispisLaptopa() {
 	osnova();
 	smjestizaIspis("Laptop");
 }
-void sortiranjeLaptopa(std::string rec) {
-	std::ifstream unos("Laptop.txt");
-	std::vector<std::string>nizl;
-	std::vector<int>hdd;
-	std::vector<int>godine;
-	std::vector<int>cijena;
-	std::vector<int>ram;
-	std::string temp;
-	std::string po;
-	int a=0, b=0, c=0, d=0, x=0, p = 0;
-	if (unos.fail())std::cout << "Nemoguce otvaranje datoeke\n";
-	else {
-		getline(unos, temp);
-		getline(unos, temp);
-		getline(unos, temp);
-		while (true) {
-			getline(unos, temp);
-			if (unos.eof())break;
-			nizl.push_back(temp);
-			if (rec == "hdd") {
-				a = temp[178] - '0';b = temp[179] - '0';c = temp[180] - '0';
-				if (a > -1 && b > -1 && c > -1) x = a * 100 + b * 10 + c + 1;
-				else if (a > -1 && b > -1 && c < -1) x = a * 10 + b;
-				else if (a > -1 && b < -1 && c < -1) x = a;
-				hdd.push_back(x);
-			}
-			if (rec == "ram") {
-				a = temp[166] - '0';
-				b = temp[167] - '0';
-				c = temp[168] - '0';
-				if (a > -1 && b > -1 && c > -1) x = a * 100 + b * 10 + c + 1;
-				else if (a > -1 && b > -1 && c < -1) x = a * 10 + b;
-				else if (a > -1 && b < -1 && c < -1) x = a;
-				cout << a << " " << b << " " << c << " "  << x << "\n ";
-				ram.push_back(x);
-			}
-			if (rec == "godine") {
-				a = temp[51] - '0';
-				b = temp[52] - '0';
-				c = temp[53] - '0';
-				d = temp[54] - '0';
-				if (a > -1 && b > -1 && c > -1 && d > -1) x = a * 1000 + b * 100 + c * 10 + d;
-				else if (a > -1 && b > -1 && c > -1 && d < -1) x = a * 100 + b * 10 + c;
-				else if (a > -1 && b > -1 && c < -1 && d < -1) x = a * 10 + b;
-				else if (a > -1 && b < -1 && c < -1 && d < -1) x = a;
-				godine.push_back(x);
-			}
-			if (rec == "cijena") {
-				a = temp[71] - '0';
-				b = temp[72] - '0';
-				c = temp[73] - '0';
-				d = temp[74] - '0';
-				if (a > -1 && b > -1 && c > -1 && d > -1) x = a * 1000 + b * 100 + c * 10 + d;
-				else if (a > -1 && b > -1 && c > -1 && d < -1) x = a * 100 + b * 10 + c;
-				else if (a > -1 && b > -1 && c < -1 && d < -1) x = a * 10 + b;
-				else if (a > -1 && b < -1 && c < -1 && d < -1) x = a;
-				cijena.push_back(x);
-			}
-		}
-		if (rec == "hdd") {
-			for (int i = 0;i < hdd.size();i++) {
-				for (int j = i;j < hdd.size();j++) {
-					if (hdd[j] > hdd[i]) {
-						std::swap(hdd[j], hdd[i]);
-						std::swap(nizl[j], nizl[i]);
-					}}}
-			osnova();
-			for (int i = 0;i < hdd.size();i++)std::cout << nizl[i] << "\n";
-		}
-		if (rec == "ram") {
-			for (int i = 0;i < ram.size();i++) {
-				for (int j = i;j < ram.size();j++) {
-					if (ram[j] > ram[i]) {
-						std::swap(ram[j], ram[i]);
-						std::swap(nizl[j], nizl[i]);
-					}}}
-			osnova();
-			for (int i = 0;i < ram.size();i++)std::cout << nizl[i] << "\n";
-		}if (rec == "godine") {
-			for (int i = 0;i < godine.size();i++) {
-				for (int j = i;j < godine.size();j++) {
-					if (godine[j] > godine[i]) {
-						std::swap(godine[j], godine[i]);
-						std::swap(nizl[j], nizl[i]);
-					}}}
-			osnova();
-			for (int i = 0;i < godine.size();i++)std::cout << nizl[i] << "\n";
-		}
-			if (rec == "cijena") {
-				for (int i = 0;i < cijena.size();i++) {
-					for (int j = i;j < cijena.size();j++) {
-						if (cijena[j] > cijena[i]) {
-							std::swap(cijena[j], cijena[i]);
-							std::swap(nizl[j], nizl[i]);
-						}}}
-				osnova();
-				for (int i = 0;i < cijena.size();i++)std::cout << nizl[i] << "\n";
-			}
-		unos.close();
-	}
-}
+//void sortiranjeLaptopa(std::string rec) {
+//	std::ifstream unos("Laptop.txt");
+//	std::vector<std::string>nizl;
+//	std::vector<int>hdd;
+//	std::vector<int>godine;
+//	std::vector<int>cijena;
+//	std::vector<int>ram;
+//	std::string temp;
+//	std::string po;
+//	int a=0, b=0, c=0, d=0, x=0, p = 0;
+//	if (unos.fail())std::cout << "Nemoguce otvaranje datoeke\n";
+//	else {
+//		getline(unos, temp);
+//		getline(unos, temp);
+//		getline(unos, temp);
+//		while (true) {
+//			getline(unos, temp);
+//			if (unos.eof())break;
+//			nizl.push_back(temp);
+//			if (rec == "hdd") {
+//				a = temp[178] - '0';b = temp[179] - '0';c = temp[180] - '0';
+//				if (a > -1 && b > -1 && c > -1) x = a * 100 + b * 10 + c + 1;
+//				else if (a > -1 && b > -1 && c < -1) x = a * 10 + b;
+//				else if (a > -1 && b < -1 && c < -1) x = a;
+//				hdd.push_back(x);
+//			}
+//			if (rec == "ram") {
+//				a = temp[166] - '0';
+//				b = temp[167] - '0';
+//				c = temp[168] - '0';
+//				if (a > -1 && b > -1 && c > -1) x = a * 100 + b * 10 + c + 1;
+//				else if (a > -1 && b > -1 && c < -1) x = a * 10 + b;
+//				else if (a > -1 && b < -1 && c < -1) x = a;
+//				cout << a << " " << b << " " << c << " "  << x << "\n ";
+//				ram.push_back(x);
+//			}
+//			if (rec == "godine") {
+//				a = temp[51] - '0';
+//				b = temp[52] - '0';
+//				c = temp[53] - '0';
+//				d = temp[54] - '0';
+//				if (a > -1 && b > -1 && c > -1 && d > -1) x = a * 1000 + b * 100 + c * 10 + d;
+//				else if (a > -1 && b > -1 && c > -1 && d < -1) x = a * 100 + b * 10 + c;
+//				else if (a > -1 && b > -1 && c < -1 && d < -1) x = a * 10 + b;
+//				else if (a > -1 && b < -1 && c < -1 && d < -1) x = a;
+//				godine.push_back(x);
+//			}
+//			if (rec == "cijena") {
+//				a = temp[71] - '0';
+//				b = temp[72] - '0';
+//				c = temp[73] - '0';
+//				d = temp[74] - '0';
+//				if (a > -1 && b > -1 && c > -1 && d > -1) x = a * 1000 + b * 100 + c * 10 + d;
+//				else if (a > -1 && b > -1 && c > -1 && d < -1) x = a * 100 + b * 10 + c;
+//				else if (a > -1 && b > -1 && c < -1 && d < -1) x = a * 10 + b;
+//				else if (a > -1 && b < -1 && c < -1 && d < -1) x = a;
+//				cijena.push_back(x);
+//			}
+//		}
+//		if (rec == "hdd") {
+//			for (int i = 0;i < hdd.size();i++) {
+//				for (int j = i;j < hdd.size();j++) {
+//					if (hdd[j] > hdd[i]) {
+//						std::swap(hdd[j], hdd[i]);
+//						std::swap(nizl[j], nizl[i]);
+//					}}}
+//			osnova();
+//			for (int i = 0;i < hdd.size();i++)std::cout << nizl[i] << "\n";
+//		}
+//		if (rec == "ram") {
+//			for (int i = 0;i < ram.size();i++) {
+//				for (int j = i;j < ram.size();j++) {
+//					if (ram[j] > ram[i]) {
+//						std::swap(ram[j], ram[i]);
+//						std::swap(nizl[j], nizl[i]);
+//					}}}
+//			osnova();
+//			for (int i = 0;i < ram.size();i++)std::cout << nizl[i] << "\n";
+//		}if (rec == "godine") {
+//			for (int i = 0;i < godine.size();i++) {
+//				for (int j = i;j < godine.size();j++) {
+//					if (godine[j] > godine[i]) {
+//						std::swap(godine[j], godine[i]);
+//						std::swap(nizl[j], nizl[i]);
+//					}}}
+//			osnova();
+//			for (int i = 0;i < godine.size();i++)std::cout << nizl[i] << "\n";
+//		}
+//			if (rec == "cijena") {
+//				for (int i = 0;i < cijena.size();i++) {
+//					for (int j = i;j < cijena.size();j++) {
+//						if (cijena[j] > cijena[i]) {
+//							std::swap(cijena[j], cijena[i]);
+//							std::swap(nizl[j], nizl[i]);
+//						}}}
+//				osnova();
+//				for (int i = 0;i < cijena.size();i++)std::cout << nizl[i] << "\n";
+//			}
+//		unos.close();
+//	}
+//}
 
 void info(){
 	cout << "DOBRO DOSLI\n\n\n";
@@ -809,18 +809,20 @@ int main()
 	int izbor=0,z=0,a=0,i=0;
 	string user, password;
 	Laptop Lap ;
-	info();
-	//sortiranjeLaptopa("cijena");
-	//pretragaPoProiz("Laptop");
+	//info();
+	bool l;
+	//Lap.soranjeLaptopa("cijena");
+	pretragaPoProiz("Laptop");
 	//ispisLaptopa();
- //   sortiranjeLaptopa("ram");
+	//osnova();
+ //  Lap.sortiranjeLaptopa("ram");
 	//sortiranjeLaptopa("hdd");
 	//sortiranjeLaptopa("godine");
 	//	//unosLaptopa();
 	////ispisLaptopa();
 	//pretragaPoProizziMod("Laptop");
 	//cout << "pocetak;";
-//	Lap.prodajaLaptopa();
+	Lap.prodajaLaptopa();
 	//cout << "Kraj";
 //
 	do {
@@ -876,12 +878,6 @@ int main()
 				Sleep(2000);
 				system("CLS");
 			}
-
-			/*cout << "\n" << setw(60) << "Username: ";
-			cin >> user;
-			cout << "\n" << setw(57) << "Sifra: ";
-			password = unosPassworda(password);
-			login(user, password);*/
 		} break;
 		case 2: {
 			int n;
@@ -897,7 +893,6 @@ int main()
 					cout << setw(65) << "Unesite validan unos: " << endl;
 					error = 1;
 					cin.clear();
-					cin.ignore();
 				}
 			} while (error == 1);
 			cin.ignore();
@@ -922,8 +917,13 @@ int main()
 			}
 			case 2: {
 				std::shared_ptr<Kupac>k = std::make_shared<Kupac>();
-				k->dodajProfil();
-			}break;
+				
+				l = k->dodajProfil();
+				if (l == false) {
+					cout << "Usernamee vec postoji \n";
+				}
+				break;
+			}
 			case 0: {
 				system("CLS");
 			} break;
