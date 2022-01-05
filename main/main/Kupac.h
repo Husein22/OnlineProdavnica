@@ -22,7 +22,7 @@ public:
 	friend std::ostream& operator<<(std::ostream& stream, Kupac& a);
 	std::string unosPassworda(std::string password, int ch);
 	bool login(std::string& admin, std::string& password);
-	void dodajProfil();
+	bool dodajProfil();
 	~Kupac() = default;
 };
 
