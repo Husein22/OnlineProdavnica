@@ -2,6 +2,7 @@
 #include"Artikal.h"
 #include <windows.h>
 #include<iostream>
+#include <algorithm>
 enum OperativniSistem  { Windows=0 ,Linux, Unix, Mac_OS, AmigaOS, GNOME};
 class Laptop:
 	public Artikal
@@ -35,7 +36,7 @@ public:
 	friend float operator!(Laptop&a);
 	friend std::istream& operator>>(std::istream& stream, Laptop& a);
 	friend std::ostream& operator<<(std::ostream& stream, Laptop& a);
-	
+	void sortiranjeLaptopa(std::string rec);
 
 
 	virtual ~Laptop() = default;
