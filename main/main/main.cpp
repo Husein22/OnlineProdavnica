@@ -812,7 +812,7 @@ int main()
 	//info();
 	bool l;
 	//Lap.soranjeLaptopa("cijena");
-	pretragaPoProiz("Laptop");
+	//pretragaPoProiz("Laptop");
 	//ispisLaptopa();
 	//osnova();
  //  Lap.sortiranjeLaptopa("ram");
@@ -822,7 +822,7 @@ int main()
 	////ispisLaptopa();
 	//pretragaPoProizziMod("Laptop");
 	//cout << "pocetak;";
-	Lap.prodajaLaptopa();
+	//Lap.prodajaLaptopa();
 	//cout << "Kraj";
 //
 	do {
@@ -901,7 +901,7 @@ int main()
 				string kupac, password;
 				std::shared_ptr<Kupac>tempp = std::make_shared<Kupac>();
 				cout << "Molim vas unesite kupac username: ";
-				getline(cin,kupac);
+				getline(cin, kupac);
 				cout << "Sifra: ";
 				password = tempp->unosPassworda(password, 0);
 				if (tempp->login(kupac, password) == true) {
@@ -914,22 +914,22 @@ int main()
 					Sleep(2000);
 					system("CLS");
 				}
-			}
-			case 2: {
-				std::shared_ptr<Kupac>k = std::make_shared<Kupac>();
+			}break;
+				case 2: {
+					std::shared_ptr<Kupac>k = std::make_shared<Kupac>();
 				
-				l = k->dodajProfil();
-				if (l == false) {
-					cout << "Usernamee vec postoji \n";
+					l = k->dodajProfil();
+					if (l == false) {
+						cout << "Usernamee vec postoji \n";
+					}
+					break;
 				}
-				break;
-			}
-			case 0: {
-				system("CLS");
-			} break;
-			default: cout << setw(65) << "[GRESKA] -> Unos nije validan!" << endl;
-			}
-		}	break;
+				case 0: {
+					system("CLS");
+				} break;
+				default: cout << setw(65) << "[GRESKA] -> Unos nije validan!" << endl;
+				}
+			}	break;
 		case 3: {
 			fontsize();
 		}break;
