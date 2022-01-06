@@ -16,6 +16,18 @@ using namespace std;
 vector<Laptop>laptopi;
 int error;
 
+void osnova() {
+	cout << "------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------\n";
+	cout << std::left << std::setw(15) << "Proizvodjac " << std::left << std::setw(26) << "Model " << std::left << std::setw(10) << "Kolièina" <<
+		std::left << std::setw(20) << "Godina proizvodnje " << std::left << std::setw(15) << "Cijena(KM) " << std::left << std::setw(10)
+		<< std::left << std::setw(26) << "CPU" << std::left << std::setw(32) << "GPU" << std::left << std::setw(22) << "Operativni Sistem" << std::left << std::setw(12) <<
+		"RAM(GB) " << std::left << std::setw(10) << "HDD||SDD \n";
+	cout << "-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------\n";
+}
+void ispisLaptopa() {
+	osnova();
+	smjestizaIspis("Laptop");
+}
 void pretragaPoProizziMod(string r) {
 
 
@@ -29,7 +41,6 @@ void pretragaPoProizziMod(string r) {
 	getline(cin, *p);
 	if (r == "Laptop") { temp->pretragaPoProizImodeluLap(*l, *p); }
 }
-
 void pretragaPoProiz(string r) {
 	std::shared_ptr<Laptop>temp = std::make_shared<Laptop>();
 	std::unique_ptr<string>p = std::make_unique<string>();
@@ -40,8 +51,6 @@ void pretragaPoProiz(string r) {
 		temp->pretragaPoProiz(*l);
 	}
 }
-
-
 string unosPassworda(string password, int ch = 0) {
 	password.clear();
 	while (ch = _getch()) {
@@ -51,7 +60,6 @@ string unosPassworda(string password, int ch = 0) {
 	}
 	password.erase(password.length() - 1);
 	return password;}
-
 void fontsize() {
 	short font, x, y;
 	do {
@@ -68,7 +76,6 @@ void fontsize() {
 	Font.dwFontSize = fsize;SetCurrentConsoleFontEx(Hout, 0, &Font);
 	cin.clear();system("cls");
 }
-
 void tema() {
 	int boja;
 	cout << "\n" << setw(72) << "1. Black and White theme " << endl;
@@ -96,8 +103,6 @@ void tema() {
 	return;
 }
 
-
-
 void pretragaOpcije() {
 	system("pause");
 	system("cls");
@@ -111,19 +116,6 @@ void pretragaOpcije() {
 	cout << "\n" << setw(81) << "3. Pretraga racunara: ";
 	cout << "\n" << setw(83) << "0. Vrati se nazad\n";
 }
-void brisiOpcije() {
-	system("pause");
-	system("cls");
-	cout << "\n\n" << setw(86) << "**********************************************" << endl;
-	cout << setw(86) << "*     >>>>    IZBRISI    PROIZVOD    <<<<      *" << endl;
-	cout << setw(86) << "**********************************************" << endl;
-	cin.clear();
-	cout << "\n" << setw(79) << "Odaberite neku od ponudjenih opcija :";
-	cout << "\n\n" << setw(79) << "1. Brisanje laptopa: ";
-	cout << "\n" << setw(80) << "2. Brisanje racunara: ";
-	cout << "\n" << setw(80) << "2. Brisanje mobitela: ";
-	cout << "\n" << setw(78) << "0. Vrati se na menu:\n";
-}
 void ispisOpcije() {
 	system("pause");
 	system("cls");
@@ -135,7 +127,7 @@ void ispisOpcije() {
 	cout << "\n\n" << setw(73) << "1. Ispis svih proizvoda: ";
 	cout << "\n" << setw(74) << "2. Ispis mobitela: ";
 	cout << "\n" << setw(81) << "3. Ispis racunara: ";
-	cout << "\n" << setw(81) << "3. Ispis laptopa: ";
+	cout << "\n" << setw(81) << "4. Ispis laptopa: ";
 	cout << "\n" << setw(83) << "0. Vrati se nazad\n";
 }
 void updateOpcije() {
@@ -159,11 +151,9 @@ void adminOpcije() {
 	cout << setw(81) << "*****************************************" << endl;
 	cin.clear();
 	cout << "\n" << setw(79) << "Odaberite neku od ponudjenih opcija :";
-	cout << "\n\n" << setw(69) << "1. Ispis odredjene vrste proizvoda: (onda da bira koji ce proizvod, te nakon odabira iste ispisati) ";
-	cout << "\n" << setw(70) << "2. Prikazi sve proizvode: ";
-	cout << "\n" << setw(66) << "3. Potrazi proizvod: ";
-	cout << "\n" << setw(66) << "4. Izbrisi proizvod: ";
-	cout << "\n" << setw(67) << "5. (U slucaju nabavke)Azuriraj broj proizvoda: ";
+	cout << "\n\n" << setw(69) << "1. Ispis odredjene vrste proizvoda:";
+	cout << "\n" << setw(66) << "2. Potrazi proizvod: ";
+	cout << "\n" << setw(67) << "3. (U slucaju nabavke)Azuriraj broj proizvoda: ";
 	cout << "\n" << setw(75) << "0. Vrati se na glavni menu:\n";
 }
 void adminMenu() {
@@ -184,14 +174,12 @@ void adminMenu() {
 		cin.ignore();
 		switch (odabir) {
 		case 1: {odabir == 1; break;}
-		case 2: //ispisProizvoda(); 
+		case 2: odabir == 2;
 			break;
 		case 3: odabir = 3; break;
-		case 4: odabir = 4; break;
 		case 0: {
 			system("CLS");
 		} break;
-		default: cout << setw(62) << "[GRESKA] -> Unos nije validan!" << endl;
 		}
 		if (odabir == 1) {
 			do {
@@ -200,7 +188,7 @@ void adminMenu() {
 					error = 0;
 					cout << "\n" << setw(70) << "Unesite svoj izbor: ";
 					cin >> odabirI;
-					if (odabirI < 0 || odabirI>3) {
+					if (odabirI < 0 || odabirI>4) {
 						cout << "Molimo za validan unos: ";
 						error = 1;
 						cin.clear();
@@ -209,16 +197,21 @@ void adminMenu() {
 				} while (error == 1);
 				cin.ignore();
 				switch (odabirI) {
-				case 1: //ispislaptopa(); 
+				case 1: 
+					cout << "Laptopi: ";
+					ispisLaptopa();
+					cout << "Mobiteli: ";
 					break;
-				case 2: //ispismobitela(); 
+				case 2: 
+					//ispismobitela(); 
 					break;
 				case 3: //ispisracunara(); 
 					break;
+				case 4:
+					ispisLaptopa();
 				case 0: {
 					system("pause");
 				}
-				default: cout << "[GRESKA] -> Unos nije validan!" << endl;
 				}
 			} while (odabirI != 0);
 		}
@@ -240,7 +233,6 @@ void adminMenu() {
 				switch (odabirP) {
 				case 1: {
 					pretragaPoProizziMod("Laptop");
-					//pretragaLaptopa();
 					break;
 				}
 				case 2: {
@@ -254,43 +246,11 @@ void adminMenu() {
 				case 0: {
 					system("pause");
 				} break;
-				default: cout << setw(62) << "[GRESKA] -> Unos nije validan!" << endl;
 				}
 			} while (odabirP != 0);
 		}
-		if (odabir == 4) {
-			do {
-				brisiOpcije();
-				do {
-					error = 0;
-					cout << "\n" << setw(70) << "Unesite svoj izbor: ";
-					cin >> odabirB;
-					if (odabirB < 0 || odabirB>3) {
-						cout << setw(62) << "Molimo za validan unos: ";
-						error = 1;
-						cin.clear();
-						cin.ignore();
-					}
-				} while (error == 1);
-
-				switch (odabirB) {
-				case 1: {//ispislaptopa();
-					//brisanjeOdredjenogLaptopa(); ----------------> dodati fju u laptop <--------------------
-				}break;
-				case 2: {//ispislaptopa();
-					//brisanjeOdredjenogLaptopa(); ----------------> dodati fju u racunar <-------------------- 
-				}break;
-				case 3: {//ispislaptopa();
-					//brisanjeOdredjenogLaptopa(); ----------------> dodati fju u mobitel <-------------------- 
-				}break;
-				case 0: {
-					system("pause");
-				} break;
-				default: cout << "[GRESKA] -> Unos nije validan!" << endl;
-				}
-			} while (odabirB != 0);
-		}
-		if (odabir == 5) {
+		
+		if (odabir == 3) {
 			do {
 				updateOpcije();
 				do {
@@ -306,9 +266,8 @@ void adminMenu() {
 				} while (error == 1);
 
 				switch (odabirA) {
-				case 1: {//ispislaptopa();
+				case 1:  ispisLaptopa();
 					//azuriranjeOdredjenogLaptopa(); ----------------> dodati fju u laptop, kao operator da se poveca broj <--------------------; 
-				}
 					  break;
 				case 2: {//ispisMobitela();
 					//azuriranjeOdredjenogMobitela(); ----------------> dodati fju u mobitel, kao operator da se poveca broj <--------------------; 
@@ -322,7 +281,7 @@ void adminMenu() {
 					system("pause");
 
 				} break;
-				default: cout << setw(62) << "[GRESKA] -> Unos nije validan!" << endl;
+			
 				}
 			} while (odabirA != 0);
 		}
@@ -369,7 +328,7 @@ void kupacMenu() {
 		case 0: {
 			system("CLS");
 		} break;
-		default: cout << setw(62) << "[GRESKA] -> Unos nije validan!" << endl;
+
 		}
 		if (odabir == 1) {
 			do {
@@ -378,25 +337,31 @@ void kupacMenu() {
 					error = 0;
 					cout << "\n" << setw(70) << "Unesite svoj izbor: ";
 					cin >> odabirI;
-					if (odabirI < 0 || odabirI>3) {
+					if (odabirI < 0 || odabirI>4) {
 						cout << "Molimo za validan unos: ";
 						error = 1;
 						cin.clear();
 						cin.ignore();
 					}
 				} while (error == 1);
-
+				cin.ignore();
 				switch (odabirI) {
-				case 1: //ispislaptopa(); 
+				case 1: 
+					cout << "Laptopi: ";
+					ispisLaptopa();
+					cout << "Mobiteli: ";
 					break;
-				case 2: //ispismobitela(); 
+				case 2: 
+					//ispismobitela(); 
 					break;
 				case 3: //ispisracunara(); 
 					break;
+				case 4:
+					ispisLaptopa();
 				case 0: {
 					system("pause");
 				}
-				default: cout << "[GRESKA] -> Unos nije validan!" << endl;
+	
 				}
 			} while (odabirI != 0);
 		}
@@ -418,7 +383,7 @@ void kupacMenu() {
 				switch (odabirP) {
 				case 1: {
 					pretragaPoProizziMod("Laptop");
-					//pretragaLaptopa();
+				
 					break;
 				}
 				case 2: {
@@ -457,71 +422,7 @@ void kupacMenu() {
 
 }
 
-//void prodajaLaptopa() {
-//	ifstream pro("Laptop.txt");
-//	string pom;
-//	shared_ptr<Laptop>temp = make_shared<Laptop>();
-//	vector<Laptop>Laptopi;
-//	int p = -3,ID=0;
-//	try {
-//		if (pro.is_open()) {
-//			while (true) {
-//				getline(pro, pom);
-//				p++;
-//				pro >> temp->getProizvodjac();
-//
-//			}
-//			pro.close();
-//		}
-//		else {
-//			throw "Nazalost,neuspjesno otvaranje datotetke Laptop.txt";
-//		}
-//	}catch (const char* a) {
-//		cout << a << " \n";
-//	}
-//
-//	std::ifstream some("Narudzbe.txt");
-//	std::string te;
-//	some >> te;
-//	if (some.eof()) {
-//		some.close();
-//		std::ofstream upi("Narudzbe.txt");
-//		upi << "-----------------------------------------------------------------------------------------------------------------------------\n";
-//		upi << std::left << std::setw(15) << "Ime:" << std::left << std::setw(15) << "Prezime: " << std::left << std::setw(15)<<"Ziro racun" << std::left << std::setw(10)<<  "ID laptopa:" <<
-//			std::left << std::setw(10) << "Kolicina: " << endl;
-//		upi << "------------------------------------------------------------------------------------------------------------------------------\n";
-//		upi.close();
-//	}
-//	else some.close();
-//
-//
-//
-//	ofstream naruci("Narudzbe.txt",ios::app);
-//	if (naruci.is_open()) {
-//		do {
-//			cout << "Unesite ID laptopa koji zelite kupiti: ";
-//			cin >> ID;
-//		} while (ID > p || ID <= 0);
-//		cin.ignore();
-//		unique_ptr<Kupac>kupci = make_unique<Kupac>();
-//		kupci->setIme();
-//		naruci << std::left << std::setw(15) << kupci->getIme();
-//		kupci->setPrezime();
-//		naruci << std::left << std::setw(15) << kupci->getPrezime();
-//		kupci->setKartica();
-//		naruci << std::left << std::setw(15) << kupci->getKartica();
-//		naruci << std::left << std::setw(10) << ID;
-//
-//
-//		naruci << endl;
-//
-//		naruci.close();
-//	}
-//	else {
-//		cout << "Neuspjesno otvaranje datoteke\n";
-//	}
-//
-//}
+
 
 
 void smjestizaIspis(string n) {
@@ -557,55 +458,6 @@ void unosLaptopa() {
 	cout << "Uspjesno smjesten laptop u datoteku\n";
 }
 
-void osnova() {
-	cout << "------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------\n";
-	cout << std::left << std::setw(15) << "Proizvodjac " << std::left << std::setw(26) << "Model " << std::left << std::setw(10) << "Kolièina" <<
-		std::left << std::setw(20) << "Godina proizvodnje " << std::left << std::setw(15) << "Cijena(KM) " << std::left << std::setw(10)
-		<< std::left << std::setw(26) << "CPU" << std::left << std::setw(32) << "GPU" << std::left << std::setw(22) << "Operativni Sistem" << std::left << std::setw(12) <<
-		"RAM(GB) " << std::left << std::setw(10) << "HDD||SDD \n";
-	cout << "-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------\n";
-}
-
-//
-//void pretragaPoProizziMod(string r) {
-//	std::shared_ptr<Laptop>temp = std::make_shared<Laptop>();
-//	std::unique_ptr<string>p = std::make_unique<string>();
-//	std::unique_ptr<string>l = std::make_unique<string>();
-//	std::cout << "Unesite proizvodjaca za pretragu: ";
-//	getline(cin, *l);
-//	std::cout << "Unesite model za pretragu: ";
-//	getline(cin, *p);
-//	if (r == "Laptop") { temp->pretragaPoProizImodeluLap(*l, *p); }
-//}
-
-//
-//void sortiranjePoSekundarnoj(){
-//		std::ifstream unos("Laptop.txt");
-//		std::vector<std::string>nizl;std::vector<int>hdd;std::string temp;int pom;std::string po;
-//		int a, b, c, x, p = 0;
-//		if (unos.fail())std::cout << "Nemoguce otvaranje datoeke\n";
-//		else {
-//			getline(unos, temp);getline(unos, temp);getline(unos, temp);
-//			while (true) {
-//				getline(unos, temp);
-//				if (unos.eof())break;
-//				nizl.push_back(temp);
-//				a = temp[122] - '0';b = temp[123] - '0';c = temp[124] - '0';
-//				if (a > -1 && b > -1 && c > -1) x = a * 100 + b * 10 + c + 1;
-//				else if (a > -1 && b > -1 && c < -1) x = a * 10 + b;
-//				else if (a > -1 && b < -1 && c < -1) x = a;
-//				hdd.push_back(x);
-//			}
-//			for (int i = 0;i < hdd.size();i++) {
-//				for (int j = i;j < hdd.size();j++) {
-//					if (hdd[j] > hdd[i]) {
-//						std::swap(hdd[j], hdd[i]);
-//						std::swap(nizl[j], nizl[i]);
-//					}}}
-//			osnova();
-//			for (int i = 0;i < hdd.size();i++)std::cout << nizl[i] << "\n";
-//			unos.close();
-//		}}
 
 
 void stanjeK() {
@@ -614,10 +466,7 @@ void stanjeK() {
 }
 
 
-void ispisLaptopa() {
-	osnova();
-	smjestizaIspis("Laptop");
-}
+
 
 void info(){
 	cout << "DOBRO DOSLI\n\n\n";
@@ -655,7 +504,7 @@ int main()
 	////ispisLaptopa();
 	//pretragaPoProizziMod("Laptop");
 	//cout << "pocetak;";
-	Lap.prodajaLaptopa();
+	//Lap.prodajaLaptopa();
 	//cout << "Kraj";
 //
 	do {
