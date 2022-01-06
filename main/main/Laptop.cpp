@@ -23,14 +23,14 @@ Laptop::Laptop(std::string a, std::string b, int c, int d, float e, std::string 
 void Laptop::adminProdaja(){
     std::string temp;
     
-    int o=-3,idOs,idLap,idkol;
+    int o=-3,idOs, p = -3, kol = 0, l, idLap;;
     
     std::ifstream citaj("Narudzbe.txt");
 
     if(citaj.is_open()){
                 while(!citaj.eof()){
             getline(citaj,temp);
-            std::cout<<temp;
+            std::cout<<temp<<std::endl;
             o++;
         }
         citaj.close();
@@ -43,27 +43,30 @@ void Laptop::adminProdaja(){
     std::cout<<"Unesite ID osobe kojoj zelite poslati artikle;";
     std::cin>>idOs;
     }while(idOs<0||idOs>o);
-    std::cin.ignore();
     
-int p,kol=0,l;
 
-std::ifstream cit("Narudzbe.txt");
+    
+    std::ifstream cit("Narudzbe.txt",std::ios::in);
   if(cit.is_open()){
-                while(!cit.eof()){
+          while(!cit.eof()){
             getline(cit,temp);
             p++;
+            std::cout << " ";
             if(p==idOs){
-                citaj>>l;
-                citaj>>idLap;
-                citaj>>kol;
-            }
+                getline(cit, temp);
+                cit>>l;
+                cit>>idLap;
+                cit>>kol;
+                std::cout << l << idLap << kol;
+                //getline(cit, temp);
+                 }
             }
      cit.close();
     }else{
         std::cout<<"Neuspjesno otvaranje datoteke narudzbe.txt\n";
     }
 
-
+  std::cout << "Gotovo";
 
     const int u=o;
     Laptop *niz=new Laptop[u];
@@ -346,7 +349,7 @@ void Laptop::sortiranjePoSekundarnoj()
 void Laptop::prodajaLaptopa()
 {
     
-    std::string pom;
+    std::string pom, pom2;
     Laptop temp ;
     int p=-3, ID = 0,kol=0;
     std::ifstream pro("Laptop.txt");
@@ -360,13 +363,14 @@ void Laptop::prodajaLaptopa()
         else {
             std::cout<< "Nazalost,neuspjesno otvaranje datotetke Laptop.txt";
         }
-        int k = -3;
+        
+        int t = -3;
 
         std::ifstream proo("Narudzbe.txt");
         if (proo.is_open()) {
             while (!proo.eof()) {
-                getline(proo, pom);
-                k++;
+                getline(proo, pom2);
+                t++;
             }
             proo.close();
         }
@@ -403,7 +407,7 @@ void Laptop::prodajaLaptopa()
             std::cin >> ID;
             std::cin.ignore();
         } while (ID > p || ID <= 0);
-        naruci << std::left << std::setw(15) << k++;
+        naruci << std::left << std::setw(15) << t++;
         naruci << std::left << std::setw(13) << ID;
             std::cout << "Unesite kolicinu laptopa koji zelite kupiti: ";
             std::cin >> kol;
@@ -605,13 +609,50 @@ std::ostream& operator<<(std::ostream& stream, Laptop& a)
 
 
     std::string temp;
-    std::ifstream ispis("Laptop.txt");
+   /* std::ifstream ispis("Laptop.txt");
     while (ispis.eof()) {
         ispis >> temp;
         stream << temp;
 
     }
-    ispis.close();
+    ispis.close();*/
+
+    int o = -3, idOs = 0;
+
+    std::ifstream citaj("Laptop.txt");
+
+    if (citaj.is_open()) {
+        while (!citaj.eof()) {
+            getline(citaj, temp);
+            std::cout << temp;
+            o++;
+        }
+        citaj.close();
+    }
+    else {
+        std::cout << "Neuspjesno otvaranje datoteke narudzbe.txt\n";
+    }
+    const int u = o;
+    Laptop* niz = new Laptop[u];
+    std::ifstream cita("Laptop.txt");
+    if (cita.is_open()) {
+        getline(cita, temp);
+        getline(cita, temp);
+        getline(cita, temp);
+        while (!cita.eof()) {
+            for (int i = 0;i < o;i++) {
+                cita >> niz[i].proizvodjac >> niz[i].model >> niz[i].kolicina >> niz[i].godina_proiz >> niz[i].cijena >> niz[i].cpu >> niz[i].gpu >>
+                    niz[i].OperativniSistemNiz >> niz[i].memorija >> niz[i].hard_drive;
+            }
+            cita.close();
+        }
+    }
+    for (int i = 0;i < o;i++) {
+        std::cout<<  niz[i].proizvodjac << niz[i].model << niz[i].kolicina << niz[i].godina_proiz << niz[i].cijena << niz[i].cpu << niz[i].gpu <<
+            niz[i].OperativniSistemNiz << niz[i].memorija << niz[i].hard_drive << std::endl;
+    }
+
+
     return stream;
 }
 
