@@ -16,8 +16,10 @@ using namespace std;
 vector<Laptop>laptopi;
 int error;
 
-
 void pretragaPoProizziMod(string r) {
+
+
+
 	std::shared_ptr<Laptop>temp = std::make_shared<Laptop>();
 	std::unique_ptr<string>p = std::make_unique<string>();
 	std::unique_ptr<string>l = std::make_unique<string>();
@@ -93,75 +95,7 @@ void tema() {
 	system("cls");
 	return;
 }
-//
-//void login(string& admin, string& password) {
-//	bool valid = false;adminP temp;
-//	vector <adminP> vektor;
-//	ifstream adminFile("admin.txt");
-//	if (adminFile.is_open()) {
-//
-//		while (adminFile >> temp.adminUser) {
-//			adminFile >> temp.adminPass;
-//			vektor.push_back(temp);
-//			if (vektor.size() >= 200)
-//				break;
-//		}
-//	}
-	//adminFile.close();
-//	for (int i = 0; i < vektor.size(); i++) {
-//		if (admin == vektor[i].adminUser && password == vektor[i].adminPass) {
-//			cout << "\n\n" << setw(75) << "Uspjesno logirani na admin acc." << endl;
-//			valid = true;
-//			adminMenu();
-//			break;
-//			Sleep(2000);
-//		}
-//	}
-//	if (!valid) {
-//		cout << "\n\n" << setw(75) << "Username ili password nisu validni." << endl;
-//		system("pause");
-//		Sleep(2000);
-//		system("CLS");
-//	}
-//
-//}
-//void dodajProfil() {
-//
-//	ofstream file;
-//	file.open("kupac.txt", std::ios_base::app);
-//	if (!file) {
-//		cout << "\n" << setw(80) << "Nije moguce otvoriti datoteku!";
-//		return;}
-//	kupacP k;
-//	cout << "\n" << setw(63) << "Username: ";cin >> k.kupacUser;
-//	cout << "\n" << setw(63) << "Password: ";cin >> k.kupacPass;
-//	file << " " << k.kupacUser << " ";
-//	file << k.kupacPass << endl;
-//	file.close();Sleep(1000);system("CLS");
-//}
-//void kupacLogin(string& user, string& password) {
-//	bool valid = false;kupacP temp;
-//	vector <kupacP> vektor;
-//	ifstream kupacFile("kupac.txt");
-//	if (kupacFile.is_open()) {
-//		while (kupacFile >> temp.kupacUser) {
-//			kupacFile >> temp.kupacPass;
-//			vektor.push_back(temp);
-//			if (vektor.size() >= 200)
-//				break;}}
-//	kupacFile.close();
-//	for (int i = 0; i < vektor.size(); i++) {
-//		if (user == vektor[i].kupacUser && password == vektor[i].kupacPass) {
-//			cout << "\n\n" << setw(75) << "Uspjesno logirani na kupac acc." << endl;
-//			kupacMenu();
-//			valid = true;break;}
-//		else if (user == "Guest" && password == "guest") {
-//			cout << "\n\n" << setw(78) << "Uspjesno logirani na guest acc." << endl;
-//			valid = true;break;}}
-//	if (!valid) {
-//		cout << "\n\n" << setw(78) << "Username ili password nisu validni." << endl;
-//		system("pause");Sleep(2000);system("CLS");
-//	}}
+
 
 
 void pretragaOpcije() {
@@ -684,107 +618,6 @@ void ispisLaptopa() {
 	osnova();
 	smjestizaIspis("Laptop");
 }
-//void sortiranjeLaptopa(std::string rec) {
-//	std::ifstream unos("Laptop.txt");
-//	std::vector<std::string>nizl;
-//	std::vector<int>hdd;
-//	std::vector<int>godine;
-//	std::vector<int>cijena;
-//	std::vector<int>ram;
-//	std::string temp;
-//	std::string po;
-//	int a=0, b=0, c=0, d=0, x=0, p = 0;
-//	if (unos.fail())std::cout << "Nemoguce otvaranje datoeke\n";
-//	else {
-//		getline(unos, temp);
-//		getline(unos, temp);
-//		getline(unos, temp);
-//		while (true) {
-//			getline(unos, temp);
-//			if (unos.eof())break;
-//			nizl.push_back(temp);
-//			if (rec == "hdd") {
-//				a = temp[178] - '0';b = temp[179] - '0';c = temp[180] - '0';
-//				if (a > -1 && b > -1 && c > -1) x = a * 100 + b * 10 + c + 1;
-//				else if (a > -1 && b > -1 && c < -1) x = a * 10 + b;
-//				else if (a > -1 && b < -1 && c < -1) x = a;
-//				hdd.push_back(x);
-//			}
-//			if (rec == "ram") {
-//				a = temp[166] - '0';
-//				b = temp[167] - '0';
-//				c = temp[168] - '0';
-//				if (a > -1 && b > -1 && c > -1) x = a * 100 + b * 10 + c + 1;
-//				else if (a > -1 && b > -1 && c < -1) x = a * 10 + b;
-//				else if (a > -1 && b < -1 && c < -1) x = a;
-//				cout << a << " " << b << " " << c << " "  << x << "\n ";
-//				ram.push_back(x);
-//			}
-//			if (rec == "godine") {
-//				a = temp[51] - '0';
-//				b = temp[52] - '0';
-//				c = temp[53] - '0';
-//				d = temp[54] - '0';
-//				if (a > -1 && b > -1 && c > -1 && d > -1) x = a * 1000 + b * 100 + c * 10 + d;
-//				else if (a > -1 && b > -1 && c > -1 && d < -1) x = a * 100 + b * 10 + c;
-//				else if (a > -1 && b > -1 && c < -1 && d < -1) x = a * 10 + b;
-//				else if (a > -1 && b < -1 && c < -1 && d < -1) x = a;
-//				godine.push_back(x);
-//			}
-//			if (rec == "cijena") {
-//				a = temp[71] - '0';
-//				b = temp[72] - '0';
-//				c = temp[73] - '0';
-//				d = temp[74] - '0';
-//				if (a > -1 && b > -1 && c > -1 && d > -1) x = a * 1000 + b * 100 + c * 10 + d;
-//				else if (a > -1 && b > -1 && c > -1 && d < -1) x = a * 100 + b * 10 + c;
-//				else if (a > -1 && b > -1 && c < -1 && d < -1) x = a * 10 + b;
-//				else if (a > -1 && b < -1 && c < -1 && d < -1) x = a;
-//				cijena.push_back(x);
-//			}
-//		}
-//		if (rec == "hdd") {
-//			for (int i = 0;i < hdd.size();i++) {
-//				for (int j = i;j < hdd.size();j++) {
-//					if (hdd[j] > hdd[i]) {
-//						std::swap(hdd[j], hdd[i]);
-//						std::swap(nizl[j], nizl[i]);
-//					}}}
-//			osnova();
-//			for (int i = 0;i < hdd.size();i++)std::cout << nizl[i] << "\n";
-//		}
-//		if (rec == "ram") {
-//			for (int i = 0;i < ram.size();i++) {
-//				for (int j = i;j < ram.size();j++) {
-//					if (ram[j] > ram[i]) {
-//						std::swap(ram[j], ram[i]);
-//						std::swap(nizl[j], nizl[i]);
-//					}}}
-//			osnova();
-//			for (int i = 0;i < ram.size();i++)std::cout << nizl[i] << "\n";
-//		}if (rec == "godine") {
-//			for (int i = 0;i < godine.size();i++) {
-//				for (int j = i;j < godine.size();j++) {
-//					if (godine[j] > godine[i]) {
-//						std::swap(godine[j], godine[i]);
-//						std::swap(nizl[j], nizl[i]);
-//					}}}
-//			osnova();
-//			for (int i = 0;i < godine.size();i++)std::cout << nizl[i] << "\n";
-//		}
-//			if (rec == "cijena") {
-//				for (int i = 0;i < cijena.size();i++) {
-//					for (int j = i;j < cijena.size();j++) {
-//						if (cijena[j] > cijena[i]) {
-//							std::swap(cijena[j], cijena[i]);
-//							std::swap(nizl[j], nizl[i]);
-//						}}}
-//				osnova();
-//				for (int i = 0;i < cijena.size();i++)std::cout << nizl[i] << "\n";
-//			}
-//		unos.close();
-//	}
-//}
 
 void info(){
 	cout << "DOBRO DOSLI\n\n\n";
@@ -812,7 +645,7 @@ int main()
 	//info();
 	bool l;
 	//Lap.soranjeLaptopa("cijena");
-	pretragaPoProiz("Laptop");
+	//pretragaPoProiz("Laptop");
 	//ispisLaptopa();
 	//osnova();
  //  Lap.sortiranjeLaptopa("ram");
@@ -901,7 +734,7 @@ int main()
 				string kupac, password;
 				std::shared_ptr<Kupac>tempp = std::make_shared<Kupac>();
 				cout << "Molim vas unesite kupac username: ";
-				getline(cin,kupac);
+				getline(cin, kupac);
 				cout << "Sifra: ";
 				password = tempp->unosPassworda(password, 0);
 				if (tempp->login(kupac, password) == true) {
@@ -914,22 +747,22 @@ int main()
 					Sleep(2000);
 					system("CLS");
 				}
-			}
-			case 2: {
-				std::shared_ptr<Kupac>k = std::make_shared<Kupac>();
+			}break;
+				case 2: {
+					std::shared_ptr<Kupac>k = std::make_shared<Kupac>();
 				
-				l = k->dodajProfil();
-				if (l == false) {
-					cout << "Usernamee vec postoji \n";
+					l = k->dodajProfil();
+					if (l == false) {
+						cout << "Usernamee vec postoji \n";
+					}
+					break;
 				}
-				break;
-			}
-			case 0: {
-				system("CLS");
-			} break;
-			default: cout << setw(65) << "[GRESKA] -> Unos nije validan!" << endl;
-			}
-		}	break;
+				case 0: {
+					system("CLS");
+				} break;
+				default: cout << setw(65) << "[GRESKA] -> Unos nije validan!" << endl;
+				}
+			}	break;
 		case 3: {
 			fontsize();
 		}break;
