@@ -1,4 +1,17 @@
 --------------------------------------------------------------------------------------------------------------
 ID osobe       ID laptopa   Kolicina:   Ime            Prezime        Ziro racun     
 ---------------------------------------------------------------------------------------------------------------
-1              3            4           hhz            tt             ttggg                                                                  
+1              2            2           errer          ere            23456                     
+2              2            3           df             wedrt          454            
+3              4            1           ermin          seee           345            
+4              2            1           elma           seü,am         345            
+5              4            2           err            erer           3456           
+6              2            2           ter            retet          2345           
+7              3            3           ert            ert            345            
+8              3            2           ertz           ert            456            
+9              2            2           sdfr           wert           3456           
+10             1            2           wef            asdf           333            
+11             2            2           fds            ew             r32            
+12             2            2           fr             sdf            r4             
+13             4            4           hkghk          hjgghj         fft            
+14             2            3           sd             sa             das            
