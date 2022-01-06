@@ -20,6 +20,70 @@ Laptop::Laptop(std::string a, std::string b, int c, int d, float e, std::string 
     this->opSis = static_cast<OperativniSistem>(op);
 }
 
+void Laptop::adminProdaja(){
+    std::string temp;
+    
+    int o=-3,idOs,idLap,idkol;
+    
+    std::ifstream citaj("Narudzbe.txt");
+
+    if(citaj.is_open()){
+                while(!citaj.eof()){
+            getline(citaj,temp);
+            std::cout<<temp;
+            o++;
+        }
+        citaj.close();
+    }else{
+        std::cout<<"Neuspjesno otvaranje datoteke narudzbe.txt\n";
+    }
+
+
+    do{
+    std::cout<<"Unesite ID osobe kojoj zelite poslati artikle;";
+    std::cin>>idOs;
+    }while(idOs<0||idOs>o);
+    std::cin.ignore();
+    
+int p,kol=0,l;
+
+std::ifstream cit("Narudzbe.txt");
+  if(cit.is_open()){
+                while(!cit.eof()){
+            getline(cit,temp);
+            p++;
+            if(p==idOs){
+                citaj>>l;
+                citaj>>idLap;
+                citaj>>kol;
+            }
+            }
+     cit.close();
+    }else{
+        std::cout<<"Neuspjesno otvaranje datoteke narudzbe.txt\n";
+    }
+
+
+
+    const int u=o;
+    Laptop *niz=new Laptop[u];
+std::ifstream cita("Laptop.txt");
+    if(cita.is_open()){
+        getline(cita,temp);
+        getline(cita,temp);
+        getline(cita,temp);
+        while(!cita.eof()){
+            for(int i=0;i<o;i++){
+                cita>>niz[i].proizvodjac>>niz[i].model>>niz[i].kolicina>>niz[i].godina_proiz>>niz[i].cijena>>niz[i].cpu>>niz[i].gpu>>
+                niz[i].OperativniSistemNiz>>niz[i].memorija>>niz[i].hard_drive;
+            }
+            cita.close();
+        }
+    }
+    niz[idLap].kolicina-=kol;
+
+
+}
 
 
 void Laptop::PosjedujemArtikal()
@@ -153,7 +217,7 @@ void Laptop::pretragaPoProizImodeluLap(std::string a,std::string b)
                 {
                     std::cout << "Uspjesno pronadjen artikal\n";
                     std::cout << "------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------\n";
-                    std::cout << std::left << std::setw(3) << "ID" <<std::left << std::setw(15) << "Proizvodjac " << std::left << std::setw(26) << "Model " << std::left << std::setw(10) << "Kolièina" <<
+                    std::cout << std::left << std::setw(3) << "ID" <<std::left << std::setw(15) << "Proizvodjac " << std::left << std::setw(26) << "Model " << std::left << std::setw(10) << "KoliÃ¨ina" <<
                         std::left << std::setw(20) << "Godina proizvodnje " << std::left << std::setw(15) << "Cijena(KM) " << std::left << std::setw(10)
                         << std::left << std::setw(26) << "CPU" << std::left << std::setw(32) << "GPU" << std::left << std::setw(22) << "Operativni Sistem" << std::left << std::setw(12) <<
                         "RAM(GB) " << std::left << std::setw(10) << "HDD||SDD \n";
@@ -195,7 +259,7 @@ void Laptop::pretragaPoProiz(std::string a)
                 {
                     std::cout << "Uspjesno pronadjen artikal\n";
                     std::cout << "------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------\n";
-                    std::cout << std::left << std::setw(3) << "ID" << std::left << std::setw(15) << "Proizvodjac " << std::left << std::setw(26) << "Model " << std::left << std::setw(10) << "Kolièina" <<
+                    std::cout << std::left << std::setw(3) << "ID" << std::left << std::setw(15) << "Proizvodjac " << std::left << std::setw(26) << "Model " << std::left << std::setw(10) << "KoliÃ¨ina" <<
                         std::left << std::setw(20) << "Godina proizvodnje " << std::left << std::setw(15) << "Cijena(KM) " << std::left << std::setw(10)
                         << std::left << std::setw(26) << "CPU" << std::left << std::setw(32) << "GPU" << std::left << std::setw(22) << "Operativni Sistem" << std::left << std::setw(12) <<
                         "RAM(GB) " << std::left << std::setw(10) << "HDD||SDD \n";
@@ -488,7 +552,7 @@ std::istream& operator>>(std::istream& stream, Laptop& a)
         some.close();
         std::ofstream upi("Laptop.txt");
         upi << "-----------------------------------------------------------------------------------------------------------------------------\n";
-        upi << std::left << std::setw(15) << "Proizvodjac:" << std::left << std::setw(26) << "Model: " << std::left << std::setw(10) << "Kolièina:" <<
+        upi << std::left << std::setw(15) << "Proizvodjac:" << std::left << std::setw(26) << "Model: " << std::left << std::setw(10) << "KoliÃ¨ina:" <<
             std::left << std::setw(20) << "Godina proizvodnje: " << std::left << std::setw(15) << "Cijena(KM) :" << std::left << std::setw(10)
             << std::left << std::setw(26) << "CPU" << std::left << std::setw(32) << "GPU" << std::left << std::setw(22) << "Operativni Sistem" << std::left << std::setw(12) <<
             "RAM(GB): " << std::left << std::setw(10) << "HDD||SDD: \n";
