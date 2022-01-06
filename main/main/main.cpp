@@ -21,8 +21,34 @@ void osnova() {
 	cout << std::left << std::setw(15) << "Proizvodjac " << std::left << std::setw(26) << "Model " << std::left << std::setw(10) << "Kolièina" <<
 		std::left << std::setw(20) << "Godina proizvodnje " << std::left << std::setw(15) << "Cijena(KM) " << std::left << std::setw(10)
 		<< std::left << std::setw(26) << "CPU" << std::left << std::setw(32) << "GPU" << std::left << std::setw(22) << "Operativni Sistem" << std::left << std::setw(12) <<
-		"RAM(GB) " << std::left << std::setw(10) << "HDD||SDD \n";
+		"RAM(GB) " << std::left << std::setw(10) << "HDD||SSD \n";
 	cout << "-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------\n";
+}
+
+
+void smjestizaIspis(string n) {
+	string temp;
+	string ime = n + ".txt";
+	vector<string>lap;
+	std::ifstream smjesti(ime);
+	if (smjesti.is_open()) {
+		getline(smjesti, temp);
+		getline(smjesti, temp);
+		getline(smjesti, temp);
+		while (true) {
+			getline(smjesti, temp);
+			if (smjesti.eof())break;
+			lap.emplace_back(temp);
+		}
+		smjesti.close();
+	}
+	else {
+		cout << "Neuspjelo otvaranje datoteke\n";
+	}
+	for (auto& i : lap) {
+		cout << i;
+		cout << endl;
+	}
 }
 void ispisLaptopa() {
 	osnova();
@@ -102,7 +128,6 @@ void tema() {
 	system("cls");
 	return;
 }
-
 void pretragaOpcije() {
 	system("pause");
 	system("cls");
@@ -288,7 +313,6 @@ void adminMenu() {
 
 	} while (odabir != 0);
 }
-
 void kupacOpcije() {
 	system("pause");
 	system("cls");
@@ -302,7 +326,6 @@ void kupacOpcije() {
 	cout << "\n" << setw(63) << "3. Kupi knjigu: ";
 	cout << "\n" << setw(75) << "0. Vrati se na glavni menu:\n";
 }
-
 void kupacMenu() {
 	int odabir, odabirI, odabirP;
 	do {
@@ -425,31 +448,6 @@ void kupacMenu() {
 
 
 
-void smjestizaIspis(string n) {
-	string temp;
-	string ime = n+ ".txt";
-	vector<string>lap;
-	std::ifstream smjesti(ime);
-	if (smjesti.is_open()) {
-		getline(smjesti, temp);
-		getline(smjesti, temp);
-		getline(smjesti, temp);
-		while (true) {
-			getline(smjesti, temp);
-			if (smjesti.eof())break;
-			lap.emplace_back(temp);
-		}
-		smjesti.close();
-	}
-	else {
-		cout << "Neuspjelo otvaranje datoteke\n";
-	}
-	for (auto& i : lap) {
-		cout << i;
-		cout << endl;
-	}
-}
-
 
 void unosLaptopa() {
 	std::shared_ptr<Laptop>temp = std::make_shared<Laptop>();
@@ -493,9 +491,12 @@ int main()
 	Laptop Lap ;
 	//info();
 	bool l;
+	ispisLaptopa();
 	//Lap.soranjeLaptopa("cijena");
 	//pretragaPoProiz("Laptop");
-	//ispisLaptopa();
+	Lap.prodajaLaptopa();
+	Lap.adminProdaja();
+	ispisLaptopa();
 	//osnova();
  //  Lap.sortiranjeLaptopa("ram");
 	//sortiranjeLaptopa("hdd");
