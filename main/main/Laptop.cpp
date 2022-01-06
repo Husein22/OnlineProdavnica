@@ -296,6 +296,19 @@ void Laptop::prodajaLaptopa()
         else {
             std::cout<< "Nazalost,neuspjesno otvaranje datotetke Laptop.txt";
         }
+        int k = -3;
+
+        std::ifstream proo("Narudzbe.txt");
+        if (proo.is_open()) {
+            while (!proo.eof()) {
+                getline(proo, pom);
+                k++;
+            }
+            proo.close();
+        }
+        else {
+            std::cout << "Nazalost,neuspjesno otvaranje datotetke Laptop.txt";
+        }
     
 
 
@@ -309,24 +322,29 @@ void Laptop::prodajaLaptopa()
         some.close();
         std::ofstream upi("Narudzbe.txt");
         upi << "--------------------------------------------------------------------------------------------------------------\n";
-        upi << std::left << std::setw(15) << "Ime" << std::left << std::setw(15) << "Prezime " << std::left << std::setw(15) << "Ziro racun" << std::left << std::setw(15) << "ID laptopa" <<
-            std::left << std::setw(10) << "Kolicina: " << std::endl;
+        upi << std::left << std::setw(15) << "ID osobe" << std::left<<std::setw(13) << "ID laptopa" << std::left <<
+            std::setw(12) << "Kolicina: " <<std::left << std::setw(15) << "Ime" << std::left << std::setw(15) << "Prezime " << std::left <<
+            std::setw(15) << "Ziro racun" << std::endl;
         upi << "---------------------------------------------------------------------------------------------------------------\n";
         upi.close();
     }
     else some.close();
 
 
-
+   
    std:: ofstream naruci("Narudzbe.txt", std::ios::app);
     if (naruci.is_open()) {
         do {
             std::cout << "Unesite ID laptopa koji zelite kupiti: ";
             std::cin >> ID;
+            std::cin.ignore();
         } while (ID > p || ID <= 0);
+        naruci << std::left << std::setw(15) << k++;
+        naruci << std::left << std::setw(13) << ID;
             std::cout << "Unesite kolicinu laptopa koji zelite kupiti: ";
             std::cin >> kol;
         std::cin.ignore();
+        naruci << std::left << std::setw(12) << kol;
         std::unique_ptr<Kupac>kupci = std::make_unique<Kupac>();
         kupci->setIme();
         naruci << std::left << std::setw(15) << kupci->getIme();
@@ -334,8 +352,7 @@ void Laptop::prodajaLaptopa()
         naruci << std::left << std::setw(15) << kupci->getPrezime();
         kupci->setKartica();
         naruci << std::left << std::setw(15) << kupci->getKartica();
-        naruci << std::left << std::setw(15) << ID;
-        naruci << std::left << std::setw(10) <<kol;
+       
 
         naruci << std::endl;
 
