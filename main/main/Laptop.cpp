@@ -64,7 +64,9 @@ void Laptop::adminProdaja() {
     int d = 0;
     std::string pom;
     if (cita.is_open()) {
+        getline(cita, pom);getline(cita, pom);getline(cita, pom);
         while (!cita.eof()) {
+
             getline(cita, pom);
             d++;
         } cita.close();
@@ -84,7 +86,7 @@ void Laptop::adminProdaja() {
         getline(cita, temp);
         while (u != 1) {
             u++;
-            for (int i = 0;i < d - 3;i++) {
+            for (int i = 0;i < d ;i++) {
                 cita >> niz[i].proizvodjac >> niz[i].model >> niz[i].kolicina >> niz[i].godina_proiz >> niz[i].cijena >> niz[i].cpu >> niz[i].gpu >>
                     niz[i].OperativniSistemNiz >> niz[i].memorija >> niz[i].hard_drive;
                 if (i == idLap - 1) {
@@ -121,6 +123,55 @@ void Laptop::adminProdaja() {
 
     remove("Laptop.txt");                 //brise Laptop.txt
     rename("tempp.txt", "Laptop.txt");//tempp.txt je sada Laptop.txt
+    std::cout << "Uspjesno tempp stvoren i izbrisan laptop\n";
+   
+    std::ifstream citajj("Narudzbe.txt");
+    citajj.open("Narudzbe.txt");
+    if (citajj.is_open()) {
+        std::ofstream upisii("temp2.txt");//pravljenje pomocne datoteke temp2.txt gdje cemo brisati narudzbe
+        upisii.open("temp2.txt", std::ios::out);
+        int nizz[100];
+        for (int i = 1;i < 100;i++) {
+            nizz[i] = i;
+        }
+        if (upisii.is_open()) {
+            upisii << "--------------------------------------------------------------------------------------------------------------\n";
+            upisii << std::left << std::setw(15) << "ID osobe" << std::left << std::setw(13) << "ID laptopa" << std::left <<
+                std::setw(12) << "Kolicina: " << std::left << std::setw(15) << "Ime" << std::left << std::setw(15) << "Prezime " << std::left <<
+                std::setw(15) << "Ziro racun" << std::setw(15) << "Adresa" << std::endl;
+            upisii << "---------------------------------------------------------------------------------------------------------------\n";
+            int j = 0;
+            std::string pomocniii;
+            getline(citajj, pomocniii);
+            getline(citajj, pomocniii);
+            getline(citajj, pomocniii);
+            while (!citaj.eof()) {
+                if (j < idLap) {
+                    j++;
+                    getline(citajj, pomocniii);
+                    upisii << pomocniii << std::endl;
+                }if (j == idLap) {
+                    getline(citajj, pomocniii);
+                    upisii << pomocniii << std::endl;
+                }if (j > idLap) {
+                    citaj >> niz[j];
+                    upisii << niz[j - 1];
+                    getline(citajj, pomocniii);
+                    upisii << pomocniii << std::endl;
+                }
+
+            }
+
+            remove("Narudzbe.txt");                 //brise Laptop.txt
+            rename("temp2.txt", "Narudzbe.txt");//tempp.txt je sada Laptop.txt
+
+            std::cout << "Uspjesno izbrisana narudzba\n";
+        }
+        else {
+            std::cout << "Niste uspjeli otvoriti datoteku\n";
+        }
+    }
+    else { std::cout << "Neuspjesno otvaranje citajj\n"; }
 }
 
 void Laptop::PosjedujemArtikal()
@@ -468,51 +519,7 @@ void Laptop::prodajaLaptopa()
    
 }
 
-void Laptop::smjestiVektor()
-{
-    std::string tempp;
-    int p = -3;
-    std::ifstream cit("Laptop.txt", std::ios::in);
-    if (cit.is_open()) {
-        while (!cit.eof()) {
-            getline(cit, tempp);
-            p++;
-    
-        }
-        cit.close();
-    }
-    else {
-        std::cout << "Neuspjesno otvaranje datoteke narudzbe.txt\n";
-    }
 
-
-
-    std::string temp;
-    std::ifstream cita("Laptop.txt", std::ios::in);
-    Laptop niz;
-    int u = 0;
-    
-    if (cita.is_open()) {
-        getline(cita, temp);
-        getline(cita, temp);
-        getline(cita, temp);
-        while (u != 1) {
-            u++;
-            for (int i = 0;i < p;i++) {
-                cita >> niz.proizvodjac >> niz.model >> niz.kolicina >> niz.godina_proiz >> niz.cijena >> niz.cpu >> niz.gpu >>
-                    niz.OperativniSistemNiz >> niz.memorija >> niz.hard_drive;
-                laptopi.push_back(niz);
-            }
-        }
-        std::cout << "Uspjesno smjesteni laptopi u vektor\n";
-
-        cita.close();
-
-    }
-
-
-
-}
 
 void Laptop::sortiranjeLaptopa(std::string rec)
 {
@@ -631,6 +638,7 @@ void Laptop::sortiranjeLaptopa(std::string rec)
 
 std::istream& operator>>(std::istream& stream, Laptop& a)
 {
+   
     std::ifstream some("Laptop.txt");
     std::string temp;
     some >> temp;
@@ -658,27 +666,102 @@ std::istream& operator>>(std::istream& stream, Laptop& a)
     if (upis.is_open()) {
         
             a.setProizvodjac();
-            upis << std::left << std::setw(15) << a.getProizvodjac();
             a.setModel();
-            upis << std::left << std::setw(26) << a.getModel();
             a.setKolicina();
-            upis << std::left << std::setw(10) << a.getKolicina();
             a.setGodinaProizvodnje();
-            upis << std::left << std::setw(20) << a.getGodinaProizvodnje();
             a.setCijena();
-            upis << std::left << std::setw(15) << a.getCijena();
             a.setCPU();
-            upis << std::left << std::setw(26) << a.getCPU();
             a.setGPU();
-            upis << std::left << std::setw(32) << a.getGPU();
             a.setOpSis();
-            upis << std::left << std::setw(22) << a.getOpsSisString();
             a.setMemorija();
-            upis << std::left << std::setw(12) << a.getMemorija();
             a.setHardDrivee();
-            upis << std::left << std::setw(10) << a.getHardDrive();
-            upis << std::endl;
-            std::cout << "[CESTITAMO]Uspjesno smjestene informacije u datoteku\n";
+
+            std::ifstream cita("Laptop.txt");//broj laptopa u datoteci laptop.txt
+            int d = 0;
+            std::string pom;
+            if (cita.is_open()) {
+                while (!cita.eof()) {
+                    getline(cita, pom);
+                    d++;
+                } cita.close();
+            }
+            else {
+                std::cout << "Nazalost,neuspjesno otvaranje datotetke Laptop.txt";
+            }
+
+
+            cita.open ("Laptop.txt", std::ios::in);//ovaj dio programa nam smjesta iz datoteke laptop,txt u niz,pa onda u vektor laptopi koji nam trebaju
+            Laptop* niz = new Laptop[100];
+            bool v = true;
+            int u = 0;
+            //  std::vector<Laptop>laptopi;
+            if (cita.is_open()) {
+
+                getline(cita, temp);
+                getline(cita, temp);
+                getline(cita, temp);
+                while (u != 1) {
+                    u++;
+                    for (int i = 0;i < d - 3;i++) {
+                        cita >> niz[i].proizvodjac >> niz[i].model >> niz[i].kolicina >> niz[i].godina_proiz >> niz[i].cijena >> niz[i].cpu >> niz[i].gpu >>
+                            niz[i].OperativniSistemNiz >> niz[i].memorija >> niz[i].hard_drive;
+                        if (niz[i].proizvodjac==a.getProizvodjac() && niz[i].model==a.getModel()&& niz[i].godina_proiz==a.getGodinaProizvodnje()&& niz[i].cijena==a.getCijena()&&
+                            niz[i].cpu==a.getCPU()&& niz[i].gpu==a.getGPU()&& niz[i].OperativniSistemNiz==a.getOpsSisString() && niz[i].memorija==a.getMemorija() && niz[i].hard_drive==a.getHardDrive()) {
+                            std::cout << "Posto indeticni navedeni artikal posjedujemo u skladistu dodali smo jos " << a.getKolicina() << " u skladiste\n";
+                            std::cout << "Prije provmjene: " << niz[i].kolicina <<" " << a.getKolicina() << "\n";
+                            niz[i].kolicina = niz[i].kolicina+ a.getKolicina();
+                            std::cout << "Poslije provmjene: " << niz[i].kolicina << " " << a.getKolicina() << "\n";
+                            v = false;
+                        }
+                        laptopi.push_back(niz[i]);
+                    }
+                }
+                delete[] niz;//brisanje dinamicko alociranog niza zbog toga sto nam nece vise trebat
+                cita.close();
+            }
+            else { std::cout << "Neuspjesno otvaranje datoteke \n"; }
+
+            if (v == true) {
+
+                upis << std::left << std::setw(15) << a.getProizvodjac();
+                upis << std::left << std::setw(26) << a.getModel();
+                upis << std::left << std::setw(10) << a.getKolicina();
+                upis << std::left << std::setw(20) << a.getGodinaProizvodnje();
+                upis << std::left << std::setw(15) << a.getCijena();
+                upis << std::left << std::setw(26) << a.getCPU();
+                upis << std::left << std::setw(32) << a.getGPU();
+                upis << std::left << std::setw(22) << a.getOpsSisString();
+                upis << std::left << std::setw(12) << a.getMemorija();
+                upis << std::left << std::setw(10) << a.getHardDrive();
+                upis << std::endl;
+                std::cout << "[CESTITAMO]Uspjesno smjestene informacije u datoteku\n";
+            }if(v==false) {
+                std::ofstream piI("temp3.txt", std::ios::out);//pravljenje pomocne datoteke tempp.txt gdje cemo povecat kolicinu 
+                if (piI.is_open()) {
+                    remove("Laptop.txt");
+                    std::cout << "Usli smo u temppp\n";
+                    piI << "------------------------------------------------------------------------------------------------------------------------------\n";
+                    piI << std::left << std::setw(15) << "Proizvodjac:" << std::left << std::setw(26) << "Model: " << std::left << std::setw(10) << "Kolièina:" <<
+                        std::left << std::setw(20) << "Godina proizvodnje: " << std::left << std::setw(15) << "Cijena(KM) :" << std::left << std::setw(10)
+                        << std::left << std::setw(26) << "CPU" << std::left << std::setw(32) << "GPU" << std::left << std::setw(22) << "Operativni Sistem" << std::left << std::setw(12) <<
+                        "RAM(GB): " << std::left << std::setw(10) << "HDD||SDD: \n";
+                    piI << "------------------------------------------------------------------------------------------------------------------------------\n";
+                    for (int i = 0;i < laptopi.size();i++) {
+                        piI << std::left << std::setw(15) << laptopi[i].proizvodjac << std::left << std::setw(26) << laptopi[i].model
+                            << std::left << std::setw(10) << laptopi[i].kolicina << std::left << std::setw(20) << laptopi[i].godina_proiz << std::left << std::setw(15) << laptopi[i].cijena <<
+                            std::left << std::setw(26) << laptopi[i].cpu << std::left << std::setw(32) << laptopi[i].gpu << std::left << std::setw(22) <<
+                            laptopi[i].OperativniSistemNiz << std::left << std::setw(12) << laptopi[i].memorija << std::left << std::setw(10) << laptopi[i].hard_drive << "\n";
+                    }
+                    
+                    piI.close();
+                }
+                else { std::cout << "[greska]Neuspjesno kreirana datoteka temp2.txt\n"; }
+                              //brise Laptop.txt
+                rename("temp3.txt", "Laptop.txt");//tempp.txt je sada Laptop.txt
+                
+
+
+            }
         }
     else {
         std::cout << "[GRESKA]Datoteka nije otvorena\n";

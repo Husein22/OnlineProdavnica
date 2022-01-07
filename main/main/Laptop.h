@@ -32,7 +32,6 @@ public:
 	void pretragaPoProizImodeluLap(std::string a,std::string b);
 	void pretragaPoProiz(std::string a);
 	void prodajaLaptopa();
-	void smjestiVektor();
 	void adminProdaja();
 	friend float operator!(Laptop&a);
 	friend std::istream& operator>>(std::istream& stream, Laptop& a);

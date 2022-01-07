@@ -577,7 +577,7 @@ int main()
 	//info();
 	bool l;
 	//Lap.prodajaLaptopa();
-	prodajaLaptopa();
+	//prodajaLaptopa();
 	//kupacMenu();
 	//ispisLaptopa();
 	//Lap.soranjeLaptopa("cijena");
@@ -596,6 +596,10 @@ int main()
 	//Lap.prodajaLaptopa();
 	//cout << "Kraj";
 //
+	Lap.adminProdaja();
+	ispisLaptopa();
+	cin >> Lap;
+	ispisLaptopa();
 	do {
 		cout << "\n\n" << setw(81) <<right<< "****************************************" << endl;
 		cout << setw(77) << right<< " * >>>> PRIJAVA NA IT SHOP <<<< *" << endl;
