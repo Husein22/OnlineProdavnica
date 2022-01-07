@@ -1,23 +1,23 @@
 --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 Proizvodjac    Model    	         Kolicina  Godina proizvodnje  Cijena(KM)     CPU       		GPU       			Operativni Sistem     RAM(GB)     HDD||SDD 
 --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-LENOVO         IdeaPad-S150-14AST        5         2019                819            AMD A6-9220e              AMD Radeon R4                   Windows               4           64        
-ASUS           M515DA-EJ301T             7         2017                949            AMD Ryzen 3 3250UAMD      Radeon RX Vega 3                Windows               4           256       
-HP             250G8                     3         2020                999            Intel Core i3-1005G1      Intel UHD Graphics G1           GNOME                 4           256       
-LENOVO         Duet-3-10IGL5             10        2016                875            Intel Celeron N4020       Intel UHD Graphics 600          Windows               4           128       
-DELL           Vostro-3500               12        2020                1149           Intel Core i3-1115G4      Intel UHD Graphics Xe G4 48EUs  Linux                 8           256       
-TOSHIBA        Satellite-Pro-C50-H-11G   9         2020                1169           Intel Core i3-1005G1      Intel UHD Graphics G1           Windows               8           256       
-HP             15s-fq2031nm              6         2019                1168           Intel Core i3-1005G1      Intel UHD Graphics G1           Windows               8           256       
-LENOVO         E5                        11        2018                1199           Intel Core i3-1115G4      Intel UHD Graphics Xe G4 48EUs  Windows               8           256       
-ACER           Aspire-3-A315-57G         10        2019                1249           Intel Core i3-1005G1      NVIDIA GeForce MX330 2GB GDDR5  Linux                 8           256       
-TOSHIBA        Satellite-Pro             2         2017                1249           Intel Core i5-1035G1      Intel UHD Graphics G1           AmigaOS               8           512       
-DELL           Inspiron-17               4         2020                1269           Intel Core i3-1005G1      Intel UHD Graphics G1           Linux                 8           256       
-GATEWAY        Notebook-GWTN156          5         2020                1349           Inte Corel i5-1035G1      Intel UHD Graphics              Windows               16          256       
-ACER           Extensa-EX215-550A        8         2019                1449           Intel Core i5-10210U      NVIDIA GeForce MX230 2GB GDDR5  Unix                  8           512       
-LENOVO         ThinkBook-15-G2-ARE       2         2018                1549           AMD Ryzen 5 4500U         AMD Radeon RX Vega 6            Linux                 8           512       
-ASUS           S15-S533EQ-WB517          13        2020                1849           Intel Core i5-1135G7      nVidia GeForce MX350 2GB GDDR5  Linux                 8           512       
-ASUS           VivoBook-S15-M533IA-WB7   6         2020                1999           AMD Ryzen 7 4700U         AMD Radeon RX Vega 7            Windows               8           512       
-HP             470-G8                    11        2019                2049           Intel Core i5-1135G7      Intel Iris Xe Graphics G7 80EUs Windows               8           256       
-DELL           G15-5511                  8         2018                2199           Intel Core i5-11400H      Nvidia GeForce RTX 3050         Linux                 8           512       
-APPLE          MacBook-Air               2         2021                2299           Apple M1                  M1 - 7 Core                     Mac_OS                8           256       
-GIGABYTE       G5-KC-RC45KC              5         2020                2799           Intel Core i5-10500H      NVIDIA GeForce RTX 3060         GNOME                 16          512       
+LENOVO         IdeaPad-S150-14AST        5         2019                819            AMD-A6-9220e              AMD-Radeon-R4                   Windows               4           64        
+ASUS           M515DA-EJ301T             7         2017                949            AMD-Ryzen-3-3250UAMD      Radeon-RX-Vega-3                Windows               4           256       
+HP             250G8                     3         2020                999            Intel-Core-i3-1005G1      Intel-UHD-Graphics-G1           GNOME                 4           256       
+LENOVO         Duet-3-10IGL5             10        2016                875            Intel-Celeron-N4020       Intel-UHD-Graphics-600          Windows               4           128       
+DELL           Vostro-3500               12        2020                1149           Intel-Core-i3-1115G4      Intel-UHD-Graphics-Xe-G4-48EUs  Linux                 8           256       
+TOSHIBA        Satellite-Pro-C50-H-11G   9         2020                1169           Intel-Core-i3-1005G1      Intel-UHD-Graphics-G1           Windows               8           256       
+HP             15s-fq2031nm              6         2019                1168           Intel-Core-i3-1005G1      Intel-UHD-Graphics-G1           Windows               8           256       
+LENOVO         E5                        11        2018                1199           Intel-Core-i3-1115G4      Intel-UHD-Graphics-Xe-G4-48EUs  Windows               8           256       
+ACER           Aspire-3-A315-57G         10        2019                1249           Intel-Core-i3-1005G1      NVIDIA-GeForce-MX330-2GB-GDDR5  Linux                 8           256       
+TOSHIBA        Satellite-Pro             2         2017                1249           Intel-Core-i5-1035G1      Intel-UHD-Graphics-G1           AmigaOS               8           512       
+DELL           Inspiron-17               4         2020                1269           Intel-Core-i3-1005G1      Intel-UHD-Graphics-G1           Linux                 8           256       
+GATEWAY        Notebook-GWTN156          5         2020                1349           Intel-Corel-i5-1035G1     Intel-UHD-Graphics              Windows               16          256       
+ACER           Extensa-EX215-550A        8         2019                1449           Intel-Core-i5-10210U      NVIDIA-GeForce-MX230-2GB-GDDR5  Unix                  8           512       
+LENOVO         ThinkBook-15-G2-ARE       2         2018                1549           AMD-Ryzen-5-4500U         AMD-Radeon-RX-Vega-6            Linux                 8           512       
+ASUS           S15-S533EQ-WB517          13        2020                1849           Intel-Core-i5-1135G7      nVidia-GeForce-MX350-2GB-GDDR5  Linux                 8           512       
+ASUS           VivoBook-S15-M533IA-WB7   6         2020                1999           AMD-Ryzen-7-4700U         AMD-Radeon-RX-Vega-7            Windows               8           512       
+HP             470-G8                    11        2019                2049           Intel-Core-i5-1135G7      Intel-Iris-Xe-Graphics-G7-80    Windows               8           256       
+DELL           G15-5511                  8         2018                2199           Intel-Core-i5-11400H      Nvidia-GeForce-RTX-3050         Linux                 8           512       
+APPLE          MacBook-Air               2         2021                2299           Apple-M1                  M1-7-Core                       Mac_OS                8           256       
+GIGABYTE       G5-KC-RC45KC              5         2020                2799           Intel-Core-i5-10500H      NVIDIA-GeForce-RTX-3060         GNOME                 16          512  
