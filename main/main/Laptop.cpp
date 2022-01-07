@@ -125,6 +125,10 @@ void Laptop::adminProdaja() {
     rename("tempp.txt", "Laptop.txt");//tempp.txt je sada Laptop.txt
     std::cout << "Uspjesno tempp stvoren i izbrisan laptop\n";
    
+
+    
+    // OVAJ ISPOD DIO KODA DO 175 NE RADI!
+
     std::ifstream citajj("Narudzbe.txt");
     citajj.open("Narudzbe.txt");
     if (citajj.is_open()) {
