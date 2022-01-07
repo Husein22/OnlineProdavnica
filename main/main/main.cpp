@@ -491,12 +491,12 @@ int main()
 	Laptop Lap ;
 	//info();
 	bool l;
-	//ispisLaptopa();
+	ispisLaptopa();
 	//Lap.soranjeLaptopa("cijena");
 	//pretragaPoProiz("Laptop");
 	//Lap.prodajaLaptopa();
-	//Lap.adminProdaja();
-	//ispisLaptopa();
+	Lap.adminProdaja();
+	ispisLaptopa();
 	//osnova();
  //  Lap.sortiranjeLaptopa("ram");
 	//sortiranjeLaptopa("hdd");

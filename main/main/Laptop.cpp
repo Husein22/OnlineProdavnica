@@ -24,7 +24,7 @@ Laptop::Laptop(std::string a, std::string b, int c, int d, float e, std::string 
 void Laptop::adminProdaja(){
     std::string temp;
     
-    int o=-3,idOs, p = -1, kol = 0, l, idLap;;
+    int o=-3,idOs, p = -1, kol = 0, l, idLap;
     
     std::ifstream citaj("Narudzbe.txt");
 
@@ -48,6 +48,7 @@ void Laptop::adminProdaja(){
 
     
     std::ifstream cit("Narudzbe.txt",std::ios::in);
+    
   if(cit.is_open()){
           while(!cit.eof()){
             getline(cit,temp);
@@ -69,9 +70,25 @@ void Laptop::adminProdaja(){
 std::cout <<"  "<<o << "   Gotovo\n";
 
   //  const int u=o;
-    
-std::ifstream cita("Laptop.txt",std::ios::in);
-Laptop niz;
+
+std::ifstream cita("Laptop.txt");
+int d= 0;
+std::string pom;
+
+if (cita.is_open()) {
+    while (!cita.eof()) {
+        getline(cita, pom);
+        d++;
+    }
+    cita.close();
+}
+else {
+    std::cout << "Nazalost,neuspjesno otvaranje datotetke Laptop.txt";
+}
+
+
+cita.open("Laptop.txt",std::ios::in);
+Laptop niz[100];
 int u = 0;
 std::vector<Laptop>laptopi;
     if(cita.is_open()){
@@ -81,22 +98,72 @@ std::vector<Laptop>laptopi;
         getline(cita,temp);
         while (u!=1) {
             u++;
-            for (int i = 0;i < o;i++) {
-                cita >> niz.proizvodjac >> niz.model >> niz.kolicina >> niz.godina_proiz >> niz.cijena >> niz.cpu >> niz.gpu >>
-                    niz.OperativniSistemNiz >> niz.memorija >> niz.hard_drive;
-                laptopi.push_back(niz);
+            for (int i = 0;i < d-3;i++) {
+                cita >> niz[i].proizvodjac >> niz[i].model >> niz[i].kolicina >> niz[i].godina_proiz >> niz[i].cijena >> niz[i].cpu >> niz[i].gpu >>
+                    niz[i].OperativniSistemNiz >> niz[i].memorija >> niz[i].hard_drive;
+                if (i == idLap-1) {
+                    std::cout <<idLap<<" "<< " "<<niz[i].model << " " << niz[i].kolicina << " " << kol << "\n";
+                    niz[i].kolicina = niz[i].kolicina- kol;
+                    std::cout << niz[i].kolicina << " " << kol << "\n";
+                    std::cout << "Uspjesno smanjena kolicina\n";
+                }
+                laptopi.push_back(niz[i]);
             }
         }
-        laptopi[idLap].kolicina -= kol;
-        std::cout << "Uspjesno smanjena kolicina\n";
+        
+        
             
             
             cita.close();
         
     }
-    
+
+    for (int i = 0;i < laptopi.size();i++) {
+        std::cout << std::left << std::setw(15) << laptopi[i].proizvodjac << std::left << std::setw(26) << laptopi[i].model
+            << std::left << std::setw(10) << laptopi[i].kolicina << std::left << std::setw(20) << laptopi[i].godina_proiz << std::left << std::setw(15) << laptopi[i].cijena <<
+            std::left << std::setw(26) << laptopi[i].cpu << std::left << std::setw(32) << laptopi[i].gpu << std::left << std::setw(22) <<
+            laptopi[i].OperativniSistemNiz << std::left << std::setw(12) << laptopi[i].memorija << std::left << std::setw(10) << laptopi[i].hard_drive << "\n";
+    }
+   std:: ofstream pi("tempp.txt",std::ios::out);
+   if (pi.is_open()) {
+       pi << "------------------------------------------------------------------------------------------------------------------------------\n";
+       pi << std::left << std::setw(15) << "Proizvodjac:" << std::left << std::setw(26) << "Model: " << std::left << std::setw(10) << "Kolièina:" <<
+           std::left << std::setw(20) << "Godina proizvodnje: " << std::left << std::setw(15) << "Cijena(KM) :" << std::left << std::setw(10)
+           << std::left << std::setw(26) << "CPU" << std::left << std::setw(32) << "GPU" << std::left << std::setw(22) << "Operativni Sistem" << std::left << std::setw(12) <<
+           "RAM(GB): " << std::left << std::setw(10) << "HDD||SDD: \n";
+       pi << "------------------------------------------------------------------------------------------------------------------------------\n";
+       for (int i = 0;i < laptopi.size();i++) {
+           pi << std::left << std::setw(15) << laptopi[i].proizvodjac << std::left << std::setw(26) << laptopi[i].model
+               << std::left << std::setw(10) << laptopi[i].kolicina << std::left << std::setw(20) << laptopi[i].godina_proiz << std::left << std::setw(15) << laptopi[i].cijena <<
+               std::left << std::setw(26) << laptopi[i].cpu << std::left << std::setw(32) << laptopi[i].gpu << std::left << std::setw(22) <<
+               laptopi[i].OperativniSistemNiz << std::left << std::setw(12) << laptopi[i].memorija << std::left << std::setw(10) << laptopi[i].hard_drive << "\n";
+       }
+       pi.close();
+   }
+   else {
+       std::cout << "[greska]Neuspjesno kreirana datoteka tempp.txt\n";
+   }
 
 
+    int m= 0;
+   /* std::ofstream pravi("tempp.txt",std::ios::app);
+    if (pravi.is_open()) {
+        while (m != 1) {
+            m++;
+            for (int i = 0;i < laptopi.size();i++) {
+                pravi << std::left << std::setw(15) << laptopi[i].proizvodjac << std::left << std::setw(26) << laptopi[i].model
+                    << std::left << std::setw(10) << laptopi[i].kolicina << std::left << std::setw(20) << laptopi[i].godina_proiz << std::left << std::setw(15) << laptopi[i].cijena <<
+                    std::left << std::setw(26) << laptopi[i].cpu << std::left << std::setw(32) << laptopi[i].gpu << std::left << std::setw(22) <<
+                    laptopi[i].OperativniSistemNiz << std::left << std::setw(12) << laptopi[i].memorija << std::left << std::setw(10) << laptopi[i].hard_drive << "\n";
+            }
+            std::system("pause");
+        }
+        pravi.close();
+    }*/
+
+
+    remove("Laptop.txt");                 //brise Laptop.txt
+    rename("tempp.txt", "Laptop.txt");
 }
 
 void Laptop::PosjedujemArtikal()
@@ -388,11 +455,6 @@ void Laptop::prodajaLaptopa()
             std::cout << "Nazalost,neuspjesno otvaranje datotetke Laptop.txt";
         }
     
-
-
-
-
-
     std::ifstream some("Narudzbe.txt");
     std::string te;
     some >> te;
@@ -749,7 +811,6 @@ std::ostream& operator<<(std::ostream& stream, Laptop& a)
       std::cout<< laptopi[i].proizvodjac << laptopi[i].model << laptopi[i].kolicina <<laptopi[i].godina_proiz << laptopi[i].cijena << laptopi[i].cpu << laptopi[i].gpu <<
           laptopi[i].OperativniSistemNiz << laptopi[i].memorija << laptopi[i].hard_drive<<"\n";
     }
-
 
     return stream;
 }
