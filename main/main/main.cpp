@@ -31,10 +31,10 @@ void prodajaLaptopa() {
 	do {
 		cout << "Unesite izbor: ";
 		getline(cin, upit);
-		if (upit != "DA" & upit != "NE") {
+		if (upit != "DA" && upit != "NE") {
 			cout << "[GRESKA]Unesite DA ili NE\n";
 		}
-	} while (upit != "DA" & upit != "NE");
+	} while (upit != "DA" && upit != "NE");
 	if (upit == "DA") {
 		temp->prodajaLaptopa();
 	}
@@ -167,20 +167,22 @@ void tema() {
 }
 
 void pretragaOpcije() {
-	int iz, lap;
+	int iz = 0, lap = 0;
 	do {
 		system("cls");
-		cout << "\n\n" << setw(81) << "*****************************************" << endl;
-		cout << setw(81) << "*     >>>>  PRETRAZI   PROIZVOD  <<<<     *" << endl;
-		cout << setw(81) << "*****************************************" << endl;
-		cin.clear();
-		cout << "\n" << setw(79) << "Odaberite neku od ponudjenih opcija :";
-		cout << "\n\n" << setw(70)<<"1. Pretraga laptopa ";
-		cout << "\n" << setw(70) << "2. Pretraga mobitela ";
-		cout << "\n" << setw(70) << "3. Pretraga racunara ";
-		cout << "\n" << setw(70) << "0. Vrati se nazad\n";
+		std::cout << "\n\n" << std::setw(81) << "*******************************************" << std::endl;
+		std::cout << std::setw(81) << "*     >>>>  PRETRAZI   PROIZVOD  <<<<     *" << std::endl;
+		std::cout << std::setw(81) << "*******************************************" << std::endl;
+		std::cin.clear();
+		std::cout << "\n" << std::setw(81) << "*  Odaberite neku od ponudjenih opcija    *";
+		std::cout << "\n" << std::setw(81) << "*                                         *";
+		std::cout << "\n" << std::setw(81) << "*          1. Pretraga laptopa            *";
+		std::cout << "\n" << std::setw(81) << "*          2. Pretraga mobitela           *";
+		std::cout << "\n" << std::setw(81) << "*          3. Pretraga racunara           *";
+		std::cout << "\n" << std::setw(81) << "*          0. Vrati se nazad              *";
+		std::cout << "\n" << std::setw(81) << "*                                         *";
 		do {
-			cout << "Unesite izbor: ";
+			std::cout << "\n\n" << std::setw(67) << "Unesite izbor: ";
 			cin >> iz;
 		} while (iz < 0 || iz>3);
 		switch (iz)
@@ -188,11 +190,13 @@ void pretragaOpcije() {
 		case 1:
 			do {
 				system("cls");
-				cout << "1-Pretraga po proizvodjacu\n";
-				cout << "2-Pretraga po proizvodjacu i modelu\n";
-				cout << "0-Vrati na prethodni menu\n";
+				std::cout << "\n\n\n" << std::setw(81) << "*                                         *";
+				std::cout << "\n" << std::setw(81) << "*   1. Pretraga po proizvodjacu           *";
+				std::cout << "\n" << std::setw(81) << "*   2. Pretraga po proizvodjacu i modelu  *";
+				std::cout << "\n" << std::setw(81) << "*   0. Vrati na prethodni menu            *";
+				std::cout << "\n" << std::setw(81) << "*                                         *";
 				do {
-					cout << "Unesite izbor: ";
+					std::cout << "\n\n" << std::setw(67) << "Unesite izbor: ";
 					cin >> lap;
 				} while (lap < 0 || lap > 3);
 				cin.ignore();
@@ -219,21 +223,23 @@ void pretragaOpcije() {
 }
 void ispisOpcije() {
 	
-	int iz, lap;
+	int iz = 0, lap = 0;
 	do {
 		system("cls");
-		cout << "\n\n" << setw(81) << "*****************************************" << endl;
-		cout << setw(81) << "*     >>>>  ISPIS   PROIZVODA  <<<<     *" << endl;
-		cout << setw(81) << "*****************************************" << endl;
-		cin.clear();
-		cout << "\n" << setw(79) << "Odaberite neku od ponudjenih opcija :";
-		cout << "\n\n" << setw(73) << "1. Ispis svih proizvoda";
-		cout << "\n" << setw(74) << "2. Ispis mobitela ";
-		cout << "\n" << setw(81) << "3. Ispis racunara ";
-		cout << "\n" << setw(81) << "4. Ispis laptopa ";
-		cout << "\n" << setw(83) << "0. Vrati se nazad\n";
+		std::cout << "\n\n" << std::setw(81) << "*****************************************" << std::endl;
+		std::cout << std::setw(81) << "*     >>>>  ISPIS   PROIZVODA  <<<<     *" << std::endl;
+		std::cout << std::setw(81) << "*****************************************" << std::endl;
+		std::cin.clear();
+		std::cout << "\n" << std::setw(81) << "* Odaberite neku od ponudjenih opcija : *";
+		std::cout << "\n" << std::setw(81) << "*                                       *";
+		std::cout << "\n" << std::setw(81) << "*        1. Ispis svih proizvoda        *";
+		std::cout << "\n" << std::setw(81) << "*        2. Ispis mobitela              *";
+		std::cout << "\n" << std::setw(81) << "*        3. Ispis racunara              *";
+		std::cout << "\n" << std::setw(81) << "*        4. Ispis laptopa               *";
+		std::cout << "\n" << std::setw(81) << "*        0. Vrati se nazad              *";
+		std::cout << "\n" << std::setw(81) << "*                                       *";
 		do {
-			cout << "Unesite izbor: ";
+			cout << "\n" << std::setw(67) << "Unesite izbor: ";
 			cin >> iz;
 		} while (iz < 0 || iz>4);
 		cin.ignore();
@@ -455,17 +461,20 @@ void sortiranjeLaptopa() {
 
 void kupacOpcije() {
 	system("cls");
-	cout << "\n\n" << right<< setw(81) << "*****************************************" << endl;
-	cout << right << setw(81) << "* >>>>  DOBRO DOSLI NA KUPAC MENU  <<<< *" << endl;
-	cout << right << setw(81) << "*****************************************" << endl;
-	cin.clear();
-	cout << "\n" << setw(79)<<right << "Odaberite neku od ponudjenih opcija :";
-	cout << "\n" << setw(70)<<right << "1. Prikazi sve proizvode     "; //ponuditi posebno ako zeli svaku vrstu proizvoda slicno kao kod admina
-	cout << "\n" << setw(70)<<right << "2. Potrazi proizvod          ";
-	cout << "\n" << setw(70)<<right << "3. Kupi artikal              ";
-	cout << "\n" << setw(70) << right<<"4. Ispis sortiranih artikala ";
-	cout << "\n" << setw(70) << right<<"5. Info                    ";
-	cout << "\n" << setw(70)<<right << "0. Vrati se na glavni menu\n ";
+	std::cout << "\n\n" << std::right << std::setw(81) << "*****************************************" << std::endl;
+	std::cout << std::right << std::setw(81) << "* >>>>  DOBRO DOSLI NA KUPAC MENU  <<<< *" << std::endl;
+	std::cout << std::right << std::setw(81) << "*****************************************" << std::endl;
+	std::cin.clear();
+	std::cout << "\n" << std::setw(81) << "* Odaberite neku od ponudjenih opcija : *";
+	std::cout << "\n" << std::setw(81) << "*                                       *";
+	std::cout << "\n" << std::setw(81) << "*      1. Prikazi sve proizvode         *"; //ponuditi posebno ako zeli svaku vrstu proizvoda slicno kao kod admina
+	std::cout << "\n" << std::setw(81) << "*      2. Potrazi proizvod              *";
+	std::cout << "\n" << std::setw(81) << "*      3. Kupi artikal                  *";
+	std::cout << "\n" << std::setw(81) << "*      4. Ispis sortiranih artikala     *";
+	std::cout << "\n" << std::setw(81) << "*      5. Info                          *";
+	std::cout << "\n" << std::setw(81) << "*      0. Vrati se na glavni menu       *";
+	std::cout << "\n" << std::setw(81) << "*                                       *";
+	std::cout << std::endl;
 }
 
 void kupacMenu() {
@@ -504,7 +513,7 @@ void kupacMenu() {
 		}
 		
 		if (odabir == 3) {
-			int x;
+			int x = 0;
 			do {
 				cout << setw(83) << "Da li zelite kupiti artikal (0 -ne, 1 - da)?  ";
 				cin >> x;
@@ -547,7 +556,7 @@ void stanjeK() {
 
 
 int kupacMe() {
-	int n;
+	int n=0;
 	cout << "\n" << setw(79) << "Odaberite neku od ponudjenih opcija :";
 	cout << "\n" << setw(62) << "1. Kupac login ";
 	cout << "\n" << setw(70) << "2. Kupac registracija: ";
@@ -571,14 +580,14 @@ int main()
 {
 	//stanjeK();
 	int izbor=0,z=0,a=0,i=0;
-	int n;
+	int n=0;
 	string user, password;
 	Laptop Lap ;
 	//info();
 	bool l;
 	//Lap.prodajaLaptopa();
 	//prodajaLaptopa();
-	//kupacMenu();
+	kupacMenu();
 	//ispisLaptopa();
 	//Lap.soranjeLaptopa("cijena");
 	//pretragaPoProiz("Laptop");
@@ -596,10 +605,10 @@ int main()
 	//Lap.prodajaLaptopa();
 	//cout << "Kraj";
 //
-	Lap.adminProdaja();
-	ispisLaptopa();
-	cin >> Lap;
-	ispisLaptopa();
+	//Lap.adminProdaja();
+	//ispisLaptopa();
+	//cin >> Lap;
+	//ispisLaptopa();
 	do {
 		cout << "\n\n" << setw(81) <<right<< "****************************************" << endl;
 		cout << setw(77) << right<< " * >>>> PRIJAVA NA IT SHOP <<<< *" << endl;
