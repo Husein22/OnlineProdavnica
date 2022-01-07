@@ -9,7 +9,6 @@
 #include "Kupac.h"
 #include <windows.h>
 std::vector<Laptop>laptopi;
-//#include "main.cpp"
 float Laptop::stanje_kase = 0;
 Laptop::Laptop()
 {
@@ -21,110 +20,88 @@ Laptop::Laptop(std::string a, std::string b, int c, int d, float e, std::string 
     this->opSis = static_cast<OperativniSistem>(op);
 }
 
-void Laptop::adminProdaja(){
+void Laptop::adminProdaja() {
     std::string temp;
-    
-    int o=-3,idOs, p = -1, kol = 0, l, idLap;
-    
-    std::ifstream citaj("Narudzbe.txt");
+    int o = -3, idOs = 0, p = -1, kol = 0, l = 0, idLap = 0;//deklarisanje pomocnih varijabli koje ce nam trebat ovdje
 
-    if(citaj.is_open()){
-                while(!citaj.eof()){
-            getline(citaj,temp);
-            std::cout<<temp<<std::endl;
+    std::ifstream citaj("Narudzbe.txt");//otvaranje datoteke narudzbe gdje se prikuplja broj linija u ovoj datoteci
+    if (citaj.is_open()) {
+        while (!citaj.eof()) {
+            getline(citaj, temp);
+            std::cout << temp << std::endl;
             o++;
         }
         citaj.close();
-    }else{
-        std::cout<<"Neuspjesno otvaranje datoteke narudzbe.txt\n";
+    }
+    else {
+        std::cout << "Neuspjesno otvaranje datoteke narudzbe.txt\n";
     }
 
+    do {
+        std::cout << "Unesite ID osobe kojoj zelite poslati artikle;";
+        std::cin >> idOs;
+    } while (idOs<0 || idOs>o);//osigurava da se ne moze unijeti veci id od broja u narudzbama
 
-    do{
-    std::cout<<"Unesite ID osobe kojoj zelite poslati artikle;";
-    std::cin>>idOs;
-    }while(idOs<0||idOs>o);
-    
-
-    
-    std::ifstream cit("Narudzbe.txt",std::ios::in);
-    
-  if(cit.is_open()){
-          while(!cit.eof()){
-            getline(cit,temp);
+    std::ifstream cit("Narudzbe.txt", std::ios::in);//smjesta id osobe,laptopa te kolicinu,ovaj dio programa nam pamti te 3 varijable
+    if (cit.is_open()) {
+        while (!cit.eof()) {
+            getline(cit, temp);
             p++;
-           // std::cout <<p<< " ";
-            if(p==idOs){
+            if (p == idOs) {
                 getline(cit, temp);
-                cit>>l;
-                cit>>idLap;
-                cit>>kol;
-                std::cout << l << idLap << kol;
-                //getline(cit, temp);
-                 }
+                cit >> l;
+                cit >> idLap;
+                cit >> kol;
             }
-     cit.close();
-    }else{
-        std::cout<<"Neuspjesno otvaranje datoteke narudzbe.txt\n";
+        }
+        cit.close();
     }
-std::cout <<"  "<<o << "   Gotovo\n";
-
-  //  const int u=o;
-
-std::ifstream cita("Laptop.txt");
-int d= 0;
-std::string pom;
-
-if (cita.is_open()) {
-    while (!cita.eof()) {
-        getline(cita, pom);
-        d++;
+    else {
+        std::cout << "Neuspjesno otvaranje datoteke narudzbe.txt\n";
     }
-    cita.close();
-}
-else {
-    std::cout << "Nazalost,neuspjesno otvaranje datotetke Laptop.txt";
-}
 
+    std::ifstream cita("Laptop.txt");//broj laptopa u datoteci laptop.txt
+    int d = 0;
+    std::string pom;
+    if (cita.is_open()) {
+        while (!cita.eof()) {
+            getline(cita, pom);
+            d++;
+        } cita.close();
+    }
+    else {
+        std::cout << "Nazalost,neuspjesno otvaranje datotetke Laptop.txt";
+    }
 
-cita.open("Laptop.txt",std::ios::in);
-Laptop niz[100];
-int u = 0;
-std::vector<Laptop>laptopi;
-    if(cita.is_open()){
-        
-        getline(cita,temp);
-        getline(cita,temp);
-        getline(cita,temp);
-        while (u!=1) {
+    cita.open("Laptop.txt", std::ios::in);//ovaj dio programa nam smjesta iz datoteke laptop,txt u niz,pa onda u vektor laptopi koji nam trebaju
+    Laptop* niz = new Laptop[100];
+    int u = 0;
+  //  std::vector<Laptop>laptopi;
+    if (cita.is_open()) {
+
+        getline(cita, temp);
+        getline(cita, temp);
+        getline(cita, temp);
+        while (u != 1) {
             u++;
-            for (int i = 0;i < d-3;i++) {
+            for (int i = 0;i < d - 3;i++) {
                 cita >> niz[i].proizvodjac >> niz[i].model >> niz[i].kolicina >> niz[i].godina_proiz >> niz[i].cijena >> niz[i].cpu >> niz[i].gpu >>
                     niz[i].OperativniSistemNiz >> niz[i].memorija >> niz[i].hard_drive;
-                if (i == idLap-1) {
-                    std::cout <<idLap<<" "<< " "<<niz[i].model << " " << niz[i].kolicina << " " << kol << "\n";
-                    niz[i].kolicina = niz[i].kolicina- kol;
+                if (i == idLap - 1) {
+                    std::cout << idLap << " " << " " << niz[i].model << " " << niz[i].kolicina << " " << kol << "\n";
+                    niz[i].kolicina = niz[i].kolicina - kol;
                     std::cout << niz[i].kolicina << " " << kol << "\n";
                     std::cout << "Uspjesno smanjena kolicina\n";
                 }
                 laptopi.push_back(niz[i]);
             }
         }
-        
-        
-            
-            
-            cita.close();
-        
+        delete[] niz;//brisanje dinamicko alociranog niza zbog toga sto nam nece vise trebat
+        cita.close();
     }
+    else {std::cout << "Neuspjesno otvaranje datoteke \n";}
 
-    for (int i = 0;i < laptopi.size();i++) {
-        std::cout << std::left << std::setw(15) << laptopi[i].proizvodjac << std::left << std::setw(26) << laptopi[i].model
-            << std::left << std::setw(10) << laptopi[i].kolicina << std::left << std::setw(20) << laptopi[i].godina_proiz << std::left << std::setw(15) << laptopi[i].cijena <<
-            std::left << std::setw(26) << laptopi[i].cpu << std::left << std::setw(32) << laptopi[i].gpu << std::left << std::setw(22) <<
-            laptopi[i].OperativniSistemNiz << std::left << std::setw(12) << laptopi[i].memorija << std::left << std::setw(10) << laptopi[i].hard_drive << "\n";
-    }
-   std:: ofstream pi("tempp.txt",std::ios::out);
+   std:: ofstream pi("tempp.txt",std::ios::out);//pravljenje pomocne datoteke tempp.txt gdje cemo smanjiti kolicinu 
    if (pi.is_open()) {
        pi << "------------------------------------------------------------------------------------------------------------------------------\n";
        pi << std::left << std::setw(15) << "Proizvodjac:" << std::left << std::setw(26) << "Model: " << std::left << std::setw(10) << "Kolièina:" <<
@@ -140,30 +117,10 @@ std::vector<Laptop>laptopi;
        }
        pi.close();
    }
-   else {
-       std::cout << "[greska]Neuspjesno kreirana datoteka tempp.txt\n";
-   }
-
-
-    int m= 0;
-   /* std::ofstream pravi("tempp.txt",std::ios::app);
-    if (pravi.is_open()) {
-        while (m != 1) {
-            m++;
-            for (int i = 0;i < laptopi.size();i++) {
-                pravi << std::left << std::setw(15) << laptopi[i].proizvodjac << std::left << std::setw(26) << laptopi[i].model
-                    << std::left << std::setw(10) << laptopi[i].kolicina << std::left << std::setw(20) << laptopi[i].godina_proiz << std::left << std::setw(15) << laptopi[i].cijena <<
-                    std::left << std::setw(26) << laptopi[i].cpu << std::left << std::setw(32) << laptopi[i].gpu << std::left << std::setw(22) <<
-                    laptopi[i].OperativniSistemNiz << std::left << std::setw(12) << laptopi[i].memorija << std::left << std::setw(10) << laptopi[i].hard_drive << "\n";
-            }
-            std::system("pause");
-        }
-        pravi.close();
-    }*/
-
+   else {std::cout << "[greska]Neuspjesno kreirana datoteka tempp.txt\n";}
 
     remove("Laptop.txt");                 //brise Laptop.txt
-    rename("tempp.txt", "Laptop.txt");
+    rename("tempp.txt", "Laptop.txt");//tempp.txt je sada Laptop.txt
 }
 
 void Laptop::PosjedujemArtikal()
@@ -186,7 +143,6 @@ void Laptop::PosjedujemArtikal()
     catch (const char* c) {
         std::cout << c;
     }
-
     std::cout <<"\t"<< p << " vrstu razlicitih laptopa\n";
 }
 
@@ -366,61 +322,6 @@ void Laptop::pretragaPoProiz(std::string a)
 
 }
 
-void Laptop::sortiranjePoSekundarnoj()
-{
-    
-    std::ifstream unos("Laptop.txt");
-    std::vector<std::string>nizl;
-    std::vector<int>hdd;
-    std::string temp;
-    int a, b, c,x;
-    int p = 0;
-    if (unos.fail()) {
-        std::cout << "Nemoguce otvaranje datoeke\n";
-    }
-    else {
-        getline(unos, temp);
-        getline(unos, temp);
-        getline(unos, temp);
-        while (true) {
-            getline(unos, temp);
-            if (unos.eof())break;
-            nizl.push_back(temp);
-            a = temp[122] - '0';
-            b = temp[123] - '0'; 
-            c = temp[124] - '0';
-            if (a > -1 && b > -1 && c > -1) x = a * 100 + b * 10 + c + 1;
-            else if (a > -1 && b > -1 && c < -1) x = a * 10 + b ;
-            else if (a > -1 && b < -1 && c < -1) x = a;
-            std::cout << x<<" ";
-            hdd.push_back(x);
-        }
-        std::cout << "\n";
-        int pom;
-        std::string po;
-        for (int i = 0;i < hdd.size();i++) {
-            std::cout << nizl[i] << "\n";
-        }
-        for (int i = 0;i < hdd.size();i++) {
-            for (int j = i ;j < hdd.size();j++) {
-                if (hdd[j] > hdd[i]) {
-                    pom = hdd[i];
-                    hdd[i] = hdd[j];
-                    hdd[j] = pom;
-                    po = nizl[i];
-                    nizl[i] = nizl[j];
-                    nizl[j] = pom;
-                }
-            }
-        }
-        for (int i = 0;i < hdd.size();i++) {
-            std::cout << nizl[i]<<"\n";
-        }
-        unos.close();
-    }
-    
-
-}
 
 
 void Laptop::prodajaLaptopa()
@@ -428,8 +329,8 @@ void Laptop::prodajaLaptopa()
     
     std::string pom, pom2;
     Laptop temp ;
-    int p=-3, ID = 0,kol=0;
-    std::ifstream pro("Laptop.txt");
+    int p=-3, ID = 0,kol=0;//pomocne varijable koje ce nam trebat ovdje
+    std::ifstream pro("Laptop.txt");//racuna broj laptopa
         if (pro.is_open()) {
             while (!pro.eof()) {
                 getline(pro, pom);
@@ -443,7 +344,7 @@ void Laptop::prodajaLaptopa()
         
         int t = -3;
 
-        std::ifstream proo("Narudzbe.txt");
+        std::ifstream proo("Narudzbe.txt");//racuna broj narudzbi
         if (proo.is_open()) {
             while (!proo.eof()) {
                 getline(proo, pom2);
@@ -460,7 +361,7 @@ void Laptop::prodajaLaptopa()
     some >> te;
     if (some.eof()) {
         some.close();
-        std::ofstream upi("Narudzbe.txt");
+        std::ofstream upi("Narudzbe.txt");//postavlja prve 3 linije ako nam je datoteka prazna
         upi << "--------------------------------------------------------------------------------------------------------------\n";
         upi << std::left << std::setw(15) << "ID osobe" << std::left<<std::setw(13) << "ID laptopa" << std::left <<
             std::setw(12) << "Kolicina: " <<std::left << std::setw(15) << "Ime" << std::left << std::setw(15) << "Prezime " << std::left <<
@@ -471,36 +372,101 @@ void Laptop::prodajaLaptopa()
     else some.close();
 
 
-   
+
+
    std:: ofstream naruci("Narudzbe.txt", std::ios::app);
-    if (naruci.is_open()) {
-        do {
-            std::cout << "Unesite ID laptopa koji zelite kupiti: ";
-            std::cin >> ID;
-            std::cin.ignore();
-        } while (ID > p || ID <= 0);
-        naruci << std::left << std::setw(15) << t++;
-        naruci << std::left << std::setw(13) << ID;
-            std::cout << "Unesite kolicinu laptopa koji zelite kupiti: ";
-            std::cin >> kol;
-        std::cin.ignore();
-        naruci << std::left << std::setw(12) << kol;
-        std::unique_ptr<Kupac>kupci = std::make_unique<Kupac>();
-        kupci->setIme();
-        naruci << std::left << std::setw(15) << kupci->getIme();
-        kupci->setPrezime();
-        naruci << std::left << std::setw(15) << kupci->getPrezime();
-        kupci->setKartica();
-        naruci << std::left << std::setw(15) << kupci->getKartica();
+   if (naruci.is_open()) {
+       do {
+           std::cout << "Unesite ID laptopa koji zelite kupiti: ";
+           std::cin >> ID;
+           std::cin.ignore();
+       } while (ID > p || ID <= 0);
+       naruci << std::left << std::setw(15) << t++;
+       naruci << std::left << std::setw(13) << ID;
+
+       bool vrati = false, greska = true;
+       pro.open("Laptop.txt", std::ios::in);//ovaj dio programa nam smjesta iz datoteke laptop,txt u niz,pa onda u vektor laptopi koji nam trebaju
+       std::string t;
+       Laptop* niz = new Laptop[100];
+       int u = 0;
+       //  std::vector<Laptop>laptopi;
+       if (pro.is_open()) {
+           std::string upit;
+           getline(pro, t);
+           getline(pro, t);
+           getline(pro, t);
+           while (u != 1) {
+               u++;
+               for (int i = 0;i < p;i++) {
+                   pro >> niz[i].proizvodjac >> niz[i].model >> niz[i].kolicina >> niz[i].godina_proiz >> niz[i].cijena >> niz[i].cpu >> niz[i].gpu >>
+                       niz[i].OperativniSistemNiz >> niz[i].memorija >> niz[i].hard_drive;
+                   if (i == ID - 1) {
+                       if (niz[i].kolicina == 1) {
+                           std::cout << "Nazalost nemamo vise tog modela u nasem skladistu,preporuka da pogledate nase druge modele(:\n";
+                           greska = false;
+                           vrati = true;
+                       }
+                       else
+                       {
+                           do {
+                               std::cout << "Unesite kolicinu laptopa koji zelite kupiti: ";
+                               std::cin >> kol;
+                               std::cin.ignore();
+                               if (niz[i].kolicina <= kol) {
+                                   std::cout << "Nazalost nemamo toliku kolicinu,mozete kupiti najvise " << niz[i].kolicina - 1 << " artikala\n";
+                                   std::cout << "Da li zelite kupiti ponudjenu kolicinu artikala?\n";
+                                   do {
+                                       std::cout << "Unesite izbor(DA,NE): ";
+                                       getline(std::cin, upit);
+                                       if (upit != "DA" & upit != "NE") {
+                                           std::cout << "[GRESKA]Unesite DA ili NE\n";
+                                       }
+                                   } while (upit != "DA" & upit != "NE");
+                                   if (upit == "DA") {
+                                       vrati = true;
+                                       kol = niz[i].kolicina - 1;
+                                   }
+                                   else {
+                                       vrati = false;
+                                   }
+                               }
+                               else {
+                                   vrati = true;
+                               }
+                           } while (kol <= 0 || vrati != true);
+                       }
+                   }
+                   laptopi.push_back(niz[i]);
+               }
+           }
+           delete[] niz;//brisanje dinamicko alociranog niza zbog toga sto nam nece vise trebat
+           pro.close();
+       }
+       else { std::cout << "Neuspjesno otvaranje datoteke \n"; }
+
+       if (greska == true) {
+           naruci << std::left << std::setw(12) << kol;
+           std::unique_ptr<Kupac>kupci = std::make_unique<Kupac>();
+           kupci->setIme();
+           naruci << std::left << std::setw(15) << kupci->getIme();
+           kupci->setPrezime();
+           naruci << std::left << std::setw(15) << kupci->getPrezime();
+           kupci->setKartica();
+           naruci << std::left << std::setw(15) << kupci->getKartica();
+           naruci << std::endl;
+
+           naruci.close();
+           system("cls");
+           std::cout << "Vrsi se transakcija novca.....\n";
+           Sleep(2000);
+           std::cout << "Hvala Vam na povjerenju,laptop ce biti dostavljen brzom postom na vasu adresu za manje od 24 sata.Lijep i srdacan pozdrav (:\n";
+
+       }
+   }else {
+           std::cout << "Neuspjesno otvaranje datoteke\n";
        
-
-        naruci << std::endl;
-
-        naruci.close();
-    }
-    else {
-        std::cout << "Neuspjesno otvaranje datoteke\n";
-    }
+       }
+   
 }
 
 void Laptop::smjestiVektor()
@@ -724,47 +690,6 @@ std::istream& operator>>(std::istream& stream, Laptop& a)
 
 std::ostream& operator<<(std::ostream& stream, Laptop& a)
 {
-
-
-   // std::string temp;
-   /* std::ifstream ispis("Laptop.txt");
-    while (ispis.eof()) {
-        ispis >> temp;
-        stream << temp;
-
-    }
-    ispis.close();*/
-
-  /*  int o = -3, idOs = 0;
-
-    std::ifstream citaj("Laptop.txt");
-
-    if (citaj.is_open()) {
-        while (!citaj.eof()) {
-            getline(citaj, temp);
-            std::cout << temp;
-            o++;
-        }
-        citaj.close();
-    }
-    else {
-        std::cout << "Neuspjesno otvaranje datoteke narudzbe.txt\n";
-    }
-    const int u = o;
-    Laptop* niz = new Laptop[u];
-    std::ifstream cita("Laptop.txt");
-    if (cita.is_open()) {
-        getline(cita, temp);
-        getline(cita, temp);
-        getline(cita, temp);
-        while (!cita.eof()) {
-            for (int i = 0;i < o;i++) {
-                cita >> niz[i].proizvodjac >> niz[i].model >> niz[i].kolicina >> niz[i].godina_proiz >> niz[i].cijena >> niz[i].cpu >> niz[i].gpu >>
-                    niz[i].OperativniSistemNiz >> niz[i].memorija >> niz[i].hard_drive;
-            }
-            cita.close();
-        }
-    }*/
     std::string tempp;
     int p = -3;
     std::ifstream cit("Laptop.txt", std::ios::in);
@@ -779,9 +704,6 @@ std::ostream& operator<<(std::ostream& stream, Laptop& a)
     else {
         std::cout << "Neuspjesno otvaranje datoteke narudzbe.txt\n";
     }
-
-
-
     std::string temp;
     std::ifstream cita("Laptop.txt", std::ios::in);
     Laptop niz;
@@ -800,18 +722,12 @@ std::ostream& operator<<(std::ostream& stream, Laptop& a)
             }
         }
         std::cout << "Uspjesno smjesteni laptopi u vektor\n";
-
         cita.close();
-
     }
-
-
-
     for (int i = 0;i <laptopi.size();i++) {
       std::cout<< laptopi[i].proizvodjac << laptopi[i].model << laptopi[i].kolicina <<laptopi[i].godina_proiz << laptopi[i].cijena << laptopi[i].cpu << laptopi[i].gpu <<
           laptopi[i].OperativniSistemNiz << laptopi[i].memorija << laptopi[i].hard_drive<<"\n";
     }
-
     return stream;
 }
 

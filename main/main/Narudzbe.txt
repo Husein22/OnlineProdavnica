@@ -19,3 +19,6 @@ ID osobe       ID laptopa   Kolicina:   Ime            Prezime        Ziro racun
 16             2            3           dxf            dfs            efddfs         
 17             3            4           dfs            fg             fd             
 18             3            4           f              ds             fdsdfs         
+19             3            5           Husein         Cisic          dsfm           
+20             7            3           KK             LL             ECDCS          
+21             6            4           SS             VV             WQWDQ          

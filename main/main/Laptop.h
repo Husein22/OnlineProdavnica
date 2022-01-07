@@ -31,7 +31,6 @@ public:
 	int getHardDrive();
 	void pretragaPoProizImodeluLap(std::string a,std::string b);
 	void pretragaPoProiz(std::string a);
-	void sortiranjePoSekundarnoj();
 	void prodajaLaptopa();
 	void smjestiVektor();
 	void adminProdaja();
