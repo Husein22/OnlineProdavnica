@@ -13,7 +13,7 @@
 #include "Kupac.h"
 
 using namespace std;
-vector<Laptop>laptopi;
+//vector<Laptop>laptopi;
 int error;
 
 void osnova() {
@@ -491,12 +491,12 @@ int main()
 	Laptop Lap ;
 	//info();
 	bool l;
-	ispisLaptopa();
+	//ispisLaptopa();
 	//Lap.soranjeLaptopa("cijena");
 	//pretragaPoProiz("Laptop");
-	Lap.prodajaLaptopa();
-	Lap.adminProdaja();
-	ispisLaptopa();
+	//Lap.prodajaLaptopa();
+	//Lap.adminProdaja();
+	//ispisLaptopa();
 	//osnova();
  //  Lap.sortiranjeLaptopa("ram");
 	//sortiranjeLaptopa("hdd");

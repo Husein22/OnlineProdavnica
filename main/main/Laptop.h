@@ -33,14 +33,13 @@ public:
 	void pretragaPoProiz(std::string a);
 	void sortiranjePoSekundarnoj();
 	void prodajaLaptopa();
+	void smjestiVektor();
 	void adminProdaja();
 	friend float operator!(Laptop&a);
 	friend std::istream& operator>>(std::istream& stream, Laptop& a);
 	friend std::ostream& operator<<(std::ostream& stream, Laptop& a);
 	void sortiranjeLaptopa(std::string rec);
-
-
-	virtual ~Laptop() = default;
+	 ~Laptop() = default;
 
 };
 

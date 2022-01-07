@@ -8,6 +8,7 @@
 #include <algorithm>
 #include "Kupac.h"
 #include <windows.h>
+std::vector<Laptop>laptopi;
 //#include "main.cpp"
 float Laptop::stanje_kase = 0;
 Laptop::Laptop()
@@ -23,7 +24,7 @@ Laptop::Laptop(std::string a, std::string b, int c, int d, float e, std::string 
 void Laptop::adminProdaja(){
     std::string temp;
     
-    int o=-3,idOs, p = -3, kol = 0, l, idLap;;
+    int o=-3,idOs, p = -1, kol = 0, l, idLap;;
     
     std::ifstream citaj("Narudzbe.txt");
 
@@ -51,7 +52,7 @@ void Laptop::adminProdaja(){
           while(!cit.eof()){
             getline(cit,temp);
             p++;
-            std::cout << " ";
+           // std::cout <<p<< " ";
             if(p==idOs){
                 getline(cit, temp);
                 cit>>l;
@@ -65,29 +66,38 @@ void Laptop::adminProdaja(){
     }else{
         std::cout<<"Neuspjesno otvaranje datoteke narudzbe.txt\n";
     }
+std::cout <<"  "<<o << "   Gotovo\n";
 
-  std::cout << "Gotovo";
-
-    const int u=o;
-    Laptop *niz=new Laptop[u];
-std::ifstream cita("Laptop.txt");
+  //  const int u=o;
+    
+std::ifstream cita("Laptop.txt",std::ios::in);
+Laptop niz;
+int u = 0;
+std::vector<Laptop>laptopi;
     if(cita.is_open()){
+        
         getline(cita,temp);
         getline(cita,temp);
         getline(cita,temp);
-        while(!cita.eof()){
-            for(int i=0;i<o;i++){
-                cita>>niz[i].proizvodjac>>niz[i].model>>niz[i].kolicina>>niz[i].godina_proiz>>niz[i].cijena>>niz[i].cpu>>niz[i].gpu>>
-                niz[i].OperativniSistemNiz>>niz[i].memorija>>niz[i].hard_drive;
+        while (u!=1) {
+            u++;
+            for (int i = 0;i < o;i++) {
+                cita >> niz.proizvodjac >> niz.model >> niz.kolicina >> niz.godina_proiz >> niz.cijena >> niz.cpu >> niz.gpu >>
+                    niz.OperativniSistemNiz >> niz.memorija >> niz.hard_drive;
+                laptopi.push_back(niz);
             }
-            cita.close();
         }
+        laptopi[idLap].kolicina -= kol;
+        std::cout << "Uspjesno smanjena kolicina\n";
+            
+            
+            cita.close();
+        
     }
-    niz[idLap].kolicina-=kol;
+    
 
 
 }
-
 
 void Laptop::PosjedujemArtikal()
 {
@@ -431,6 +441,52 @@ void Laptop::prodajaLaptopa()
     }
 }
 
+void Laptop::smjestiVektor()
+{
+    std::string tempp;
+    int p = -3;
+    std::ifstream cit("Laptop.txt", std::ios::in);
+    if (cit.is_open()) {
+        while (!cit.eof()) {
+            getline(cit, tempp);
+            p++;
+    
+        }
+        cit.close();
+    }
+    else {
+        std::cout << "Neuspjesno otvaranje datoteke narudzbe.txt\n";
+    }
+
+
+
+    std::string temp;
+    std::ifstream cita("Laptop.txt", std::ios::in);
+    Laptop niz;
+    int u = 0;
+    
+    if (cita.is_open()) {
+        getline(cita, temp);
+        getline(cita, temp);
+        getline(cita, temp);
+        while (u != 1) {
+            u++;
+            for (int i = 0;i < p;i++) {
+                cita >> niz.proizvodjac >> niz.model >> niz.kolicina >> niz.godina_proiz >> niz.cijena >> niz.cpu >> niz.gpu >>
+                    niz.OperativniSistemNiz >> niz.memorija >> niz.hard_drive;
+                laptopi.push_back(niz);
+            }
+        }
+        std::cout << "Uspjesno smjesteni laptopi u vektor\n";
+
+        cita.close();
+
+    }
+
+
+
+}
+
 void Laptop::sortiranjeLaptopa(std::string rec)
 {
     std::ifstream unos("Laptop.txt");
@@ -608,7 +664,7 @@ std::ostream& operator<<(std::ostream& stream, Laptop& a)
 {
 
 
-    std::string temp;
+   // std::string temp;
    /* std::ifstream ispis("Laptop.txt");
     while (ispis.eof()) {
         ispis >> temp;
@@ -617,7 +673,7 @@ std::ostream& operator<<(std::ostream& stream, Laptop& a)
     }
     ispis.close();*/
 
-    int o = -3, idOs = 0;
+  /*  int o = -3, idOs = 0;
 
     std::ifstream citaj("Laptop.txt");
 
@@ -646,10 +702,52 @@ std::ostream& operator<<(std::ostream& stream, Laptop& a)
             }
             cita.close();
         }
+    }*/
+    std::string tempp;
+    int p = -3;
+    std::ifstream cit("Laptop.txt", std::ios::in);
+    if (cit.is_open()) {
+        while (!cit.eof()) {
+            getline(cit, tempp);
+            p++;
+
+        }
+        cit.close();
     }
-    for (int i = 0;i < o;i++) {
-        std::cout<<  niz[i].proizvodjac << niz[i].model << niz[i].kolicina << niz[i].godina_proiz << niz[i].cijena << niz[i].cpu << niz[i].gpu <<
-            niz[i].OperativniSistemNiz << niz[i].memorija << niz[i].hard_drive << std::endl;
+    else {
+        std::cout << "Neuspjesno otvaranje datoteke narudzbe.txt\n";
+    }
+
+
+
+    std::string temp;
+    std::ifstream cita("Laptop.txt", std::ios::in);
+    Laptop niz;
+    int u = 0;
+
+    if (cita.is_open()) {
+        getline(cita, temp);
+        getline(cita, temp);
+        getline(cita, temp);
+        while (u != 1) {
+            u++;
+            for (int i = 0;i < p;i++) {
+                cita >> niz.proizvodjac >> niz.model >> niz.kolicina >> niz.godina_proiz >> niz.cijena >> niz.cpu >> niz.gpu >>
+                    niz.OperativniSistemNiz >> niz.memorija >> niz.hard_drive;
+                laptopi.push_back(niz);
+            }
+        }
+        std::cout << "Uspjesno smjesteni laptopi u vektor\n";
+
+        cita.close();
+
+    }
+
+
+
+    for (int i = 0;i <laptopi.size();i++) {
+      std::cout<< laptopi[i].proizvodjac << laptopi[i].model << laptopi[i].kolicina <<laptopi[i].godina_proiz << laptopi[i].cijena << laptopi[i].cpu << laptopi[i].gpu <<
+          laptopi[i].OperativniSistemNiz << laptopi[i].memorija << laptopi[i].hard_drive<<"\n";
     }
 
 

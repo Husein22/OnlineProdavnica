@@ -15,3 +15,7 @@ ID osobe       ID laptopa   Kolicina:   Ime            Prezime        Ziro racun
 12             2            2           fr             sdf            r4             
 13             4            4           hkghk          hjgghj         fft            
 14             2            3           sd             sa             das            
+15             2            5           fddfs          dff            regdr          
+16             2            3           dxf            dfs            efddfs         
+17             3            4           dfs            fg             fd             
+18             3            4           f              ds             fdsdfs         
