@@ -38,6 +38,11 @@ void Kupac::setKartica()
 	std::cout << "Unesite broj ziro racuna: ";
 	getline(cin, this->kartica);
 }
+void Kupac::setAdresa()
+{
+	std::cout << "Unesite vasu adresu: ";
+	getline(cin, this->adresa);
+}
 std::string Kupac::getUsername()
 {
 	return this->username;
@@ -59,9 +64,10 @@ std::string Kupac::getKartica()
 	return this->kartica;
 }
 
-
-
-
+std::string Kupac::getAdresa()
+{
+	return this->adresa;
+}
 
 
 std::string Kupac::unosPassworda(std::string password, int ch)

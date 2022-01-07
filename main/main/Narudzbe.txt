@@ -1,24 +1,6 @@
 --------------------------------------------------------------------------------------------------------------
-ID osobe       ID laptopa   Kolicina:   Ime            Prezime        Ziro racun     
+ID osobe       ID laptopa   Kolicina    Ime            Prezime        Ziro racun     Adresa         
 ---------------------------------------------------------------------------------------------------------------
-1              2            2           errer          ere            23456                     
-2              2            3           df             wedrt          454            
-3              4            1           ermin          seee           345            
-4              2            1           elma           seü,am         345            
-5              4            2           err            erer           3456           
-6              2            2           ter            retet          2345           
-7              3            3           ert            ert            345            
-8              3            2           ertz           ert            456            
-9              2            2           sdfr           wert           3456           
-10             1            2           wef            asdf           333            
-11             2            2           fds            ew             r32            
-12             2            2           fr             sdf            r4             
-13             4            4           hkghk          hjgghj         fft            
-14             2            3           sd             sa             das            
-15             2            5           fddfs          dff            regdr          
-16             2            3           dxf            dfs            efddfs         
-17             3            4           dfs            fg             fd             
-18             3            4           f              ds             fdsdfs         
-19             3            5           Husein         Cisic          dsfm           
-20             7            3           KK             LL             ECDCS          
-21             6            4           SS             VV             WQWDQ          
+1              5            10          Selma          Arnaut         34553          Arnauti bb     
+2              8            3           Lejla          Lelic          32543          Lejlograd 43   
+3              6            4           Pero           Peric          54343          Travnicka 22   

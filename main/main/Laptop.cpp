@@ -365,13 +365,11 @@ void Laptop::prodajaLaptopa()
         upi << "--------------------------------------------------------------------------------------------------------------\n";
         upi << std::left << std::setw(15) << "ID osobe" << std::left<<std::setw(13) << "ID laptopa" << std::left <<
             std::setw(12) << "Kolicina: " <<std::left << std::setw(15) << "Ime" << std::left << std::setw(15) << "Prezime " << std::left <<
-            std::setw(15) << "Ziro racun" << std::endl;
+            std::setw(15) << "Ziro racun"<< std::setw(15) << "Adresa" << std::endl;
         upi << "---------------------------------------------------------------------------------------------------------------\n";
         upi.close();
     }
     else some.close();
-
-
 
 
    std:: ofstream naruci("Narudzbe.txt", std::ios::app);
@@ -389,7 +387,6 @@ void Laptop::prodajaLaptopa()
        std::string t;
        Laptop* niz = new Laptop[100];
        int u = 0;
-       //  std::vector<Laptop>laptopi;
        if (pro.is_open()) {
            std::string upit;
            getline(pro, t);
@@ -409,19 +406,19 @@ void Laptop::prodajaLaptopa()
                        else
                        {
                            do {
-                               std::cout << "Unesite kolicinu laptopa koji zelite kupiti: ";
-                               std::cin >> kol;
-                               std::cin.ignore();
+                                   std::cout << "Unesite kolicinu laptopa koji zelite kupiti: ";
+                                   std::cin >> kol;
+                                   std::cin.ignore();
                                if (niz[i].kolicina <= kol) {
                                    std::cout << "Nazalost nemamo toliku kolicinu,mozete kupiti najvise " << niz[i].kolicina - 1 << " artikala\n";
                                    std::cout << "Da li zelite kupiti ponudjenu kolicinu artikala?\n";
                                    do {
                                        std::cout << "Unesite izbor(DA,NE): ";
                                        getline(std::cin, upit);
-                                       if (upit != "DA" & upit != "NE") {
+                                       if (upit != "DA" && upit != "NE") {
                                            std::cout << "[GRESKA]Unesite DA ili NE\n";
                                        }
-                                   } while (upit != "DA" & upit != "NE");
+                                   } while (upit != "DA" && upit != "NE");
                                    if (upit == "DA") {
                                        vrati = true;
                                        kol = niz[i].kolicina - 1;
@@ -453,13 +450,15 @@ void Laptop::prodajaLaptopa()
            naruci << std::left << std::setw(15) << kupci->getPrezime();
            kupci->setKartica();
            naruci << std::left << std::setw(15) << kupci->getKartica();
+           kupci->setAdresa();
+           naruci << std::left << std::setw(15) << kupci->getAdresa();
            naruci << std::endl;
 
            naruci.close();
            system("cls");
            std::cout << "Vrsi se transakcija novca.....\n";
            Sleep(2000);
-           std::cout << "Hvala Vam na povjerenju,laptop ce biti dostavljen brzom postom na vasu adresu za manje od 24 sata.Lijep i srdacan pozdrav (:\n";
+           std::cout << "Hvala Vam na povjerenju,laptop ce biti dostavljen brzom postom na adresu "<< kupci->getAdresa()<<" za manje od 24 sata.\nLijep i srdacan pozdrav (:\n";
 
        }
    }else {
@@ -639,12 +638,12 @@ std::istream& operator>>(std::istream& stream, Laptop& a)
     if (some.eof()) {
         some.close();
         std::ofstream upi("Laptop.txt");
-        upi << "-----------------------------------------------------------------------------------------------------------------------------\n";
+        upi << "------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------\n";
         upi << std::left << std::setw(15) << "Proizvodjac:" << std::left << std::setw(26) << "Model: " << std::left << std::setw(10) << "Kolièina:" <<
             std::left << std::setw(20) << "Godina proizvodnje: " << std::left << std::setw(15) << "Cijena(KM) :" << std::left << std::setw(10)
             << std::left << std::setw(26) << "CPU" << std::left << std::setw(32) << "GPU" << std::left << std::setw(22) << "Operativni Sistem" << std::left << std::setw(12) <<
             "RAM(GB): " << std::left << std::setw(10) << "HDD||SDD: \n";
-        upi << "------------------------------------------------------------------------------------------------------------------------------\n";
+        upi << "------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------\n";
         upi.close();
     }
     else some.close();
