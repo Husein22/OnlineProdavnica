@@ -22,7 +22,8 @@ private:
 	std::string OperativniSistemNiz;
 	int memorija, hard_drive;
 public:
-	static float stanje_kase;
+	static float trosiL;
+	static float prihodL;
 	Laptop();
 	Laptop( std::string a, std::string b, int c, int d, float e,std::string f, std::string g, int op, int i, int j);
 	//Laptop(const Laptop* p);
@@ -43,6 +44,7 @@ public:
 	void prodajaLaptopa();
 	void adminProdaja();
 	friend float operator!(Laptop&a);
+	friend float operator*(Laptop& a);
 	friend std::istream& operator>>(std::istream& stream, Laptop& a);
 	friend std::ostream& operator<<(std::ostream& stream, Laptop& a);
 	void sortiranjeLaptopa(std::string rec);
