@@ -557,16 +557,29 @@ void stanjeK() {
 
 int kupacMe() {
 	int n=0;
-	cout << "\n" << setw(79) << "Odaberite neku od ponudjenih opcija :";
-	cout << "\n" << setw(62) << "1. Kupac login ";
-	cout << "\n" << setw(70) << "2. Kupac registracija: ";
-	cout << "\n" << setw(70) << "0. Vrati se glavnu menu";
+	cout << "_________________________________________________________________________________________________________" << endl;
+	cout << "|                                                                                                       |" << endl;
+	cout << "|                                       ==========================                                      |" << endl;
+	cout << "|                                       | Postovani, dobrodosli! |                                      |" << endl;
+	cout << "|                                       ==========================                                      |" << endl;
+	cout << "|_______________________________________________________________________________________________________|\n" << endl;
+	cout << "                                 _______________________________________                                 " << endl;
+	cout << "                                 |                                     |                                 " << endl;
+	cout << "                                 |      Odaberite zeljenu opciju:      |                                 " << endl;
+	cout << "                                 |                                     |                                 " << endl;
+	cout << "                                 |        1. Kupac login:              |                                 " << endl;
+	cout << "                                 |        2. Kupac registracija:       |                                 " << endl;
+	cout << "                                 |        0. Vrati se glavnu menu:     |                                 " << endl;
+	cout << "                                 |_____________________________________|                               \n" << endl;
 	do {
 		error = 0;
 		cout << "\n" << setw(68) << "Upisi svoj izbor: ";
 		cin >> n;
 		if (n < 0 || n>2) {
-			cout << setw(65) << "[GRESKA] -> Unos nije validan!"  << endl;
+		  cout << "\n                                        ==========================                                     " << endl;
+			cout << "                                        |   UNOS NIJE VALIDAN!   |                                    " << endl;
+			cout << "                                        | Molimo unesite ponovo. |                                    " << endl;
+			cout << "                                        ==========================                                   " << endl;
 			error = 1;
 			cin.clear();
 		}
@@ -587,7 +600,7 @@ int main()
 	bool l;
 	//Lap.prodajaLaptopa();
 	//prodajaLaptopa();
-	kupacMenu();
+	//kupacMenu();
 	//ispisLaptopa();
 	//Lap.soranjeLaptopa("cijena");
 	//pretragaPoProiz("Laptop");
@@ -607,30 +620,50 @@ int main()
 //
 	//Lap.adminProdaja();
 	//ispisLaptopa();
-	//cin >> Lap;
-	//ispisLaptopa();
+	cin >> Lap;
+	ispisLaptopa();
 	do {
-		cout << "\n\n" << setw(81) <<right<< "****************************************" << endl;
-		cout << setw(77) << right<< " * >>>> PRIJAVA NA IT SHOP <<<< *" << endl;
-		cout << setw(81) << right<< "****************************************" << endl;
+		cout << "\n\n" << setw(81) << right << "" << endl;
+		cout << "_________________________________________________________________________________________________________" << endl;
+		cout << "|                                                                                                       |" << endl;
+		cout << "|                                       ==========================                                      |" << endl;
+		cout << "|                                       |   PRIJAVA NA IT SHOP!  |                                      |" << endl;
+		cout << "|                                       ==========================                                      |" << endl;
+		cout << "|_______________________________________________________________________________________________________|\n" << endl;
 		cin.clear();
-		cout << "\n" << setw(79) <<right<< "Odaberite neku od ponudjenih opcija :";
-		cout << "\n" << setw(63) << right<< "1. Admin login ";
-		cout << "\n" << setw(63) << right<<"2. Kupac login ";
-		cout << "\n" << setw(75) << right<< "3. Promjeni velicinu fonta ";
-		cout << "\n" << setw(65) << right<<"4. Promjena teme ";
-		cout << "\n" << setw(57) << right<<"0. Kraj \n";
+		cout << "                                   _____________________________________                                   " << endl;
+		cout << "                                  /__________________o__________________\\                                 " << endl;
+		cout << "                                  |           Odaberite opciju:         |                                 " << endl;
+		cout << "                                  |                                     |                                 " << endl;
+		cout << "                                  |         1. Admin login              |                                 " << endl;
+		cout << "                                  |         2. Kupac login              |                                 " << endl;
+		cout << "                                  |         3. Promjeni velicinu fonta  |                                 " << endl;
+		cout << "                                  |         4. Promjena teme            |                                 " << endl;
+		cout << "                                  |         0. Kraj                     |                                 " << endl;
+		cout << "                                  |_____________________________________|                                 " << endl;
+		cout << "                                 /---------------------------------------\\                                " << endl;
+		cout << "                                /  # ########################## ### ###   \\                               " << endl;
+		cout << "                               /  ######################################   \\                              " << endl;
+		cout << "                              /  ################################# # ####   \\                             " << endl;
+		cout << "                             /  ####### ################### ##### ### ####   \\                            " << endl;
+		cout << "                            /_________________________________________________\\                           " << endl;
+		cout << "                           /_____________________|___|___|_____________________\\                          " << endl;
+		cout << "                           \\___________________________________________________/                           \n" << endl;
 		do {
 			error = 0;
 			cout << "\n" << setw(69)<< right << "Upisite svoj odabir : ";
 			cin >> izbor;
 			if (izbor > 4 || izbor < 0) {
-				cout << "\n" << setw(79) << right<<"[POGRESAN IZBOR] Pokusajte ponovo: \n";
+				cout << "\n                                        ==========================                                     " << endl;
+				cout << "                                        |     POGRESAN IZBOR!    |                                    " << endl;
+				cout << "                                        | Molimo unesite ponovo. |                                    " << endl;
+				cout << "                                        ==========================                                   " << endl;
 				error = 1;
 				cin.clear();
-				cin.ignore();
+				
 			}
 		} while (error == 1);
+		cin.ignore();
 		system("cls");
 		switch (izbor) {
 		case 1: {

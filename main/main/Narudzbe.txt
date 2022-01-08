@@ -2,5 +2,4 @@
 ID osobe       ID laptopa   Kolicina    Ime            Prezime        Ziro racun     Adresa         
 ---------------------------------------------------------------------------------------------------------------
 1              5            10          Selma          Arnaut         34553          Arnauti bb     
-2              8            3           Lejla          Lelic          32543          Lejlograd 43   
-3              6            4           Pero           Peric          54343          Travnicka 22   
+2              4            5           Husein         Cisic          21343          Preocica bb    
