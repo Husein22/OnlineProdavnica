@@ -619,9 +619,12 @@ int main()
 	//cout << "Kraj";
 //
 	//Lap.adminProdaja();
-	//ispisLaptopa();
-	cin >> Lap;
 	ispisLaptopa();
+	//cin >> Lap;
+	Lap.adminProdaja();
+	ispisLaptopa();
+
+	//ispisLaptopa();
 	do {
 		cout << "\n\n" << setw(81) << right << "" << endl;
 		cout << "_________________________________________________________________________________________________________" << endl;

@@ -3,6 +3,15 @@
 #include <windows.h>
 #include<iostream>
 #include <algorithm>
+#include<iostream>
+#include<fstream>
+#include<string>
+#include<iomanip>
+#include <vector>
+#include <sstream>
+#include <algorithm>
+#include "Kupac.h"
+#include <windows.h>
 enum OperativniSistem  { Windows=0 ,Linux, Unix, Mac_OS, AmigaOS, GNOME};
 class Laptop:
 	public Artikal
