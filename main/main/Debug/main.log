@@ -1,0 +1,20 @@
+﻿  Laptop.cpp
+C:\Users\husei\OneDrive\Dokumenti\GitHub\PROJEKAT_ONLINEprodavnica\main\main\Laptop.cpp(106,25): warning C4018: '<': signed/unsigned mismatch
+C:\Users\husei\OneDrive\Dokumenti\GitHub\PROJEKAT_ONLINEprodavnica\main\main\Laptop.cpp(581,30): warning C4018: '<': signed/unsigned mismatch
+C:\Users\husei\OneDrive\Dokumenti\GitHub\PROJEKAT_ONLINEprodavnica\main\main\Laptop.cpp(582,34): warning C4018: '<': signed/unsigned mismatch
+C:\Users\husei\OneDrive\Dokumenti\GitHub\PROJEKAT_ONLINEprodavnica\main\main\Laptop.cpp(590,30): warning C4018: '<': signed/unsigned mismatch
+C:\Users\husei\OneDrive\Dokumenti\GitHub\PROJEKAT_ONLINEprodavnica\main\main\Laptop.cpp(593,30): warning C4018: '<': signed/unsigned mismatch
+C:\Users\husei\OneDrive\Dokumenti\GitHub\PROJEKAT_ONLINEprodavnica\main\main\Laptop.cpp(594,34): warning C4018: '<': signed/unsigned mismatch
+C:\Users\husei\OneDrive\Dokumenti\GitHub\PROJEKAT_ONLINEprodavnica\main\main\Laptop.cpp(602,30): warning C4018: '<': signed/unsigned mismatch
+C:\Users\husei\OneDrive\Dokumenti\GitHub\PROJEKAT_ONLINEprodavnica\main\main\Laptop.cpp(604,30): warning C4018: '<': signed/unsigned mismatch
+C:\Users\husei\OneDrive\Dokumenti\GitHub\PROJEKAT_ONLINEprodavnica\main\main\Laptop.cpp(605,34): warning C4018: '<': signed/unsigned mismatch
+C:\Users\husei\OneDrive\Dokumenti\GitHub\PROJEKAT_ONLINEprodavnica\main\main\Laptop.cpp(613,30): warning C4018: '<': signed/unsigned mismatch
+C:\Users\husei\OneDrive\Dokumenti\GitHub\PROJEKAT_ONLINEprodavnica\main\main\Laptop.cpp(616,30): warning C4018: '<': signed/unsigned mismatch
+C:\Users\husei\OneDrive\Dokumenti\GitHub\PROJEKAT_ONLINEprodavnica\main\main\Laptop.cpp(617,34): warning C4018: '<': signed/unsigned mismatch
+C:\Users\husei\OneDrive\Dokumenti\GitHub\PROJEKAT_ONLINEprodavnica\main\main\Laptop.cpp(625,30): warning C4018: '<': signed/unsigned mismatch
+C:\Users\husei\OneDrive\Dokumenti\GitHub\PROJEKAT_ONLINEprodavnica\main\main\Laptop.cpp(751,42): warning C4018: '<': signed/unsigned mismatch
+C:\Users\husei\OneDrive\Dokumenti\GitHub\PROJEKAT_ONLINEprodavnica\main\main\Laptop.cpp(888,31): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+  main.cpp
+  Generating Code...
+C:\Users\husei\OneDrive\Dokumenti\GitHub\PROJEKAT_ONLINEprodavnica\main\main\Laptop.cpp(276): warning C4715: 'Laptop::getOpsSisString': not all control paths return a value
+  main.vcxproj -> C:\Users\husei\OneDrive\Dokumenti\GitHub\PROJEKAT_ONLINEprodavnica\main\Debug\main.exe
