@@ -3,6 +3,7 @@
 std::vector<Laptop>laptopi;
 float Laptop::trosiL = 0;
 float Laptop::prihodL = 0;
+//float Laptop::stanje_kase = 0;
 Laptop::Laptop()
 {
 }

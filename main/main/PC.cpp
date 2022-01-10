@@ -102,7 +102,7 @@ std::string PC::getKucisteString()
         return "CHASSIS_INTER_TECH_B";
         break;
     case 2:
-        return " GAMING_KUĆIŠTE";
+        return "GAMING_KUĆIŠTE";
         break;
     case 3:
         return "MS_FIGHTER_V305";
@@ -130,14 +130,194 @@ int PC::getHardDrive()
 
 void PC::sortiranjePC(std::string rec)
 {
+    std::ifstream unos("PC.txt");
+    std::vector<std::string>nizl;
+    std::vector<int>hdd;
+    std::vector<int>godine;
+    std::vector<int>cijena;
+    std::vector<int>ram;
+    std::string temp;
+    std::string po;
+    int a = 0, b = 0, c = 0, d = 0, x = 0, p = 0;
+    if (unos.fail())std::cout << "Nemoguce otvaranje datoeke\n";
+    else {
+        getline(unos, temp);
+        getline(unos, temp);
+        getline(unos, temp);
+        while (true) {
+            getline(unos, temp);
+            if (unos.eof())break;
+            nizl.push_back(temp);
+            if (rec == "hdd") {
+                a = temp[178] - '0';b = temp[179] - '0';c = temp[180] - '0';
+                if (a > -1 && b > -1 && c > -1) x = a * 100 + b * 10 + c + 1;
+                else if (a > -1 && b > -1 && c < -1) x = a * 10 + b;
+                else if (a > -1 && b < -1 && c < -1) x = a;
+                hdd.push_back(x);
+            }
+            if (rec == "ram") {
+                a = temp[166] - '0';
+                b = temp[167] - '0';
+                c = temp[168] - '0';
+                if (a > -1 && b > -1 && c > -1) x = a * 100 + b * 10 + c + 1;
+                else if (a > -1 && b > -1 && c < -1) x = a * 10 + b;
+                else if (a > -1 && b < -1 && c < -1) x = a;
+                ram.push_back(x);
+            }
+            if (rec == "godine") {
+                a = temp[51] - '0';
+                b = temp[52] - '0';
+                c = temp[53] - '0';
+                d = temp[54] - '0';
+                if (a > -1 && b > -1 && c > -1 && d > -1) x = a * 1000 + b * 100 + c * 10 + d;
+                else if (a > -1 && b > -1 && c > -1 && d < -1) x = a * 100 + b * 10 + c;
+                else if (a > -1 && b > -1 && c < -1 && d < -1) x = a * 10 + b;
+                else if (a > -1 && b < -1 && c < -1 && d < -1) x = a;
+                godine.push_back(x);
+            }
+            if (rec == "cijena") {
+                a = temp[71] - '0';
+                b = temp[72] - '0';
+                c = temp[73] - '0';
+                d = temp[74] - '0';
+                if (a > -1 && b > -1 && c > -1 && d > -1) x = a * 1000 + b * 100 + c * 10 + d;
+                else if (a > -1 && b > -1 && c > -1 && d < -1) x = a * 100 + b * 10 + c;
+                else if (a > -1 && b > -1 && c < -1 && d < -1) x = a * 10 + b;
+                else if (a > -1 && b < -1 && c < -1 && d < -1) x = a;
+                cijena.push_back(x);
+            }
+        }
+        if (rec == "hdd") {
+            for (int i = 0;i < hdd.size();i++) {
+                for (int j = i;j < hdd.size();j++) {
+                    if (hdd[j] > hdd[i]) {
+                        std::swap(hdd[j], hdd[i]);
+                        std::swap(nizl[j], nizl[i]);
+                    }
+                }
+            }
+            //   osnova();
+            for (int i = 0;i < hdd.size();i++)std::cout << nizl[i] << "\n";
+        }
+        if (rec == "ram") {
+            for (int i = 0;i < ram.size();i++) {
+                for (int j = i;j < ram.size();j++) {
+                    if (ram[j] > ram[i]) {
+                        std::swap(ram[j], ram[i]);
+                        std::swap(nizl[j], nizl[i]);
+                    }
+                }
+            }
+            //    osnova();
+            for (int i = 0;i < ram.size();i++)std::cout << nizl[i] << "\n";
+        }if (rec == "godine") {
+            for (int i = 0;i < godine.size();i++) {
+                for (int j = i;j < godine.size();j++) {
+                    if (godine[j] > godine[i]) {
+                        std::swap(godine[j], godine[i]);
+                        std::swap(nizl[j], nizl[i]);
+                    }
+                }
+            }
+            // osnova();
+            for (int i = 0;i < godine.size();i++)std::cout << nizl[i] << "\n";
+        }
+        if (rec == "cijena") {
+            for (int i = 0;i < cijena.size();i++) {
+                for (int j = i;j < cijena.size();j++) {
+                    if (cijena[j] > cijena[i]) {
+                        std::swap(cijena[j], cijena[i]);
+                        std::swap(nizl[j], nizl[i]);
+                    }
+                }
+            }
+            //osnova();
+            for (int i = 0;i < cijena.size();i++)std::cout << nizl[i] << "\n";
+        }
+        unos.close();
+    }
 }
 
 void PC::pretragaPoProizImodeluPC(std::string a, std::string b)
 {
+    std::string temp, z, pom;
+    int p = 0, o = 0, l = -1;
+    std::ifstream unos("PC.txt");
+    if (unos.is_open()) {
+        while (!unos.eof()) {
+            unos >> temp;
+            unos >> z;
+            getline(unos, pom);
+            l++;
+            if (temp == a && z == b) {
+                if (o == 0)
+                {
+                    std::cout << "Uspjesno pronadjen artikal\n";
+                    std::cout << "------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------\n";
+                    std::cout << std::left << std::setw(3) << "ID" << std::left << std::setw(15) << "Proizvodjac " << std::left << std::setw(26) << "Model " << std::left << std::setw(10) << "Kolièina" <<
+                        std::left << std::setw(20) << "Godina proizvodnje " << std::left << std::setw(15) << "Cijena(KM) " << std::left << std::setw(10)
+                        << std::left << std::setw(26) << "CPU" << std::left << std::setw(32) << "GPU" << std::left << std::setw(22) << "Operativni Sistem" << std::left << std::setw(12) <<
+                        "RAM(GB) " << std::left << std::setw(10) << "HDD||SDD \n";
+                    std::cout << "-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------\n";
+                    o++;
+                }
+                std::cout << std::left << std::setw(3) << l;
+                std::cout << std::left << std::setw(15) << temp;
+                std::cout << std::left << z;
+                std::cout << pom << std::endl;
+                p++;
+            }
+        }
+        if (p == 0) {
+            std::cout << "Nazalost nemamo taj model artikala u prodaji\n";
+        }
+
+        unos.close();
+    }
+    else {
+        std::cout << "Neuspjesno otvaranje datoteke\n";
+    }
+
+
 }
 
 void PC::pretragaPoProizPC(std::string a)
 {
+    std::string temp, pom;
+    int p = 0, o = 0, l = -3;
+    std::ifstream unos("PC.txt");
+    if (unos.is_open()) {
+        while (!unos.eof()) {
+            unos >> temp;
+            getline(unos, pom);
+            l++;
+            if (temp == a) {
+                if (o == 0)
+                {
+                    std::cout << "Uspjesno pronadjen artikal\n";
+                    std::cout << "------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------\n";
+                    std::cout << std::left << std::setw(3) << "ID" << std::left << std::setw(15) << "Proizvodjac " << std::left << std::setw(26) << "Model " << std::left << std::setw(10) << "Kolièina" <<
+                        std::left << std::setw(20) << "Godina proizvodnje " << std::left << std::setw(15) << "Cijena(KM) " << std::left << std::setw(10)
+                        << std::left << std::setw(26) << "CPU" << std::left << std::setw(32) << "GPU" << std::left << std::setw(22) << "Operativni Sistem" << std::left << std::setw(12) <<
+                        "RAM(GB) " << std::left << std::setw(10) << "HDD||SDD \n";
+                    std::cout << "-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------\n";
+                    o++;
+                }
+                std::cout << std::left << std::setw(3) << l;
+                std::cout << std::left << temp;
+                std::cout << pom << std::endl;
+                p++;
+            }
+        }
+        if (p == 0) {
+            std::cout << "Nazalost nemamo taj model artikala u prodaji\n";
+        }
+
+        unos.close();
+    }
+    else {
+        std::cout << "Neuspjesno otvaranje datoteke\n";
+    }
 }
 
 void PC::prodajaPC()
@@ -150,7 +330,42 @@ void PC::adminProdajaPC()
 
 float operator!(PC& a)
 {
-    return 0.0f;
+    std::string temp;
+    int  b, c, d, e, f, g, h, i = 0, p, j;
+    std::ifstream unos("PC.txt");
+    if (unos.fail()) {
+        std::cout << "Neuspjesno otvaranje datoteke\n";
+    }
+    else {
+        std::vector<int>cijena;std::vector<int>kolicina;
+        std::vector<std::string>lap;
+        getline(unos, temp);
+        getline(unos, temp);
+        getline(unos, temp);
+        while (true) {
+            getline(unos, temp);
+            if (unos.eof())break;
+            //lap.push_back(temp);
+            b = temp[41] - '0';
+            c = temp[42] - '0';
+            d = temp[43] - '0';
+            if (b > -1 && c > -1 && d > -1) e = b * 100 + c * 10 + d;
+            else if (b > -1 && c > -1 && d < -1) e = b * 10 + c;
+            else if (b > -1 && c < -1 && d < -1) e = b;
+            f = temp[71] - '0';
+            g = temp[72] - '0';
+            h = temp[73] - '0';
+            j = temp[74] - '0';
+            if (f > -1 && g > -1 && h > -1 && j > -1) i = f * 1000 + g * 100 + h * 10 + j;
+            if (f > -1 && g > -1 && h > -1 && j < -1) i = f * 100 + g * 10 + h;
+            else if (f > -1 && g > -1 && h < -1 && j < -1) i = f * 10 + g;
+            else if (f > -1 && g < -1 && h < -1 && j < -1) i = f;
+            p = i * e;
+            PC::trosiPC -= p;
+        }
+        unos.close();
+    }
+    return PC::trosiPC;
 }
 
 float operator*(PC& a)

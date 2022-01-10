@@ -1,5 +1,6 @@
 #include "Artikal.h"
 #include <iostream>
+//float Artikal::stanje_kase = 0;
 Artikal::Artikal()
 {
 }

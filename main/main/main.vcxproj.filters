@@ -33,6 +33,9 @@
     <ClCompile Include="PC.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Mobitel.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Artikal.h">
@@ -48,6 +51,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="PC.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Mobitel.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

@@ -12,6 +12,7 @@
 #include "Admin.h"
 #include "Kupac.h"
 #include "PC.h"
+#include "Mobitel.h"
 
 using namespace std;
 //vector<Laptop>laptopi;
@@ -49,6 +50,22 @@ void ispisLaptopa(string rec) {
 		prodajaLaptopa();
 	}
 }
+void ispisMobitela(string rec) {
+	std::shared_ptr<Mobitel>temp = std::make_shared<Mobitel>();
+	cout << *temp;
+	if (rec != "admin") {
+		
+	}
+}
+void ispisPC(string rec) {
+	std::shared_ptr<PC>temp = std::make_shared<PC>();
+	cout << *temp;
+	if (rec != "admin") {
+		
+	}
+}
+
+
 void prodaja() {
 	int iz = 0, lap = 0;
 	do {
@@ -63,7 +80,7 @@ void prodaja() {
 		std::cout << "\n" << std::setw(81) << "*        2. Kupovina mobitela           *";
 		std::cout << "\n" << std::setw(81) << "*        3. Kupovina racinara           *";
 		std::cout << "\n" << std::setw(81) << "*        0. Vrati se nazad              *";
-		std::cout << "\n" << std::setw(81) << "*                                       *";
+		std::cout << "\n" << std::setw(81) << "*****************************************";
 		do {
 			cout << "\n" << std::setw(67) << "Unesite izbor: ";
 			cin >> iz;
@@ -94,12 +111,63 @@ void prodaja() {
 
 }
 
+void unosArtikla() {
+	int iz = 0;
+	unique_ptr<Laptop>laptop = make_unique<Laptop>();
+	unique_ptr<PC>pc = make_unique<PC>();
+	unique_ptr<Mobitel>mob = make_unique<Mobitel>();
+	
+	do {
+		system("cls");
+		std::cout << "\n\n" << std::setw(81) << "*******************************************" << std::endl;
+		std::cout << std::setw(81) << "*     >>>>  PRETRAZI   PROIZVOD  <<<<     *" << std::endl;
+		std::cout << std::setw(81) << "*******************************************" << std::endl;
+		std::cin.clear();
+		std::cout << "\n" << std::setw(81) << "*  Odaberite neku od ponudjenih opcija    *";
+		std::cout << "\n" << std::setw(81) << "*                                         *";
+		std::cout << "\n" << std::setw(81) << "*          1. Unos laptopa                *";
+		std::cout << "\n" << std::setw(81) << "*          2. Unos mobitela               *";
+		std::cout << "\n" << std::setw(81) << "*          3. Unos racunara               *";
+		std::cout << "\n" << std::setw(81) << "*          0. Vrati se nazad              *";
+		std::cout << "\n" << std::setw(81) << "*                                         *";
+		do {
+			std::cout << "\n\n" << std::setw(67) << "Unesite izbor: ";
+			cin >> iz;
+		} while (iz < 0 || iz>3);
+		cin.ignore();
+		switch (iz)
+		{
+		case 1:
+			cin >> *laptop;
+			cout << "Uspjesno smjesten laptop u datoteku\n";
+			system("pause");
+			break;
+			
+		case 2:
+			cin >> *mob;
+			cout << "Uspjesno smjesten mobitel u datoteku\n";
+			system("pause");
+			break;
+		case 3:
+			cin >> *pc;
+			cout << "Uspjesno smjesten racunar u datoteku\n";
+			system("pause");
+			break;
+		default:
+			break;
+		}
+	} while (iz != 0);
 
+
+
+}
 
 
 
 void pretragaPoProizziMod(string r) {
-	std::shared_ptr<Laptop>temp = std::make_shared<Laptop>();
+	unique_ptr<Laptop>laptop = make_unique<Laptop>();
+	unique_ptr<PC>pc = make_unique<PC>();
+	unique_ptr<Mobitel>mob = make_unique<Mobitel>();
 	std::unique_ptr<string>p = std::make_unique<string>();
 	std::unique_ptr<string>l = std::make_unique<string>();
 	std::cout << "Unesite proizvodjaca za pretragu: ";
@@ -107,21 +175,39 @@ void pretragaPoProizziMod(string r) {
 	std::cout << "Unesite model za pretragu: ";
 	getline(cin, *p);
 	if (r == "Laptop") {
-	temp->pretragaPoProizImodeluLap(*l, *p); 
+	laptop->pretragaPoProizImodeluLap(*l, *p); 
 	prodajaLaptopa();
+	}
+	if (r == "PC") {
+		pc->pretragaPoProizImodeluPC(*l, *p);
+		prodajaLaptopa();
+	}
+	if (r == "Mobitel") {
+		mob->pretragaPoProizImodeluMob(*l, *p);
+		prodajaLaptopa();
 	}
 	
 
 }
 
 void pretragaPoProiz(string r) {
-	std::shared_ptr<Laptop>temp = std::make_shared<Laptop>();
+	unique_ptr<Laptop>laptop = make_unique<Laptop>();
+	unique_ptr<PC>pc = make_unique<PC>();
+	unique_ptr<Mobitel>mob = make_unique<Mobitel>();
+
 	std::unique_ptr<string>p = std::make_unique<string>();
 	std::unique_ptr<string>l = std::make_unique<string>();
 	std::cout << "Unesite proizvodjaca za pretragu: ";
 	getline(cin, *l);
 	if (r == "Laptop") { 
-		temp->pretragaPoProiz(*l);
+		laptop->pretragaPoProiz(*l);
+		prodajaLaptopa();
+	}if (r == "PC") {
+		pc->pretragaPoProizPC(*l);
+		prodajaLaptopa();
+	}
+	if (r == "Mobitel") {
+		mob->pretragaPoProizMob(*l);
 		prodajaLaptopa();
 	}
 }
@@ -134,8 +220,9 @@ void info() {
 	cout << " Nas IT shop posjeduje : \n";
 	Artikal* i1 = new Laptop();
 	Artikal* i2 = new PC();
-	Artikal* posjedujem[2]{ i1,i2 };
-	for (int i = 0;i < 2;i++) {
+	Artikal* i3 = new Mobitel();
+	Artikal* posjedujem[3]{ i1,i2,i3 };
+	for (int i = 0;i < 3;i++) {
 		posjedujem[i]->PosjedujemArtikal();
 
 	}
@@ -210,7 +297,7 @@ void pretragaOpcije() {
 		std::cout << "\n" << std::setw(81) << "*          2. Pretraga mobitela           *";
 		std::cout << "\n" << std::setw(81) << "*          3. Pretraga racunara           *";
 		std::cout << "\n" << std::setw(81) << "*          0. Vrati se nazad              *";
-		std::cout << "\n" << std::setw(81) << "*                                         *";
+		std::cout << "\n" << std::setw(81) << "*******************************************";
 		do {
 			std::cout << "\n\n" << std::setw(67) << "Unesite izbor: ";
 			cin >> iz;
@@ -220,11 +307,11 @@ void pretragaOpcije() {
 		case 1:
 			do {
 				system("cls");
-				std::cout << "\n\n\n" << std::setw(81) << "*                                         *";
+			std::cout << "\n\n\n" << std::setw(81) << "*******************************************";
 				std::cout << "\n" << std::setw(81) << "*   1. Pretraga po proizvodjacu           *";
 				std::cout << "\n" << std::setw(81) << "*   2. Pretraga po proizvodjacu i modelu  *";
 				std::cout << "\n" << std::setw(81) << "*   0. Vrati na prethodni menu            *";
-				std::cout << "\n" << std::setw(81) << "*                                         *";
+				std::cout << "\n" << std::setw(81) << "*******************************************";
 				do {
 					std::cout << "\n\n" << std::setw(67) << "Unesite izbor: ";
 					cin >> lap;
@@ -245,6 +332,64 @@ void pretragaOpcije() {
 					break;
 				}
 			} while (lap != 0);
+		case 2:
+			do {
+				system("cls");
+				std::cout << "\n\n\n" << std::setw(81) << "*******************************************";
+				std::cout << "\n" << std::setw(81) << "*   1. Pretraga po proizvodjacu           *";
+				std::cout << "\n" << std::setw(81) << "*   2. Pretraga po proizvodjacu i modelu  *";
+				std::cout << "\n" << std::setw(81) << "*   0. Vrati na prethodni menu            *";
+				std::cout << "\n" << std::setw(81) << "*******************************************";
+				do {
+					std::cout << "\n\n" << std::setw(67) << "Unesite izbor: ";
+					cin >> lap;
+				} while (lap < 0 || lap > 3);
+				cin.ignore();
+				switch (lap)
+				{
+				case 1:
+					pretragaPoProiz("Mobitel");
+					break;
+				case 2:
+					pretragaPoProizziMod("Mobitel");
+					break;
+				case 0:
+					break;
+
+				default:
+					break;
+				}
+			} while (lap != 0);
+		case 3:
+			do {
+				system("cls");
+				std::cout << "\n\n\n" << std::setw(81) << "*******************************************";
+				std::cout << "\n" << std::setw(81) << "*   1. Pretraga po proizvodjacu           *";
+				std::cout << "\n" << std::setw(81) << "*   2. Pretraga po proizvodjacu i modelu  *";
+				std::cout << "\n" << std::setw(81) << "*   0. Vrati na prethodni menu            *";
+				std::cout << "\n" << std::setw(81) << "*******************************************";
+				do {
+					std::cout << "\n\n" << std::setw(67) << "Unesite izbor: ";
+					cin >> lap;
+				} while (lap < 0 || lap > 3);
+				cin.ignore();
+				switch (lap)
+				{
+				case 1:
+					pretragaPoProiz("PC");
+					break;
+				case 2:
+					pretragaPoProizziMod("PC");
+					break;
+				case 0:
+					break;
+
+				default:
+					break;
+				}
+			} while (lap != 0);
+
+
 
 		default:
 			break;
@@ -267,7 +412,7 @@ void ispisOpcijeKupac() {
 		std::cout << "\n" << std::setw(81) << "*        3. Ispis racunara              *";
 		std::cout << "\n" << std::setw(81) << "*        4. Ispis laptopa               *";
 		std::cout << "\n" << std::setw(81) << "*        0. Vrati se nazad              *";
-		std::cout << "\n" << std::setw(81) << "*                                       *";
+		std::cout << "\n" << std::setw(81) << "*****************************************";
 		do {
 			cout << "\n" << std::setw(67) << "Unesite izbor: ";
 			cin >> iz;
@@ -278,10 +423,10 @@ void ispisOpcijeKupac() {
 		case 1:
 			//ispisSvih();
 		case 2:
-			//ispisMob();
+			ispisMobitela("kupac");
 			break;
 		case 3:
-			//ispisRacunara();
+			ispisPC("kupac");
 			break;
 		case 4:
 			ispisLaptopa("kupac");
@@ -312,7 +457,7 @@ void ispisOpcijeAdmin() {
 		std::cout << "\n" << std::setw(81) << "*        3. Ispis racunara              *";
 		std::cout << "\n" << std::setw(81) << "*        4. Ispis laptopa               *";
 		std::cout << "\n" << std::setw(81) << "*        0. Vrati se nazad              *";
-		std::cout << "\n" << std::setw(81) << "*                                       *";
+		std::cout << "\n" << std::setw(81) << "******************************************";
 		do {
 			cout << "\n" << std::setw(67) << "Unesite izbor: ";
 			cin >> iz;
@@ -323,13 +468,16 @@ void ispisOpcijeAdmin() {
 		case 1:
 			//ispisSvih();
 		case 2:
-			//ispisMob();
+			ispisMobitela("admin");
+			system("pause");
 			break;
 		case 3:
-			//ispisRacunara();
+			ispisPC("admin");
+			system("pause");
 			break;
 		case 4:
 			ispisLaptopa("admin");
+			system("pause");
 			break;
 		case 0:
 
@@ -392,18 +540,99 @@ void updateOpcije() {
 
 void stanjeK() {
 	unique_ptr<Laptop>laptop = make_unique<Laptop>();
+	unique_ptr<PC>pc = make_unique<PC>();
+	unique_ptr<Mobitel>mob = make_unique<Mobitel>();
 	!(*laptop);
 	*(*laptop);
-
+	!(*pc);
+	!(*mob);
 	cout << "Stanje kase:  " << "\n\tZarada na prodaji laptopa: "  << Laptop::prihodL << " KM\n\t Potroseno na kupovinu laptopa : " << Laptop::trosiL * (-1) << " KM \n";
-	cout << "Bilans sto se tice laptopa: " <<Laptop::prihodL-  (Laptop::trosiL*(-1)) << " KM\n";
+	cout << "Bilans sto se tice laptopa: "  <<Laptop::prihodL-  (Laptop::trosiL*(-1)) << " KM\n";
+	cout <<  "\n\tZarada na prodaji racuanara: " << PC::prihoPC << " KM\n\t Potroseno na kupovinu racunara : " << PC::trosiPC * (-1) << " KM \n";
+	cout << "Bilans sto se tice laptopa: " << PC::prihoPC - (PC::trosiPC * (-1)) << " KM\n";
+	cout << "\n\tZarada na prodaji mobitela: " << Mobitel::prihodMob << " KM\n\t Potroseno na kupovinu mobitela : " << Mobitel::trosiMob * (-1) << " KM \n";
+	cout << "Bilans sto se tice mobitela: " << Mobitel::prihodMob - (Mobitel::trosiMob * (-1)) << " KM\n";
+
+
 	system("pause");
 }
 
 
+void sortiranje() {
+	unique_ptr<Laptop>laptop = make_unique<Laptop>();
+	unique_ptr<PC>pc = make_unique<PC>();
+	unique_ptr<Mobitel>mob = make_unique<Mobitel>();
+	int iz = 0;
+	do {
+	cout << "1-Ispis laptopa sortirano po cijeni                        |           5-Ispis racunara sortirano po cijeni\n";
+	cout << "2-Ispis laptopa sortirano po godini proizvodnje            |           6-Ispis racunara sortirano po godini proizvodnje\n";
+	cout << "3-Ispis laptopa sortirano po velicini primarne memorije    |           7-Ispis racunara sortirano po velicini primarne memorije\n";
+	cout << "4-Ispis laptopa sortirano po velicini sekundarne memorije  |           8-Ispis racunara sortirano po velicini sekundarne memorije\n";
+	cout << "							      	9-Ispis mobitela sortirano po cijeni                      \n";
+	cout << "							    	10-Ispis mobitela sortirano po godini proizvodnje          \n";
+	cout << "							   11-Ispis mobitela sortirano po velicini primarne memorije   \n";
+	cout << "					 	12-Ispis mobitela sortirano po pikselizaciji  \n";
+	cout << "0-Vrati se na prethodni meni\n";
+	do {
+		cout << "Unesite izbor:";
+		cin >> iz;
+	} while (iz < 0 || iz>12);
+	if (iz != 0) {
+		osnova();
+	}
+		switch (iz)
+		{
+		case 1:
+			laptop->sortiranjeLaptopa("cijena");
+			break;
+		case 2:
+			laptop->sortiranjeLaptopa("godine");
+			break;
+		case 3:
+			laptop->sortiranjeLaptopa("ram");
+			break;
+		case 4:
+			laptop->sortiranjeLaptopa("hdd");
+			break;
+		case 5:
+			pc->sortiranjePC("cijena");
+			break;
+		case 6:
+			pc->sortiranjePC("godine");
+			break;
+		case 7:
+			pc->sortiranjePC("ram");
+			break;
+		case 8:
+			pc->sortiranjePC("hdd");
+			break;
+		case 9:
+			mob->sortiranjeMob("cijena");
+			break;
+		case 10:
+			mob->sortiranjeMob("godine");
+			break;
+		case 11:
+			mob->sortiranjeMob("ram");
+			break;
+		case 12:
+			mob->sortiranjeMob("kamera");
+			break;
 
+
+
+
+		default:
+			break;
+		}
+		if (iz != 0) {
+			system("pause");
+			system("cls");
+		}
+	}while(iz != 0);
+}
 void adminOpcije() {
-	
+
 	system("cls");
 	cout << "\n\n" << setw(81) << "*****************************************" << endl;
 	cout << setw(81) << "* >>>>  DOBRO DOSLI NA ADMIN MENU  <<<< *" << endl;
@@ -414,18 +643,19 @@ void adminOpcije() {
 	cout << "\n" << setw(66) << "2. Potrazi proizvod ";
 	cout << "\n" << setw(67) << "3. Predaja artikla u postu ";
 	cout << "\n" << setw(67) << "4. Stanje kase ";
+	cout << "\n" << setw(67) << "5. Unos artikla ";
+	cout << "\n" << setw(67) << "6. Ispis sortiranih elemenata ";
 	cout << "\n" << setw(75) << "0. Vrati se na glavni menu\n";
 }
 void adminMenu() {
-	int odabir = 0, odabirI=0, odabirA=0, odabirB=0, odabirP=0;
+	int odabir = 0, odabirI = 0, odabirA = 0, odabirB = 0, odabirP = 0;
 	do {
 		adminOpcije();
 		do {
 			error = 0;
 			cout << "\n" << setw(69) << "Upisi svoj izbor: ";
 			cin >> odabir;
-			if (odabir < 0 || odabir>8) {
-				cout << setw(65) << "Unesite validan unos: " << endl;
+			if (odabir < 0 || odabir>6) {
 				error = 1;
 			}
 		} while (error == 1);
@@ -434,7 +664,7 @@ void adminMenu() {
 		case 1:
 			ispisOpcijeAdmin();
 			break;
-		case 2: 
+		case 2:
 			pretragaOpcije();
 			break;
 		case 3:
@@ -443,56 +673,22 @@ void adminMenu() {
 		case 4:
 			stanjeK();
 			break;
+		case 5:
+			unosArtikla();
+			break;
+		case 6:
+			sortiranje();
+			break;
 		case 0: {
 			system("CLS");
 		} break;
 		}
-		
-		
-		
+
+
+
 
 	} while (odabir != 0);
 }
-void sortiranjeLaptopa() {
-	shared_ptr<Laptop>temp = make_shared<Laptop>();
-	int iz = 0;
-	do {
-	cout << "1-Ispis laptopa sortirano po cijeni\n";
-	cout << "2-Ispis laptopa sortirano po godini proizvodnje\n";
-	cout << "3-Ispis laptopa sortirano po velicini promarne memorije\n";
-	cout << "4-Ispis laptopa sortirano po velicini sekundarne memorije\n";
-	cout << "0-Vrati se na prethodni meni\n";
-	do {
-		cout << "Unesite izbor:";
-		cin >> iz;
-	} while (iz < 0 || iz>4);
-	if (iz != 0) {
-		osnova();
-	}
-		switch (iz)
-		{
-		case 1:
-			temp->sortiranjeLaptopa("cijena");
-			break;
-		case 2:
-			temp->sortiranjeLaptopa("godine");
-			break;
-		case 3:
-			temp->sortiranjeLaptopa("ram");
-			break;
-		case 4:
-			temp->sortiranjeLaptopa("hdd");
-			break;
-		default:
-			break;
-		}
-		if (iz != 0) {
-			system("pause");
-			system("cls");
-		}
-	}while(iz != 0);
-}
-
 void kupacOpcije() {
 	system("cls");
 	std::cout << "\n\n" << std::right << std::setw(81) << "*****************************************" << std::endl;
@@ -508,7 +704,7 @@ void kupacOpcije() {
 	std::cout << "\n" << std::setw(81) << "*      5. Info                          *";
 	std::cout << "\n" << std::setw(81) << "*      6. Stanje kase                   *";
 	std::cout << "\n" << std::setw(81) << "*      0. Vrati se na glavni menu       *";
-	std::cout << "\n" << std::setw(81) << "*                                       *";
+	std::cout << "\n" << std::setw(81) << "*****************************************";
 	std::cout << std::endl;
 }
 
@@ -539,7 +735,7 @@ void kupacMenu() {
 			break;
 		case 4:
 			odabir = 4;
-			sortiranjeLaptopa();
+			sortiranje();
 			break;
 		case 5:
 			info();
@@ -563,10 +759,17 @@ void kupacMenu() {
 void unosLaptopa() {
 	std::shared_ptr<Laptop>temp = std::make_shared<Laptop>();
 	cin >> *temp;
-	//laptopi.push_back(*temp);
 	cout << "Uspjesno smjesten laptop u datoteku\n";
 }
-
+void unosPC() {
+	std::shared_ptr<PC>temp = std::make_shared<PC>();
+	cin >> *temp;
+	cout << "Uspjesno smjesten racunar u datoteku\n";
+}void unosMobitela() {
+	std::shared_ptr<Mobitel>temp = std::make_shared<Mobitel>();
+	cin >> *temp;
+	cout << "Uspjesno smjesten mobitel u datoteku\n";
+}
 
 
 
@@ -613,13 +816,17 @@ int main()
 	int n=0;
 	string user, password;
 	Laptop Lap ;
-	info();
+	//info();
+	//sortiranje();
+	Mobitel mob;
+	//cin >> mob;
+	//cout << mob;
 	bool l;
 	//stanjeK();
 	PC pc;
 	
-	cin >> pc;
-	cout <<pc;
+	//cin >> pc;
+	//cout <<pc;
 	
 	do {
 		cout << "\n\n" << setw(81) << right << "" << endl;
@@ -630,24 +837,27 @@ int main()
 		cout << "|                                       ==========================                                      |" << endl;
 		cout << "|_______________________________________________________________________________________________________|\n" << endl;
 		cin.clear();
-		cout << "                                   _____________________________________                                   " << endl;
-		cout << "                                  /__________________o__________________\\                                 " << endl;
-		cout << "                                  |           Odaberite opciju:         |                                 " << endl;
-		cout << "                                  |                                     |                                 " << endl;
-		cout << "                                  |         1. Admin login              |                                 " << endl;
-		cout << "                                  |         2. Kupac login              |                                 " << endl;
-		cout << "                                  |         3. Promjeni velicinu fonta  |                                 " << endl;
-		cout << "                                  |         4. Promjena teme            |                                 " << endl;
-		cout << "                                  |         0. Kraj                     |                                 " << endl;
-		cout << "                                  |_____________________________________|                                 " << endl;
-		cout << "                                 /---------------------------------------\\                                " << endl;
-		cout << "                                /  # ########################## ### ###   \\                               " << endl;
-		cout << "                               /  ######################################   \\                              " << endl;
-		cout << "                              /  ################################# # ####   \\                             " << endl;
-		cout << "                             /  ####### ################### ##### ### ####   \\                            " << endl;
-		cout << "                            /_________________________________________________\\                           " << endl;
-		cout << "                           /_____________________|___|___|_____________________\\                          " << endl;
-		cout << "                           \\___________________________________________________/                           \n" << endl;
+		cout << "                                    _____________________________________                                   " << endl;
+		cout << "                                   /__________________o__________________\\                                 " << endl;
+		cout << "                                   |           Odaberite opciju:         |                                 " << endl;
+		cout << "                                   |                                     |                                 " << endl;
+		cout << "     ________________              |         1. Admin login              |                                 " << endl;
+		cout << "    /_______o_______\\              |         2. Kupac login              |                                 " << endl;
+		cout << "   | |______________| |            |         3. Promjeni velicinu fonta  |                                 " << endl;
+		cout << "   | |              | |            |         4. Promjena teme            |                                 " << endl;
+		cout << "   | |              | |            |         0. Kraj                     |                                 " << endl;
+		cout << "   | |              | |            |_____________________________________|                                 " << endl;
+		cout << "   | |              | |           /---------------------------------------\\                                " << endl;
+		cout << "   | |              | |          /  # ########################## ### ###   \\                               " << endl;
+		cout << "   | |              | |         /  ######################################   \\                              " << endl;
+		cout << "   | |______________| |        /  ################################# # ####   \\                             " << endl;
+		cout << "   |   <    o    >  | |       /  ####### ################### ##### ### ####   \\                            " << endl;
+		cout << "   \\_________________/      /_________________________________________________\\                           " << endl;
+		cout << "                            /_____________________|___|___|_____________________\\                          " << endl;
+		cout << "                            \\___________________________________________________/                           \n" << endl;
+
+
+
 		do {
 			error = 0;
 			cout << "\n" << setw(69)<< right << "Upisite svoj odabir : ";

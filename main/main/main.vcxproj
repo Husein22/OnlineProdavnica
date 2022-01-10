@@ -144,6 +144,7 @@
     <ClCompile Include="Kupac.cpp" />
     <ClCompile Include="Laptop.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="Mobitel.cpp" />
     <ClCompile Include="PC.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -151,6 +152,7 @@
     <ClInclude Include="Artikal.h" />
     <ClInclude Include="Kupac.h" />
     <ClInclude Include="Laptop.h" />
+    <ClInclude Include="Mobitel.h" />
     <ClInclude Include="PC.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
