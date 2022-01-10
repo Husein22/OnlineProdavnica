@@ -190,7 +190,7 @@ void Laptop::PosjedujemArtikal()
     catch (const char* c) {
         std::cout << c;
     }
-    std::cout <<"\t"<< p << " vrstu razlicitih laptopa\n";
+    std::cout <<"\t"<< p-1 << " vrstu razlicitih laptopa\n";
 }
 
 void Laptop::setCPU()
@@ -758,14 +758,16 @@ std::istream& operator>>(std::istream& stream, Laptop& a)
                         piI.close();
                     }
                     else { std::cout << "[greska]Neuspjesno kreirana datoteka temp2.txt\n"; }
+                    remove("Laptop.txt");           //brise Laptop.txt
+                    rename("temp3.txt", "Laptop.txt");//temp3.txt je sada Laptop.txt
                      }
+            
             upis.close();
         }
     else {
         std::cout << "[GRESKA]Datoteka nije otvorena\n";
     }
-    remove("Laptop.txt");           //brise Laptop.txt
-    rename("temp3.txt", "Laptop.txt");//temp3.txt je sada Laptop.txt
+    
 
     return stream;
 }
@@ -794,11 +796,10 @@ std::ostream& operator<<(std::ostream& stream, Laptop& a)
         cit.close();
     }
     else {
-        std::cout << "Neuspjesno otvaranje datoteke narudzbe.txt\n";
+        std::cout << "Neuspjesno otvaranje datoteke Laptop.txt\n";
     }
 
 
-    system("pause");
     return stream;
 }
 
@@ -836,7 +837,6 @@ float operator!(Laptop& a)
             else if (f > -1 && g < -1 && h < -1&& j < -1) i = f;
             p = i * e;
             Laptop::trosiL -= p;
-
         }
         unos.close();
     }

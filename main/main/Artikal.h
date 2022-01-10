@@ -1,6 +1,17 @@
 #pragma once
 #include <istream>
 #include <string>
+#include"Artikal.h"
+#include <windows.h>
+#include<iostream>
+#include <algorithm>
+#include<iostream>
+#include<fstream>
+#include<iomanip>
+#include <vector>
+#include <sstream>
+#include "Kupac.h"
+#include <windows.h>
 class Artikal
 {
 protected:

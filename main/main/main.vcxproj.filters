@@ -30,6 +30,9 @@
     <ClCompile Include="Kupac.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="PC.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Artikal.h">
@@ -42,6 +45,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Kupac.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="PC.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

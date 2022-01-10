@@ -11,6 +11,7 @@
 #include "Laptop.h"
 #include "Admin.h"
 #include "Kupac.h"
+#include "PC.h"
 
 using namespace std;
 //vector<Laptop>laptopi;
@@ -132,9 +133,11 @@ void info() {
 
 	cout << " Nas IT shop posjeduje : \n";
 	Artikal* i1 = new Laptop();
-	Artikal* posjedujem[1]{ i1 };
-	for (int i = 0;i < 1;i++) {
+	Artikal* i2 = new PC();
+	Artikal* posjedujem[2]{ i1,i2 };
+	for (int i = 0;i < 2;i++) {
 		posjedujem[i]->PosjedujemArtikal();
+
 	}
 	cout << "\n\t\tAdmin team\n";
 	c->citanjeAdmina();
@@ -167,7 +170,7 @@ void fontsize() {
 	cin.clear();system("cls");
 }
 void tema() {
-	int boja;
+	int boja=0;
 	cout << "\n" << setw(72) << "1. Black and White theme " << endl;
 	cout << "\n" << setw(72) << "2. White and Black theme " << endl;
 	cout << "\n" << setw(56) << "0. Return" << endl;
@@ -385,12 +388,7 @@ void updateOpcije() {
 
 
 }
-void bilans(string rec) {
-	if (rec == "Laptop") {
-		shared_ptr<Laptop>lap = make_shared<Laptop>();
-		cout << "Bilans sto se tice laptopa: " << *(lap) << " " << !(*lap) << "\n";
-	}
-}
+
 
 void stanjeK() {
 	unique_ptr<Laptop>laptop = make_unique<Laptop>();
@@ -398,7 +396,7 @@ void stanjeK() {
 	*(*laptop);
 
 	cout << "Stanje kase:  " << "\n\tZarada na prodaji laptopa: "  << Laptop::prihodL << " KM\n\t Potroseno na kupovinu laptopa : " << Laptop::trosiL * (-1) << " KM \n";
-	cout << "Bilans sto se tice laptopa: "  << Laptop::prihodL-  (Laptop::trosiL*(-1)) << "\n";
+	cout << "Bilans sto se tice laptopa: " <<Laptop::prihodL-  (Laptop::trosiL*(-1)) << " KM\n";
 	system("pause");
 }
 
@@ -419,7 +417,7 @@ void adminOpcije() {
 	cout << "\n" << setw(75) << "0. Vrati se na glavni menu\n";
 }
 void adminMenu() {
-	int odabir, odabirI, odabirA, odabirB, odabirP;
+	int odabir = 0, odabirI=0, odabirA=0, odabirB=0, odabirP=0;
 	do {
 		adminOpcije();
 		do {
@@ -615,36 +613,14 @@ int main()
 	int n=0;
 	string user, password;
 	Laptop Lap ;
-	//info();
+	info();
 	bool l;
-	//Lap.prodajaLaptopa();
-	//prodajaLaptopa();
-	//kupacMenu();
-	//ispisLaptopa();
-	//Lap.soranjeLaptopa("cijena");
-	//pretragaPoProiz("Laptop");
-	//Lap.prodajaLaptopa();
-	//Lap.adminProdaja();
-	//ispisLaptopa();
-	//osnova();
- //  Lap.sortiranjeLaptopa("ram");
-	//sortiranjeLaptopa("hdd");
-	//sortiranjeLaptopa("godine");
-	//	//unosLaptopa();
-	////ispisLaptopa();
-	//pretragaPoProizziMod("Laptop");
-	//cout << "pocetak;";
-	//Lap.prodajaLaptopa();
-	//cout << "Kraj";
-//
-	//Lap.adminProdaja();
-	//ispisLaptopa();
-	//cin >> Lap;
-	//cout << Lap;
-	//Lap.adminProdaja();
-	//ispisLaptopa();
-
-	//ispisLaptopa();
+	//stanjeK();
+	PC pc;
+	
+	cin >> pc;
+	cout <<pc;
+	
 	do {
 		cout << "\n\n" << setw(81) << right << "" << endl;
 		cout << "_________________________________________________________________________________________________________" << endl;
