@@ -12,3 +12,4 @@ TOSHIBA        Satellite-Pro-C50-H-11G   9         2020                1169     
 HP             15s-fq2031nm              1         2019                1168           Intel-Core-i3-1005G1      Intel-UHD-Graphics-G1           Windows               8           256       
 LENOVO         E5                        11        2018                1199           Intel-Core-i3-1115G4      Intel-UHD-Graphics-Xe-G4-48EUs  Windows               8           256       
                                          -842150451-842150451          -4.31602e+08                                                                                   -842150451  -842150451
+s              ww                        2         2                   2              2                         2                               Windows_Phone         2           2         
