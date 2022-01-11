@@ -41,7 +41,37 @@ void prodajaLaptopa() {
 		temp->prodajaLaptopa();
 	}
 }
+void prodajaRacunara() {
+	string upit;
+	std::shared_ptr<PC>temp = std::make_shared<PC>();
+	cout << "Da li zelite kupiti jedan od racunara?(DA/NE)\n";
+	do {
+		cout << "Unesite izbor: ";
+		getline(cin, upit);
+		if (upit != "DA" && upit != "NE") {
+			cout << "[GRESKA]Unesite DA ili NE\n";
+		}
+	} while (upit != "DA" && upit != "NE");
+	if (upit == "DA") {
+		temp->prodajaPC();
+	}  
 
+
+}void prodajaMobitela() {
+	string upit;
+	std::shared_ptr<Mobitel>temp = std::make_shared<Mobitel>();
+	cout << "Da li zelite kupiti jedan od mobitela?(DA/NE)\n";
+	do {
+		cout << "Unesite izbor: ";
+		getline(cin, upit);
+		if (upit != "DA" && upit != "NE") {
+			cout << "[GRESKA]Unesite DA ili NE\n";
+		}
+	} while (upit != "DA" && upit != "NE");
+	if (upit == "DA") {
+		temp->prodajaMobitela();
+	}
+}
 
 void ispisLaptopa(string rec) {
 	std::shared_ptr<Laptop>temp = std::make_shared<Laptop>();
@@ -54,14 +84,14 @@ void ispisMobitela(string rec) {
 	std::shared_ptr<Mobitel>temp = std::make_shared<Mobitel>();
 	cout << *temp;
 	if (rec != "admin") {
-		
+		prodajaMobitela();
 	}
 }
 void ispisPC(string rec) {
 	std::shared_ptr<PC>temp = std::make_shared<PC>();
 	cout << *temp;
 	if (rec != "admin") {
-		
+		prodajaRacunara();
 	}
 }
 
@@ -91,10 +121,10 @@ void prodaja() {
 		case 1:
 			ispisLaptopa("kupac");
 		case 2:
-			//ispisMob();
+			ispisMobitela("kupac");
 			break;
 		case 3:
-			//ispisRacunara();
+			ispisPC("kupac");
 			break;
 		case 4:
 			break;
@@ -494,7 +524,9 @@ void ispisOpcijeAdmin() {
 
 
 void updateOpcije() {
-	shared_ptr<Laptop>lape = make_shared<Laptop>();
+	unique_ptr<Laptop>lape = make_unique<Laptop>();
+	unique_ptr<PC>pc = make_unique<PC>();
+	unique_ptr<Mobitel>mob = make_unique<Mobitel>();
 	int iz = 0, lap = 0;
 	do {
 		system("cls");
@@ -516,10 +548,10 @@ void updateOpcije() {
 		case 1:
 			lape->adminProdaja();
 		case 2:
-			//ispisMob();
+			mob->adminProdajaMob();
 			break;
 		case 3:
-			//ispisRacunara();
+			pc->adminProdajaPC();
 			break;
 		case 4:
 			break;
@@ -545,12 +577,14 @@ void stanjeK() {
 	!(*laptop);
 	*(*laptop);
 	!(*pc);
+	*(*pc);
 	!(*mob);
-	cout << "Stanje kase:  " << "\n\tZarada na prodaji laptopa: "  << Laptop::prihodL << " KM\n\t Potroseno na kupovinu laptopa : " << Laptop::trosiL * (-1) << " KM \n";
-	cout << "Bilans sto se tice laptopa: "  <<Laptop::prihodL-  (Laptop::trosiL*(-1)) << " KM\n";
-	cout <<  "\n\tZarada na prodaji racuanara: " << PC::prihoPC << " KM\n\t Potroseno na kupovinu racunara : " << PC::trosiPC * (-1) << " KM \n";
-	cout << "Bilans sto se tice laptopa: " << PC::prihoPC - (PC::trosiPC * (-1)) << " KM\n";
-	cout << "\n\tZarada na prodaji mobitela: " << Mobitel::prihodMob << " KM\n\t Potroseno na kupovinu mobitela : " << Mobitel::trosiMob * (-1) << " KM \n";
+	*(*mob);
+	cout << "Stanje kase:  " << "\n\t Zarada na prodaji laptopa: "  << Laptop::prihodL << " KM\n\t Potroseno na kupovinu laptopa : " << Laptop::trosiL * (-1) << " KM \n";
+	cout << "Bilans sto se tice laptopa: "  <<Laptop::prihodL-  (Laptop::trosiL*(-1)) << " KM\n\n";
+	cout <<  "\n\t Zarada na prodaji racuanara: " << PC::prihoPC << " KM\n\t Potroseno na kupovinu racunara : " << PC::trosiPC * (-1) << " KM \n";
+	cout << "Bilans sto se tice racunara: " << PC::prihoPC - (PC::trosiPC * (-1)) << " KM\n\n";
+	cout << "\n\t Zarada na prodaji mobitela: " << Mobitel::prihodMob << " KM\n\t Potroseno na kupovinu mobitela : " << Mobitel::trosiMob * (-1) << " KM \n";
 	cout << "Bilans sto se tice mobitela: " << Mobitel::prihodMob - (Mobitel::trosiMob * (-1)) << " KM\n";
 
 
@@ -815,16 +849,21 @@ int main()
 	int izbor=0,z=0,a=0,i=0;
 	int n=0;
 	string user, password;
-	Laptop Lap ;
+	//Laptop Lap ;
 	//info();
 	//sortiranje();
 	Mobitel mob;
+	PC p;
+	//cin >> p;
 	//cin >> mob;
 	//cout << mob;
-	bool l;
 	//stanjeK();
-	PC pc;
+	//mob.prodajaMobitela();
+	//mob.adminProdajaMob();
+	bool l;
 	
+	//p.prodajaPC();
+//	p.adminProdajaPC();
 	//cin >> pc;
 	//cout <<pc;
 	

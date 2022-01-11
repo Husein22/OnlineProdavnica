@@ -1,5 +1,13 @@
-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-Proizvodjac    Model                     Kolicina  Godina proizvodnje  Cijena(KM)     CPU                       Display                         Operativni sistem     RAM(GB)     Kamera(pix) 
-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-prvi           mnov                      3         4                   3              2                         4                               Symbian               3           2         
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Proizvodjac    Model                     Kolicina  Godina proizvodnje  Cijena(KM)     CPU                       Display                         Operativni sistem     RAM(GB)     Kamera
+   -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+prvi           mnov                      1         4                   3              2                         4                               Symbian               3           2         
 drugi          s                         2         200                 200            dsde                      frfr                            Windows_Phone         2           4         
+LENOVO         IdeaPad-S150-14AST        5         2019                819            AMD-A6-9220e              AMD-Radeon-R4                   Windows               4           64        
+ASUS           M515DA-EJ301T             7         2017                949            AMD-Ryzen-3-3250UAMD      Radeon-RX-Vega-3                Windows               4           256       
+HP             250G8                     3         2020                999            Intel-Core-i3-1005G1      Intel-UHD-Graphics-G1           GNOME                 4           256       
+LENOVO         Duet-3-10IGL5             10        2016                875            Intel-Celeron-N4020       Intel-UHD-Graphics-600          Windows               4           128       
+DELL           Vostro-3500               12        2020                1149           Intel-Core-i3-1115G4      Intel-UHD-Graphics-Xe-G4-48EUs  Linux                 8           256       
+TOSHIBA        Satellite-Pro-C50-H-11G   9         2020                1169           Intel-Core-i3-1005G1      Intel-UHD-Graphics-G1           Windows               8           256       
+HP             15s-fq2031nm              1         2019                1168           Intel-Core-i3-1005G1      Intel-UHD-Graphics-G1           Windows               8           256       
+LENOVO         E5                        11        2018                1199           Intel-Core-i3-1115G4      Intel-UHD-Graphics-Xe-G4-48EUs  Windows               8           256       
