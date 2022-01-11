@@ -57,7 +57,8 @@ void prodajaRacunara() {
 	}  
 
 
-}void prodajaMobitela() {
+}
+void prodajaMobitela() {
 	string upit;
 	std::shared_ptr<Mobitel>temp = std::make_shared<Mobitel>();
 	cout << "Da li zelite kupiti jedan od mobitela?(DA/NE)\n";

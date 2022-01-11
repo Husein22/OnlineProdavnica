@@ -289,7 +289,7 @@ void Mobitel::prodajaMobitela()
                         else
                         {
                             do {
-                                std::cout << "Unesite kolicinu laptopa koji zelite kupiti: ";
+                                std::cout << "Unesite kolicinu mobitela koji zelite kupiti: ";
                                 std::cin >> kol;
                                 std::cin.ignore();
                                 if (niz[i].kolicina <= kol) {
