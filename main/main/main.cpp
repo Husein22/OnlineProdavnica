@@ -585,21 +585,22 @@ void stanjeK() {
 	*(*pc);
 	!(*mob);
 	*(*mob);
-	cout << setw(87) << right << " ______________________________________ ";
-	cout << "\n" << setw(87) << right << "|            Stanje kase:              |";
-	cout << "\n" << setw(87) << right << "|______________________________________|";
-	cout << "\n" << setw(75) << right << "|Zarada na prodaji laptopa: " << Laptop::prihodL << " KM       |";
-	cout << "\n" << setw(79) << right << "|Potroseno na kupovinu laptopa: " << Laptop::trosiL * (-1) << " KM   | ";
-	cout << "\n" << setw(76) << right << "|Bilans sto se tice laptopa: " << Laptop::prihodL - (Laptop::trosiL * (-1)) << " KM      |";
-	cout << "\n" << setw(87) << right << "|--------------------------------------|";
-	cout << "\n" << setw(77) << right << "|Zarada na prodaji racuanara: " << PC::prihoPC << " KM     |";
-	cout << "\n" << setw(80) << right << "|Potroseno na kupovinu racunara: " << PC::trosiPC * (-1) << " KM  |";
-	cout << "\n" << setw(77) << right << "|Bilans sto se tice racunara: " << PC::prihoPC - (PC::trosiPC * (-1)) << " KM     |";
-	cout << "\n" << setw(87) << right << "|--------------------------------------|";
-	cout << "\n" << setw(76) << right << "|Zarada na prodaji mobitela: " << Mobitel::prihodMob << " KM      |";
-	cout << "\n" << setw(80) << right << "|Potroseno na kupovinu mobitela: " << !(*mob);
-	cout << "\n" << setw(77) << right << "|Bilans sto se tice mobitela: " << Mobitel::prihodMob - (Mobitel::trosiMob * (-1)) << " KM     |";
-	cout << "\n" << setw(87) << right << "|______________________________________|";
+	system("cls");
+	cout <<         "                                       ______________________________________________";
+	cout << "\n" << "                                       |                 Stanje kase:               |";
+	cout << "\n" << "                                       |____________________________________________|\n";
+	cout << "\n" << "                                       Zarada na prodaji laptopa: " << Laptop::prihodL << " KM       ";
+	cout << "\n" << "                                       Potroseno na kupovinu laptopa: " << Laptop::trosiL * (-1) << " KM   ";
+	cout << "\n" << "                                       Bilans sto se tice laptopa: " << Laptop::prihodL - (Laptop::trosiL * (-1)) << " KM      ";
+	cout << "\n" << "                                       ----------------------------------------------";
+	cout << "\n" << "                                       Zarada na prodaji racuanara: " << PC::prihoPC << " KM     ";
+	cout << "\n" << "                                       Potroseno na kupovinu racunara: " << PC::trosiPC * (-1) << " KM  ";
+	cout << "\n" << "                                       Bilans sto se tice racunara: " << PC::prihoPC - (PC::trosiPC * (-1)) << " KM     ";
+	cout << "\n" << "                                       ----------------------------------------------";
+	cout << "\n" << "                                       Zarada na prodaji mobitela: " << Mobitel::prihodMob << " KM      ";
+	cout << "\n" << "                                       Potroseno na kupovinu mobitela: " << !(*mob);
+	cout << "\n" << "                                       Bilans sto se tice mobitela: " << Mobitel::prihodMob - (Mobitel::trosiMob * (-1)) << " KM     ";
+	cout << "\n" << "                                       ______________________________________________";
 	cout << "\n\n";
 
 	system("pause");
@@ -612,17 +613,21 @@ void sortiranje() {
 	unique_ptr<Mobitel>mob = make_unique<Mobitel>();
 	int iz = 0;
 	do {
-	cout << "1-Ispis laptopa sortirano po cijeni                        |           5-Ispis racunara sortirano po cijeni\n";
-	cout << "2-Ispis laptopa sortirano po godini proizvodnje            |           6-Ispis racunara sortirano po godini proizvodnje\n";
-	cout << "3-Ispis laptopa sortirano po velicini primarne memorije    |           7-Ispis racunara sortirano po velicini primarne memorije\n";
-	cout << "4-Ispis laptopa sortirano po velicini sekundarne memorije  |           8-Ispis racunara sortirano po velicini sekundarne memorije\n";
-	cout << "							      	9-Ispis mobitela sortirano po cijeni                      \n";
-	cout << "							    	10-Ispis mobitela sortirano po godini proizvodnje          \n";
-	cout << "							   11-Ispis mobitela sortirano po velicini primarne memorije   \n";
-	cout << "					 	12-Ispis mobitela sortirano po pikselizaciji  \n";
-	cout << "0-Vrati se na prethodni meni\n";
+		cout << setw(75) << "SORTIRANJE ARTIKALA\n";
+		cout << "-------------------------------------------------------------------------------------------------------------------------------------------------|\n";
+		cout << "1-Ispis laptopa sortirano po cijeni                               |         5-Ispis racunara sortirano po cijeni\n";
+		cout << "2-Ispis laptopa sortirano po godini proizvodnje                   |         6-Ispis racunara sortirano po godini proizvodnje\n";
+		cout << "3-Ispis laptopa sortirano po velicini primarne memorije           |         7-Ispis racunara sortirano po velicini primarne memorije\n";
+		cout << "4-Ispis laptopa sortirano po velicini sekundarne memorije         |         8-Ispis racunara sortirano po velicini sekundarne memorije\n";
+		cout << "-------------------------------------------------------------------------------------------------------------------------------------------------|\n";
+		cout << setw(78) << "9-Ispis mobitela sortirano po cijeni\n";
+		cout << setw(91) << "10-Ispis mobitela sortirano po godini proizvodnje\n";
+		cout << setw(99) << "11-Ispis mobitela sortirano po velicini primarne memorije\n";
+		cout << setw(86) << "12-Ispis mobitela sortirano po pikselizaciji\n";
+		cout << setw(70) << "0-Vrati se na prethodni meni\n";
+		cout << "-------------------------------------------------------------------------------------------------------------------------------------------------|\n";
 	do {
-		cout << "Unesite izbor:";
+		cout << setw(73) << "Unesite izbor:";
 		cin >> iz;
 	} while (iz < 0 || iz>12);
 	if (iz != 0) {
@@ -684,16 +689,20 @@ void adminOpcije() {
 	system("cls");
 	cout << "\n\n" << setw(81) << "*****************************************" << endl;
 	cout << setw(81) << "* >>>>  DOBRO DOSLI NA ADMIN MENU  <<<< *" << endl;
-	cout << setw(81) << "*****************************************" << endl;
+	cout << setw(81) << "*****************************************";
 	cin.clear();
-	cout << "\n" << setw(79) << "Odaberite neku od ponudjenih opcija ";
-	cout << "\n\n" << setw(69) << "1. Ispis odredjene vrste proizvoda";
-	cout << "\n" << setw(66) << "2. Potrazi proizvod ";
-	cout << "\n" << setw(67) << "3. Predaja artikla u postu ";
-	cout << "\n" << setw(67) << "4. Stanje kase ";
-	cout << "\n" << setw(67) << "5. Unos artikla ";
-	cout << "\n" << setw(67) << "6. Ispis sortiranih elemenata ";
-	cout << "\n" << setw(75) << "0. Vrati se na glavni menu\n";
+	cout << "\n" << "                                        *                                       *";
+	cout << "\n" << "                                        * Odaberite neku od ponudjenih opcija:  *";
+	cout << "\n" << "                                        * 1. Ispis odredjene vrste proizvoda    *";
+	cout << "\n" << "                                        * 2. Potrazi proizvod                   *";
+	cout << "\n" << "                                        * 3. Predaja artikla u postu            *";
+	cout << "\n" << "                                        * 4. Stanje kase                        *";
+	cout << "\n" << "                                        * 5. Unos artikla                       *";
+	cout << "\n" << "                                        * 6. Ispis sortiranih elemenata         *";
+	cout << "\n" << "                                        * 0. Vrati se na glavni menu            *";
+	cout << "\n" << "                                        *                                       *";
+	cout << "\n" << "                                        *****************************************";
+	cout << "\n\n";
 }
 void adminMenu() {
 	int odabir = 0, odabirI = 0, odabirA = 0, odabirB = 0, odabirP = 0;
@@ -860,7 +869,7 @@ int kupacMe() {
 
 int main()
 {
-	updateOpcije();
+	//adminOpcije();
 	int izbor=0,z=0,a=0,i=0;
 	int n=0;
 	string user, password;
@@ -868,14 +877,14 @@ int main()
 	//info();
 	//sortiranje();
 	Oprema op;
-		cin >> op;
-	cout << op;
+	//	cin >> op;
+	//cout << op;
 	Mobitel mob;
 	PC p;
 	//cin >> p;
 	//cin >> mob;
 	//cout << mob;
-	stanjeK();
+	//stanjeK();
 	//mob.prodajaMobitela();
 	//mob.adminProdajaMob();
 	bool l;
@@ -933,7 +942,7 @@ int main()
 		switch (izbor) {
 		case 1: {
 			do {
-				cout << "\n\n" << setw(81) <<right<< "Unesite sifru za ulazak u admin menu : \n";
+				cout << "\n\n" << setw(81) <<right<< "Unesite sifru za ulazak u admin menu: ";
 				cin >> z;
 				a++;
 				if (a == 3 && z!=123) {
@@ -969,9 +978,9 @@ int main()
 				case 1: {
 					string kupac, password;
 					std::shared_ptr<Kupac>tempp = std::make_shared<Kupac>();
-					cout << "Molim vas unesite kupac username: ";
+					cout << "                                                Molim vas unesite kupac username: ";
 					getline(cin, kupac);
-					cout << "Sifra: ";
+					cout << "                                                Sifra: ";
 					password = tempp->unosPassworda(password, 0);
 					if (tempp->login(kupac, password) == true) {
 						cout << "\n\n" << setw(75) << "Uspjesno logirani na kupac acc." << endl;
