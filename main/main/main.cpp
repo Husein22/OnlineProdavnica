@@ -13,6 +13,7 @@
 #include "Kupac.h"
 #include "PC.h"
 #include "Mobitel.h"
+#include "Oprema.h"
 
 using namespace std;
 //vector<Laptop>laptopi;
@@ -531,16 +532,19 @@ void updateOpcije() {
 	int iz = 0, lap = 0;
 	do {
 		system("cls");
-		cout << "\n\n" << setw(86) << "************************************************" << endl;
-		cout << setw(86) << "*      >>>>   AZURIRAJ PROIZVODE    <<<<      *" << endl;
-		cout << setw(86) << "************************************************" << endl;
-		cout << "\n" << setw(79) << "Odaberite neku od ponudjenih opcija ";
-		cout << "\n\n" << setw(80) << "1. Azuriraj laptope  ";
-		cout << "\n" << setw(80) << "2. Azuriraj mobitele ";
-		cout << "\n" << setw(80) << "3. Azuriraj racunare ";
-		cout << "\n" << setw(76) << "0. Vrati se na administratorski menu\n";
+		cout << "\n" << setw(81) << "************************************************" << endl;
+		cout << setw(81) << "*      >>>>    AZURIRAJ PROIZVODE    <<<<      *" << endl;
+		cout << setw(81) << "************************************************";
+		cout << "\n" << setw(81) << "*                                              *";
+		cout << "\n" << setw(81) << "*      Odaberite neku od ponudjenih opcija     *";
+		cout << "\n" << setw(81) << "*            1. Azuriraj laptope               *";
+		cout << "\n" << setw(81) << "*            2. Azuriraj mobitele              *";
+		cout << "\n" << setw(81) << "*            3. Azuriraj racunare              *";
+		cout << "\n" << setw(81) << "*            0. Vrati se na admin menu         *";
+		cout << "\n" << setw(81) << "*                                              *";
+		cout << "\n" << setw(81) << "************************************************";
 		do {
-			cout << "\n" << std::setw(67) << "Unesite izbor: ";
+			cout << "\n" << std::setw(65) << "Unesite izbor: ";
 			cin >> iz;
 		} while (iz < 0 || iz>4);
 		cin.ignore();
@@ -581,13 +585,22 @@ void stanjeK() {
 	*(*pc);
 	!(*mob);
 	*(*mob);
-	cout << "Stanje kase:  " << "\n\t Zarada na prodaji laptopa: "  << Laptop::prihodL << " KM\n\t Potroseno na kupovinu laptopa : " << Laptop::trosiL * (-1) << " KM \n";
-	cout << "Bilans sto se tice laptopa: "  <<Laptop::prihodL-  (Laptop::trosiL*(-1)) << " KM\n\n";
-	cout <<  "\n\t Zarada na prodaji racuanara: " << PC::prihoPC << " KM\n\t Potroseno na kupovinu racunara : " << PC::trosiPC * (-1) << " KM \n";
-	cout << "Bilans sto se tice racunara: " << PC::prihoPC - (PC::trosiPC * (-1)) << " KM\n\n";
-	cout << "\n\t Zarada na prodaji mobitela: " << Mobitel::prihodMob << " KM\n\t Potroseno na kupovinu mobitela : " << Mobitel::trosiMob * (-1) << " KM \n";
-	cout << "Bilans sto se tice mobitela: " << Mobitel::prihodMob - (Mobitel::trosiMob * (-1)) << " KM\n";
-
+	cout << setw(87) << right << " ______________________________________ ";
+	cout << "\n" << setw(87) << right << "|            Stanje kase:              |";
+	cout << "\n" << setw(87) << right << "|______________________________________|";
+	cout << "\n" << setw(75) << right << "|Zarada na prodaji laptopa: " << Laptop::prihodL << " KM       |";
+	cout << "\n" << setw(79) << right << "|Potroseno na kupovinu laptopa: " << Laptop::trosiL * (-1) << " KM   | ";
+	cout << "\n" << setw(76) << right << "|Bilans sto se tice laptopa: " << Laptop::prihodL - (Laptop::trosiL * (-1)) << " KM      |";
+	cout << "\n" << setw(87) << right << "|--------------------------------------|";
+	cout << "\n" << setw(77) << right << "|Zarada na prodaji racuanara: " << PC::prihoPC << " KM     |";
+	cout << "\n" << setw(80) << right << "|Potroseno na kupovinu racunara: " << PC::trosiPC * (-1) << " KM  |";
+	cout << "\n" << setw(77) << right << "|Bilans sto se tice racunara: " << PC::prihoPC - (PC::trosiPC * (-1)) << " KM     |";
+	cout << "\n" << setw(87) << right << "|--------------------------------------|";
+	cout << "\n" << setw(76) << right << "|Zarada na prodaji mobitela: " << Mobitel::prihodMob << " KM      |";
+	cout << "\n" << setw(80) << right << "|Potroseno na kupovinu mobitela: " << !(*mob);
+	cout << "\n" << setw(77) << right << "|Bilans sto se tice mobitela: " << Mobitel::prihodMob - (Mobitel::trosiMob * (-1)) << " KM     |";
+	cout << "\n" << setw(87) << right << "|______________________________________|";
+	cout << "\n\n";
 
 	system("pause");
 }
@@ -847,18 +860,22 @@ int kupacMe() {
 
 int main()
 {
+	updateOpcije();
 	int izbor=0,z=0,a=0,i=0;
 	int n=0;
 	string user, password;
 	//Laptop Lap ;
 	//info();
 	//sortiranje();
+	Oprema op;
+		cin >> op;
+	cout << op;
 	Mobitel mob;
 	PC p;
 	//cin >> p;
 	//cin >> mob;
 	//cout << mob;
-	//stanjeK();
+	stanjeK();
 	//mob.prodajaMobitela();
 	//mob.adminProdajaMob();
 	bool l;
@@ -869,8 +886,8 @@ int main()
 	//cout <<pc;
 	
 	do {
-		cout << "\n\n" << setw(81) << right << "" << endl;
-		cout << "_________________________________________________________________________________________________________" << endl;
+		cout << "\n\n" << setw(81) << right << "" << endl; 
+			cout << "_________________________________________________________________________________________________________" << endl;
 		cout << "|                                                                                                       |" << endl;
 		cout << "|                                       ==========================                                      |" << endl;
 		cout << "|                                       |   PRIJAVA NA IT SHOP!  |                                      |" << endl;
@@ -879,23 +896,22 @@ int main()
 		cin.clear();
 		cout << "                                    _____________________________________                                   " << endl;
 		cout << "                                   /__________________o__________________\\                                 " << endl;
-		cout << "                                   |           Odaberite opciju:         |                                 " << endl;
-		cout << "                                   |                                     |                                 " << endl;
-		cout << "     ________________              |         1. Admin login              |                                 " << endl;
-		cout << "    /_______o_______\\              |         2. Kupac login              |                                 " << endl;
-		cout << "   | |______________| |            |         3. Promjeni velicinu fonta  |                                 " << endl;
-		cout << "   | |              | |            |         4. Promjena teme            |                                 " << endl;
-		cout << "   | |              | |            |         0. Kraj                     |                                 " << endl;
-		cout << "   | |              | |            |_____________________________________|                                 " << endl;
-		cout << "   | |              | |           /---------------------------------------\\                                " << endl;
-		cout << "   | |              | |          /  # ########################## ### ###   \\                               " << endl;
-		cout << "   | |              | |         /  ######################################   \\                              " << endl;
-		cout << "   | |______________| |        /  ################################# # ####   \\                             " << endl;
-		cout << "   |   <    o    >  | |       /  ####### ################### ##### ### ####   \\                            " << endl;
-		cout << "   \\_________________/      /_________________________________________________\\                           " << endl;
+		cout << "     ________________              |           Odaberite opciju:         |               ____________       " << endl;
+		cout << "    /_______o_______ \\             |                                     |              |____________|     " << endl;
+		cout << "   | |______________| |            |         1. Admin login              |              |____________|      " << endl;
+		cout << "   | |              | |            |         2. Kupac login              |              |____________|     " << endl;
+		cout << "   | |              | |            |         3. Promjeni velicinu fonta  |              |            |      " << endl;
+		cout << "   | |              | |            |         4. Promjena teme            |              |____________|      " << endl;
+		cout << "   | |              | |            |         0. Kraj                     |              |          o |      " << endl;
+		cout << "   | |              | |            |_____________________________________|              |            |      " << endl;
+		cout << "   | |              | |           /---------------------------------------\\             |    ____    |     " << endl;
+		cout << "   | |              | |          /  # ########################## ### ###   \\            |    |  |    |     " << endl;
+		cout << "   | |              | |         /  ######################################   \\           |    |  |    |     " << endl;
+		cout << "   | |______________| |        /  ################################# # ####   \\          |    |  |    |     " << endl;
+		cout << "   |   <    o    >    |       /  ####### ################### ##### ### ####   \\         |    |  |    |     " << endl;
+		cout << "   \\__________________/      /_________________________________________________\\        ||||||||||||||    " << endl;
 		cout << "                            /_____________________|___|___|_____________________\\                          " << endl;
-		cout << "                            \\___________________________________________________/                           \n" << endl;
-
+		cout << "                            \\___________________________________________________/                          " << endl;
 
 
 		do {
