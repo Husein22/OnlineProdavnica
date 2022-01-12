@@ -892,32 +892,10 @@ int kupacMe() {
 
 int main()
 {
-	adminMenu();
-	//kupacMenu();
-	//adminOpcije();
-	int izbor=0,z=0,a=0,i=0;
-	int n=0;
+	int izbor=0,z=0,a=0,i=0, n=0;
 	string user, password;
-	//Laptop Lap ;
-	//info();
-	//sortiranje();
-	Oprema op;
-	//	cin >> op;
-	//cout << op;
-	Mobitel mob;
-	PC p;
-	//cin >> p;
-	//cin >> mob;
-	//cout << mob;
-	//stanjeK();
-	//mob.prodajaMobitela();
-	//mob.adminProdajaMob();
 	bool l;
 	
-	//p.prodajaPC();
-//	p.adminProdajaPC();
-	//cin >> pc;
-	//cout <<pc;
 	
 	do {
 		cout << "\n\n" << setw(81) << right << "" << endl; 
