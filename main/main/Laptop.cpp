@@ -708,7 +708,6 @@ std::istream& operator>>(std::istream& stream, Laptop& a)
             Laptop* niz = new Laptop[100];
             bool v = true;
             int u = 0;
-            //  std::vector<Laptop>laptopi;
             if (cita.is_open()) {
 
                 getline(cita, temp);
@@ -748,32 +747,35 @@ std::istream& operator>>(std::istream& stream, Laptop& a)
                 upis << std::left << std::setw(12) << a.getMemorija();
                 upis << std::left << std::setw(10) << a.getHardDrive();
                 upis << std::endl;
-                
+                upis.close();
                 std::cout << "[CESTITAMO]Uspjesno smjestene informacije u datoteku\n";
             }if(v==false) {
                     std::ofstream piI("temp3Lap.txt", std::ios::out);//pravljenje pomocne datoteke tempp.txt gdje cemo povecat kolicinu 
+                    
+
                     if (piI.is_open()) {
-                        piI << "------------------------------------------------------------------------------------------------------------------------------\n";
-                        piI << std::left << std::setw(15) << "Proizvodjac:" << std::left << std::setw(26) << "Model: " << std::left << std::setw(10) << "Kolièina:" <<
-                            std::left << std::setw(20) << "Godina proizvodnje: " << std::left << std::setw(15) << "Cijena(KM) :" << std::left << std::setw(10)
+                        piI << "---------------------------------------------------------------------------------------------------------------------------------------------------------------------------\n";
+                        piI << std::left << std::setw(15) << "Proizvodjac" << std::left << std::setw(26) << "Model " << std::left << std::setw(10) << "Kolicina" <<
+                            std::left << std::setw(20) << "Godina proizvodnje " << std::left << std::setw(15) << "Cijena(KM) :" << std::left << std::setw(10)
                             << std::left << std::setw(26) << "CPU" << std::left << std::setw(32) << "GPU" << std::left << std::setw(22) << "Operativni Sistem" << std::left << std::setw(12) <<
-                            "RAM(GB): " << std::left << std::setw(10) << "HDD||SDD: \n";
-                        piI << "------------------------------------------------------------------------------------------------------------------------------\n";
-                        for (int i = 0;i < laptopi.size();i++) {
+                            "RAM(GB) " << std::left << std::setw(10) << "HDD||SDD \n";
+                        piI << "---------------------------------------------------------------------------------------------------------------------------------------------------------------------------\n";
+                        for (int i = 0;i < laptopi.size()-1;i++) {
                             piI << std::left << std::setw(15) << laptopi[i].proizvodjac << std::left << std::setw(26) << laptopi[i].model
                                 << std::left << std::setw(10) << laptopi[i].kolicina << std::left << std::setw(20) << laptopi[i].godina_proiz << std::left << std::setw(15) << laptopi[i].cijena <<
                                 std::left << std::setw(26) << laptopi[i].cpu << std::left << std::setw(32) << laptopi[i].gpu << std::left << std::setw(22) <<
                                 laptopi[i].OperativniSistemNiz << std::left << std::setw(12) << laptopi[i].memorija << std::left << std::setw(10) << laptopi[i].hard_drive << "\n";
                         }
-                        remove("Laptop.txt");           //brise Laptop.txt
-                        rename("temp3Lap.txt", "Laptop.txt");//temp3.txt je sada Laptop.txt
                         piI.close();
+                        upis.close();
                     }
                     else { std::cout << "[greska]Neuspjesno kreirana datoteka temp2.txt\n"; }
-                   
+                    remove("Laptop.txt");           //brise Laptop.txt
+                    rename("temp3Lap.txt", "Laptop.txt");//temp3.txt je sada Laptop.txt
+                    std::cout << "[CESTITAMO]Uspjesno povecana kolicina u skladistu\n";
                      }
             
-            upis.close();
+            
         }
     else {
         std::cout << "[GRESKA]Datoteka nije otvorena\n";

@@ -736,7 +736,7 @@ float operator*(PC& a)
 
 std::istream& operator>>(std::istream& stream, PC& a)
 {
-   
+    std::vector<PC>pc;
     std::ifstream some("PC.txt");
     std::string temp;
     some >> temp;
@@ -745,20 +745,19 @@ std::istream& operator>>(std::istream& stream, PC& a)
         some.close();
         std::ofstream upi("PC.txt");
         upi << "------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------\n";
-        upi << std::left << std::setw(15) << "Proizvodjac" << std::left << std::setw(26) << "Model " << std::left << std::setw(10) << "Kolicina" <<
-            std::left << std::setw(20) << "Godina proizvodnje " << std::left << std::setw(15) << "Cijena(KM) " << std::left << std::setw(10)
+        upi << std::left << std::setw(15) << "Proizvodjac:" << std::left << std::setw(26) << "Model: " << std::left << std::setw(10) << "Kolièina:" <<
+            std::left << std::setw(20) << "Godina proizvodnje: " << std::left << std::setw(15) << "Cijena(KM) :" << std::left << std::setw(10)
             << std::left << std::setw(26) << "CPU" << std::left << std::setw(32) << "GPU" << std::left << std::setw(22) << "Kuciste" << std::left << std::setw(12) <<
-            "RAM(GB) " << std::left << std::setw(10) << "HDD||SSD(GB) \n";
+            "RAM(GB): " << std::left << std::setw(10) << "HDD||SDD: \n";
         upi << "------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------\n";
         upi.close();
     }
     else some.close();
-
     std::ifstream unosID("PC.txt");
     if (unosID.is_open()) {
         std::string mobi;
         do {
-            getline(unosID, mobi);           //ovim omogucujemo da se ID uvijek povecava za 1 prilikom unosenja novog pc
+            getline(unosID, mobi);           //ovim omogucujemo da se ID uvijek povecava za 1 prilikom unosenja novog mobitela
             ID++;
         } while (!unosID.eof());
         unosID.close();
@@ -780,9 +779,21 @@ std::istream& operator>>(std::istream& stream, PC& a)
         a.setMemorija();
         a.setHardDrivee();
 
-        std::vector<PC>pc;
-        std::ifstream cita("PC.txt");
-        cita.open("PC.txt", std::ios::in);//ovaj dio programa nam smjesta iz datoteke PC.txt u niz,pa onda u vektor pc koji nam trebaju
+        std::ifstream cita("PC.txt");//broj laptopa u datoteci laptop.txt
+        int d = 0;
+        std::string pom;
+        if (cita.is_open()) {
+            while (!cita.eof()) {
+                getline(cita, pom);
+                d++;
+            } cita.close();
+        }
+        else {
+            std::cout << "Nazalost,neuspjesno otvaranje datotetke Laptop.txt";
+        }
+
+
+        cita.open("PC.txt", std::ios::in);//ovaj dio programa nam smjesta iz datoteke laptop,txt u niz,pa onda u vektor laptopi koji nam trebaju
         PC* niz = new PC[100];
         bool v = true;
         int u = 0;
@@ -793,20 +804,18 @@ std::istream& operator>>(std::istream& stream, PC& a)
             getline(cita, temp);
             while (u != 1) {
                 u++;
-                
-                    for (int i = 0;i < ID - 3;i++) {
-                        cita >> niz[i].proizvodjac >> niz[i].model >> niz[i].kolicina >> niz[i].godina_proiz >> niz[i].cijena >> niz[i].cpu >> niz[i].gpu >>
-                            niz[i].KucisteNiz >> niz[i].memorija >> niz[i].hard_drive;
-                        if (niz[i].proizvodjac == a.getProizvodjac() && niz[i].model == a.getModel() && niz[i].godina_proiz == a.getGodinaProizvodnje() && niz[i].cijena == a.getCijena() &&
-                            niz[i].cpu == a.getCPU() && niz[i].gpu == a.getGPU() && niz[i].KucisteNiz == a.getKucisteString() && niz[i].memorija == a.getMemorija() && niz[i].hard_drive == a.getHardDrive()) {
-                            std::cout << "Posto indeticni navedeni artikal posjedujemo u skladistu dodali smo jos " << a.getKolicina() << " u skladiste\n";
-                            std::cout << "Prije provmjene: " << niz[i].kolicina << " " << a.getKolicina() << "\n";
-                            niz[i].kolicina = niz[i].kolicina + a.getKolicina();
-                            std::cout << "Poslije provmjene: " << niz[i].kolicina << " " << a.getKolicina() << "\n";
-                            v = false;
-                        }
-                        pc.push_back(niz[i]);
-                    
+                for (int i = 0;i < d - 3;i++) {
+                    cita >> niz[i].proizvodjac >> niz[i].model >> niz[i].kolicina >> niz[i].godina_proiz >> niz[i].cijena >> niz[i].cpu >> niz[i].gpu >>
+                        niz[i].KucisteNiz >> niz[i].memorija >> niz[i].hard_drive;
+                    if (niz[i].proizvodjac == a.getProizvodjac() && niz[i].model == a.getModel() && niz[i].godina_proiz == a.getGodinaProizvodnje() && niz[i].cijena == a.getCijena() &&
+                        niz[i].cpu == a.getCPU() && niz[i].gpu == a.getGPU() && niz[i].KucisteNiz == a.getKucisteString() && niz[i].memorija == a.getMemorija() && niz[i].hard_drive == a.getHardDrive()) {
+                        std::cout << "Posto indeticni navedeni artikal posjedujemo u skladistu dodali smo jos " << a.getKolicina() << " u skladiste\n";
+                        std::cout << "Prije provmjene: " << niz[i].kolicina << " " << a.getKolicina() << "\n";
+                        niz[i].kolicina = niz[i].kolicina + a.getKolicina();
+                        std::cout << "Poslije provmjene: " << niz[i].kolicina << " " << a.getKolicina() << "\n";
+                        v = false;
+                    }
+                    pc.push_back(niz[i]);
                 }
             }
             delete[] niz;//brisanje dinamicko alociranog niza zbog toga sto nam nece vise trebat
@@ -815,6 +824,7 @@ std::istream& operator>>(std::istream& stream, PC& a)
         else { std::cout << "Neuspjesno otvaranje datoteke \n"; }
 
         if (v == true) {
+
             upis << std::left << std::setw(15) << a.getProizvodjac();
             upis << std::left << std::setw(26) << a.getModel();
             upis << std::left << std::setw(10) << a.getKolicina();
@@ -826,36 +836,40 @@ std::istream& operator>>(std::istream& stream, PC& a)
             upis << std::left << std::setw(12) << a.getMemorija();
             upis << std::left << std::setw(10) << a.getHardDrive();
             upis << std::endl;
-            std::cout << "v=" << v<<"\n";
+            upis.close();
             std::cout << "[CESTITAMO]Uspjesno smjestene informacije u datoteku\n";
-            
-        }if(v==false) {
-            std::ofstream piI("temp3PC.txt", std::ios::out);//pravljenje pomocne datoteke tempp.3PCtxt gdje cemo povecat kolicinu 
+        }if (v == false) {
+            std::ofstream piI("temp3PC.txt", std::ios::out);//pravljenje pomocne datoteke tempp.txt gdje cemo povecat kolicinu 
+
+
             if (piI.is_open()) {
-                piI << "------------------------------------------------------------------------------------------------------------------------------\n";
-                piI << std::left << std::setw(15) << "Proizvodjac" << std::left << std::setw(26) << "Model " << std::left << std::setw(10) << "Kolièina" <<
-                    std::left << std::setw(20) << "Godina proizvodnje " << std::left << std::setw(15) << "Cijena(KM) " << std::left << std::setw(10)
-                    << std::left << std::setw(26) << "CPU" << std::left << std::setw(32) << "GPU" << std::left << std::setw(22) << "Kuciste" << std::left << std::setw(12) <<
-                    "RAM(GB) " << std::left << std::setw(10) << "HDD||SDD(GB) \n";
-                piI << "------------------------------------------------------------------------------------------------------------------------------\n";
-                for (int i = 0;i < pc.size();i++) {
+                piI << "---------------------------------------------------------------------------------------------------------------------------------------------------------------------------\n";
+                piI << std::left << std::setw(15) << "Proizvodjac" << std::left << std::setw(26) << "Model " << std::left << std::setw(10) << "Kolicina" <<
+                    std::left << std::setw(20) << "Godina proizvodnje " << std::left << std::setw(15) << "Cijena(KM) :" << std::left << std::setw(10)
+                    << std::left << std::setw(26) << "CPU" << std::left << std::setw(32) << "GPU" << std::left << std::setw(22) << "Operativni Sistem" << std::left << std::setw(12) <<
+                    "RAM(GB) " << std::left << std::setw(10) << "HDD||SDD \n";
+                piI << "---------------------------------------------------------------------------------------------------------------------------------------------------------------------------\n";
+                for (int i = 0;i < pc.size() - 1;i++) {
                     piI << std::left << std::setw(15) << pc[i].proizvodjac << std::left << std::setw(26) << pc[i].model
                         << std::left << std::setw(10) << pc[i].kolicina << std::left << std::setw(20) << pc[i].godina_proiz << std::left << std::setw(15) << pc[i].cijena <<
                         std::left << std::setw(26) << pc[i].cpu << std::left << std::setw(32) << pc[i].gpu << std::left << std::setw(22) <<
                         pc[i].KucisteNiz << std::left << std::setw(12) << pc[i].memorija << std::left << std::setw(10) << pc[i].hard_drive << "\n";
                 }
-                std::cout << "Uslo je u temp\n";
                 piI.close();
+                upis.close();
             }
-            else { std::cout << "[greska]Neuspjesno kreirana datoteka temp3PC.txt\n"; }
+            else { std::cout << "[greska]Neuspjesno kreirana datoteka temp2.txt\n"; }
             remove("PC.txt");           //brise PC.txt
-            rename("temp3PC.txt", "PC.txt");//temp3.txt je sada Laptop.txt
+            rename("temp3PC.txt", "PC.txt");//temp3PC.txt je sada PC.txt
+            std::cout << "[CESTITAMO]Uspjesno povecana kolicina u skladistu\n";
         }
-        upis.close();
+
+
     }
     else {
-        std::cout << "[GRESKA]Datoteka šravljenje pc nije otvorena\n";
+        std::cout << "[GRESKA]Datoteka nije otvorena\n";
     }
+
     
     return stream;
 }

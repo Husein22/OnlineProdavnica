@@ -1,9 +1,9 @@
--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-Proizvodjac    Model                     Kolicina  Godina proizvodnje  Cijena(KM)     CPU                       GPU                             Kuciste               RAM(GB)     HDD||SSD 
--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Proizvodjac    Model                     Kolicina  Godina proizvodnje  Cijena(KM) :   CPU                       GPU                             Operativni Sistem     RAM(GB)     HDD||SDD 
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 Aquarius       20                        14        2011                820            Core-i3-10100F            ASUS-GT-1030                    CHASSIS_INTER_TECH_B  8           120       
 HP             EliteDesk-800             8         2014                225            i5-4570                   ASUS-GT                         CHASSIS_INTER_TECH_B  8           120       
-Hunter         4                         12        2011                250            i5-560                    AMD-Radeon                      CHASSIS_INTER_TECH_B  8           256       
+Hunter         4                         211       2011                250            i5-560                    AMD-Radeon                      CHASSIS_INTER_TECH_B  8           256       
 Vostro         3888                      4         2018                1221           Core-i3-10100             GeForce-GT1030                  MS_ELEMENT            8           256       
 HP             ProDesk                   4         2018                2224           i7-1070                   Radeon-Saphire-VGA-PULSE        MS_ELEMENT            16          256       
 Fujitsu        Esprimo                   5         2018                1200           i5-560                    GeForce-GV-N1650                MS_ELEMENT            8           256       
