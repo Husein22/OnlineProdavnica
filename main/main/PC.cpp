@@ -846,8 +846,8 @@ std::istream& operator>>(std::istream& stream, PC& a)
                 piI << "---------------------------------------------------------------------------------------------------------------------------------------------------------------------------\n";
                 piI << std::left << std::setw(15) << "Proizvodjac" << std::left << std::setw(26) << "Model " << std::left << std::setw(10) << "Kolicina" <<
                     std::left << std::setw(20) << "Godina proizvodnje " << std::left << std::setw(15) << "Cijena(KM) :" << std::left << std::setw(10)
-                    << std::left << std::setw(26) << "CPU" << std::left << std::setw(32) << "GPU" << std::left << std::setw(22) << "Operativni Sistem" << std::left << std::setw(12) <<
-                    "RAM(GB) " << std::left << std::setw(10) << "HDD||SDD \n";
+                    << std::left << std::setw(26) << "CPU" << std::left << std::setw(32) << "GPU" << std::left << std::setw(22) << "Kuciste" << std::left << std::setw(12) <<
+                    "RAM(GB) " << std::left << std::setw(10) << "HDD||SSD \n";
                 piI << "---------------------------------------------------------------------------------------------------------------------------------------------------------------------------\n";
                 for (int i = 0;i < pc.size() - 1;i++) {
                     piI << std::left << std::setw(15) << pc[i].proizvodjac << std::left << std::setw(26) << pc[i].model
