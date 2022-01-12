@@ -18,7 +18,7 @@ void Laptop::adminProdaja() {
     std::string temp;
     int o = -3, idOs = 0, p = -1, kol = 0, l = 0, idLap = 0;//deklarisanje pomocnih varijabli koje ce nam trebat ovdje
     bool t = true;
-    std::ifstream citaj("Narudzbe.txt");//otvaranje datoteke narudzbe gdje se prikuplja broj linija u ovoj datoteci
+    std::ifstream citaj("NarudzbeLap.txt");//otvaranje datoteke narudzbe gdje se prikuplja broj linija u ovoj datoteci
     if (citaj.is_open()) {
         while (!citaj.eof()) {
             getline(citaj, temp);
@@ -41,7 +41,7 @@ void Laptop::adminProdaja() {
             std::cin >> idOs;
         } while (idOs<0 || idOs>o);//osigurava da se ne moze unijeti veci id od broja u narudzbama
 
-        std::ifstream cit("Narudzbe.txt", std::ios::in);//smjesta id osobe,laptopa te kolicinu,ovaj dio programa nam pamti te 3 varijable
+        std::ifstream cit("NarudzbeLap.txt", std::ios::in);//smjesta id osobe,laptopa te kolicinu,ovaj dio programa nam pamti te 3 varijable
         if (cit.is_open()) {
             while (!cit.eof()) {
                 getline(cit, temp);
@@ -125,7 +125,7 @@ void Laptop::adminProdaja() {
 
 
         std::ofstream prihodi("PrihodiL.txt", std::ios::app);
-        std::ifstream novi("Narudzbe.txt");
+        std::ifstream novi("NarudzbeLap.txt");
         int nizz[100], h;
         for (int i = 1;i < 100;i++) {
             nizz[i] = i;
@@ -171,8 +171,8 @@ void Laptop::adminProdaja() {
         else {
             std::cout << "Neuspjesno otvaranje datoteke Narudzbe.txt\n";
         }
-        remove("Narudzbe.txt");                 //brise Narudzbe
-        rename("tempo.txt", "Narudzbe.txt");
+        remove("NarudzbeLap.txt");                 //brise Narudzbe
+        rename("tempo.txt", "NarudzbeLap.txt");
         std::cout << "Izbrisan tempo \n";
         system("pause");
     }
@@ -201,7 +201,7 @@ void Laptop::PosjedujemArtikal()
     catch (const char* c) {
         std::cout << c;
     }
-    std::cout <<"\t"<< p-1 << " vrstu razlicitih laptopa\n";
+    std::cout << "\t                        " << p - 1 << " vrstu razlicitih laptopa\n";
 }
 
 void Laptop::setCPU()
@@ -434,7 +434,7 @@ void Laptop::prodajaLaptopa()
             do {
                 std::cout << "Unesite ID laptopa koji zelite kupiti: ";
                 std::cin >> ID;
-            } while (ID > p || ID <= 0);
+            } while (ID > p-1 || ID <= 0);
             std::cin.ignore();
             naruci << std::left << std::setw(15) << t++;
             naruci << std::left << std::setw(13) << ID;
@@ -751,9 +751,8 @@ std::istream& operator>>(std::istream& stream, Laptop& a)
                 
                 std::cout << "[CESTITAMO]Uspjesno smjestene informacije u datoteku\n";
             }if(v==false) {
-                    std::ofstream piI("temp3.txt", std::ios::out);//pravljenje pomocne datoteke tempp.txt gdje cemo povecat kolicinu 
+                    std::ofstream piI("temp3Lap.txt", std::ios::out);//pravljenje pomocne datoteke tempp.txt gdje cemo povecat kolicinu 
                     if (piI.is_open()) {
-                        remove("Laptop.txt");
                         piI << "------------------------------------------------------------------------------------------------------------------------------\n";
                         piI << std::left << std::setw(15) << "Proizvodjac:" << std::left << std::setw(26) << "Model: " << std::left << std::setw(10) << "Kolièina:" <<
                             std::left << std::setw(20) << "Godina proizvodnje: " << std::left << std::setw(15) << "Cijena(KM) :" << std::left << std::setw(10)
@@ -766,12 +765,12 @@ std::istream& operator>>(std::istream& stream, Laptop& a)
                                 std::left << std::setw(26) << laptopi[i].cpu << std::left << std::setw(32) << laptopi[i].gpu << std::left << std::setw(22) <<
                                 laptopi[i].OperativniSistemNiz << std::left << std::setw(12) << laptopi[i].memorija << std::left << std::setw(10) << laptopi[i].hard_drive << "\n";
                         }
-                   
+                        remove("Laptop.txt");           //brise Laptop.txt
+                        rename("temp3Lap.txt", "Laptop.txt");//temp3.txt je sada Laptop.txt
                         piI.close();
                     }
                     else { std::cout << "[greska]Neuspjesno kreirana datoteka temp2.txt\n"; }
-                    remove("Laptop.txt");           //brise Laptop.txt
-                    rename("temp3.txt", "Laptop.txt");//temp3.txt je sada Laptop.txt
+                   
                      }
             
             upis.close();
@@ -800,7 +799,7 @@ std::ostream& operator<<(std::ostream& stream, Laptop& a)
             if (br == 0 || br==-2) {
                 std::cout << tempp << "------\n";
             }
-           if(br>0) {
+           if(br>0 ) {
                 std::cout << std::left << std::setw(5) << br;
                 std::cout << tempp << "\n";
             }

@@ -23,21 +23,24 @@ void Admin::citanjeAdmina()
 {
 	std::string b, c;
 	std::ifstream citanje("Admin.txt");
-	std::cout << " ________________________________________\n ";
+	std::cout << "                          _________________________________________                          \n ";
+	std::cout << "                         |                                       |                            \n";
 	try {
 		if (citanje.is_open()) {
 			while (!citanje.eof())
 			{
 				citanje >> b;
 				citanje >> c;
-				std::cout <<"|\t"<<std::left<<std::setw(30)<< b << "\t|\n ";
+				std::cout << "                         |\t" << std::left << std::setw(30) << b << "\t  |                        \n ";
 			}
-			std::cout << "|______________________________________|\n";
+			std::cout << "                         |_______________________________________|                          \n";
 			citanje.close();
 		}
 		else {
 			throw "Nazalost neuspjesno otvaranje datoteke Admin.txt\n";
 		}
+
+		
 
 	}
 	catch(const char*a){

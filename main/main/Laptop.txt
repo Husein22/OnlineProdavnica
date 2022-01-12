@@ -1,11 +1,11 @@
---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-Proizvodjac    Model    	         Kolicina  Godina proizvodnje  Cijena(KM)     CPU       		GPU       			Operativni Sistem     RAM(GB)     HDD||SDD 
---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Proizvodjac    Model                     Kolicina: Godina proizvodnje  Cijena(KM)     CPU                       GPU                             Operativni Sistem     RAM(GB)     HDD||SSD 
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 LENOVO         IdeaPad-S150-14AST        5         2019                819            AMD-A6-9220e              AMD-Radeon-R4                   Windows               4           64        
 ASUS           M515DA-EJ301T             7         2017                949            AMD-Ryzen-3-3250UAMD      Radeon-RX-Vega-3                Windows               4           256       
 HP             250G8                     3         2020                999            Intel-Core-i3-1005G1      Intel-UHD-Graphics-G1           GNOME                 4           256       
 LENOVO         Duet-3-10IGL5             10        2016                875            Intel-Celeron-N4020       Intel-UHD-Graphics-600          Windows               4           128       
-DELL           Vostro-3500               12        2020                1149           Intel-Core-i3-1115G4      Intel-UHD-Graphics-Xe-G4-48EUs  Linux                 8           256       
+DELL           Vostro-3500               10        2020                1149           Intel-Core-i3-1115G4      Intel-UHD-Graphics-Xe-G4-48EUs  Linux                 8           256       
 TOSHIBA        Satellite-Pro-C50-H-11G   9         2020                1169           Intel-Core-i3-1005G1      Intel-UHD-Graphics-G1           Windows               8           256       
 HP             15s-fq2031nm              6         2019                1168           Intel-Core-i3-1005G1      Intel-UHD-Graphics-G1           Windows               8           256       
 LENOVO         E5                        11        2018                1199           Intel-Core-i3-1115G4      Intel-UHD-Graphics-Xe-G4-48EUs  Windows               8           256       
@@ -21,3 +21,4 @@ HP             470-G8                    11        2019                2049     
 DELL           G15-5511                  8         2018                2199           Intel-Core-i5-11400H      Nvidia-GeForce-RTX-3050         Linux                 8           512       
 APPLE          MacBook-Air               2         2021                2299           Apple-M1                  M1-7-Core                       Mac_OS                8           256       
 GIGABYTE       G5-KC-RC45KC              5         2020                2799           Intel-Core-i5-10500H      NVIDIA-GeForce-RTX-3060         GNOME                 16          512       
+HP             250G                      10        2020                999            Intel-Core-i3-1005G1      Intel-UHD-Graphics-G1           GNOME                 4           256       

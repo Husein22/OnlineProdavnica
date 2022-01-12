@@ -32,7 +32,7 @@ void Mobitel::PosjedujemArtikal()
     catch (const char* c) {
         std::cout << c;
     }
-    std::cout << "\n\t" << p - 1 << " vrstu razlicitih PC\n";
+    std::cout << "\n\t                        " << p - 1 << " vrstu razlicitih mobitela\n";
 }
 
 void Mobitel::setCPU()
@@ -259,7 +259,7 @@ void Mobitel::prodajaMobitela()
         do {
             std::cout << "Unesite ID mobitela koji zelite kupiti: ";
             std::cin >> ID;
-        } while (ID > p || ID <= 0);
+        } while (ID > p-1 || ID <= 0);
         std::cin.ignore();
         naruci << std::left << std::setw(15) << t++;
         naruci << std::left << std::setw(13) << ID;
@@ -579,7 +579,7 @@ void Mobitel::sortiranjeMob(std::string rec)
                 cijena.push_back(x);
             }
         }
-        if (rec == "hdd") {
+        if (rec == "kamera") {
             for (int i = 0;i < kamera.size();i++) {
                 for (int j = i;j < kamera.size();j++) {
                     if (kamera[j] > kamera[i]) {

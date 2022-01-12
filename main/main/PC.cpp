@@ -32,7 +32,7 @@ void PC::PosjedujemArtikal()
     catch (const char* c) {
         std::cout << c;
     }
-    std::cout << "\n\t" << p-1 << " vrstu razlicitih PC\n";
+    std::cout << "\n\t                        " << p - 1 << " vrstu razlicitih PC\n";
 }
 
 void PC::setCPU()
@@ -373,7 +373,7 @@ void PC::prodajaPC()
             do {
                 std::cout << "Unesite ID PC koji zelite kupiti: ";
                 std::cin >> ID;
-            } while (ID > p || ID <= 0);
+            } while (ID > p-1 || ID <= 0);
             std::cin.ignore();
             naruci << std::left << std::setw(15) << t++;
             naruci << std::left << std::setw(13) << ID;
