@@ -1,2 +1,14 @@
-﻿  main.cpp
+﻿  Laptop.cpp
+C:\Users\DRUG\OneDrive\Dokumenti\GitHub\PROJEKAT_ONLINEprodavnica\main\main\Laptop.cpp(905,31): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+  Mobitel.cpp
+C:\Users\DRUG\OneDrive\Dokumenti\GitHub\PROJEKAT_ONLINEprodavnica\main\main\Mobitel.cpp(719,31): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+  PC.cpp
+C:\Users\DRUG\OneDrive\Dokumenti\GitHub\PROJEKAT_ONLINEprodavnica\main\main\PC.cpp(54,18): warning C4566: character represented by universal-character-name '\u0106' cannot be represented in the current code page (1252)
+C:\Users\DRUG\OneDrive\Dokumenti\GitHub\PROJEKAT_ONLINEprodavnica\main\main\PC.cpp(105,16): warning C4566: character represented by universal-character-name '\u0106' cannot be represented in the current code page (1252)
+C:\Users\DRUG\OneDrive\Dokumenti\GitHub\PROJEKAT_ONLINEprodavnica\main\main\PC.cpp(723,31): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+  main.cpp
+  Generating Code...
+C:\Users\DRUG\OneDrive\Dokumenti\GitHub\PROJEKAT_ONLINEprodavnica\main\main\PC.cpp(119): warning C4715: 'PC::getKucisteString': not all control paths return a value
+C:\Users\DRUG\OneDrive\Dokumenti\GitHub\PROJEKAT_ONLINEprodavnica\main\main\Mobitel.cpp(116): warning C4715: 'Mobitel::getOpsSisString': not all control paths return a value
+C:\Users\DRUG\OneDrive\Dokumenti\GitHub\PROJEKAT_ONLINEprodavnica\main\main\Laptop.cpp(289): warning C4715: 'Laptop::getOpsSisString': not all control paths return a value
   main.vcxproj -> C:\Users\DRUG\OneDrive\Dokumenti\GitHub\PROJEKAT_ONLINEprodavnica\main\x64\Debug\main.exe
