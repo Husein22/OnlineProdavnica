@@ -631,10 +631,10 @@ void PC::adminProdajaPC()
         std::cout << "Izbrisan tempoPC\n";
         system("pause");
     }
-else {
-std::cout << "Nemamo narucenih racunara\n";
-}
-
+    else {
+        std::cout << "\n\n" << "                               |  Nazaloset nemamo narucenih racunara  |\n";
+        system("pause");
+    }
 }
 
 float operator!(PC& a)

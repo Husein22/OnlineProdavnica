@@ -18,7 +18,7 @@ void Laptop::adminProdaja() {
     std::string temp;
     int o = -3, idOs = 0, p = -1, kol = 0, l = 0, idLap = 0;//deklarisanje pomocnih varijabli koje ce nam trebat ovdje
     bool t = true;
-    std::ifstream citaj("NarudzbeLap.txt");//otvaranje datoteke narudzbe gdje se prikuplja broj linija u ovoj datoteci
+    std::ifstream citaj("NarudzbeLap.txt");//otvaranje datoteke narudzbeLap gdje se prikuplja broj linija u ovoj datoteci
     if (citaj.is_open()) {
         while (!citaj.eof()) {
             getline(citaj, temp);
@@ -28,8 +28,9 @@ void Laptop::adminProdaja() {
         citaj.close();
     }
     else {
-        std::cout << "Neuspjesno otvaranje datoteke narudzbe.txt\n";
+        std::cout << "Neuspjesno otvaranje datoteke NarudzbeLap.txt\n";
     }
+    std::cout << o<<"=o"<<"\n";
     if (o == 1) {
         t = false;
     }
@@ -177,7 +178,8 @@ void Laptop::adminProdaja() {
         system("pause");
     }
 else {
-std::cout << "Nazaloset nemamo narucenih laptopa\n";
+std::cout << "\n\n" << "                               |  Nazaloset nemamo narucenih laptopa  |\n";
+system("pause");
 }
 }
 

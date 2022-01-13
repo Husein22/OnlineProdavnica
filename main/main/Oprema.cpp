@@ -359,7 +359,8 @@ void Oprema::adminProdajaOpreme()
         system("pause");
     }
     else {
-        std::cout << "Nazaloset nemamo narucenih oprema\n";
+        std::cout << "\n\n"<<"                               |  Nazaloset nemamo narucenie opreme  |\n";
+        system("pause");
     }
 }
 
@@ -387,10 +388,10 @@ float operator!(Oprema& a)
             if (b > -1 && c > -1 && d > -1) e = b * 100 + c * 10 + d;
             else if (b > -1 && c > -1 && d < -1) e = b * 10 + c;
             else if (b > -1 && c < -1 && d < -1) e = b;
-            f = temp[26] - '0';
-            g = temp[27] - '0';
-            h = temp[28] - '0';
-            j = temp[29] - '0';
+            f = temp[25] - '0';
+            g = temp[26] - '0';
+            h = temp[27] - '0';
+            j = temp[28] - '0';
             if (f > -1 && g > -1 && h > -1 && j > -1) i = f * 1000 + g * 100 + h * 10 + j;
             if (f > -1 && g > -1 && h > -1 && j < -1) i = f * 100 + g * 10 + h;
             else if (f > -1 && g > -1 && h < -1 && j < -1) i = f * 10 + g;
@@ -405,64 +406,63 @@ float operator!(Oprema& a)
 
 float operator*(Oprema& a)
 {
+    Oprema::prihofOp =0;
+    std::ifstream datoteka("PrihodiOp.txt");
+    std::string temp;
+    int* idLap = new int[100];
+    int* kol = new int[100];
+    int i = 0;
+    if (datoteka.is_open()) {
+        getline(datoteka, temp);
+        getline(datoteka, temp);
+        getline(datoteka, temp);
+        while (!datoteka.eof()) {
+            datoteka >> idLap[i];
+            datoteka >> kol[i];
+            i++;
+            getline(datoteka, temp);
+        }
+        datoteka.close();
+    }
+    else {
+        std::cout << "Neuspjesno otvaranje daoteke PrihodiL\n";
+    }
+    int br = -3, f = 0, g = 0, h = 0, j = 0, t = 0, u = 0, k = 0;
+    float o = 0;
+    std::string pomocni;
+    std::ifstream lap("Oprema.txt");
+    if (lap.is_open()) {
+        while (k != i - 1) {
+            getline(lap, pomocni);
+            br++;
+            if (br >= 0) {
+                for (int s = 0;s < i;s++)
+                {
+                    if (br == idLap[s]) {
+                        f = pomocni[25] - '0';
+                        g = pomocni[26] - '0';
+                        h = pomocni[27] - '0';
+                        j = pomocni[28] - '0';
+                        if (f > -1 && g > -1 && h > -1 && j > -1) t = f * 1000 + g * 100 + h * 10 + j;
+                        if (f > -1 && g > -1 && h > -1 && j < -1)t = f * 100 + g * 10 + h;
+                        else if (f > -1 && g > -1 && h < -1 && j < -1) t = f * 10 + g;
+                        else if (f > -1 && g < -1 && h < -1 && j < -1) t = f;
+                        o = t * kol[k];
+                        k++;
+                    Oprema::prihofOp += o;
+                    }
 
-    //std::ifstream datoteka("PrihodiL.txt");
-    //std::string temp;
-    //int* idLap = new int[100];
-    //int* kol = new int[100];
-    //int i = 0;
-    //if (datoteka.is_open()) {
-    //    getline(datoteka, temp);
-    //    getline(datoteka, temp);
-    //    getline(datoteka, temp);
-    //    while (!datoteka.eof()) {
-    //        datoteka >> idLap[i];
-    //        datoteka >> kol[i];
-    //        i++;
-    //        getline(datoteka, temp);
-    //    }
-    //    datoteka.close();
-    //}
-    //else {
-    //    std::cout << "Neuspjesno otvaranje daoteke PrihodiL\n";
-    //}
-    //int br = -3, f = 0, g = 0, h = 0, j = 0, t = 0, u = 0, k = 0;
-    //float o = 0;
-    //std::string pomocni;
-    //std::ifstream lap("Laptop.txt");
-    //if (lap.is_open()) {
-    //    while (k != i - 1) {
-    //        getline(lap, pomocni);
-    //        br++;
-    //        if (br >= 0) {
-    //            for (int s = 0;s < i;s++)
-    //            {
-    //                if (br == idLap[s]) {
-    //                    f = pomocni[71] - '0';
-    //                    g = pomocni[72] - '0';
-    //                    h = pomocni[73] - '0';
-    //                    j = pomocni[74] - '0';
-    //                    if (f > -1 && g > -1 && h > -1 && j > -1) t = f * 1000 + g * 100 + h * 10 + j;
-    //                    if (f > -1 && g > -1 && h > -1 && j < -1)t = f * 100 + g * 10 + h;
-    //                    else if (f > -1 && g > -1 && h < -1 && j < -1) t = f * 10 + g;
-    //                    else if (f > -1 && g < -1 && h < -1 && j < -1) t = f;
-    //                    o = t * kol[k];
-    //                    k++;
-    //                Oprema::prihofOp += o;
-    //                }
-
-    //            }
-    //        }
-    //    }
-    //    lap.close();
-    //}
-    //else {
-    //    std::cout << "Neuspjesno otvaranje datoteke Laptop.txt\n";
-    //}
+                }
+            }
+        }
+        lap.close();
+    }
+    else {
+        std::cout << "Neuspjesno otvaranje datoteke Laptop.txt\n";
+    }
 
 
-    //return Oprema::prihofOp;
-    return 0;
+    return Oprema::prihofOp;
 }
 
 std::istream& operator>>(std::istream& stream, Oprema& a)

@@ -163,6 +163,7 @@ void prodaja() {
 		{
 		case 1:
 			ispisLaptopa("kupac");
+			break;
 		case 2:
 			ispisMobitela("kupac");
 			break;
@@ -626,6 +627,7 @@ void updateOpcije() {
 		{
 		case 1:
 			lape->adminProdaja();
+			break;
 		case 2:
 			mob->adminProdajaMob();
 			break;
@@ -676,13 +678,15 @@ void stanjeK() {
 	cout << "\n" << "                                       Bilans sto se tice racunara: " << PC::prihoPC - (PC::trosiPC * (-1)) << " KM     ";
 	cout << "\n" << "                                       ----------------------------------------------";
 	cout << "\n" << "                                       Zarada na prodaji mobitela: " << Mobitel::prihodMob << " KM      ";
-	cout << "\n" << "                                       Potroseno na kupovinu mobitela: " << Mobitel::trosiMob;
+	cout << "\n" << "                                       Potroseno na kupovinu mobitela: " << Mobitel::trosiMob*(-1) << " KM      ";
 	cout << "\n" << "                                       Bilans sto se tice mobitela: " << Mobitel::prihodMob - (Mobitel::trosiMob * (-1)) << " KM     ";
 	cout << "\n" << "                                       ----------------------------------------------";
 	cout << "\n" << "                                       Zarada na prodaji opreme: " << Oprema::prihofOp << " KM      ";
-	cout << "\n" << "                                       Potroseno na kupovinu opreme: " << Oprema::troaskOp*(-1);
+	cout << "\n" << "                                       Potroseno na kupovinu opreme: " << Oprema::troaskOp*(-1) << " KM      ";
 	cout << "\n" << "                                       Bilans sto se tice opreme: " << Oprema::prihofOp - (Oprema::troaskOp * (-1)) << " KM     ";
 	cout << "\n" << "                                       ______________________________________________";
+	cout << "\n" << "                                       UKUPNO STANJE KASE         : " << (Laptop::prihodL - (Laptop::trosiL * (-1)))+(PC::prihoPC - (PC::trosiPC * (-1)))+
+																			(Mobitel::prihodMob - (Mobitel::trosiMob * (-1)))+( Oprema::prihofOp - (Oprema::troaskOp * (-1))) << " KM     ";
 	cout << "\n\n";
 	
 
@@ -955,8 +959,8 @@ int main()
 	bool l;
 	Oprema o;
 	//cin >> o;
-	
 	do {
+		system("cls");
 		cout << "\n\n" << setw(81) << right << "" << endl; 
 			cout << "_________________________________________________________________________________________________________" << endl;
 		cout << "|                                                                                                       |" << endl;
@@ -1017,12 +1021,12 @@ int main()
 			a = 0;
 			string user, password;
 			std::shared_ptr<Admin>temp = std::make_shared<Admin>();
-			cout << "\n" << setw(60) << "Username: ";
+			cout << "\n" << setw(60)<<right << "Username: ";
 		    getline(cin, user);
-			cout << "\n" << setw(57) << "Sifra: ";
+			cout << "\n" << setw(57)<<right << "Sifra: ";
 			password = temp->unosPassworda(password, 0);
 			if (temp->login(user, password)==true) {
-				cout << "\n\n" << setw(75) << "Uspjesno logirani na admin acc." << endl;
+				cout << "\n\n" << setw(75) <<right<< "Uspjesno logirani na admin acc." << endl;
 				system("pause");
 				adminMenu();
 			}
@@ -1045,11 +1049,11 @@ int main()
 					cout << "                                                Sifra: ";
 					password = tempp->unosPassworda(password, 0);
 					if (tempp->login(kupac, password) == true) {
-						cout << "\n\n" << setw(75) << "Uspjesno logirani na kupac acc." << endl;
+						cout << "\n\n" << setw(75)<<right << "Uspjesno logirani na kupac acc." << endl;
 						kupacMenu();
 					}
 					if (tempp->login(kupac, password) == false) {
-						cout << "\n\n" << setw(78) << "Username ili password nisu validni." << endl;
+						cout << "\n\n" << setw(78)<<right << "Username ili password nisu validni." << endl;
 						system("pause");
 						Sleep(2000);
 						system("CLS");
@@ -1089,5 +1093,5 @@ int main()
 		}
 
 	} while (izbor != 0);
-	
+	return 0;
 }
