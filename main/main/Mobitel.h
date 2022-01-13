@@ -1,6 +1,7 @@
 #pragma once
 #include"Artikal.h"
 enum OperativniSistemm {  Android=0,iOS, Windows_Phone, Symbian, Palm_OS};
+
 class Mobitel
 	:public Artikal
 {

@@ -2,6 +2,7 @@
 #include"Artikal.h"
 
 enum OperativniSistem  { Windows=0 ,Linux, Unix, Mac_OS, AmigaOS, GNOME};
+
 class Laptop:
 	public Artikal
 {

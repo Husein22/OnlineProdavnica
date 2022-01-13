@@ -1,6 +1,8 @@
 #pragma once
 #include"Artikal.h"
-enum Kuciste { MS_ELEMENT=0, CHASSIS_INTER_TECH_B_42, GAMING_KUÆIŠTE, MS_FIGHTER_V305, THERMALTAKE_VIEW28, MS_V315_Fighter_RGB};
+enum Kuciste { MS_ELEMENT=0, CHASSIS_INTER_TECH_B_42, GAMING_KUÆIŠTE, 
+			   MS_FIGHTER_V305, THERMALTAKE_VIEW28, MS_V315_Fighter_RGB};
+
 class PC
 	:public Artikal
 {
