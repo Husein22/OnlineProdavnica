@@ -86,7 +86,7 @@ void Laptop::adminProdaja() {
             while (u != 1) {
                 u++;
                 std::cout << "d=" << d << "\n";
-                for (int i = 0;i < d;i++) {
+                for (int i = 0;i < d-1;i++) {
                     cita >> niz[i].proizvodjac >> niz[i].model >> niz[i].kolicina >> niz[i].godina_proiz >> niz[i].cijena >> niz[i].cpu >> niz[i].gpu >>
                         niz[i].OperativniSistemNiz >> niz[i].memorija >> niz[i].hard_drive;
                     if (i == idLap - 1) {

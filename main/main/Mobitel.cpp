@@ -32,7 +32,7 @@ void Mobitel::PosjedujemArtikal()
     catch (const char* c) {
         std::cout << c;
     }
-    std::cout << "\n\t                        " << p - 1 << " vrstu razlicitih mobitela\n";
+    std::cout << "\n\t                        " << p  << " vrstu razlicitih mobitela\n";
 }
 
 void Mobitel::setCPU()
@@ -675,6 +675,7 @@ float operator!(Mobitel& a)
 
 float operator*(Mobitel& a)
 {
+    
     Mobitel::prihodMob=0;
     std::ifstream datoteka("PrihodiMob.txt");
     std::string temp;
@@ -696,10 +697,11 @@ float operator*(Mobitel& a)
     else {
         std::cout << "Neuspjesno otvaranje daoteke PrihodiMob\n";
     }
+    
+    std::ifstream lap("Mobitel.txt");
     int br = -3, f = 0, g = 0, h = 0, j = 0, t = 0, u = 0, k = 0;
     float o = 0;
     std::string pomocni;
-    std::ifstream lap("Mobitel.txt");
     if (lap.is_open()) {
         while (k != i - 1) {
             getline(lap, pomocni);

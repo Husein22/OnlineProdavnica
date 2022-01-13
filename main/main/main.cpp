@@ -498,23 +498,24 @@ void ispisOpcijeKupac() {
 		std::cin.clear();
 		std::cout << "\n" << std::setw(81) <<right<< "* Odaberite neku od ponudjenih opcija : *";
 		std::cout << "\n" << std::setw(81) << right << "*                                       *";
-		std::cout << "\n" << std::setw(81) << right << "*        1. Ispis svih proizvoda        *";
+		std::cout << "\n" << std::setw(81) << right << "*        1. Ispis opreme                *";
 		std::cout << "\n" << std::setw(81) << right << "*        2. Ispis mobitela              *";
 		std::cout << "\n" << std::setw(81) << right << "*        3. Ispis racunara              *";
 		std::cout << "\n" << std::setw(81) << right << "*        4. Ispis laptopa               *";
-		std::cout << "\n" << std::setw(81) << right << "*        5. Ispis opreme                *";
 		std::cout << "\n" << std::setw(81) << right << "*        0. Vrati se nazad              *";
 		std::cout << "\n" << std::setw(81) << right << "*****************************************";
 		do {
 			cout << "\n" << std::setw(67) << right << "Unesite izbor: ";
 			cin >> iz;
-		} while (iz < 0 || iz>5);
+		} while (iz < 0 || iz>4);
 		cin.ignore();
 		system("cls");
 		switch (iz)
 		{
 		case 1:
-			//ispisSvih();
+			ispisOpreme("admin");
+			system("pause");
+			break;
 		case 2:
 			ispisMobitela("kupac");
 			break;
@@ -550,23 +551,24 @@ void ispisOpcijeAdmin() {
 		std::cin.clear();
 		std::cout << "\n" << std::setw(81) << right << "* Odaberite neku od ponudjenih opcija : *";
 		std::cout << "\n" << std::setw(81) << right << "*                                       *";
-		std::cout << "\n" << std::setw(81) << right << "*        1. Ispis svih proizvoda        *";
+		std::cout << "\n" << std::setw(81) << right << "*        1. Ispis opreme                *";
 		std::cout << "\n" << std::setw(81) << right << "*        2. Ispis mobitela              *";
 		std::cout << "\n" << std::setw(81) << right << "*        3. Ispis racunara              *";
 		std::cout << "\n" << std::setw(81) << right << "*        4. Ispis laptopa               *";
-		std::cout << "\n" << std::setw(81) << right << "*        5. Ispis opreme                *";
 		std::cout << "\n" << std::setw(81) << right << "*        0. Vrati se nazad              *";
 		std::cout << "\n" << std::setw(81) << right << "*****************************************";
 		do {
 			cout << "\n" << std::setw(67) << "Unesite izbor: ";
 			cin >> iz;
-		} while (iz < 0 || iz>5);
+		} while (iz < 0 || iz>4);
 		cin.ignore();
 		system("cls");
 		switch (iz)
 		{
 		case 1:
-			//ispisSvih();
+			ispisOpreme("admin");
+			system("pause");
+			break;
 		case 2:
 			ispisMobitela("admin");
 			system("pause");
@@ -579,10 +581,7 @@ void ispisOpcijeAdmin() {
 			ispisLaptopa("admin");
 			system("pause");
 			break;
-		case 5:
-			ispisOpreme("admin");
-			system("pause");
-			break;
+		
 		case 0:
 
 			break;
@@ -957,8 +956,6 @@ int main()
 	int izbor=0,z=0,a=0,i=0, n=0;
 	string user, password;
 	bool l;
-	Oprema o;
-	//cin >> o;
 	do {
 		system("cls");
 		cout << "\n\n" << setw(81) << right << "" << endl; 

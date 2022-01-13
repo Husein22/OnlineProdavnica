@@ -21,8 +21,3 @@ HP             470-G8                    9         2019                2049     
 DELL           G15-5511                  8         2018                2199           Intel-Core-i5-11400H      Nvidia-GeForce-RTX-3050         Linux                 8           512       
 APPLE          MacBook-Air               2         2021                2299           Apple-M1                  M1-7-Core                       Mac_OS                8           256       
 GIGABYTE       G5-KC-RC45KC              5         2020                2799           Intel-Core-i5-10500H      NVIDIA-GeForce-RTX-3060         GNOME                 16          512       
-<<<<<<< HEAD
-HP             250G                      10        2020                999            Intel-Core-i3-1005G1      Intel-UHD-Graphics-G1           GNOME                 4           256       
-=======
-HP             250G                      7         2020                999            Intel-Core-i3-1005G1      Intel-UHD-Graphics-G1           GNOME                 4           256       
->>>>>>> 739c91ec702d88d4016766943da436eb8b431daa
