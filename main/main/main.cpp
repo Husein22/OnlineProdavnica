@@ -843,7 +843,7 @@ void kupacOpcije() {
 	std::cin.clear();
 	std::cout << "\n" << right << std::setw(81) << "* Odaberite neku od ponudjenih opcija : *";
 	std::cout << "\n" << right << std::setw(81) << "*                                       *";
-	std::cout << "\n" << right << std::setw(81) << "*      1. Prikazi proizvode         *"; //ponuditi posebno ako zeli svaku vrstu proizvoda slicno kao kod admina
+	std::cout << "\n" << right << std::setw(81) << "*      1. Prikazi sve proizvode         *"; //ponuditi posebno ako zeli svaku vrstu proizvoda slicno kao kod admina
 	std::cout << "\n" << right << std::setw(81) << "*      2. Potrazi proizvod              *";
 	std::cout << "\n" << right << std::setw(81) << "*      3. Kupi artikal                  *";
 	std::cout << "\n" << right << std::setw(81) << "*      4. Ispis sortiranih artikala     *";
