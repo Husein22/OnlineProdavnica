@@ -10,4 +10,12 @@
               5            2           EFW            FR             RE             34             
               5            2           RE             FD             ER             ER             
               4            3           Erik           Bai            2213           London         
+<<<<<<< HEAD
               3            100         Leo            Messi          23143          PSG            
+=======
+
+
+              14           1           Ermin          Skaljo         234093         Rujev-do-8     
+              17           2           Selma          Husic          234563         Kruscica-bb    
+              21           3           Samir          Adilovic       345654         Ahmici-bb      
+>>>>>>> 739c91ec702d88d4016766943da436eb8b431daa

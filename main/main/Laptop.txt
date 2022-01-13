@@ -14,11 +14,15 @@ TOSHIBA        Satellite-Pro             2         2017                1249     
 DELL           Inspiron-17               4         2020                1269           Intel-Core-i3-1005G1      Intel-UHD-Graphics-G1           Linux                 8           256       
 GATEWAY        Notebook-GWTN156          5         2020                1349           Intel-Corel-i5-1035G1     Intel-UHD-Graphics              Windows               16          256       
 ACER           Extensa-EX215-550A        8         2019                1449           Intel-Core-i5-10210U      NVIDIA-GeForce-MX230-2GB-GDDR5  Unix                  8           512       
-LENOVO         ThinkBook-15-G2-ARE       2         2018                1549           AMD-Ryzen-5-4500U         AMD-Radeon-RX-Vega-6            Linux                 8           512       
+LENOVO         ThinkBook-15-G2-ARE       1         2018                1549           AMD-Ryzen-5-4500U         AMD-Radeon-RX-Vega-6            Linux                 8           512       
 ASUS           S15-S533EQ-WB517          13        2020                1849           Intel-Core-i5-1135G7      nVidia-GeForce-MX350-2GB-GDDR5  Linux                 8           512       
 ASUS           VivoBook-S15-M533IA-WB7   6         2020                1999           AMD-Ryzen-7-4700U         AMD-Radeon-RX-Vega-7            Windows               8           512       
-HP             470-G8                    11        2019                2049           Intel-Core-i5-1135G7      Intel-Iris-Xe-Graphics-G7-80    Windows               8           256       
+HP             470-G8                    9         2019                2049           Intel-Core-i5-1135G7      Intel-Iris-Xe-Graphics-G7-80    Windows               8           256       
 DELL           G15-5511                  8         2018                2199           Intel-Core-i5-11400H      Nvidia-GeForce-RTX-3050         Linux                 8           512       
 APPLE          MacBook-Air               2         2021                2299           Apple-M1                  M1-7-Core                       Mac_OS                8           256       
 GIGABYTE       G5-KC-RC45KC              5         2020                2799           Intel-Core-i5-10500H      NVIDIA-GeForce-RTX-3060         GNOME                 16          512       
+<<<<<<< HEAD
 HP             250G                      10        2020                999            Intel-Core-i3-1005G1      Intel-UHD-Graphics-G1           GNOME                 4           256       
+=======
+HP             250G                      7         2020                999            Intel-Core-i3-1005G1      Intel-UHD-Graphics-G1           GNOME                 4           256       
+>>>>>>> 739c91ec702d88d4016766943da436eb8b431daa
