@@ -3,3 +3,11 @@ Naziv          Kolicina  Cijena    Opis
 ------------------------------------------------------------------------------------------
 RAM            25        86        8GB                                               
 ROM            4         30        DDR3                                              
+SSD            5         90        240GB-Kingston-A400 
+RAM            10        35        4GB-DDR3-1600MHz-Transcend
+Display	       3         210       za-laptop-Led-slim-30-pin                  
+Display        5         80        za-mobitel-SG-A30s             
+Micro-SD       30        74        Mikro-SD-kartica-512GB
+Micro-SD       12        20        Kingston-micro-SD-memory-card-32GB
+Slusalice      15        30        Bluetooth-slusalice 
+JBL-zvucnik    12        35        JBL-Extreme-Bluetooth-bezicni-zvucnik
