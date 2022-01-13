@@ -2,3 +2,4 @@
 ID osobe       ID laptopa   Kolicina    Ime            Prezime        Ziro racun     Adresa         
 ---------------------------------------------------------------------------------------------------------------
 
+2              3            27          Selma          Husic          233455         Kruscica-bb    
