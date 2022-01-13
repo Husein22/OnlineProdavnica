@@ -632,6 +632,7 @@ void Mobitel::sortiranjeMob(std::string rec)
 
 float operator!(Mobitel& a)
 {
+    Mobitel::trosiMob=0;
     std::string temp;
     int  b, c, d, e, f, g, h, i = 0, p, j;
     std::ifstream unos("Mobitel.txt");
@@ -672,6 +673,7 @@ float operator!(Mobitel& a)
 
 float operator*(Mobitel& a)
 {
+    Mobitel::prihodMob=0;
     std::ifstream datoteka("PrihodiMob.txt");
     std::string temp;
     int* idLap = new int[100];

@@ -1,21 +1,2 @@
-﻿  Mobitel.cpp
-C:\Users\Husdein Cisic\Documents\GitHub\PROJEKAT_ONLINEprodavnica\main\main\Mobitel.cpp(144,191): warning C4566: character represented by universal-character-name '\u00E8' cannot be represented in the current code page (1250)
-C:\Users\Husdein Cisic\Documents\GitHub\PROJEKAT_ONLINEprodavnica\main\main\Mobitel.cpp(186,191): warning C4566: character represented by universal-character-name '\u00E8' cannot be represented in the current code page (1250)
-C:\Users\Husdein Cisic\Documents\GitHub\PROJEKAT_ONLINEprodavnica\main\main\Mobitel.cpp(451,30): warning C4018: '<': signed/unsigned mismatch
-C:\Users\Husdein Cisic\Documents\GitHub\PROJEKAT_ONLINEprodavnica\main\main\Mobitel.cpp(583,30): warning C4018: '<': signed/unsigned mismatch
-C:\Users\Husdein Cisic\Documents\GitHub\PROJEKAT_ONLINEprodavnica\main\main\Mobitel.cpp(584,34): warning C4018: '<': signed/unsigned mismatch
-C:\Users\Husdein Cisic\Documents\GitHub\PROJEKAT_ONLINEprodavnica\main\main\Mobitel.cpp(592,30): warning C4018: '<': signed/unsigned mismatch
-C:\Users\Husdein Cisic\Documents\GitHub\PROJEKAT_ONLINEprodavnica\main\main\Mobitel.cpp(595,30): warning C4018: '<': signed/unsigned mismatch
-C:\Users\Husdein Cisic\Documents\GitHub\PROJEKAT_ONLINEprodavnica\main\main\Mobitel.cpp(596,34): warning C4018: '<': signed/unsigned mismatch
-C:\Users\Husdein Cisic\Documents\GitHub\PROJEKAT_ONLINEprodavnica\main\main\Mobitel.cpp(604,30): warning C4018: '<': signed/unsigned mismatch
-C:\Users\Husdein Cisic\Documents\GitHub\PROJEKAT_ONLINEprodavnica\main\main\Mobitel.cpp(606,30): warning C4018: '<': signed/unsigned mismatch
-C:\Users\Husdein Cisic\Documents\GitHub\PROJEKAT_ONLINEprodavnica\main\main\Mobitel.cpp(607,34): warning C4018: '<': signed/unsigned mismatch
-C:\Users\Husdein Cisic\Documents\GitHub\PROJEKAT_ONLINEprodavnica\main\main\Mobitel.cpp(615,30): warning C4018: '<': signed/unsigned mismatch
-C:\Users\Husdein Cisic\Documents\GitHub\PROJEKAT_ONLINEprodavnica\main\main\Mobitel.cpp(618,30): warning C4018: '<': signed/unsigned mismatch
-C:\Users\Husdein Cisic\Documents\GitHub\PROJEKAT_ONLINEprodavnica\main\main\Mobitel.cpp(619,34): warning C4018: '<': signed/unsigned mismatch
-C:\Users\Husdein Cisic\Documents\GitHub\PROJEKAT_ONLINEprodavnica\main\main\Mobitel.cpp(627,30): warning C4018: '<': signed/unsigned mismatch
-C:\Users\Husdein Cisic\Documents\GitHub\PROJEKAT_ONLINEprodavnica\main\main\Mobitel.cpp(715,31): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
-C:\Users\Husdein Cisic\Documents\GitHub\PROJEKAT_ONLINEprodavnica\main\main\Mobitel.cpp(743,137): warning C4566: character represented by universal-character-name '\u00E8' cannot be represented in the current code page (1250)
-C:\Users\Husdein Cisic\Documents\GitHub\PROJEKAT_ONLINEprodavnica\main\main\Mobitel.cpp(848,34): warning C4018: '<': signed/unsigned mismatch
-C:\Users\Husdein Cisic\Documents\GitHub\PROJEKAT_ONLINEprodavnica\main\main\Mobitel.cpp(116): warning C4715: 'Mobitel::getOpsSisString': not all control paths return a value
+﻿  main.cpp
   main.vcxproj -> C:\Users\Husdein Cisic\Documents\GitHub\PROJEKAT_ONLINEprodavnica\main\Debug\main.exe

@@ -818,6 +818,7 @@ std::ostream& operator<<(std::ostream& stream, Laptop& a)
 
 float operator!(Laptop& a)
 {
+    Laptop::trosiL = 0;
     std::string temp;
     int  b, c, d, e, f,g,h,i=0,p,j;
     std::ifstream unos("Laptop.txt");
@@ -858,6 +859,7 @@ float operator!(Laptop& a)
 
 float operator*(Laptop& a)
 {
+    Laptop::prihodL=0;
     std::ifstream datoteka("PrihodiL.txt");
     std::string temp;
     int* idLap = new int[100];

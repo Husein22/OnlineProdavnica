@@ -91,6 +91,22 @@ void prodajaMobitela() {
 		temp->prodajaMobitela();
 	}
 }
+void prodajaOpreme() {
+	string upit;
+	std::shared_ptr<Oprema>temp = std::make_shared<Oprema>();
+	cout << "Da li zelite kupiti jedan od nasih artikala opreme?(DA/NE)\n";
+	do {
+		cout << "Unesite izbor: ";
+		getline(cin, upit);
+		if (upit != "DA" && upit != "NE") {
+			cout << "[GRESKA]Unesite DA ili NE\n";
+		}
+	} while (upit != "DA" && upit != "NE");
+	if (upit == "DA") {
+		temp->prodajaOpreme();
+	}
+
+}
 
 void ispisLaptopa(string rec) {
 	std::shared_ptr<Laptop>temp = std::make_shared<Laptop>();
@@ -113,6 +129,13 @@ void ispisPC(string rec) {
 		prodajaRacunara();
 	}
 }
+void ispisOpreme(string rec){
+	std::shared_ptr<Oprema>temp = std::make_shared<Oprema>();
+	cout << *temp;
+	if (rec != "admin") {
+		prodajaOpreme();
+	}
+}
 
 
 void prodaja() {
@@ -127,13 +150,14 @@ void prodaja() {
 		std::cout <<  "\n" << right << std::setw(81) << "*                                       *";
 		std::cout <<  "\n" << right << std::setw(81) << "*        1. Kupovina laptopa            *";
 		std::cout << "\n" <<right <<std::setw(81) << "*        2. Kupovina mobitela           *";
-		std::cout << "\n" << right << std::setw(81) << "*        3. Kupovina racinara           *";
+		std::cout << "\n" << right << std::setw(81) << "*        3. Kupovina racunara           *";
+		std::cout << "\n" << right << std::setw(81) << "*        4. Kupovina opreme             *";
 		std::cout << "\n" << right << std::setw(81) << "*        0. Vrati se nazad              *";
 		std::cout << "\n" << right << std::setw(81) << "*****************************************";
 		do {
 			cout << "\n" << right << std::setw(67) << "Unesite izbor: ";
 			cin >> iz;
-		} while (iz < 0 || iz>3);
+		} while (iz < 0 || iz>4);
 		cin.ignore();
 		switch (iz)
 		{
@@ -146,6 +170,7 @@ void prodaja() {
 			ispisPC("kupac");
 			break;
 		case 4:
+			ispisOpreme("kupac");
 			break;
 		case 0:
 
@@ -165,7 +190,7 @@ void unosArtikla() {
 	unique_ptr<Laptop>laptop = make_unique<Laptop>();
 	unique_ptr<PC>pc = make_unique<PC>();
 	unique_ptr<Mobitel>mob = make_unique<Mobitel>();
-	
+	unique_ptr<Oprema>op = make_unique<Oprema>();
 	do {
 		system("cls");
 		std::cout << "\n\n" << std::setw(81) << right << "*******************************************" << std::endl;
@@ -177,12 +202,13 @@ void unosArtikla() {
 		std::cout << "\n" << std::setw(81) << right << "*          1. Unos laptopa                *";
 		std::cout << "\n" << std::setw(81) << right << "*          2. Unos mobitela               *";
 		std::cout << "\n" << std::setw(81) << right << "*          3. Unos racunara               *";
+		std::cout << "\n" << std::setw(81) << right << "*          4. Unos opreme                 *";
 		std::cout << "\n" << std::setw(81) << right << "*          0. Vrati se nazad              *";
 		std::cout << "\n" << std::setw(81) << right << "*                                         *";
 		do {
 			std::cout << "\n\n" << std::setw(67) << "Unesite izbor: ";
 			cin >> iz;
-		} while (iz < 0 || iz>3);
+		} while (iz < 0 || iz>4);
 		cin.ignore();
 		switch (iz)
 		{
@@ -200,6 +226,11 @@ void unosArtikla() {
 		case 3:
 			cin >> *pc;
 			cout << "Uspjesno smjesten racunar u datoteku\n";
+			system("pause");
+			break;
+		case 4:
+			cin >> *op;
+			cout << "Uspjesno smjestena oprema u datoteku\n";
 			system("pause");
 			break;
 		default:
@@ -470,12 +501,13 @@ void ispisOpcijeKupac() {
 		std::cout << "\n" << std::setw(81) << right << "*        2. Ispis mobitela              *";
 		std::cout << "\n" << std::setw(81) << right << "*        3. Ispis racunara              *";
 		std::cout << "\n" << std::setw(81) << right << "*        4. Ispis laptopa               *";
+		std::cout << "\n" << std::setw(81) << right << "*        5. Ispis opreme                *";
 		std::cout << "\n" << std::setw(81) << right << "*        0. Vrati se nazad              *";
 		std::cout << "\n" << std::setw(81) << right << "*****************************************";
 		do {
 			cout << "\n" << std::setw(67) << right << "Unesite izbor: ";
 			cin >> iz;
-		} while (iz < 0 || iz>4);
+		} while (iz < 0 || iz>5);
 		cin.ignore();
 		system("cls");
 		switch (iz)
@@ -491,6 +523,11 @@ void ispisOpcijeKupac() {
 		case 4:
 			ispisLaptopa("kupac");
 			break;
+		case 5:
+			ispisOpreme("kupac");
+			system("pause");
+			break;
+
 		case 0:
 
 			break;
@@ -516,12 +553,13 @@ void ispisOpcijeAdmin() {
 		std::cout << "\n" << std::setw(81) << right << "*        2. Ispis mobitela              *";
 		std::cout << "\n" << std::setw(81) << right << "*        3. Ispis racunara              *";
 		std::cout << "\n" << std::setw(81) << right << "*        4. Ispis laptopa               *";
+		std::cout << "\n" << std::setw(81) << right << "*        5. Ispis opreme                *";
 		std::cout << "\n" << std::setw(81) << right << "*        0. Vrati se nazad              *";
 		std::cout << "\n" << std::setw(81) << right << "*****************************************";
 		do {
 			cout << "\n" << std::setw(67) << "Unesite izbor: ";
 			cin >> iz;
-		} while (iz < 0 || iz>4);
+		} while (iz < 0 || iz>5);
 		cin.ignore();
 		system("cls");
 		switch (iz)
@@ -538,6 +576,10 @@ void ispisOpcijeAdmin() {
 			break;
 		case 4:
 			ispisLaptopa("admin");
+			system("pause");
+			break;
+		case 5:
+			ispisOpreme("admin");
 			system("pause");
 			break;
 		case 0:
@@ -557,6 +599,7 @@ void ispisOpcijeAdmin() {
 void updateOpcije() {
 	unique_ptr<Laptop>lape = make_unique<Laptop>();
 	unique_ptr<PC>pc = make_unique<PC>();
+	unique_ptr<Oprema>op = make_unique<Oprema>();
 	unique_ptr<Mobitel>mob = make_unique<Mobitel>();
 	int iz = 0, lap = 0;
 	do {
@@ -569,6 +612,7 @@ void updateOpcije() {
 		cout << "\n" << setw(81) << right << "*            1. Azuriraj laptope               *";
 		cout << "\n" << setw(81) << right << "*            2. Azuriraj mobitele              *";
 		cout << "\n" << setw(81) << right << "*            3. Azuriraj racunare              *";
+		cout << "\n" << setw(81) << right << "*            4. Azuriraj opremu                *";
 		cout << "\n" << setw(81) << right << "*            0. Vrati se na admin menu         *";
 		cout << "\n" << setw(81) << right << "*                                              *";
 		cout << "\n" << setw(81) << right << "************************************************";
@@ -589,6 +633,7 @@ void updateOpcije() {
 			pc->adminProdajaPC();
 			break;
 		case 4:
+			op->adminProdajaOpreme();
 			break;
 		case 0:
 
@@ -609,12 +654,15 @@ void stanjeK() {
 	unique_ptr<Laptop>laptop = make_unique<Laptop>();
 	unique_ptr<PC>pc = make_unique<PC>();
 	unique_ptr<Mobitel>mob = make_unique<Mobitel>();
+	unique_ptr<Oprema>op = make_unique<Oprema>();
 	!(*laptop);
 	*(*laptop);
 	!(*pc);
 	*(*pc);
 	!(*mob);
 	*(*mob);
+	!(*op);
+	*(*op);
 	system("cls");
 	cout <<         "                                       ______________________________________________";
 	cout << "\n" << "                                       |                 Stanje kase:               |";
@@ -628,10 +676,15 @@ void stanjeK() {
 	cout << "\n" << "                                       Bilans sto se tice racunara: " << PC::prihoPC - (PC::trosiPC * (-1)) << " KM     ";
 	cout << "\n" << "                                       ----------------------------------------------";
 	cout << "\n" << "                                       Zarada na prodaji mobitela: " << Mobitel::prihodMob << " KM      ";
-	cout << "\n" << "                                       Potroseno na kupovinu mobitela: " << !(*mob);
+	cout << "\n" << "                                       Potroseno na kupovinu mobitela: " << Mobitel::trosiMob;
 	cout << "\n" << "                                       Bilans sto se tice mobitela: " << Mobitel::prihodMob - (Mobitel::trosiMob * (-1)) << " KM     ";
+	cout << "\n" << "                                       ----------------------------------------------";
+	cout << "\n" << "                                       Zarada na prodaji opreme: " << Oprema::prihofOp << " KM      ";
+	cout << "\n" << "                                       Potroseno na kupovinu opreme: " << Oprema::troaskOp*(-1);
+	cout << "\n" << "                                       Bilans sto se tice opreme: " << Oprema::prihofOp - (Oprema::troaskOp * (-1)) << " KM     ";
 	cout << "\n" << "                                       ______________________________________________";
 	cout << "\n\n";
+	
 
 	system("pause");
 }
@@ -854,6 +907,11 @@ void unosPC() {
 	cin >> *temp;
 	cout << "Uspjesno smjesten mobitel u datoteku\n";
 }
+void unosOpremea() {
+	std::shared_ptr<Oprema>temp = std::make_shared<Oprema>();
+	cin >> *temp;
+	cout << "Uspjesno smjestena oprema u datoteku\n";
+}
 
 
 int kupacMe() {
@@ -895,7 +953,8 @@ int main()
 	int izbor=0,z=0,a=0,i=0, n=0;
 	string user, password;
 	bool l;
-	
+	Oprema o;
+	//cin >> o;
 	
 	do {
 		cout << "\n\n" << setw(81) << right << "" << endl; 

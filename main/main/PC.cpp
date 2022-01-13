@@ -639,6 +639,7 @@ std::cout << "Nemamo narucenih racunara\n";
 
 float operator!(PC& a)
 {
+    PC::trosiPC = 0;
     std::string temp;
     int  b=0, c=0, d=0, e=0, f=0, g=0, h=0, i = 0, p=0, j=0;
     std::ifstream unos("PC.txt");
@@ -678,6 +679,7 @@ float operator!(PC& a)
 
 float operator*(PC& a)
 {
+    PC::prihoPC=0;
     std::ifstream datoteka("PrihodiPC.txt");
     std::string temp;
     int* idLap = new int[100];
